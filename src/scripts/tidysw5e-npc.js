@@ -73,7 +73,7 @@ export default class TidySW5eNPC extends ActorSheet5eNPC {
     };
 
     // Start by classifying items into groups for rendering
-    let [spells, other] = data.items.reduce(
+    let [forcepowers, techpowers, other] = data.items.reduce(
       (arr, item) => {
         item.img = item.img || DEFAULT_TOKEN;
         item.isStack = item.data.quantity ? item.data.quantity > 1 : false;
@@ -85,11 +85,12 @@ export default class TidySW5eNPC extends ActorSheet5eNPC {
         // Item toggle state
         this._prepareItemToggleState(item);
 
-        if (item.type === "spell") arr[0].push(item);
-        else arr[1].push(item);
+        if (item.type === "power" && ["lgt", "drk", "uni"].includes(item.data.school)) arr[0].push(item);
+        else if (item.type === "power" && ["tec"].includes(item.data.school)) arr[1].push(item);
+        else arr[2].push(item);
         return arr;
       },
-      [[], []]
+      [[], [], []]
     );
 
     // Apply item filters
@@ -97,7 +98,7 @@ export default class TidySW5eNPC extends ActorSheet5eNPC {
     techpowers = this._filterItems(techpowers, this._filters.techPowerbook);
     other = this._filterItems(other, this._filters.features);
 
-    // Organize Spellbook
+    // Organize Powerbook
     const forcePowerbook = this._preparePowerbook(data, forcepowers, "uni");
     const techPowerbook = this._preparePowerbook(data, techpowers, "tec");
 
