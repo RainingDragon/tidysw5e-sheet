@@ -1,0 +1,286 @@
+{
+	"TIDYSW5E.PlayerName": "Jméno Hráče",
+	"TIDYSW5E.Gender": "Gender",
+	"TIDYSW5E.Age": "Věk",
+	"TIDYSW5E.Weight": "Váha",
+	"TIDYSW5E.Height": "Výška",
+	"TIDYSW5E.Eyes": "Oči",
+	"TIDYSW5E.Skin": "Kůže",
+	"TIDYSW5E.Hair": "Vlasy",
+	"TIDYSW5E.Subclass": "Obor",
+	"TIDYSW5E.EditActorImage": "Levý klik: Upravit obrázek",
+	"TIDYSW5E.ShowActorImage": "Pravý klik: Ukázat obrázek postavy",
+	"TIDYSW5E.ShowPortraitArt": "ukázat portrét",
+	"TIDYSW5E.ShowTokenArt": "ukázat žeton",
+	"TIDYSW5E.Exhaustion0": "Bez negativních účinků",
+	"TIDYSW5E.Exhaustion1": "Nevýhoda na ověření vlastností",
+	"TIDYSW5E.Exhaustion2": "Poloviční rychlost",
+	"TIDYSW5E.Exhaustion3": "Nevýhoda na hod na útok a záchranné hody",
+	"TIDYSW5E.Exhaustion4": "Poloviční maximální počet životů",
+	"TIDYSW5E.Exhaustion5": "Rychlost zredukována na 0",
+	"TIDYSW5E.Exhaustion6": "Smrt",
+	"TIDYSW5E.RestHint": "Odpočívat",
+	"TIDYSW5E.RestS": "Krátký odpočinek",
+	"TIDYSW5E.RestL": "Důkladný odpočinek",
+	"TIDYSW5E.Journal": "Deník",
+	"TIDYSW5E.RestoreOnRest": "Obnovit při odpočinku",
+	"TIDYSW5E.JournalPoi": "Zájmové osoby",
+	"TIDYSW5E.JournalLoi": "Zájmové lokace",
+	"TIDYSW5E.JournalQuests": "Úkoly",
+	"TIDYSW5E.JournalMisc": "Různé",
+	"TIDYSW5E.JournalEntries": "Záznamy deníku",
+	"TIDYSW5E.TogglePersonalityInfo": "Přepnout informace o osobnosti",
+	"TIDYSW5E.EnableEdit": "Povolit úpravy",
+	"TIDYSW5E.DisableEdit": "Zakázat úpravy",
+	"TIDYSW5E.EditHint": "Přepne viditelnost tlačítek přidat/smazat a prázdných sekcí",
+	"TIDYSW5E.Equip": "Vybavit Předmět",
+	"TIDYSW5E.Unequip": "Odvybavit Předmět",
+	"TIDYSW5E.Attune": "Sladit se s Předmětem",
+	"TIDYSW5E.Deattune": "Ukončit Sladění",
+	"TIDYSW5E.Prepare": "Připravit Kouzlo",
+	"TIDYSW5E.Unprepare": "Odstranit Připravení",
+	"TIDYSW5E.EmptySection": "Tato sekce je prázdná. Pro úpravy odemkněte deník.",
+	"TIDYSW5E.GmOnlyEdit": "Pouze váš PJ může upravovat tuto sekci.",
+	"TIDYSW5E.AttunementWarning": "Varování: Nemůžete se sladit s více než {number} předměty!",
+	"TIDYSW5E.AttunementItems": "Sladěné předměty",
+	"TIDYSW5E.AttunementMax": "Maximální sladění",
+	"TIDYSW5E.GridLayout": "Mřížkové rozvržení",
+	"TIDYSW5E.ListLayout": "Seznamové rozvržení",
+	"TIDYSW5E.Encumbrance": "Zatížení",
+	"TIDYSW5E.EditSpell": "Upravit kouzlo",
+	"TIDYSW5E.DeleteSpell": "Smazat kouzlo",
+	"TIDYSW5E.AddFav": "Přidat do oblíbených",
+	"TIDYSW5E.isFav": "Oblíbený",
+	"TIDYSW5E.RemoveFav": "Odebrat z oblíbených",
+	"TIDYSW5E.ToggleInfo": "Přepnout informace",
+	"TIDYSW5E.Show": "zobrazit/upravit",
+	"TIDYSW5E.Hide": "skrýt",
+	"TIDYSW5E.Edit": "upravit",
+	"TIDYSW5E.TraitsEmpty": "prázdné rysy",
+	"TIDYSW5E.Abilities": "Vlastnosti",
+	"TIDYSW5E.Environment": "Prostředí",
+	"TIDYSW5E.CurrencyAbbrCP": "MD",
+	"TIDYSW5E.CurrencyAbbrSP": "ST",
+	"TIDYSW5E.CurrencyAbbrGP": "ZL",
+	"TIDYSW5E.CurrencyAbbrEP": "EL",
+	"TIDYSW5E.CurrencyAbbrPP": "PL",
+	"TIDYSW5E.SearchItem": "hledat předmět",
+	"TIDYSW5E.SearchSpell": "hledat kouzlo",
+	"TIDYSW5E.SearchFeat": "hledat schopnost",
+	"TIDYSW5E.SearchClear": "vymazat hledání",
+	"TIDYSW5E.SearchHint": "Začněte psát název toho, co hledáte.",
+	"TIDYSW5E.ItemCardsKeyHint": "drž Klávesu pro interakci s kartou.",
+	"TIDYSW5E.ItemCardsMouseHint": "prostřední tlačítko pro zobrazení/editaci předmětu.",
+	"TIDYSW5E.AbbrMod": "Oprava",
+	"TIDYSW5E.AbbrSavingThrow": "Uložit",
+	"TIDYSW5E.SpellAttackMod": "Modifikace útoku",
+	"TIDYSW5E.PreparedSpells": "Připravená kouzla",
+	"TIDYSW5E.PreparedSpellsMax": "Maximum pro připravená kouzla",
+	"TIDYSW5E.Components": "Komponenty",
+	"TIDYSW5E.SpellSchool": "Škola",
+	"TIDYSW5E.TokenLinked": "Žeton je propojený s aktorem",
+	"TIDYSW5E.TokenUnlinked": "Žeton není propojený s aktorem",
+	"TIDYSW5E.ItemDetailsHeadline": "Mechaniky/Popisek",
+	"TIDYSW5E.Settings.GlobalLabel": "Globální",
+	"TIDYSW5E.Settings.DebugLabel": "Debug",
+	"TIDYSW5E.Settings.UserLabel": "Uživatel",
+	"TIDYSW5E.Settings.PcLabel": "Deníky hráčů",
+	"TIDYSW5E.Settings.NpcLabel": "Deníky CP",
+	"TIDYSW5E.Settings.VehicleLabel": "Dopravní prostředky",
+	"TIDYSW5E.Settings.SheetMenu": {
+		"label": "Nastavení deníků",
+		"title": "TidySW5e Nastavení Deníků"
+	},
+	"TIDYSW5E.Settings.TabPlayers": {
+		"tabLabel": "Hráči",
+		"header": "Deníky Hráčských Postav"
+	},
+	"TIDYSW5E.Settings.TabNPCsVehicles": {
+		"tabLabel": "CP/Dop. Prostředky",
+		"header": "Deníky CP/Dop. Prostředků",
+		"labelNPCs": "Cizí Postavy",
+		"labelVehicles": "Dopravní Prostředky"
+	},
+	"TIDYSW5E.Settings.TabGM": {
+		"tabLabel": "Nastavení PJ",
+		"header": "Nastavení Deníků PJ"
+	},
+	"TIDYSW5E.Settings.TabModules": {
+		"tabLabel": "Moduly",
+		"header": "Nastavení Modulů",
+		"labelActionsFavorites": "Akce/Oblíbené Aktorů",
+		"labelMidiQoL": "Midi Qol"
+	},
+	"TIDYSW5E.Settings.TabInfo": {
+		"tabLabel": "Info",
+		"header": "Info"
+	},
+	"TIDYSW5E.Settings.ItemCardsForAllItems": {
+		"name": "Zobrazit info karty předmětů ve všech rozvrženích.",
+		"hint": "Vypni, pokud chceš, aby info karty předmětů vyjížděly pouze v mřížkovém rozvržení."
+	},
+	"TIDYSW5E.Settings.ItemCardsForNpcs": {
+		"name": "Zobrazit info karty předmětů pro CP/dopravní prostředky.",
+		"hint": "Vypni, pokud nechceš, aby info karty předmětů vyjížděly pro CP/dopravní prostředky."
+	},
+	"TIDYSW5E.Settings.ItemCardsAreFloating": {
+		"name": "Info karta předmětu plovoucí vedle kurzoru.",
+		"hint": "Zapni, aby se info karta předmětu odepla z deníku a zobrazila se jako plovoucí rámeček u kurzoru. Toto je nejlépe použít se spožděným zobrazením. Také užitečné, pokud je deník ve vlastním okně."
+	},
+	"TIDYSW5E.Settings.ItemCardsDelay": {
+		"name": "Zpozdi zobrazení info karet.",
+		"hint": "Info Karta se zobrazí při najetí na předmět po dobu delší než hodnota v milisekundách (0 = bez spoždění, 300 je standard)."
+	},
+	"TIDYSW5E.Settings.ItemCardsFixKey": {
+		"name": "Klávesa, jejimž držení se interaguje s Kartou Předmětu.",
+		"hint": "Uveďte klávesu (např.: x) použitou pro interakci s kartou předmětu. Může se jednat o kteroukoliv klávesu kromě funkčních kláves (ctrl, alt, atd.)"
+	},
+	"TIDYSW5E.Settings.SheetTheme": {
+		"name": "Barevné schéma pro TidySW5e.",
+		"hint": "Použije buď výchozí světlé nebo alternativní tmavé barevné schéma pro TidySW5e.",
+		"default": "Výchozí (světlé)",
+		"dark": "Alternativní (tmavé)"
+	},
+	"TIDYSW5E.Settings.ClassicControls": {
+		"name": "Použít klasické ovládání předmětů v seznamu.",
+		"hint": "Vždy zobrazit ovládací prvky předmětů a zakázat kontextové menu. Platí pouze pro inventář předmětů/kouzel hráčů v seznamovém rozvržení."
+	},
+	"TIDYSW5E.Settings.RollButtonsToCard": {
+		"name": "Zobrazit midiQol Tlačítka Předmětu v info kartě předmětu",
+		"hint": "Ve výchozím nastavení se tlačítka pro hod zobrazí v popisu položky. Povolte pro jejich přesun do info karty předmětu. Funguje ve všech módech rozvržení."
+	},
+	"TIDYSW5E.Settings.TraitLabels": {
+		"name": "Zobrazit popisky rysů.",
+		"hint": "Ve výchozím nastavení se zobrazují pouze ikony rysů. Povolte pro zobrazení popisků."
+	},
+	"TIDYSW5E.Settings.PlayerName": {
+		"name": "Zobrazit jméno hráče.",
+		"hint": "Zaškrtnutím zobrazíte pole s jménem hráče pod jménem postavy."
+	},
+	"TIDYSW5E.Settings.ClassList": {
+		"name": "Skrýt seznam povolání.",
+		"hint": "Zaškrtnutím skryjete seznam povolání pod jménem postavy."
+	},
+	"TIDYSW5E.Settings.InspirationAnimation": {
+		"name": "Žádná animace indikátoru inspirace.",
+		"hint": "Zaškrtnutím deaktivujete zářící animaci indikátoru inspirace."
+	},
+	"TIDYSW5E.Settings.HideIfZero": {
+		"name": "Skrýt únavu a inspiraci, pokud nejsou dostupné (0).",
+		"hint": "Zaškrtnutím skryje únavu a inspiraci, pokud mají hodnotu 0. Objeví se při najetí myší."
+	},
+	"TIDYSW5E.Settings.InspirationOnHover": {
+		"name": "Zobrazit ukazatel inspirace jen při najetí myši.",
+		"hint": "Zaškrtnutím bude ukazatel inspirace viditelný pouze při najetí myši na portrét."
+	},
+	"TIDYSW5E.Settings.ExhaustionOnHover": {
+		"name": "Zobrazit ukazatel únavy jen při najetí myši.",
+		"hint": "Zaškrtnutím bude ukazatel únavy viditelný pouze při najetí myši na portrét."
+	},
+	"TIDYSW5E.Settings.HpBar": {
+		"name": "Zakázat ukazatel zdraví.",
+		"hint": "Povolte pro skrytí barevného ukazatele zbývajících bodů života (čísla budou stále viditelná)."
+	},
+	"TIDYSW5E.Settings.HpOverlay": {
+		"name": "Zakázat překrytí životů.",
+		"hint": "Zaškrtnutím skryjete překrytí životů (barevná výplň) pro tento typ aktora."
+	},
+	"TIDYSW5E.Settings.TraitsTogglePc": {
+		"name": "Přepínání prázdných rysů postavy.",
+		"hint": "V základním nastavení jsou prázdné rysy vždy viditelné. Zaškrtněte pro přidání tlačítka pro přepnutí prázdných rysů."
+	},
+	"TIDYSW5E.Settings.TraitsMovedBelowResource": {
+		"name": "Přesunout rysy pod zdroje.",
+		"hint": "Zaškrtněte pro přesunutí rysů z levé strany pod zdroje."
+	},
+	"TIDYSW5E.Settings.TraitsAlwaysShown": {
+		"name": "Vždy zobrazovat rysy.",
+		"hint": "V základním nastavení jsou prázdné rysy skryty přepínacím tlačítkem. Zaškrtněte, aby se nikdy neskrývaly."
+	},
+	"TIDYSW5E.Settings.SkillsAlwaysShown": {
+		"name": "Vždy zobrazovat dovednosti.",
+		"hint": "V základním nastavení jsou dovednosti bez zdatnosti skryty přepínacím tlačítkem. Zaškrtněte, aby se nikdy neskrývaly."
+	},
+	"TIDYSW5E.Settings.ActiveEffectsMarker": {
+		"name": "Zobrazovat na předmětech Značku Aktivního Efektu.",
+		"hint": "Zaškrtněte, pokud chcete vidět, zda mají předměty na sobě aktivní efekt (pouze v řádkovém zobrazení)."
+	},
+	"TIDYSW5E.Settings.RightClick": {
+		"name": "Zakázat kontextové menu pravého tlačítka.",
+		"hint": "V případě konfliktu modulů a nebo preference, můžete zakázat kontextové menu. Položky namísto toho zobrazí ikonku menu."
+	},
+	"TIDYSW5E.Settings.ExpandedSheet": {
+		"name": "Rozšířené Omezené zobrazení pro deník postav.",
+		"hint": "Zobrazí celý deník postavy (kromě poznámek) hráčům s Omezeným oprávněním."
+	},
+	"TIDYSW5E.Settings.PortraitStyle": {
+		"name": "Kruhový styl portrétu.",
+		"hint": "Zvolte pro zapnutí kruhových portrétů/ikon pro aktory.",
+		"all": "Všichni aktoři",
+		"pc": "Hráči",
+		"npc": "CP/Dop. prostředky",
+		"none": "žádné",
+		"default": "žádné"
+	},
+	"TIDYSW5E.Settings.HpOverlayBorder": {
+		"name": "Šířka ohraničení pro překrytí životů.",
+		"hint": "Uveďte šířku ohraničení jako kompenzaci rámečku portrétu, aby jste zabránili jeho zabarvení."
+	},
+	"TIDYSW5E.Settings.EditTotalLock": {
+		"name": "Zamknout citlivá pole.",
+		"hint": "Zaškrtněte, aby se zabránilo nechtěné změně citlivých, povětšinou neměnných hodnot."
+	},
+	"TIDYSW5E.Settings.EditGmAlways": {
+		"name": "PJ může vždy upravovat deníky hráčů.",
+		"hint": "Povolit PJ upravovat deníky hráčů bez nutnosti přepínání zámku."
+	},
+	"TIDYSW5E.Settings.EditEffectsGmOnly": {
+		"name": "Pouze PJ může upravovat aktivní efekty.",
+		"hint": "Zašrtnutím zakáže hráčům upravovat aktivní efekty ve svých denících. Pořád však uvidí aplikované efekty."
+	},
+	"TIDYSW5E.Settings.QuantityAlwaysShown": {
+		"name": "Vždy zobrazovat množství předmětů.",
+		"hint": "Povolte pokud se nemá skrývat množství předmětů."
+	},
+	"TIDYSW5E.Settings.InspirationDisabled": {
+		"name": "Zakázat sledování inspirace.",
+		"hint": "Pokud vaše kampaň nepoužívá inspiraci, můžete ukazatel úplně vypnout."
+	},
+	"TIDYSW5E.Settings.ExhaustionEffects": {
+		"name": "Automatické účinky Vyčerpání",
+		"hint": "Vyberte, jak se mají aplikovat účinky vyčerpání korespondující s jejich stupněm (vyžaduje midiQpl pro hody s nevýhodou)",
+		"default": "Žádné automatické účinky",
+		"tidysw5e": "TidySW5e - Aplikovat iintegrované účinky (používá Active Effects)",
+		"custom": "Vlastní - Použití vlastních účinků (vyžaduje CUB)"
+	},
+	"TIDYSW5E.Settings.CustomExhaustionIcon": {
+		"name": "Vlastní ikona účinku vyčerpání.",
+		"hint": "Nastavte vlastní ikonu účinku vyčerpání poskytnutím url obrázku. Možné pouze pokud jsou Účinky Vyčerpání nastaveny na \"TidySW5e\" (např.: modules/tidysw5e-sheet/images/exhaustion.svg)."
+	},
+	"TIDYSW5E.Settings.CustomExhaustionEffect": {
+		"name": "Jméno vlastního CUB efektu vyčerpání.",
+		"hint": "Uveďte jméno vlastního Efektu Vyčerpání - musí být stejné jako je definováno v CUB but BEZ svého čísla (např. \"Vycerpani\")",
+		"tiers": "Počet vlastních CUB stupňů vyčerpání. Standardně = 5",
+		"warning": "Nelze nalézt token aktora pro aplikování účinku vyčerpání!"
+	},
+	"TIDYSW5E.Settings.ExhaustionDisabled": {
+		"name": "Zakázat sledování únavy.",
+		"hint": "Pokud vaše kampaň nepoužívá únavu, můžete ukazatel úplně vypnout."
+	},
+	"TIDYSW5E.Settings.RestingForNpcs": {
+		"name": "Odpočinek pro CP.",
+		"hint": "Povolí zobrazení ikony/tlačítek pro odpočinek v denících cizích postav."
+	},
+	"TIDYSW5E.Settings.RestingForNpcsChat": {
+		"name": "Nezobrazovat chatovou kartu s odpočinkem CP.",
+		"hint": "Zaškrtnutím skryje Kartu Chatu pro odpočinek CP (jak pro hráče, tak pro PJ)."
+	},
+	"TIDYSW5E.Settings.LinkMarker": {
+		"name": "Označit propojené/nepropojené cizí postavy.",
+		"hint": "Přidá barevné ohraničení a ikonu na propojené/nepropojené deníky cizích postav.",
+		"default": "Bez označení propojení (výchozí)",
+		"unlinked": "Zvýraznit nepropojené žetony",
+		"linked": "Zvýraznit propojené žetony.",
+		"both": "Zvýraznit propojené a nepropojené žetony"
+	}
+}
