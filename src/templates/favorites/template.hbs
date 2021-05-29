@@ -2,29 +2,29 @@
   <ul class="inventory-list items-list">
   {{#if favItems}}
     <li class="items-header">
-      <h3>{{localize 'DND5E.Inventory'}}</h3>
+      <h3>{{localize 'SW5E.Inventory'}}</h3>
       <div class="items-header-labels">
-        <div class="items-header-charge" title="{{localize 'DND5E.Charges'}}"><i class="fas fa-bolt"></i></div>
-        <div class="items-header-usage">{{localize 'DND5E.Usage'}}</div>
+        <div class="items-header-charge" title="{{localize 'SW5E.Charges'}}"><i class="fas fa-bolt"></i></div>
+        <div class="items-header-usage">{{localize 'SW5E.Usage'}}</div>
       </div>
     </li>
     <ul class="item-list">
       {{#each favItems as |item id|}}
-       {{> "modules/tidy5e-sheet/templates/favorites/item.hbs" item=item}}
+       {{> "modules/tidysw5e-sheet/templates/favorites/item.hbs" item=item}}
       {{/each}}
     </ul>
   {{/if}}
   {{#if favFeats}}
     <li class="items-header">
-      <h3>{{localize 'DND5E.Features'}}</h3>
+      <h3>{{localize 'SW5E.Features'}}</h3>
       <div class="items-header-labels">
-        <div class="items-header-uses">{{localize 'DND5E.Uses'}}</div>
-        <div class="items-header-usage">{{localize 'DND5E.Usage'}}</div>
+        <div class="items-header-uses">{{localize 'SW5E.Uses'}}</div>
+        <div class="items-header-usage">{{localize 'SW5E.Usage'}}</div>
       </div>
     </li>
     <ul class="item-list">
       {{#each favFeats as |feat lvl|}}
-      {{> "modules/tidy5e-sheet/templates/favorites/item.hbs" item=feat}}
+      {{> "modules/tidysw5e-sheet/templates/favorites/item.hbs" item=feat}}
       {{/each}}
     </ul>
   {{/if}}
@@ -36,10 +36,10 @@
           <li class="items-header spellbook-header">
             <div class="spell-level-slots">                                   
               <h3>
-              {{#if section.isAlways}}{{localize 'DND5E.SpellPrepAlways'}}
-              {{else if section.isAtWill}}{{localize 'DND5E.SpellPrepAtWill'}}
-              {{else if section.isInnate}}{{localize 'DND5E.SpellPrepInnate'}}
-              {{else if section.isPact}}{{localize 'DND5E.SpellProgPact'}}
+              {{#if section.isAlways}}{{localize 'SW5E.SpellPrepAlways'}}
+              {{else if section.isAtWill}}{{localize 'SW5E.SpellPrepAtWill'}}
+              {{else if section.isInnate}}{{localize 'SW5E.SpellPrepInnate'}}
+              {{else if section.isPact}}{{localize 'SW5E.SpellProgPact'}}
               {{/if}}
               </h3>
               {{#if section.isPact}}
@@ -58,7 +58,7 @@
         {{/if}}
         <ul class="item-list">
           {{#each section.spells as |spell id|}}
-            {{> "modules/tidy5e-sheet/templates/favorites/item.hbs" item=spell}}
+            {{> "modules/tidysw5e-sheet/templates/favorites/item.hbs" item=spell}}
           {{/each}}
         </ul>
       {{/if}}
@@ -71,12 +71,12 @@
           <li class="items-header spellbook-header">
             <div class="spell-level-slots">                    
               <h3>
-              {{#if section.isCantrip}}{{localize 'DND5E.SpellCantrip'}}
-              {{else if section.isAlways}}{{localize 'DND5E.SpellPrepAlways'}}
-              {{else if section.isAtWill}}{{localize 'DND5E.SpellPrepAtWill'}}
-              {{else if section.isInnate}}{{localize 'DND5E.SpellPrepInnate'}}
-              {{else if section.isPact}}{{localize 'DND5E.SpellProgPact'}}
-              {{else}}{{localize 'DND5E.SpellLevel'}} {{lvl}}{{/if}}
+              {{#if section.isCantrip}}{{localize 'SW5E.SpellCantrip'}}
+              {{else if section.isAlways}}{{localize 'SW5E.SpellPrepAlways'}}
+              {{else if section.isAtWill}}{{localize 'SW5E.SpellPrepAtWill'}}
+              {{else if section.isInnate}}{{localize 'SW5E.SpellPrepInnate'}}
+              {{else if section.isPact}}{{localize 'SW5E.SpellProgPact'}}
+              {{else}}{{localize 'SW5E.SpellLevel'}} {{lvl}}{{/if}}
               </h3>
               {{#if section.isCantrip}}
                 {{else}}
@@ -88,14 +88,14 @@
               {{/if}}
             </div>
             <div class="items-header-labels">
-              <div class="items-header-comps">{{localize 'TIDY5E.Components'}}</div>
-              <div class="items-header-usage">{{localize 'DND5E.SpellUsage'}}</div>
+              <div class="items-header-comps">{{localize 'TIDYSW5E.Components'}}</div>
+              <div class="items-header-usage">{{localize 'SW5E.SpellUsage'}}</div>
             </div>
           </li>
         {{/if}}
         <ul class="item-list">
           {{#each section.spells as |spell id|}}
-            {{> "modules/tidy5e-sheet/templates/favorites/item.hbs" item=spell}}
+            {{> "modules/tidysw5e-sheet/templates/favorites/item.hbs" item=spell}}
           {{/each}}
         </ul>
       {{/if}}

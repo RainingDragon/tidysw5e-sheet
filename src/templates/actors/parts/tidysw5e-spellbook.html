@@ -1,9 +1,9 @@
 {{!-- Spellbook Header --}}
-{{> "modules/tidy5e-sheet/templates/actors/parts/tidy5e-spellbook-header.html"}}
+{{> "modules/tidysw5e-sheet/templates/actors/parts/tidysw5e-spellbook-header.html"}}
 
 <div class="list-layout">
 
-  <ul class="inventory-list spellbook-list items-list {{#if actor.flags.tidy5e-sheet.allow-edit}}unlocked{{/if}}">
+  <ul class="inventory-list spellbook-list items-list {{#if actor.flags.tidysw5e-sheet.allow-edit}}unlocked{{/if}}">
     {{#each spellbook as |section|}}
     <li class="items-header spellbook-header">
       <div class="spell-level-slots">
@@ -17,7 +17,7 @@
           <span class="spell-max" data-level="{{section.prop}}" data-slots="{{section.slots}}">
             {{{section.slots}}}
             {{#if ../editable}}
-            <a class="slot-max-override" title="{{localize 'DND5E.SpellProgOverride'}}">
+            <a class="slot-max-override" title="{{localize 'SW5E.SpellProgOverride'}}">
               <i class="fas fa-pencil-alt"></i>
             </a>
             {{/if}}
@@ -27,11 +27,11 @@
 
       </div>
       <div class="items-header-labels">
-        <div class="items-header-comps"  title="{{localize 'DND5E.SpellComponents'}}"><i class="fas fa-mortar-pestle"></i></div>
-        <div class="items-header-school" title="{{localize 'DND5E.SpellSchool'}}"><i class="fas fa-hat-wizard"></i></div>
-        <div class="items-header-target" title="{{localize 'DND5E.SpellTarget'}}">{{localize 'DND5E.Target'}}</div>
-        <div class="items-header-range" title="{{localize 'DND5E.SpellRange'}}">{{localize 'DND5E.Range'}}</div>
-        <div class="items-header-usage" title="{{localize 'DND5E.SpellUsage'}}">{{localize 'DND5E.Usage'}}</div>
+        <div class="items-header-comps"  title="{{localize 'SW5E.SpellComponents'}}"><i class="fas fa-mortar-pestle"></i></div>
+        <div class="items-header-school" title="{{localize 'SW5E.SpellSchool'}}"><i class="fas fa-hat-wizard"></i></div>
+        <div class="items-header-target" title="{{localize 'SW5E.SpellTarget'}}">{{localize 'SW5E.Target'}}</div>
+        <div class="items-header-range" title="{{localize 'SW5E.SpellRange'}}">{{localize 'SW5E.Range'}}</div>
+        <div class="items-header-usage" title="{{localize 'SW5E.SpellUsage'}}">{{localize 'SW5E.Usage'}}</div>
       </div>
     </li>
 
@@ -42,7 +42,7 @@
           <div class="item-image" style="background-image: url({{item.img}})">
             <i class="fa fa-dice-d20"></i>
           </div>
-          <h4 title="{{localize 'TIDY5E.ToggleInfo'}} ({{item.name}})">
+          <h4 title="{{localize 'TIDYSW5E.ToggleInfo'}} ({{item.name}})">
             {{item.name}}
           </h4>
 
@@ -50,7 +50,7 @@
         
         {{~#if item.flags.favtab}} 
         {{~#if item.flags.favtab.isFavorite}} 
-           <div class="item-state-icon" title="{{localize 'TIDY5E.isFav'}}"><i class="fas fa-bookmark icon-fav"></i></div>
+           <div class="item-state-icon" title="{{localize 'TIDYSW5E.isFav'}}"><i class="fas fa-bookmark icon-fav"></i></div>
         {{/if}}
         {{/if}}
 
@@ -65,22 +65,22 @@
           <span class="spell-component {{this}}">{{this}}</span>
           {{/each}}
         </div>
-        <div class="item-detail spell-school" title="{{localize 'DND5E.SpellSchool'}}: {{labels.school}}"><span class="truncate">{{labels.school}}</span></div>
-        <div class="item-detail spell-target" title="{{localize 'DND5E.Target'}}: {{labels.target}}">
+        <div class="item-detail spell-school" title="{{localize 'SW5E.SpellSchool'}}: {{labels.school}}"><span class="truncate">{{labels.school}}</span></div>
+        <div class="item-detail spell-target" title="{{localize 'SW5E.Target'}}: {{labels.target}}">
           {{#if labels.target}}
           {{labels.target}}
-          {{else}}{{ localize 'DND5E.None' }}
+          {{else}}{{ localize 'SW5E.None' }}
           {{/if}}
         </div>
-        <div class="item-detail spell-range" title="{{localize 'DND5E.Range'}}: {{labels.range}}">
+        <div class="item-detail spell-range" title="{{localize 'SW5E.Range'}}: {{labels.range}}">
           {{labels.range}}
         </div>
-        <div class="item-detail spell-action" title="{{localize 'DND5E.SpellUsage'}}">{{labels.activation}}</div>
+        <div class="item-detail spell-action" title="{{localize 'SW5E.SpellUsage'}}">{{labels.activation}}</div>
         
         <div class="info-card {{~#if item.data.preparation.prepared}} equipped {{/if}}{{#if (eq data.preparation.mode 'always')}} alwaysPrepared{{/if}}" data-item-id="{{item._id}}">
           <p class="info-card-name">{{item.name}}</p>
           <div class="info-card-states">
-            <span><!-- <i class="fas fa-hat-wizard"></i><b>{{localize 'DND5E.SpellSchool'}}:</b>  -->{{labels.school}}</span>
+            <span><!-- <i class="fas fa-hat-wizard"></i><b>{{localize 'SW5E.SpellSchool'}}:</b>  -->{{labels.school}}</span>
             {{#if ../../owner}}
             {{#if section.canPrepare}}
               <span>{{item.toggleTitle}}</span>
@@ -89,7 +89,7 @@
           </div>
           <div class="info-card-amount">
             {{#if item.hasUses }}
-            <span><i class="fas fa-bolt"></i><b>{{localize 'DND5E.Charges'}}:</b> {{item.data.uses.value}}/{{item.data.uses.max}}</span>
+            <span><i class="fas fa-bolt"></i><b>{{localize 'SW5E.Charges'}}:</b> {{item.data.uses.value}}/{{item.data.uses.max}}</span>
             {{/if}}
           </div>
           <div class="description-wrap">
@@ -107,12 +107,12 @@
         <div class="item-controls context-menu">
           <hr class="context-divider">
           {{#if (and section.canPrepare (ne data.preparation.mode 'always'))}}
-          <a class="item-control item-toggle {{item.toggleClass}}" title="{{item.toggleTitle}}">{{#if (eq item.toggleClass 'active')}}<i class="fas fa-book"></i> <span class="control-label">{{localize 'TIDY5E.Unprepare'}}</span>{{else}}<i class="fas fa-book inactive"></i> <span class="control-label">{{localize 'TIDY5E.Prepare'}}</span>{{/if}}</a>
+          <a class="item-control item-toggle {{item.toggleClass}}" title="{{item.toggleTitle}}">{{#if (eq item.toggleClass 'active')}}<i class="fas fa-book"></i> <span class="control-label">{{localize 'TIDYSW5E.Unprepare'}}</span>{{else}}<i class="fas fa-book inactive"></i> <span class="control-label">{{localize 'TIDYSW5E.Prepare'}}</span>{{/if}}</a>
           {{/if}}
           <hr class="context-divider">
-          <a class="item-control item-edit" title="{{localize 'TIDY5E.EditSpell'}}"><i class="fas fa-pencil-alt"></i> <span class="control-label">{{localize 'TIDY5E.EditSpell'}}</span></a>
+          <a class="item-control item-edit" title="{{localize 'TIDYSW5E.EditSpell'}}"><i class="fas fa-pencil-alt"></i> <span class="control-label">{{localize 'TIDYSW5E.EditSpell'}}</span></a>
           <hr class="context-divider">
-          <a class="item-control item-delete warning" title="{{localize 'TIDY5E.DeleteSpell'}}"><i class="fas fa-trash"></i> <span class="control-label">{{localize 'TIDY5E.DeleteSpell'}}</span></a>
+          <a class="item-control item-delete warning" title="{{localize 'TIDYSW5E.DeleteSpell'}}"><i class="fas fa-trash"></i> <span class="control-label">{{localize 'TIDYSW5E.DeleteSpell'}}</span></a>
         </div>
         {{/if}}
 
@@ -120,13 +120,13 @@
       {{/each}}
       {{#if section.canCreate}}
       <li class="items-footer">
-        <a class="item-create" title="{{localize 'DND5E.SpellCreate'}}" {{#each section.dataset as |v k|}}data-{{k}}="{{v}}"{{/each}}>
-          <i class="fas fa-plus-circle"></i> </span>{{localize 'DND5E.Add'}}
+        <a class="item-create" title="{{localize 'SW5E.SpellCreate'}}" {{#each section.dataset as |v k|}}data-{{k}}="{{v}}"{{/each}}>
+          <i class="fas fa-plus-circle"></i> </span>{{localize 'SW5E.Add'}}
         </a>
         {{else}}
         <!-- add button for all spell categories -->
-        <a class="item-create" title="{{localize 'DND5E.SpellCreate'}}" {{#each section.dataset as |v k|}}data-{{k}}="{{v}}"{{/each}}>
-          <i class="fas fa-plus-circle"></i> {{localize 'DND5E.Add'}}
+        <a class="item-create" title="{{localize 'SW5E.SpellCreate'}}" {{#each section.dataset as |v k|}}data-{{k}}="{{v}}"{{/each}}>
+          <i class="fas fa-plus-circle"></i> {{localize 'SW5E.Add'}}
         </a>
       </li>
       {{/if}}
@@ -134,13 +134,13 @@
     {{else}}
     {{#if owner}}
     {{#if filters.spellbook.size}}
-    <li class="notice">{{localize 'DND5E.FilterNoSpells'}}</li>
+    <li class="notice">{{localize 'SW5E.FilterNoSpells'}}</li>
     {{else}}
 
-    <li class="notice">{{localize 'DND5E.NoSpellLevels'}}</li>
+    <li class="notice">{{localize 'SW5E.NoSpellLevels'}}</li>
     <li class="items-footer">
-      <a class="item-create" title="{{localize 'DND5E.SpellCreate'}}" data-type="spell"
-      data-level="{{lvl}}"><i class="fas fa-plus-circle"></i> {{localize 'DND5E.SpellCreate'}}</a>
+      <a class="item-create" title="{{localize 'SW5E.SpellCreate'}}" data-type="spell"
+      data-level="{{lvl}}"><i class="fas fa-plus-circle"></i> {{localize 'SW5E.SpellCreate'}}</a>
     </li>
     {{/if}}
     {{/if}}
@@ -149,4 +149,4 @@
 </div>
 
 {{!-- Spellbook Footer --}}
-{{> "modules/tidy5e-sheet/templates/actors/parts/tidy5e-spellbook-footer.html"}}
+{{> "modules/tidysw5e-sheet/templates/actors/parts/tidysw5e-spellbook-footer.html"}}

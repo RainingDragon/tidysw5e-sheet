@@ -1,5 +1,5 @@
 <form class="{{cssClass}}" autocomplete="off">
-	<div class="tidy5e-sheet {{#if actor.flags.tidy5e-sheet.allow-edit}}allow-edit{{/if}}">
+	<div class="tidysw5e-sheet {{#if actor.flags.tidysw5e-sheet.allow-edit}}allow-edit{{/if}}">
 
 		{{!-- Item Info Card --}}
 		<section id="item-info-container">
@@ -10,14 +10,14 @@
 				</article>
 				<!-- <article class="mod-roll-buttons"></article> -->
 				<article class="info-card-hint">
-					<p><span class="key">X</span> {{localize "TIDY5E.ItemCardsKeyHint"}}</p>
-					<p><i class="fas fa-mouse"></i> {{localize "TIDY5E.ItemCardsMouseHint"}}</p>
+					<p><span class="key">X</span> {{localize "TIDYSW5E.ItemCardsKeyHint"}}</p>
+					<p><i class="fas fa-mouse"></i> {{localize "TIDYSW5E.ItemCardsMouseHint"}}</p>
 				</article>
 			</div>
 		</section>
     
 		{{!-- Sheet Header --}}
-		<header class="tidy5e-header">
+		<header class="tidysw5e-header">
 			
 			<section class="profile-wrap">
 				<div class="profile hp-{{data.attributes.hp.value}}-{{#if data.attributes.hp.temp}}{{data.attributes.hp.temp}}{{else}}0{{/if}} deathsuccess-{{data.attributes.death.success}} deathfailure-{{data.attributes.death.failure}}">
@@ -29,7 +29,7 @@
 							<input type="text" name="data.attributes.death.success" data-dtype="Number" placeholder="0"
 							value="{{data.attributes.death.success}}" maxlength="1">
 							<div class="death-save rollable has-note" data-action="rollDeathSave">
-								<div class="note">{{ localize "DND5E.DeathSave" }}</div>
+								<div class="note">{{ localize "SW5E.DeathSave" }}</div>
 								<i class="fas fa-skull"></i>
 							</div>
 							<input type="text" name="data.attributes.death.failure" data-dtype="Number" placeholder="0"
@@ -40,10 +40,10 @@
 
 					{{!-- Portrait --}}
 					<div class="portrait">
-						<img class="player-image" src="{{actor.img}}" alt="{{actor.name}}" title="{{ localize 'TIDY5E.EditActorImage' }} / {{ localize 'TIDY5E.ShowActorImage' }}" data-edit="img">
+						<img class="player-image" src="{{actor.img}}" alt="{{actor.name}}" title="{{ localize 'TIDYSW5E.EditActorImage' }} / {{ localize 'TIDYSW5E.ShowActorImage' }}" data-edit="img">
 						<div class="portrait-menu hidden">
-							<a class="showActorArt" id="showPortrait">{{ localize 'TIDY5E.ShowPortraitArt' }}</a>
-							<a class="showActorArt" id="showToken">{{ localize 'TIDY5E.ShowTokenArt' }}</a>
+							<a class="showActorArt" id="showPortrait">{{ localize 'TIDYSW5E.ShowPortraitArt' }}</a>
+							<a class="showActorArt" id="showToken">{{ localize 'TIDYSW5E.ShowTokenArt' }}</a>
 						</div>
 					</div>
 					{{!-- HP Overlay --}}
@@ -61,14 +61,14 @@
 					<div class="exhaustion-container level-{{data.attributes.exhaustion}} has-note">
 						<div class="level-display">{{data.attributes.exhaustion}}</div>
 	      		<div class="note">
-	      			<h4>{{ localize "DND5E.Exhaustion" }} {{ localize "DND5E.AbbreviationLevel" }} {{data.attributes.exhaustion}}</h4>
-	      			<p class="lvl-0">{{ localize "TIDY5E.Exhaustion0" }}</p>
-	      			<p class="lvl-1 lvl-2 lvl-3 lvl-4 lvl-5 lvl-6">{{ localize "TIDY5E.Exhaustion1" }}</p>
-	      			<p class="lvl-2 lvl-3 lvl-4 lvl-5 lvl-6">{{ localize "TIDY5E.Exhaustion2" }}</p>
-	      			<p class="lvl-3 lvl-4 lvl-5 lvl-6">{{ localize "TIDY5E.Exhaustion3" }}</p>
-	      			<p class="lvl-4 lvl-5 lvl-6">{{ localize "TIDY5E.Exhaustion4" }}</p>
-	      			<p class="lvl-5 lvl-6">{{ localize "TIDY5E.Exhaustion5" }}</p>
-	      			<p class="lvl-6">{{ localize "TIDY5E.Exhaustion6" }}</p>
+	      			<h4>{{ localize "SW5E.Exhaustion" }} {{ localize "SW5E.AbbreviationLevel" }} {{data.attributes.exhaustion}}</h4>
+	      			<p class="lvl-0">{{ localize "TIDYSW5E.Exhaustion0" }}</p>
+	      			<p class="lvl-1 lvl-2 lvl-3 lvl-4 lvl-5 lvl-6">{{ localize "TIDYSW5E.Exhaustion1" }}</p>
+	      			<p class="lvl-2 lvl-3 lvl-4 lvl-5 lvl-6">{{ localize "TIDYSW5E.Exhaustion2" }}</p>
+	      			<p class="lvl-3 lvl-4 lvl-5 lvl-6">{{ localize "TIDYSW5E.Exhaustion3" }}</p>
+	      			<p class="lvl-4 lvl-5 lvl-6">{{ localize "TIDYSW5E.Exhaustion4" }}</p>
+	      			<p class="lvl-5 lvl-6">{{ localize "TIDYSW5E.Exhaustion5" }}</p>
+	      			<p class="lvl-6">{{ localize "TIDYSW5E.Exhaustion6" }}</p>
 	      		</div>
 	      		<div class="exhaustion-wrap">
 	      			<div class="exhaustion-icon"><i class="far fa-grin"></i><i class="far fa-smile"></i><i class="far fa-meh"></i><i class="far fa-frown"></i><i class="far fa-frown-open"></i><i class="far fa-tired"></i><i class="far fa-dizzy"></i></div>
@@ -90,26 +90,26 @@
 						<label for="{{actor._id}}-inspiration">
 							<i class="inspiration-icon fas fa-dice-d20"></i>
 						</label>
-						<div class="note">{{ localize 'DND5E.Inspiration' }}</div>
+						<div class="note">{{ localize 'SW5E.Inspiration' }}</div>
 					</div>
 
 					{{!-- Resting --}}
 					<div class="rest-container has-note">
-						<div class="note">{{ localize 'TIDY5E.RestHint' }}</div>
+						<div class="note">{{ localize 'TIDYSW5E.RestHint' }}</div>
 						<div class="resting">
 							<span class="resting-icon"><i class="rest-icon fas fa-bed"></i></span>
-							<a class="rest short-rest" title="{{ localize 'TIDY5E.RestS' }}"><i class="fas fa-hourglass-half"></i></a>
-							<a class="rest long-rest" title="{{ localize 'TIDY5E.RestL' }}"><i class="fas fa-hourglass-end"></i></a>
+							<a class="rest short-rest" title="{{ localize 'TIDYSW5E.RestS' }}"><i class="fas fa-hourglass-half"></i></a>
+							<a class="rest long-rest" title="{{ localize 'TIDYSW5E.RestL' }}"><i class="fas fa-hourglass-end"></i></a>
 						</div>
 					</div>
 					{{!-- Hit Dice --}}
-					<div class="portrait-hd has-note" title="{{ localize 'DND5E.HitDice' }}: {{data.attributes.hd}}/{{data.details.level}}">
-						<div class="note">{{ localize 'DND5E.HitDice' }}: {{data.attributes.hd}}/{{data.details.level}}</div>
+					<div class="portrait-hd has-note" title="{{ localize 'SW5E.HitDice' }}: {{data.attributes.hd}}/{{data.details.level}}">
+						<div class="note">{{ localize 'SW5E.HitDice' }}: {{data.attributes.hd}}/{{data.details.level}}</div>
 						<div class="current-hd">{{data.attributes.hd}}<!-- <span>/</span>{{data.details.level}} --></div>
 					</div>
 
 					{{!-- Hit Points --}}
-					<div class="portrait-hp" title="{{ localize 'DND5E.HitPoints' }}">
+					<div class="portrait-hp" title="{{ localize 'SW5E.HitPoints' }}">
 						<div class="hp-bar" style="background: linear-gradient(
 								-90deg,
 								transparent 0%,
@@ -127,9 +127,9 @@
 
         {{!-- Hit Points --}}
 				<div class="portrait-temp">
-					<input name="data.attributes.hp.temp" type="text" class="temphp" placeholder="+{{ localize 'DND5E.Temp' }}" title="+{{ localize 'DND5E.Temp' }}"
+					<input name="data.attributes.hp.temp" type="text" class="temphp" placeholder="+{{ localize 'SW5E.Temp' }}" title="+{{ localize 'SW5E.Temp' }}"
 					value="{{data.attributes.hp.temp}}" data-dtype="Number" maxlength="3">
-					<input name="data.attributes.hp.tempmax" type="text" class="max-temphp" placeholder="+{{ localize 'DND5E.Max' }}" title="+{{ localize 'DND5E.Max' }}"
+					<input name="data.attributes.hp.tempmax" type="text" class="max-temphp" placeholder="+{{ localize 'SW5E.Max' }}" title="+{{ localize 'SW5E.Max' }}"
 					value="{{data.attributes.hp.tempmax}}" data-dtype="Number" maxlength="3">
 				</div>
 
@@ -138,10 +138,10 @@
 			{{!-- Character Details --}}
 			<div class="character-details">
 				<section class="general-information">
-					<input data-input="{{actor._id}}-name" name="name" type="hidden" value="{{actor.name}}" placeholder="{{ localize 'DND5E.Name' }}" maxlength="40">
-          <h1 class="char-name" {{#if owner}}contenteditable="true"{{/if}} spellcheck="false" data-target="{{actor._id}}-name" data-placeholder="{{ localize 'DND5E.Name' }}" data-maxlength="40">{{actor.name}}</h1>
+					<input data-input="{{actor._id}}-name" name="name" type="hidden" value="{{actor.name}}" placeholder="{{ localize 'SW5E.Name' }}" maxlength="40">
+          <h1 class="char-name" {{#if owner}}contenteditable="true"{{/if}} spellcheck="false" data-target="{{actor._id}}-name" data-placeholder="{{ localize 'SW5E.Name' }}" data-maxlength="40">{{actor.name}}</h1>
 					<div class="level-information {{#if disableExperience}}noxp{{/if}}">
-						<h2 class="level">{{ localize 'DND5E.AbbreviationLevel' }} {{data.details.level}}</h2>
+						<h2 class="level">{{ localize 'SW5E.AbbreviationLevel' }} {{data.details.level}}</h2>
 						{{#unless disableExperience}}
 						<div class="xp-tracker">
 							<div class="experience">
@@ -160,8 +160,8 @@
 				<section class="bonus-information">
 					{{!-- Player Name --}}
 					<div id="playerName">
-						<input data-input="{{actor._id}}-playerName" name="data.details.playerName" type="hidden" value="{{data.details.playerName}}" placeholder="{{ localize 'TIDY5E.PlayerName' }}" maxlength="40">
-						<span class="playerName" {{#if owner}}contenteditable="true"{{/if}} spellcheck="false" data-target="{{actor._id}}-playerName" data-placeholder="{{ localize 'TIDY5E.PlayerName' }}" data-maxlength="40">{{data.details.playerName}}</span>
+						<input data-input="{{actor._id}}-playerName" name="data.details.playerName" type="hidden" value="{{data.details.playerName}}" placeholder="{{ localize 'TIDYSW5E.PlayerName' }}" maxlength="40">
+						<span class="playerName" {{#if owner}}contenteditable="true"{{/if}} spellcheck="false" data-target="{{actor._id}}-playerName" data-placeholder="{{ localize 'TIDYSW5E.PlayerName' }}" data-maxlength="40">{{data.details.playerName}}</span>
 					</div>
 					{{!-- Character Class List --}}
 				</section>
@@ -179,15 +179,15 @@
                 </ul>
               </li>
             </ul>
-						<span {{#if owner}}contenteditable="true"{{/if}} spellcheck="false" data-target="{{actor._id}}-race" data-placeholder="{{ localize 'DND5E.Race' }}">{{data.details.race}}</span>
-						<span {{#if owner}}contenteditable="true"{{/if}} spellcheck="false" data-target="{{actor._id}}-background" data-placeholder="{{ localize 'DND5E.Background' }}">{{data.details.background}}</span>
-						<span {{#if owner}}contenteditable="true"{{/if}} spellcheck="false" data-target="{{actor._id}}-alignment" data-placeholder="{{ localize 'DND5E.Alignment' }}">{{data.details.alignment}}</span>
-						<input type="hidden" data-input="{{actor._id}}-race" name="data.details.race" value="{{data.details.race}}" placeholder="{{ localize 'DND5E.Race' }}">
-						<input type="hidden" data-input="{{actor._id}}-background" name="data.details.background" value="{{data.details.background}}" placeholder="{{ localize 'DND5E.Background' }}">
-						<input type="hidden" data-input="{{actor._id}}-alignment" name="data.details.alignment" value="{{data.details.alignment}}" placeholder="{{ localize 'DND5E.Alignment' }}">
+						<span {{#if owner}}contenteditable="true"{{/if}} spellcheck="false" data-target="{{actor._id}}-race" data-placeholder="{{ localize 'SW5E.Race' }}">{{data.details.race}}</span>
+						<span {{#if owner}}contenteditable="true"{{/if}} spellcheck="false" data-target="{{actor._id}}-background" data-placeholder="{{ localize 'SW5E.Background' }}">{{data.details.background}}</span>
+						<span {{#if owner}}contenteditable="true"{{/if}} spellcheck="false" data-target="{{actor._id}}-alignment" data-placeholder="{{ localize 'SW5E.Alignment' }}">{{data.details.alignment}}</span>
+						<input type="hidden" data-input="{{actor._id}}-race" name="data.details.race" value="{{data.details.race}}" placeholder="{{ localize 'SW5E.Race' }}">
+						<input type="hidden" data-input="{{actor._id}}-background" name="data.details.background" value="{{data.details.background}}" placeholder="{{ localize 'SW5E.Background' }}">
+						<input type="hidden" data-input="{{actor._id}}-alignment" name="data.details.alignment" value="{{data.details.alignment}}" placeholder="{{ localize 'SW5E.Alignment' }}">
 					</li>
 					<li class="proficiency">
-						{{ localize 'DND5E.Proficiency' }}: {{numberFormat data.attributes.prof decimals=0 sign=true}}
+						{{ localize 'SW5E.Proficiency' }}: {{numberFormat data.attributes.prof decimals=0 sign=true}}
 					</li>
 				</ul>
 
@@ -195,21 +195,21 @@
 
 				<section class="movement">
 					<ul class="speed-form">
-						<li><h4>{{ localize 'DND5E.Speed' }}</h4></li>
+						<li><h4>{{ localize 'SW5E.Speed' }}</h4></li>
 						{{#if movement.primary}}
 						<li class="movement-primary" title="{{movement.primary}}">{{movement.primary}}</li>
 						{{/if}}
 						{{#if movement.special}}
 						<li class="movement-special" title="{{movement.special}}">{{movement.special}}</li>
 						{{/if}}
-						<li class="configure-movement"><a class="config-button" data-action="movement" title="{{localize 'DND5E.MovementConfig'}}"><i class="fas fa-cog"></i></a></li>
+						<li class="configure-movement"><a class="config-button" data-action="movement" title="{{localize 'SW5E.MovementConfig'}}"><i class="fas fa-cog"></i></a></li>
 					</ul>
 				</section>
 
 				<section class="character-stats">
 					{{!-- Header Attributes --}}
 					<ul class="header-attributes">
-						<li class="header-attribute ac-display" title="{{ localize 'DND5E.ArmorClass' }}">
+						<li class="header-attribute ac-display" title="{{ localize 'SW5E.ArmorClass' }}">
 							<svg version="1.1" x="0px" y="0px" viewBox="0 0 90 100" xml:space="preserve">
 							<path d="M45,100C-2.6,79.3,0,12.6,0,12.6c0-2.2,1.8-4,4.4-4.6l39.1-7.9C44,0,44.5,0,45,0c0.5,0,1,0,1.4,0.1L85.5,8
 								c2.6,0.5,4.4,2.4,4.4,4.6C90,12.6,92.6,79.3,45,100L45,100z"/>
@@ -217,12 +217,12 @@
 							<input class="value" name="data.attributes.ac.value" type="text" value="{{data.attributes.ac.value}}" data-dtype="Number" placeholder="10"maxlength="2">
 						</li>
 						<li class="header-attribute initiative">
-							<h4 class="attribute-name rollable" data-action="rollInitiative" title="{{ localize 'DND5E.Initiative' }}">Ini</h4>
+							<h4 class="attribute-name rollable" data-action="rollInitiative" title="{{ localize 'SW5E.Initiative' }}">Ini</h4>
 							<div class="value">
 								<span>{{numberFormat data.attributes.init.total decimals=0 sign=true}}</span>
 							</div>
 							<footer class="value-footer">
-								<label for="{{actor._id}}-ini-mod">{{ localize 'TIDY5E.AbbrMod' }}</label>
+								<label for="{{actor._id}}-ini-mod">{{ localize 'TIDYSW5E.AbbrMod' }}</label>
 								<input id="{{actor._id}}-ini-mod" class="ini-mod" name="data.attributes.init.value" type="text" placeholder="0" data-dtype="Number" value="{{numberFormat data.attributes.init.value decimals=0 sign=true}}" maxlength="2">
 						</footer>
 						</li>
@@ -238,14 +238,14 @@
 									<input class="ability-score" name="data.abilities.{{id}}.value" type="text" value="{{ability.value}}" data-dtype="Number" placeholder="10">
 								</div>
 								<div class="ability-modifiers value-footer">
-									<span class="ability-mod" title="{{ localize 'DND5E.AbilityModifier' }}">{{numberFormat ability.mod decimals=0 sign=true}}</span>
+									<span class="ability-mod" title="{{ localize 'SW5E.AbilityModifier' }}">{{numberFormat ability.mod decimals=0 sign=true}}</span>
 									<input type="hidden" name="data.abilities.{{id}}.proficient" value="{{ability.proficient}}" data-dtype="Number">
-									<a class="proficiency-toggle ability-proficiency" title="{{ localize 'DND5E.Proficiency' }}">
+									<a class="proficiency-toggle ability-proficiency" title="{{ localize 'SW5E.Proficiency' }}">
 										{{{ability.icon}}}</a>
-									<span class="ability-save" title="{{ localize 'DND5E.ActionSave' }}">{{numberFormat ability.save decimals=0 sign=true}}</span>
+									<span class="ability-save" title="{{ localize 'SW5E.ActionSave' }}">{{numberFormat ability.save decimals=0 sign=true}}</span>
 								</div>
-								<span class="mod-label ability-mod-label">{{ localize 'TIDY5E.AbbrMod' }}</span>
-								<span class="mod-label save-mod-label">{{ localize 'TIDY5E.AbbrSavingThrow' }}</span>
+								<span class="mod-label ability-mod-label">{{ localize 'TIDYSW5E.AbbrMod' }}</span>
+								<span class="mod-label save-mod-label">{{ localize 'TIDYSW5E.AbbrSavingThrow' }}</span>
 							</div>
 						</li>
 						{{/each}}
@@ -256,16 +256,16 @@
 		</header>
 		
 		{{!-- PC Sheet Navigation --}}
-		<nav class="tidy5e-navigation tabs" data-group="primary">
-			<a class="item active" data-tab="attributes">{{ localize "DND5E.Attributes" }}</a>
-			<a class="item" data-tab="inventory">{{ localize "DND5E.Inventory" }}</a>
-			<a class="item" data-tab="spellbook">{{ localize "DND5E.Spellbook" }}</a>
-			<a class="item" data-tab="features">{{ localize "DND5E.Features" }}</a>
-			<a class="item" data-tab="effects">{{ localize "DND5E.Effects" }}</a>
-			<a class="item" data-tab="biography">{{ localize "DND5E.Biography" }}</a>
+		<nav class="tidysw5e-navigation tabs" data-group="primary">
+			<a class="item active" data-tab="attributes">{{ localize "SW5E.Attributes" }}</a>
+			<a class="item" data-tab="inventory">{{ localize "SW5E.Inventory" }}</a>
+			<a class="item" data-tab="spellbook">{{ localize "SW5E.Spellbook" }}</a>
+			<a class="item" data-tab="features">{{ localize "SW5E.Features" }}</a>
+			<a class="item" data-tab="effects">{{ localize "SW5E.Effects" }}</a>
+			<a class="item" data-tab="biography">{{ localize "SW5E.Biography" }}</a>
 			{{#if owner }}
-			<a class="item" data-tab="journal">{{ localize "TIDY5E.Journal" }}</a>
-			<div class="toggle-allow-edit"><span><i class="fas fa-lock" title="{{localize 'TIDY5E.EnableEdit'}} - {{localize 'TIDY5E.EditHint'}}"></i><i class="fas fa-lock-open" title="{{localize 'TIDY5E.DisableEdit'}} - {{localize 'TIDY5E.EditHint'}}"></i></span></div>
+			<a class="item" data-tab="journal">{{ localize "TIDYSW5E.Journal" }}</a>
+			<div class="toggle-allow-edit"><span><i class="fas fa-lock" title="{{localize 'TIDYSW5E.EnableEdit'}} - {{localize 'TIDYSW5E.EditHint'}}"></i><i class="fas fa-lock-open" title="{{localize 'TIDYSW5E.DisableEdit'}} - {{localize 'TIDYSW5E.EditHint'}}"></i></span></div>
 			{{/if}}
 		</nav>
 
@@ -286,13 +286,13 @@
 							<h4 class="skill-name rollable">{{skill.label}}</h4>
 							<span class="skill-ability">{{skill.ability}}</span>
 							<span class="skill-mod">{{numberFormat skill.total decimals=0 sign=true}}</span>
-							<span class="skill-passive" title="{{skill.label}} ({{ localize 'DND5E.Passive' }})">({{skill.passive}})</span>
+							<span class="skill-passive" title="{{skill.label}} ({{ localize 'SW5E.Passive' }})">({{skill.passive}})</span>
 						</li>
 						{{/each}}
 					</ul>
 
 					{{!-- Traits --}}
-					{{> "modules/tidy5e-sheet/templates/actors/parts/tidy5e-traits.html"}}
+					{{> "modules/tidysw5e-sheet/templates/actors/parts/tidysw5e-traits.html"}}
 				</div>
 
 				<section class="center-pane">
@@ -304,14 +304,14 @@
 							<header class="resource-header">
 								<span class="res-options"><i class="fas fa-cog"></i></span>
 								<div class="res-rest">
-									<h4>{{ localize "TIDY5E.RestoreOnRest" }}</h4>
+									<h4>{{ localize "TIDYSW5E.RestoreOnRest" }}</h4>
 									<input id="{{../actor._id}}-{{res.name}}.sr" name="data.resources.{{res.name}}.sr" type="checkbox" {{checked res.sr}}>
-									<label for="{{../actor._id}}-{{res.name}}.sr" class="checkbox" title="{{ localize 'TIDY5E.RestS' }}">
-										{{ localize "DND5E.RestS" }} 
+									<label for="{{../actor._id}}-{{res.name}}.sr" class="checkbox" title="{{ localize 'TIDYSW5E.RestS' }}">
+										{{ localize "SW5E.RestS" }} 
 									</label>
 									<input id="{{../actor._id}}-{{res.name}}.lr" name="data.resources.{{res.name}}.lr" type="checkbox" {{checked res.lr}}>
-									<label for="{{../actor._id}}-{{res.name}}.lr" class="checkbox" title="{{ localize 'TIDY5E.RestL' }}">
-										{{ localize "DND5E.RestL" }} 
+									<label for="{{../actor._id}}-{{res.name}}.lr" class="checkbox" title="{{ localize 'TIDYSW5E.RestL' }}">
+										{{ localize "SW5E.RestL" }} 
 									</label>
 								</div>
 							</header>
@@ -340,31 +340,31 @@
 			</div>
 
 			{{!-- Inventory Tab --}}
-			<div class="tab inventory {{#if actor.flags.tidy5e-sheet.inventory-grid}}grid{{/if}}" data-group="primary" data-tab="inventory">
-				{{#if actor.flags.tidy5e-sheet.inventory-grid}} 
-					{{> "modules/tidy5e-sheet/templates/actors/parts/tidy5e-inventory-grid.html" sections=inventory}}
+			<div class="tab inventory {{#if actor.flags.tidysw5e-sheet.inventory-grid}}grid{{/if}}" data-group="primary" data-tab="inventory">
+				{{#if actor.flags.tidysw5e-sheet.inventory-grid}} 
+					{{> "modules/tidysw5e-sheet/templates/actors/parts/tidysw5e-inventory-grid.html" sections=inventory}}
 					{{else}}
-					{{> "modules/tidy5e-sheet/templates/actors/parts/tidy5e-inventory.html" sections=inventory}}
+					{{> "modules/tidysw5e-sheet/templates/actors/parts/tidysw5e-inventory.html" sections=inventory}}
 				{{/if}}
 			</div>
 
 			{{!-- Spellbook Tab --}}
-			<div class="tab spellbook {{#if actor.flags.tidy5e-sheet.spellbook-grid}}grid{{/if}}" data-group="primary" data-tab="spellbook">
-				{{#if actor.flags.tidy5e-sheet.spellbook-grid}} 
-					{{> "modules/tidy5e-sheet/templates/actors/parts/tidy5e-spellbook-grid.html"}}
+			<div class="tab spellbook {{#if actor.flags.tidysw5e-sheet.spellbook-grid}}grid{{/if}}" data-group="primary" data-tab="spellbook">
+				{{#if actor.flags.tidysw5e-sheet.spellbook-grid}} 
+					{{> "modules/tidysw5e-sheet/templates/actors/parts/tidysw5e-spellbook-grid.html"}}
 					{{else}}
-					{{> "modules/tidy5e-sheet/templates/actors/parts/tidy5e-spellbook.html"}}
+					{{> "modules/tidysw5e-sheet/templates/actors/parts/tidysw5e-spellbook.html"}}
 				{{/if}}
 			</div>
 
 			{{!-- Features Tab --}}
 			<div class="tab features" data-group="primary" data-tab="features">
-				{{> "modules/tidy5e-sheet/templates/actors/parts/tidy5e-features.html" sections=features}}
+				{{> "modules/tidysw5e-sheet/templates/actors/parts/tidysw5e-features.html" sections=features}}
 			</div>
 
 			{{!-- Effects Tab --}}
 			<div class="tab effects" data-group="primary" data-tab="effects">
-				{{>  "modules/tidy5e-sheet/templates/actors/parts/tidy5e-effects.html"}}
+				{{>  "modules/tidysw5e-sheet/templates/actors/parts/tidysw5e-effects.html"}}
 			</div>
 
 			{{!-- Biography Tab --}}
@@ -372,42 +372,42 @@
 				<div class="top-notes note-entries">
 					<article>
 						<ul class="character-details">
-							<li><span>{{ localize "TIDY5E.Gender" }}:</span><span {{#if owner}}contenteditable="true"{{/if}} spellcheck="false" data-target="{{actor._id}}-gender" data-maxlength="40">{{data.details.gender}}</span><input data-input="{{actor._id}}-gender" type="hidden" name="data.details.gender" value="{{data.details.gender}}"></li>
-							<li><span>{{ localize "TIDY5E.Age" }}:</span><span {{#if owner}}contenteditable="true"{{/if}} spellcheck="false" data-target="{{actor._id}}-age" data-maxlength="5">{{data.details.age}}</span><input data-input="{{actor._id}}-age" type="hidden" name="data.details.age" value="{{data.details.age}}"></li>
-							<li><span>{{ localize "TIDY5E.Height" }}:</span><span {{#if owner}}contenteditable="true"{{/if}} spellcheck="false" data-target="{{actor._id}}-height" data-maxlength="20">{{data.details.height}}</span><input data-input="{{actor._id}}-height" type="hidden" name="data.details.height" value="{{data.details.height}}"></li>
-							<li><span>{{ localize "TIDY5E.Weight" }}:</span><span {{#if owner}}contenteditable="true"{{/if}} spellcheck="false" data-target="{{actor._id}}-weight" data-maxlength="20">{{data.details.weight}}</span><input data-input="{{actor._id}}-weight" type="hidden" name="data.details.weight" value="{{data.details.weight}}"></li>
-							<li><span>{{ localize "TIDY5E.Eyes" }}:</span><span {{#if owner}}contenteditable="true"{{/if}} spellcheck="false" data-target="{{actor._id}}-eyes" data-maxlength="40">{{data.details.eyes}}</span><input data-input="{{actor._id}}-eyes" type="hidden" name="data.details.eyes" value="{{data.details.eyes}}"></li>
-							<li><span>{{ localize "TIDY5E.Skin" }}:</span><span {{#if owner}}contenteditable="true"{{/if}} spellcheck="false" data-target="{{actor._id}}-skin" data-maxlength="40">{{data.details.skin}}</span><input data-input="{{actor._id}}-skin" type="hidden" name="data.details.skin" value="{{data.details.skin}}"></li>
-							<li><span>{{ localize "TIDY5E.Hair" }}:</span><span {{#if owner}}contenteditable="true"{{/if}} spellcheck="false" data-target="{{actor._id}}-hair" data-maxlength="40">{{data.details.hair}}</span><input data-input="{{actor._id}}-hair" type="hidden" name="data.details.hair" value="{{data.details.hair}}"></li>
+							<li><span>{{ localize "TIDYSW5E.Gender" }}:</span><span {{#if owner}}contenteditable="true"{{/if}} spellcheck="false" data-target="{{actor._id}}-gender" data-maxlength="40">{{data.details.gender}}</span><input data-input="{{actor._id}}-gender" type="hidden" name="data.details.gender" value="{{data.details.gender}}"></li>
+							<li><span>{{ localize "TIDYSW5E.Age" }}:</span><span {{#if owner}}contenteditable="true"{{/if}} spellcheck="false" data-target="{{actor._id}}-age" data-maxlength="5">{{data.details.age}}</span><input data-input="{{actor._id}}-age" type="hidden" name="data.details.age" value="{{data.details.age}}"></li>
+							<li><span>{{ localize "TIDYSW5E.Height" }}:</span><span {{#if owner}}contenteditable="true"{{/if}} spellcheck="false" data-target="{{actor._id}}-height" data-maxlength="20">{{data.details.height}}</span><input data-input="{{actor._id}}-height" type="hidden" name="data.details.height" value="{{data.details.height}}"></li>
+							<li><span>{{ localize "TIDYSW5E.Weight" }}:</span><span {{#if owner}}contenteditable="true"{{/if}} spellcheck="false" data-target="{{actor._id}}-weight" data-maxlength="20">{{data.details.weight}}</span><input data-input="{{actor._id}}-weight" type="hidden" name="data.details.weight" value="{{data.details.weight}}"></li>
+							<li><span>{{ localize "TIDYSW5E.Eyes" }}:</span><span {{#if owner}}contenteditable="true"{{/if}} spellcheck="false" data-target="{{actor._id}}-eyes" data-maxlength="40">{{data.details.eyes}}</span><input data-input="{{actor._id}}-eyes" type="hidden" name="data.details.eyes" value="{{data.details.eyes}}"></li>
+							<li><span>{{ localize "TIDYSW5E.Skin" }}:</span><span {{#if owner}}contenteditable="true"{{/if}} spellcheck="false" data-target="{{actor._id}}-skin" data-maxlength="40">{{data.details.skin}}</span><input data-input="{{actor._id}}-skin" type="hidden" name="data.details.skin" value="{{data.details.skin}}"></li>
+							<li><span>{{ localize "TIDYSW5E.Hair" }}:</span><span {{#if owner}}contenteditable="true"{{/if}} spellcheck="false" data-target="{{actor._id}}-hair" data-maxlength="40">{{data.details.hair}}</span><input data-input="{{actor._id}}-hair" type="hidden" name="data.details.hair" value="{{data.details.hair}}"></li>
 						</ul>
 					</article>
 				</div>
 				<div class="left-notes note-entries">
 					<article>
-						<div class="section-titles biopage">{{ localize "DND5E.PersonalityTraits" }}</div>
+						<div class="section-titles biopage">{{ localize "SW5E.PersonalityTraits" }}</div>
 						{{editor content=data.details.trait target="data.details.trait" button=true owner=owner editable=editable}}
 					</article>
 					<article>
-						<div class="section-titles biopage">{{ localize "DND5E.Ideals" }}</div>
+						<div class="section-titles biopage">{{ localize "SW5E.Ideals" }}</div>
 						{{editor content=data.details.ideal target="data.details.ideal" button=true owner=owner editable=editable}}
 					</article>
 					<article>
-						<div class="section-titles biopage">{{ localize "DND5E.Bonds" }}</div>
+						<div class="section-titles biopage">{{ localize "SW5E.Bonds" }}</div>
 						{{editor content=data.details.bond target="data.details.bond" button=true owner=owner editable=editable}}
 					</article>
 					<article>
-						<div class="section-titles biopage">{{ localize "DND5E.Flaws" }}</div>
+						<div class="section-titles biopage">{{ localize "SW5E.Flaws" }}</div>
 						{{editor content=data.details.flaw target="data.details.flaw" button=true owner=owner editable=editable}}
 					</article>
 				</div>
 
 				<div class="right-notes note-entries">
 					<article>
-						<div class="section-titles biopage">{{ localize "DND5E.Appearance" }}</div>
+						<div class="section-titles biopage">{{ localize "SW5E.Appearance" }}</div>
 						{{editor content=data.details.appearance target="data.details.appearance" button=true owner=owner editable=editable}}
 					</article>
 					<article class="biography-notes">
-						<div class="section-titles">{{ localize "DND5E.Background" }}/{{ localize "DND5E.Biography" }}</div>
+						<div class="section-titles">{{ localize "SW5E.Background" }}/{{ localize "SW5E.Biography" }}</div>
 						{{editor content=data.details.biography.value target="data.details.biography.value" button=true owner=owner editable=editable}}
 					</article>
 				</div>
@@ -419,32 +419,32 @@
 				<div class="left-notes note-entries">
 					<article>
 						<div class="section-titles">
-							<input type="text" name="data.details.notes1name" value="{{data.details.notes1name}}" placeholder="{{ localize 'TIDY5E.JournalPoi' }}"/>
+							<input type="text" name="data.details.notes1name" value="{{data.details.notes1name}}" placeholder="{{ localize 'TIDYSW5E.JournalPoi' }}"/>
 						</div>
 						{{editor content=data.details.notes1.value target="data.details.notes1.value" button=true owner=owner editable=editable}}
 					</article>
 					<article>
 						<div class="section-titles">
-							<input type="text" name="data.details.notes2name" value="{{data.details.notes2name}}" placeholder="{{ localize 'TIDY5E.JournalLoi' }}"/>
+							<input type="text" name="data.details.notes2name" value="{{data.details.notes2name}}" placeholder="{{ localize 'TIDYSW5E.JournalLoi' }}"/>
 						</div>
 						{{editor content=data.details.notes2.value target="data.details.notes2.value" button=true owner=owner editable=editable}}
 					</article>
 					<article>
 						<div class="section-titles">
-							<input type="text" name="data.details.notes3name" value="{{data.details.notes3name}}" placeholder="{{ localize 'TIDY5E.JournalQuests' }}"/>
+							<input type="text" name="data.details.notes3name" value="{{data.details.notes3name}}" placeholder="{{ localize 'TIDYSW5E.JournalQuests' }}"/>
 						</div>
 						{{editor content=data.details.notes3.value target="data.details.notes3.value" button=true owner=owner editable=editable}}
 					</article>
 					<article>
 						<div class="section-titles">
-							<input type="text" name="data.details.notes4name" value="{{data.details.notes4name}}" placeholder="{{ localize 'TIDY5E.JournalMisc' }}"/>
+							<input type="text" name="data.details.notes4name" value="{{data.details.notes4name}}" placeholder="{{ localize 'TIDYSW5E.JournalMisc' }}"/>
 						</div>
 						{{editor content=data.details.notes4.value target="data.details.notes4.value" button=true owner=owner editable=editable}}
 					</article>
 				</div>
 				<div class="right-notes note-entries">
 					<article class="journal-notes">
-						<div class="section-titles">{{ localize 'TIDY5E.JournalEntries' }}</div>
+						<div class="section-titles">{{ localize 'TIDYSW5E.JournalEntries' }}</div>
 						{{editor content=data.details.notes.value target="data.details.notes.value" button=true owner=owner editable=editable}}
 					</article>
 				</div>
