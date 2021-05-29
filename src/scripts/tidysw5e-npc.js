@@ -93,11 +93,13 @@ export default class TidySW5eNPC extends ActorSheet5eNPC {
     );
 
     // Apply item filters
-    spells = this._filterItems(spells, this._filters.spellbook);
+    forcepowers = this._filterItems(forcepowers, this._filters.forcePowerbook);
+    techpowers = this._filterItems(techpowers, this._filters.techPowerbook);
     other = this._filterItems(other, this._filters.features);
 
     // Organize Spellbook
-    const spellbook = this._prepareSpellbook(data, spells);
+    const forcePowerbook = this._preparePowerbook(data, forcepowers, "uni");
+    const techPowerbook = this._preparePowerbook(data, techpowers, "tec");
 
     // Organize Features
     for (let item of other) {
@@ -110,7 +112,8 @@ export default class TidySW5eNPC extends ActorSheet5eNPC {
 
     // Assign and return
     data.features = Object.values(features);
-    data.spellbook = spellbook;
+    data.forcePowerbook = forcePowerbook;
+    data.techPowerbook = techPowerbook;
   }
 
   /* -------------------------------------------- */
