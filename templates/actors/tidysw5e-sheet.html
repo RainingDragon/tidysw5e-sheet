@@ -295,7 +295,7 @@
 					{{> "modules/tidysw5e-sheet/templates/actors/parts/tidysw5e-traits.html"}}
 				</div>
 
-				<!-- <section class="center-pane">
+				<section class="center-pane">
 
 					{{!-- Resources --}}
 					<ul class="resources">
@@ -336,10 +336,10 @@
 					<div class="actions-target list-layout"></div>
 					{{!-- Favorites --}}
 					<div class="favorites-target"></div>
-				</section> -->
+				</section>
 			</div>
 
-			<!-- {{!-- Inventory Tab --}}
+			{{!-- Inventory Tab --}}
 			<div class="tab inventory {{#if actor.flags.tidysw5e-sheet.inventory-grid}}grid{{/if}}" data-group="primary" data-tab="inventory">
 				{{#if actor.flags.tidysw5e-sheet.inventory-grid}} 
 					{{> "modules/tidysw5e-sheet/templates/actors/parts/tidysw5e-inventory-grid.html" sections=inventory}}
@@ -348,8 +348,17 @@
 				{{/if}}
 			</div>
 
-			{{!-- Powerbook Tab --}}
-			<div class="tab powerbook {{#if actor.flags.tidysw5e-sheet.powerbook-grid}}grid{{/if}}" data-group="primary" data-tab="powerbook">
+			{{!-- Force Powerbook Tab --}}
+			<div class="tab powerbook {{#if actor.flags.tidysw5e-sheet.powerbook-grid}}grid{{/if}}" data-group="primary" data-tab="force-powerbook">
+				{{#if actor.flags.tidysw5e-sheet.powerbook-grid}} 
+					{{> "modules/tidysw5e-sheet/templates/actors/parts/tidysw5e-powerbook-grid.html"}}
+					{{else}}
+					{{> "modules/tidysw5e-sheet/templates/actors/parts/tidysw5e-powerbook.html"}}
+				{{/if}}
+			</div>
+
+			{{!-- Tech Powerbook Tab --}}
+			<div class="tab powerbook {{#if actor.flags.tidysw5e-sheet.powerbook-grid}}grid{{/if}}" data-group="primary" data-tab="tech-powerbook">
 				{{#if actor.flags.tidysw5e-sheet.powerbook-grid}} 
 					{{> "modules/tidysw5e-sheet/templates/actors/parts/tidysw5e-powerbook-grid.html"}}
 					{{else}}
@@ -448,7 +457,7 @@
 						{{editor content=data.details.notes.value target="data.details.notes.value" button=true owner=owner editable=editable}}
 					</article>
 				</div>
-			</div> -->
+			</div>
 		</section>
 	</div>
 </form>
