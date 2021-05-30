@@ -179,10 +179,10 @@
                 </ul>
               </li>
             </ul>
-						<span {{#if owner}}contenteditable="true"{{/if}} powercheck="false" data-target="{{actor._id}}-race" data-placeholder="{{ localize 'SW5E.Race' }}">{{data.details.race}}</span>
+						<span {{#if owner}}contenteditable="true"{{/if}} powercheck="false" data-target="{{actor._id}}-species" data-placeholder="{{ localize 'SW5E.Species' }}">{{data.details.species}}</span>
 						<span {{#if owner}}contenteditable="true"{{/if}} powercheck="false" data-target="{{actor._id}}-background" data-placeholder="{{ localize 'SW5E.Background' }}">{{data.details.background}}</span>
 						<span {{#if owner}}contenteditable="true"{{/if}} powercheck="false" data-target="{{actor._id}}-alignment" data-placeholder="{{ localize 'SW5E.Alignment' }}">{{data.details.alignment}}</span>
-						<input type="hidden" data-input="{{actor._id}}-race" name="data.details.race" value="{{data.details.race}}" placeholder="{{ localize 'SW5E.Race' }}">
+						<input type="hidden" data-input="{{actor._id}}-species" name="data.details.species" value="{{data.details.species}}" placeholder="{{ localize 'SW5E.Species' }}">
 						<input type="hidden" data-input="{{actor._id}}-background" name="data.details.background" value="{{data.details.background}}" placeholder="{{ localize 'SW5E.Background' }}">
 						<input type="hidden" data-input="{{actor._id}}-alignment" name="data.details.alignment" value="{{data.details.alignment}}" placeholder="{{ localize 'SW5E.Alignment' }}">
 					</li>
@@ -295,7 +295,7 @@
 					{{> "modules/tidysw5e-sheet/templates/actors/parts/tidysw5e-traits.html"}}
 				</div>
 
-				<section class="center-pane">
+				<!-- <section class="center-pane">
 
 					{{!-- Resources --}}
 					<ul class="resources">
@@ -336,10 +336,10 @@
 					<div class="actions-target list-layout"></div>
 					{{!-- Favorites --}}
 					<div class="favorites-target"></div>
-				</section>
+				</section> -->
 			</div>
 
-			{{!-- Inventory Tab --}}
+			<!-- {{!-- Inventory Tab --}}
 			<div class="tab inventory {{#if actor.flags.tidysw5e-sheet.inventory-grid}}grid{{/if}}" data-group="primary" data-tab="inventory">
 				{{#if actor.flags.tidysw5e-sheet.inventory-grid}} 
 					{{> "modules/tidysw5e-sheet/templates/actors/parts/tidysw5e-inventory-grid.html" sections=inventory}}
@@ -448,7 +448,7 @@
 						{{editor content=data.details.notes.value target="data.details.notes.value" button=true owner=owner editable=editable}}
 					</article>
 				</div>
-			</div>
+			</div> -->
 		</section>
 	</div>
 </form>
