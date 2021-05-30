@@ -28,7 +28,7 @@
           <div class="items-header-requirements">{{localize 'SW5E.Requirements'}}</div>
           {{/if}}
         {{else if section.isClass}}
-          <div class="items-header-subclass">{{localize 'TIDYSW5E.Subclass'}}</div>
+          <div class="items-header-archetype">{{localize 'TIDYSW5E.Archetype'}}</div>
           <div class="items-header-level">{{localize 'SW5E.Level'}}</div>
         {{else}}
         {{#if ../isCharacter}}
@@ -103,8 +103,8 @@
         {{/unless}}
 
         {{else if section.isClass}}
-        <div class="item-detail player-class" title="{{item.data.subclass}}">
-          <span>{{item.data.subclass}}</span>
+        <div class="item-detail player-class" title="{{item.data.archetype}}">
+          <span>{{item.data.archetype}}</span>
         </div>
         <div class="item-detail item-level">
           {{item.data.levels}}

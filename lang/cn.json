@@ -153,7 +153,7 @@
 		"name": "高亮未链接到角色的卡片。",
 		"hint": "可以高亮显示未链接角色的 NPC 卡，避免自己编辑到错误的卡片。"
 	},
-	"TIDYSW5E.Subclass": "子职",
+	"TIDYSW5E.Archetype": "子职",
 	"TIDYSW5E.ShowActorImage": "右键单击: 显示角色立绘",
 	"TIDYSW5E.ShowPortraitArt": "显示立绘",
 	"TIDYSW5E.ShowTokenArt": "显示指示物",

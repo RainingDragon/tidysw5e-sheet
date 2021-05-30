@@ -1325,7 +1325,7 @@
 }
 
 .tidysw5e.sheet.actor .class-list .levels-info,
-.tidysw5e.sheet.actor .class-list .subclass-info {
+.tidysw5e.sheet.actor .class-list .archetype-info {
   margin-left: 2px;
 }
 
@@ -2738,7 +2738,7 @@
   width: 120px;
 }
 
-.tidysw5e.sheet.actor .items-list .items-header-labels .items-header-subclass,
+.tidysw5e.sheet.actor .items-list .items-header-labels .items-header-archetype,
 .tidysw5e.sheet.actor .items-list .items-header-labels .items-header-source {
   width: 200px;
 }

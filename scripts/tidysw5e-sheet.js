@@ -391,8 +391,8 @@ async function addClassList(app, html, data) {
       for (let item of items) {
         if (item.type === "class") {
           let levels = item.data.levels ? `<span class="levels-info">${item.data.levels}</span>` : ``;
-          let subclass = item.data.subclass ? `<span class="subclass-info">(${item.data.subclass})</span>` : ``;
-          classList.push(item.name + levels + subclass);
+          let archetype = item.data.archetype ? `<span class="archetype-info">(${item.data.archetype})</span>` : ``;
+          classList.push(item.name + levels + archetype);
         }
       }
       classList =
