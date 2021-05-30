@@ -39,20 +39,8 @@
               {{#if section.isAlways}}{{localize 'SW5E.SpellPrepAlways'}}
               {{else if section.isAtWill}}{{localize 'SW5E.SpellPrepAtWill'}}
               {{else if section.isInnate}}{{localize 'SW5E.SpellPrepInnate'}}
-              {{else if section.isPact}}{{localize 'SW5E.SpellProgPact'}}
               {{/if}}
               </h3>
-              {{#if section.isPact}}
-              <span class="spell-detail spell-slots">
-                <input type="text" data-target="data.spells.spell{{lvl}}.value" value="{{section.value}}" placeholder="0"/>
-                /
-                <input class="spell-max" type="text" data-target="data.spells.spell{{lvl}}.override" value="{{section.max}}" placeholder="0"/>
-              </span>
-              {{else}}
-              <!-- <span class="spell-slots">
-                &ndash; / &ndash;
-              </span> -->
-              {{/if}}
             </div>
           </li>
         {{/if}}
@@ -75,7 +63,6 @@
               {{else if section.isAlways}}{{localize 'SW5E.SpellPrepAlways'}}
               {{else if section.isAtWill}}{{localize 'SW5E.SpellPrepAtWill'}}
               {{else if section.isInnate}}{{localize 'SW5E.SpellPrepInnate'}}
-              {{else if section.isPact}}{{localize 'SW5E.SpellProgPact'}}
               {{else}}{{localize 'SW5E.SpellLevel'}} {{lvl}}{{/if}}
               </h3>
               {{#if section.isCantrip}}

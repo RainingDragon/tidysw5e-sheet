@@ -18,76 +18,70 @@ export const addFavorites = async function (app, html, data, position) {
 
   let favItems = [];
   let favFeats = [];
-  let favSpellsPrepMode = {
+  let favPowersPrepMode = {
     atwill: {
       isAtWill: true,
-      spells: []
+      powers: []
     },
     innate: {
       isInnate: true,
-      spells: []
-    },
-    pact: {
-      isPact: true,
-      spells: [],
-      value: data.actor.data.spells.pact.value,
-      max: data.actor.data.spells.pact.max
+      powers: []
     }
   };
-  let favSpells = {
+  let favPowers = {
     0: {
       isCantrip: true,
-      spells: []
+      powers: []
     },
     1: {
-      spells: [],
-      value: data.actor.data.spells.spell1.value,
-      max: data.actor.data.spells.spell1.max
+      powers: [],
+      value: data.actor.data.powers.power1.value,
+      max: data.actor.data.powers.power1.max
     },
     2: {
-      spells: [],
-      value: data.actor.data.spells.spell2.value,
-      max: data.actor.data.spells.spell2.max
+      powers: [],
+      value: data.actor.data.powers.power2.value,
+      max: data.actor.data.powers.power2.max
     },
     3: {
-      spells: [],
-      value: data.actor.data.spells.spell3.value,
-      max: data.actor.data.spells.spell3.max
+      powers: [],
+      value: data.actor.data.powers.power3.value,
+      max: data.actor.data.powers.power3.max
     },
     4: {
-      spells: [],
-      value: data.actor.data.spells.spell4.value,
-      max: data.actor.data.spells.spell4.max
+      powers: [],
+      value: data.actor.data.powers.power4.value,
+      max: data.actor.data.powers.power4.max
     },
     5: {
-      spells: [],
-      value: data.actor.data.spells.spell5.value,
-      max: data.actor.data.spells.spell5.max
+      powers: [],
+      value: data.actor.data.powers.power5.value,
+      max: data.actor.data.powers.power5.max
     },
     6: {
-      spells: [],
-      value: data.actor.data.spells.spell6.value,
-      max: data.actor.data.spells.spell6.max
+      powers: [],
+      value: data.actor.data.powers.power6.value,
+      max: data.actor.data.powers.power6.max
     },
     7: {
-      spells: [],
-      value: data.actor.data.spells.spell7.value,
-      max: data.actor.data.spells.spell7.max
+      powers: [],
+      value: data.actor.data.powers.power7.value,
+      max: data.actor.data.powers.power7.max
     },
     8: {
-      spells: [],
-      value: data.actor.data.spells.spell8.value,
-      max: data.actor.data.spells.spell8.max
+      powers: [],
+      value: data.actor.data.powers.power8.value,
+      max: data.actor.data.powers.power8.max
     },
     9: {
-      spells: [],
-      value: data.actor.data.spells.spell9.value,
-      max: data.actor.data.spells.spell9.max
+      powers: [],
+      value: data.actor.data.powers.power9.value,
+      max: data.actor.data.powers.power9.max
     }
   };
 
-  let spellCount = 0;
-  let spellPrepModeCount = 0;
+  let powerCount = 0;
+  let powerPrepModeCount = 0;
   let items = data.items;
 
   let renderFavTab = false;
@@ -204,30 +198,30 @@ export const addFavorites = async function (app, html, data, position) {
         item.isMagic = true;
       }
 
-      let attr = item.type === "spell" ? "preparation.prepared" : "equipped";
+      let attr = item.type === "power" ? "preparation.prepared" : "equipped";
       let isActive = getProperty(item.data, attr);
       item.toggleClass = isActive ? "active" : "";
-      if (item.type === "spell") {
+      if (item.type === "power") {
         if (item.data.preparation.mode == "always") {
-          item.toggleTitle = game.i18n.localize("SW5E.SpellPrepAlways");
+          item.toggleTitle = game.i18n.localize("SW5E.PowerPrepAlways");
         } else {
-          item.toggleTitle = game.i18n.localize(isActive ? "SW5E.SpellPrepared" : "SW5E.SpellUnprepared");
+          item.toggleTitle = game.i18n.localize(isActive ? "SW5E.PowerPrepared" : "SW5E.PowerUnprepared");
         }
       } else {
         item.toggleTitle = game.i18n.localize(isActive ? "SW5E.Equipped" : "SW5E.Unequipped");
       }
 
-      item.spellComps = "";
-      if (item.type === "spell" && item.data.components) {
+      item.powerComps = "";
+      if (item.type === "power" && item.data.components) {
         let comps = item.data.components;
         let v = comps.vocal ? "V" : "";
         let s = comps.somatic ? "S" : "";
         let m = comps.material ? "M" : "";
         let c = comps.concentration ? true : false;
         let r = comps.ritual ? true : false;
-        item.spellComps = `${v}${s}${m}`;
-        item.spellCon = c;
-        item.spellRit = r;
+        item.powerComps = `${v}${s}${m}`;
+        item.powerCon = c;
+        item.powerRit = r;
       }
 
       item.favLabels = labels;
@@ -241,29 +235,27 @@ export const addFavorites = async function (app, html, data, position) {
           item.isFeat = true;
           favFeats.push(item);
           break;
-        case "spell":
+        case "power":
           if (item.data.preparation.mode && item.data.preparation.mode !== "prepared") {
             if (item.data.preparation.mode == "always") {
-              // favSpellsPrepMode['always'].spells.push(item);
+              // favPowersPrepMode['always'].powers.push(item);
               item.canPrep = true;
               item.alwaysPrep = true;
             } else if (item.data.preparation.mode == "atwill") {
-              favSpellsPrepMode["atwill"].spells.push(item);
+              favPowersPrepMode["atwill"].powers.push(item);
             } else if (item.data.preparation.mode == "innate") {
-              favSpellsPrepMode["innate"].spells.push(item);
-            } else if (item.data.preparation.mode == "pact") {
-              favSpellsPrepMode["pact"].spells.push(item);
+              favPowersPrepMode["innate"].powers.push(item);
             }
-            spellPrepModeCount++;
+            powerPrepModeCount++;
           } else {
             item.canPrep = true;
           }
           if (item.canPrep && item.data.level) {
-            favSpells[item.data.level].spells.push(item);
+            favPowers[item.data.level].powers.push(item);
           } else if (item.canPrep) {
-            favSpells[0].spells.push(item);
+            favPowers[0].powers.push(item);
           }
-          spellCount++;
+          powerCount++;
           break;
         default:
           if (item.flags.favtab.sort === undefined) {
@@ -276,10 +268,10 @@ export const addFavorites = async function (app, html, data, position) {
     }
   }
 
-  // sorting favSpells alphabetically
-  const favSpellsArray = Object.keys(favSpells);
-  for (let key of favSpellsArray) {
-    favSpells[key].spells.sort(function (a, b) {
+  // sorting favPowers alphabetically
+  const favPowersArray = Object.keys(favPowers);
+  for (let key of favPowersArray) {
+    favPowers[key].powers.sort(function (a, b) {
       var nameA = a.name.toLowerCase(),
         nameB = b.name.toLowerCase();
       if (nameA < nameB)
@@ -290,10 +282,10 @@ export const addFavorites = async function (app, html, data, position) {
     });
   }
 
-  // sorting favSpellsPrepMode alphabetically
-  const favSpellsPrepModeArray = Object.keys(favSpellsPrepMode);
-  for (let key of favSpellsPrepModeArray) {
-    favSpellsPrepMode[key].spells.sort(function (a, b) {
+  // sorting favPowersPrepMode alphabetically
+  const favPowersPrepModeArray = Object.keys(favPowersPrepMode);
+  for (let key of favPowersPrepModeArray) {
+    favPowersPrepMode[key].powers.sort(function (a, b) {
       var nameA = a.name.toLowerCase(),
         nameB = b.name.toLowerCase();
       if (nameA < nameB)
@@ -313,8 +305,8 @@ export const addFavorites = async function (app, html, data, position) {
     let data = {};
     data.favItems = favItems.length > 0 ? favItems.sort((a, b) => a.flags.favtab.sort - b.flags.favtab.sort) : false;
     data.favFeats = favFeats.length > 0 ? favFeats.sort((a, b) => a.flags.favtab.sort - b.flags.favtab.sort) : false;
-    data.favSpellsPrepMode = spellPrepModeCount > 0 ? favSpellsPrepMode : false;
-    data.favSpells = spellCount > 0 ? favSpells : false;
+    data.favPowersPrepMode = powerPrepModeCount > 0 ? favPowersPrepMode : false;
+    data.favPowers = powerCount > 0 ? favPowers : false;
     data.editable = app.options.editable;
 
     await loadTemplates(["modules/tidysw5e-sheet/templates/favorites/item.hbs"]);
@@ -351,7 +343,7 @@ export const addFavorites = async function (app, html, data, position) {
         ev.preventDefault();
         let itemId = ev.currentTarget.closest(".item").dataset.itemId;
         let item = app.actor.getOwnedItem(itemId);
-        let attr = item.data.type === "spell" ? "data.preparation.prepared" : "data.equipped";
+        let attr = item.data.type === "power" ? "data.preparation.prepared" : "data.equipped";
         return item.update({ [attr]: !getProperty(item.data, attr) });
       });
 
@@ -390,8 +382,8 @@ export const addFavorites = async function (app, html, data, position) {
         // app.activateFavs = true;
       });
 
-      // changing the spell slot values and overrides
-      favHtml.find(".spell-slots input").change((ev) => {
+      // changing the power slot values and overrides
+      favHtml.find(".power-slots input").change((ev) => {
         let path = ev.target.dataset.target;
         let data = Number(ev.target.value);
         app.actor.update({ [path]: data });
@@ -425,8 +417,8 @@ export const addFavorites = async function (app, html, data, position) {
 
         let dropData = JSON.parse(ev.originalEvent.dataTransfer.getData("text/plain"));
 
-        if (dropData.actorId !== app.actor.id || dropData.data.type === "spell") {
-          // only do sorting if the item is from the same actor (not droped from outside) and is not a spell
+        if (dropData.actorId !== app.actor.id || dropData.data.type === "power") {
+          // only do sorting if the item is from the same actor (not droped from outside) and is not a power
           return;
         }
 
