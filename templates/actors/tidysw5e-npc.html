@@ -84,7 +84,7 @@
           <input data-input="{{actor._id}}-name" name="name" type="hidden" value="{{actor.name}}" placeholder="{{ localize 'SW5E.Name' }}" maxlength="40">
           <i class="link-state fas fa-link" title="{{ localize 'TIDYSW5E.TokenLinked' }}"></i>
           <i class="link-state fas fa-unlink" title="{{ localize 'TIDYSW5E.TokenUnlinked' }}"></i>
-          <h1 class="char-name" contenteditable="true" spellcheck="false" data-target="{{actor._id}}-name" data-placeholder="{{ localize 'SW5E.Name' }}" data-maxlength="40">{{actor.name}}</h1>
+          <h1 class="char-name" contenteditable="true" powercheck="false" data-target="{{actor._id}}-name" data-placeholder="{{ localize 'SW5E.Name' }}" data-maxlength="40">{{actor.name}}</h1>
           <div class="level-information">
             <div class="xp">
               <span>{{data.details.xp.value}} XP</span>
@@ -108,10 +108,10 @@
                 </ul>
               </li>
             </ul>
-            <span contenteditable="true" spellcheck="false" data-target="{{actor._id}}-type" data-placeholder="{{ localize 'SW5E.Type' }}">{{data.details.type}}</span>
-            <span class="environment" title="{{ localize 'TIDYSW5E.Environment' }}"><i class="fas fa-tree"></i><span class="environment-label"><span contenteditable="true" spellcheck="false" data-target="{{actor._id}}-environment" data-placeholder="{{ localize 'TIDYSW5E.Environment' }}" data-maxlength="80">{{data.details.environment}}</span></span></span>
-            <span contenteditable="true" spellcheck="false" data-target="{{actor._id}}-alignment" data-placeholder="{{ localize 'SW5E.Alignment' }}">{{data.details.alignment}}</span>
-            <span class="source-info" contenteditable="true" spellcheck="false" data-target="{{actor._id}}-source" data-placeholder="{{ localize 'SW5E.Source' }}" class="source">{{data.details.source}}</span>
+            <span contenteditable="true" powercheck="false" data-target="{{actor._id}}-type" data-placeholder="{{ localize 'SW5E.Type' }}">{{data.details.type}}</span>
+            <span class="environment" title="{{ localize 'TIDYSW5E.Environment' }}"><i class="fas fa-tree"></i><span class="environment-label"><span contenteditable="true" powercheck="false" data-target="{{actor._id}}-environment" data-placeholder="{{ localize 'TIDYSW5E.Environment' }}" data-maxlength="80">{{data.details.environment}}</span></span></span>
+            <span contenteditable="true" powercheck="false" data-target="{{actor._id}}-alignment" data-placeholder="{{ localize 'SW5E.Alignment' }}">{{data.details.alignment}}</span>
+            <span class="source-info" contenteditable="true" powercheck="false" data-target="{{actor._id}}-source" data-placeholder="{{ localize 'SW5E.Source' }}" class="source">{{data.details.source}}</span>
             <input type="hidden" data-input="{{actor._id}}-type" name="data.details.type" value="{{data.details.type}}" placeholder="{{ localize 'SW5E.Type' }}">
             <input type="hidden" data-input="{{actor._id}}-environment" name="data.details.environment" value="{{data.details.environment}}" placeholder="{{ localize 'TIDYSW5E.Environment' }}">
             <input type="hidden" data-input="{{actor._id}}-alignment" name="data.details.alignment" value="{{data.details.alignment}}" placeholder="{{ localize 'SW5E.Alignment' }}">
@@ -259,7 +259,7 @@
 					<div class="alt-trait-pos"></div>
 
           {{> "modules/tidysw5e-sheet/templates/actors/parts/tidysw5e-features.html" sections=features}}
-          {{> "modules/tidysw5e-sheet/templates/actors/parts/tidysw5e-npc-spellbook.html"}}
+          {{> "modules/tidysw5e-sheet/templates/actors/parts/tidysw5e-npc-powerbook.html"}}
         </section>
       </div>
 
@@ -273,13 +273,13 @@
         <div class="top-notes note-entries">
 					<article>
 						<ul class="character-details">
-							<li><span>{{ localize "TIDYSW5E.Gender" }}:</span><span {{#if owner}}contenteditable="true"{{/if}} spellcheck="false" data-target="{{actor._id}}-gender" data-maxlength="40">{{data.details.gender}}</span><input data-input="{{actor._id}}-gender" type="hidden" name="data.details.gender" value="{{data.details.gender}}"></li>
-							<li><span>{{ localize "TIDYSW5E.Age" }}:</span><span {{#if owner}}contenteditable="true"{{/if}} spellcheck="false" data-target="{{actor._id}}-age" data-maxlength="5">{{data.details.age}}</span><input data-input="{{actor._id}}-age" type="hidden" name="data.details.age" value="{{data.details.age}}"></li>
-							<li><span>{{ localize "TIDYSW5E.Height" }}:</span><span {{#if owner}}contenteditable="true"{{/if}} spellcheck="false" data-target="{{actor._id}}-height" data-maxlength="20">{{data.details.height}}</span><input data-input="{{actor._id}}-height" type="hidden" name="data.details.height" value="{{data.details.height}}"></li>
-							<li><span>{{ localize "TIDYSW5E.Weight" }}:</span><span {{#if owner}}contenteditable="true"{{/if}} spellcheck="false" data-target="{{actor._id}}-weight" data-maxlength="20">{{data.details.weight}}</span><input data-input="{{actor._id}}-weight" type="hidden" name="data.details.weight" value="{{data.details.weight}}"></li>
-							<li><span>{{ localize "TIDYSW5E.Eyes" }}:</span><span {{#if owner}}contenteditable="true"{{/if}} spellcheck="false" data-target="{{actor._id}}-eyes" data-maxlength="40">{{data.details.eyes}}</span><input data-input="{{actor._id}}-eyes" type="hidden" name="data.details.eyes" value="{{data.details.eyes}}"></li>
-							<li><span>{{ localize "TIDYSW5E.Skin" }}:</span><span {{#if owner}}contenteditable="true"{{/if}} spellcheck="false" data-target="{{actor._id}}-skin" data-maxlength="40">{{data.details.skin}}</span><input data-input="{{actor._id}}-skin" type="hidden" name="data.details.skin" value="{{data.details.skin}}"></li>
-							<li><span>{{ localize "TIDYSW5E.Hair" }}:</span><span {{#if owner}}contenteditable="true"{{/if}} spellcheck="false" data-target="{{actor._id}}-hair" data-maxlength="40">{{data.details.hair}}</span><input data-input="{{actor._id}}-hair" type="hidden" name="data.details.hair" value="{{data.details.hair}}"></li>
+							<li><span>{{ localize "TIDYSW5E.Gender" }}:</span><span {{#if owner}}contenteditable="true"{{/if}} powercheck="false" data-target="{{actor._id}}-gender" data-maxlength="40">{{data.details.gender}}</span><input data-input="{{actor._id}}-gender" type="hidden" name="data.details.gender" value="{{data.details.gender}}"></li>
+							<li><span>{{ localize "TIDYSW5E.Age" }}:</span><span {{#if owner}}contenteditable="true"{{/if}} powercheck="false" data-target="{{actor._id}}-age" data-maxlength="5">{{data.details.age}}</span><input data-input="{{actor._id}}-age" type="hidden" name="data.details.age" value="{{data.details.age}}"></li>
+							<li><span>{{ localize "TIDYSW5E.Height" }}:</span><span {{#if owner}}contenteditable="true"{{/if}} powercheck="false" data-target="{{actor._id}}-height" data-maxlength="20">{{data.details.height}}</span><input data-input="{{actor._id}}-height" type="hidden" name="data.details.height" value="{{data.details.height}}"></li>
+							<li><span>{{ localize "TIDYSW5E.Weight" }}:</span><span {{#if owner}}contenteditable="true"{{/if}} powercheck="false" data-target="{{actor._id}}-weight" data-maxlength="20">{{data.details.weight}}</span><input data-input="{{actor._id}}-weight" type="hidden" name="data.details.weight" value="{{data.details.weight}}"></li>
+							<li><span>{{ localize "TIDYSW5E.Eyes" }}:</span><span {{#if owner}}contenteditable="true"{{/if}} powercheck="false" data-target="{{actor._id}}-eyes" data-maxlength="40">{{data.details.eyes}}</span><input data-input="{{actor._id}}-eyes" type="hidden" name="data.details.eyes" value="{{data.details.eyes}}"></li>
+							<li><span>{{ localize "TIDYSW5E.Skin" }}:</span><span {{#if owner}}contenteditable="true"{{/if}} powercheck="false" data-target="{{actor._id}}-skin" data-maxlength="40">{{data.details.skin}}</span><input data-input="{{actor._id}}-skin" type="hidden" name="data.details.skin" value="{{data.details.skin}}"></li>
+							<li><span>{{ localize "TIDYSW5E.Hair" }}:</span><span {{#if owner}}contenteditable="true"{{/if}} powercheck="false" data-target="{{actor._id}}-hair" data-maxlength="40">{{data.details.hair}}</span><input data-input="{{actor._id}}-hair" type="hidden" name="data.details.hair" value="{{data.details.hair}}"></li>
 						</ul>
 					</article>
 				</div>

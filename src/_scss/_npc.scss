@@ -354,12 +354,12 @@
       } //.item-name
     } //.item
 
-    // Spells
+    // Powers
 
-    .spell-action,
-    .spell-target,
-    .spell-school,
-    .spell-comps {
+    .power-action,
+    .power-target,
+    .power-school,
+    .power-comps {
       overflow: hidden;
       white-space: nowrap;
     }
@@ -380,20 +380,20 @@
       }
     }
 
-    .spellbook-header {
+    .powerbook-header {
       .items-header-usage {
         width: 90px;
       }
     }
 
-    .spell-comps {
+    .power-comps {
       flex: 0 0 50px;
     }
 
     .item-charges,
-    .spell-action,
-    .spell-target,
-    .spell-school {
+    .power-action,
+    .power-target,
+    .power-school {
       flex: 0 0 90px;
     }
 
@@ -406,20 +406,20 @@
     }
   } //.items-list
 
-  .npc-spell-stats {
+  .npc-power-stats {
     display: flex;
     flex: 0;
     font-size: 12px;
   }
 
-  .spellcasting-ability {
+  .powercasting-ability {
     margin: 0;
     position: sticky;
     bottom: 0;
     background: url(../../../systems/sw5e/ui/parchment.jpg) repeat;
     background-attachment: fixed;
 
-    .spell-dc {
+    .power-dc {
       flex: 1;
       font-size: 20px;
       font-family: var(--modesto);
@@ -434,7 +434,7 @@
       min-width: 16px;
       height: 16px;
     }
-  } //.spellcasting-ability
+  } //.powercasting-ability
 
   .caster-level {
     display: flex;
@@ -444,7 +444,7 @@
     margin-right: 4px;
   }
 
-  .spellbook-title {
+  .powerbook-title {
     display: flex;
     justify-content: space-between;
     padding: 0 4px 2px 0;
@@ -457,17 +457,17 @@
     font-weight: 700;
     font-size: 18px;
 
-    &.toggle-spellbook.show .fa-caret-down,
+    &.toggle-powerbook.show .fa-caret-down,
     i {
       display: none;
     }
 
-    &.toggle-spellbook .fa-caret-down,
+    &.toggle-powerbook .fa-caret-down,
     &.show .fa-caret-up {
       display: inline-block;
     }
 
-    &.toggle-spellbook {
+    &.toggle-powerbook {
       opacity: 0.4;
       transition: opacity 0.3s ease;
       cursor: pointer;
@@ -477,9 +477,9 @@
     &.show {
       opacity: 1;
     }
-  } //.spellbook-title
+  } //.powerbook-title
 
-  .spellbook-empty {
+  .powerbook-empty {
     .notice {
       font-size: 12px;
     }

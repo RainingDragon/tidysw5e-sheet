@@ -1,24 +1,24 @@
-<div class="spellcasting-ability">
-  <h3 class="spell-dc spell-mod">
-    {{localize 'SW5E.SpellDC'}} {{data.attributes.spelldc}} / {{localize 'TIDYSW5E.SpellAttackMod'}}:
-    <span class="spell-attack-mod"></span>
+<div class="powercasting-ability">
+  <h3 class="power-dc power-mod">
+    {{localize 'SW5E.PowerDC'}} {{data.attributes.powerdc}} / {{localize 'TIDYSW5E.PowerAttackMod'}}:
+    <span class="power-attack-mod"></span>
   </h3>
-  <div class="max-prepared-spells">
-    <p>{{localize 'TIDYSW5E.PreparedSpells'}}</p>
-    <span class="spells-prepared">{{#if preparedSpells}}{{preparedSpells}}{{else}}0{{/if}}</span>/<input
+  <div class="max-prepared-powers">
+    <p>{{localize 'TIDYSW5E.PreparedPowers'}}</p>
+    <span class="powers-prepared">{{#if preparedPowers}}{{preparedPowers}}{{else}}0{{/if}}</span>/<input
       class="max-preparation"
       type="text"
-      name="data.details.maxPreparedSpells"
-      value="{{data.details.maxPreparedSpells}}"
+      name="data.details.maxPreparedPowers"
+      value="{{data.details.maxPreparedPowers}}"
       data-dtype="Number"
       placeholder="0"
-      title="{{localize 'TIDYSW5E.PreparedSpellsMax'}}"
+      title="{{localize 'TIDYSW5E.PreparedPowersMax'}}"
     />
   </div>
-  <div class="spellcasting-attribute">
-    <p>{{localize 'SW5E.SpellAbility'}}</p>
-    <select name="data.attributes.spellcasting" data-type="String">
-      {{#select data.attributes.spellcasting}}
+  <div class="powercasting-attribute">
+    <p>{{localize 'SW5E.PowerAbility'}}</p>
+    <select name="data.attributes.powercasting" data-type="String">
+      {{#select data.attributes.powercasting}}
       <option value="">{{localize 'SW5E.None'}}</option>
       {{#each data.abilities as |abl a|}}
       <option value="{{a}}">{{abl.label}}</option>
@@ -26,12 +26,12 @@
     </select>
   </div>
   {{#if isNPC}}
-  <h3>{{localize 'SW5E.SpellcasterLevel'}}</h3>
+  <h3>{{localize 'SW5E.PowercasterLevel'}}</h3>
   <input
-    class="spellcasting-level"
+    class="powercasting-level"
     type="text"
-    name="data.details.spellLevel"
-    value="{{data.details.spellLevel}}"
+    name="data.details.powerLevel"
+    value="{{data.details.powerLevel}}"
     data-dtype="Number"
     placeholder="0"
   />

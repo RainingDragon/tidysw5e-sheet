@@ -1,22 +1,22 @@
-{{!-- Spellbook Header --}}
-{{> "modules/tidysw5e-sheet/templates/actors/parts/tidysw5e-spellbook-header.html"}}
+{{!-- Powerbook Header --}}
+{{> "modules/tidysw5e-sheet/templates/actors/parts/tidysw5e-powerbook-header.html"}}
 
 <div class="grid-layout">
-  <ul class="inventory-list spellbook-list items-list">
-    {{#each spellbook as |section|}}
-    <li class="items-header spellbook-header">
-      <div class="spell-level-slots">
+  <ul class="inventory-list powerbook-list items-list">
+    {{#each powerbook as |section|}}
+    <li class="items-header powerbook-header">
+      <div class="power-level-slots">
         <h3>{{section.label}}</h3>
 
         {{#if section.usesSlots}}
-        <div class="spell-detail spell-slots">
-          <input type="text" name="data.spells.{{section.prop}}.value" value="{{section.uses}}" placeholder="0"
+        <div class="power-detail power-slots">
+          <input type="text" name="data.powers.{{section.prop}}.value" value="{{section.uses}}" placeholder="0"
           data-dtype="Number"/>
           <span class="sep"> / </span>
-          <span class="spell-max" data-level="{{section.prop}}" data-slots="{{section.slots}}">
+          <span class="power-max" data-level="{{section.prop}}" data-slots="{{section.slots}}">
             {{{section.slots}}}
             {{#if ../editable}}
-            <a class="slot-max-override" title="{{localize 'SW5E.SpellProgOverride'}}">
+            <a class="slot-max-override" title="{{localize 'SW5E.PowerProgOverride'}}">
               <i class="fas fa-pencil-alt"></i>
             </a>
             {{/if}}
@@ -28,7 +28,7 @@
     </li>
 
     <ul class="item-list">
-      {{#each section.spells as |item i|}}
+      {{#each section.powers as |item i|}}
       <li class="item {{#if ../../owner}}context-enabled{{/if}} {{~#if section.canPrepare}} preparable{{/if}} {{~#if data.preparation.prepared}} prepared{{/if}}{{#if (eq data.preparation.mode 'always')}} alwaysPrepared{{/if}}" data-item-id="{{item._id}}">
         {{~#if item.flags.favtab}} 
         {{~#if item.flags.favtab.isFavorite}} 
@@ -54,7 +54,7 @@
         <div class="info-card {{~#if item.data.preparation.prepared}} equipped {{/if}}{{#if (eq data.preparation.mode 'always')}} alwaysPrepared{{/if}}" data-item-id="{{item._id}}">
           <p class="info-card-name">{{item.name}}</p>
           <div class="info-card-states">
-            <span><!-- <i class="fas fa-hat-wizard"></i><b>{{localize 'SW5E.SpellSchool'}}:</b>  -->{{labels.school}}</span>
+            <span><!-- <i class="fas fa-hat-wizard"></i><b>{{localize 'SW5E.PowerSchool'}}:</b>  -->{{labels.school}}</span>
             {{#if ../../owner}}
             {{#if section.canPrepare}}
               <span>{{item.toggleTitle}}</span>
@@ -84,9 +84,9 @@
           <a class="item-control item-toggle {{item.toggleClass}}"><i class="fas fa-book icon-on"></i><i class="fas fa-book icon-off"></i> {{#if (eq item.toggleClass 'active')}}{{localize 'TIDYSW5E.Unprepare'}}{{else}}{{localize 'TIDYSW5E.Prepare'}}{{/if}}</a>
           {{/if}}
           <hr class="context-divider">
-          <a class="item-control item-edit" title="{{localize 'TIDYSW5E.EditSpell'}}"><i class="fas fa-pencil-alt"></i> {{localize 'TIDYSW5E.EditSpell'}}</a>
+          <a class="item-control item-edit" title="{{localize 'TIDYSW5E.EditPower'}}"><i class="fas fa-pencil-alt"></i> {{localize 'TIDYSW5E.EditPower'}}</a>
           <hr class="context-divider">
-          <a class="item-control item-delete warning" title="{{localize 'TIDYSW5E.DeleteSpell'}}"><i class="fas fa-trash"></i> {{localize 'TIDYSW5E.DeleteSpell'}}</a>
+          <a class="item-control item-delete warning" title="{{localize 'TIDYSW5E.DeletePower'}}"><i class="fas fa-trash"></i> {{localize 'TIDYSW5E.DeletePower'}}</a>
         </div>
         {{/if}}
       </li>
@@ -94,12 +94,12 @@
 
       {{#if section.canCreate}}
       <li class="items-footer">
-        <a class="item-create" title="{{localize 'SW5E.SpellCreate'}}" {{#each section.dataset as |v k|}}data-{{k}}="{{v}}"{{/each}}>
+        <a class="item-create" title="{{localize 'SW5E.PowerCreate'}}" {{#each section.dataset as |v k|}}data-{{k}}="{{v}}"{{/each}}>
           <i class="fas fa-plus-circle"></i>
         </a>
         {{else}}
-        <!-- add button for all spell categories -->
-        <a class="item-create" title="{{localize 'SW5E.SpellCreate'}}" {{#each section.dataset as |v k|}}data-{{k}}="{{v}}"{{/each}}>
+        <!-- add button for all power categories -->
+        <a class="item-create" title="{{localize 'SW5E.PowerCreate'}}" {{#each section.dataset as |v k|}}data-{{k}}="{{v}}"{{/each}}>
           <i class="fas fa-plus-circle"></i>
         </a>
       </li>
@@ -107,14 +107,14 @@
     </ul>
     {{else}}
     {{#if owner}}
-    {{#if filters.spellbook.size}}
-    <li class="notice">{{localize 'SW5E.FilterNoSpells'}}</li>
+    {{#if filters.powerbook.size}}
+    <li class="notice">{{localize 'SW5E.FilterNoPowers'}}</li>
     {{else}}
 
     <ul class="item-list">
-      <li class="notice">{{localize 'SW5E.NoSpellLevels'}}</li>
+      <li class="notice">{{localize 'SW5E.NoPowerLevels'}}</li>
       <li class="items-footer">
-        <a class="item-create" title="{{localize 'SW5E.SpellCreate'}}" data-type="spell"
+        <a class="item-create" title="{{localize 'SW5E.PowerCreate'}}" data-type="power"
         data-level="{{lvl}}"><i class="fas fa-plus-circle"></i></a>
       </li>
     </ul>
@@ -124,5 +124,5 @@
   </ul>
 </div>
 
-{{!-- Spellbook Footer --}}
-{{> "modules/tidysw5e-sheet/templates/actors/parts/tidysw5e-spellbook-footer.html"}}
+{{!-- Powerbook Footer --}}
+{{> "modules/tidysw5e-sheet/templates/actors/parts/tidysw5e-powerbook-footer.html"}}

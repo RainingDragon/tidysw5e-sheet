@@ -24,7 +24,7 @@ Thank you very much!
 - added bio info to NPCs, too
 - fixed errors on vehicle sheets
 - added missing PC-setting to show trait labels (got lost during menu rebuild)
-- added range column to PC spellbook
+- added range column to PC powerbook
 
 ### Version 0.4.28
 
@@ -149,7 +149,7 @@ Thank you very much!
 - minor css fix for NPC CR text color
 - NPC sheets now have a toggle button for the personality infos (now hidden by default) in the biography tab
 - fix to prevent items sometimes becoming invisible when toggling the item details
-- you now can use DAE to set a "custom" formula for "data.details.maxPreparedSpells" to calculate your available spell preparations. Thanks @tposney!
+- you now can use DAE to set a "custom" formula for "data.details.maxPreparedPowers" to calculate your available power preparations. Thanks @tposney!
 
 ### Version 0.4.6
 
@@ -167,13 +167,13 @@ Thank you very much!
 - vehicle speed update for 5e 1.2.2
 - fix: npc favorite icon
 - fix: "recharge [X+]" label width
-- fix: item names too long to fit are now truncated in inventory/spellbook
+- fix: item names too long to fit are now truncated in inventory/powerbook
 - NPC/Vehicle sheets will display item quanitity supported item-types (everything that is sorted under "attacks" and "inventory")
 - NPC/Vehicle sheets now will show classic inline controls (settings option)
-- NPC spell preparation can be toggled from the sheet
-- PC spellbook now lists the Spell Attack Modifier
-- PC spellbook now has a Prepared Spells tracker
-- PC sheets now have a searchbox to filter item/spell inventory
+- NPC power preparation can be toggled from the sheet
+- PC powerbook now lists the Power Attack Modifier
+- PC powerbook now has a Prepared Powers tracker
+- PC sheets now have a searchbox to filter item/power inventory
 - loot and tools are equippable again - like in the default sheet
 - PC/NPC/Vehicle Portraits now have a right click menu to view and share actor portrait and token art
 - Attribute section got a slight makeover to highlight the base ability modifier and on hover make it more obvious what the left and right values will roll.
@@ -189,7 +189,7 @@ Thank you very much!
 
 - new per user setting to show trait labels
 - new health indicator bar below portrait, toggle per user setting
-- new per user setting to show item controls without right click (only for item/spell list view and PCs - space reasons)
+- new per user setting to show item controls without right click (only for item/power list view and PCs - space reasons)
 - fixed layout of midiQol/Better Roll buttons in the item infos
 - added setting for future toggle to display roll buttons in context menu instead (has yet to be implemented by tposney - Better Rolls might come in the future)
 - fixed misaligned inventory + controls in list views
@@ -198,7 +198,7 @@ Thank you very much!
 ### Version 0.4.1
 
 - fixed layout issue with resources plus module
-- fixed missing right click context menu for npc spells
+- fixed missing right click context menu for npc powers
 - fixed disable inspiration and exhaustion tracker (where still showing if users set additional display options)
 - fixed white text in dropdown elements for dark theme
 
@@ -208,7 +208,7 @@ Thank you very much!
 - removed the sw5e css class. Mod developers should target .tidysw5e for sheet modifications.
 - added a right click context menu for item controls.
 - added middle click to quickly open item editor.
-- added a grid layout for inventory and spell book.
+- added a grid layout for inventory and power book.
 - added a sheet lock to toggle between empty sections and add/delete button
 - added attunement counter
 - added NPC rest buttons
@@ -290,7 +290,7 @@ Thank you very much!
 ### Version 0.2.24
 
 - Chinese translation added. Thanks to EternalRider!
-- CSS fix for double digit spellslots
+- CSS fix for double digit powerslots
 
 ### Version 0.2.23
 
@@ -309,13 +309,13 @@ Thank you very much!
 
 - updated Brazilian Portuguese translation by brnmuller
 - fixed css-prefix errors. Thanks to akrigline for finding them!
-- added "Add" Button to all spell categories in the spellbook \* experimental, don't know if this somehow breaks something ###
+- added "Add" Button to all power categories in the powerbook \* experimental, don't know if this somehow breaks something ###
 
 ### Version 0.2.19
 
 - fixed an issue with updating item charges from within the NPC Sheet
 - option to change custom highlight colors for default and Darkmode
-- option to define a separate highlight color for always prepared spells
+- option to define a separate highlight color for always prepared powers
 
 ### Version 0.2.18
 
@@ -364,7 +364,7 @@ Thank you very much!
 ### Version 0.2.9
 
 - clickable ability mods now show a pointer on hover to indicate clickability
-- spells in the favtab are now sorted alphabetically
+- powers in the favtab are now sorted alphabetically
 - initiative is now clickable when CUB is active
 
 - new settings: option to disable inspiration/exhaustion tracker in the case your campaign doesn't use one of them
@@ -375,7 +375,7 @@ Thank you very much!
 
 - editor fields now get saved when multiple ones are edited at the same time. Big Thanks to @Forien!
 
-- fixed the spell slot/spell slot override fields in favtab
+- fixed the power slot/power slot override fields in favtab
 
 - clicking a modificator next to an attribute now let you roll an ability test or saving throws directly
 
@@ -389,7 +389,7 @@ Thank you very much!
 
 - limited view css fix
 
-- npc sheets now hide empty spellbooks. It can be shown by clicking the headline or dragging a spell onto the npc sheet.
+- npc sheets now hide empty powerbooks. It can be shown by clicking the headline or dragging a power onto the npc sheet.
 - fixed max-length issue for CR field.
 
 ### Version 0.2.6
@@ -400,7 +400,7 @@ Thank you very much!
 
 - translation updates
 - added Support for Environment Field on NPCs
-- added prepared Spells for NPCs
+- added prepared Powers for NPCs
 
 - updated fonts with official fonts provided by foundry
 

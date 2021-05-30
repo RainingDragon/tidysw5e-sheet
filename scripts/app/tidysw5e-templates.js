@@ -14,10 +14,10 @@ export const preloadTidySW5eHandlebarsTemplates = async function () {
     "modules/tidysw5e-sheet/templates/actors/parts/tidysw5e-inventory-header.html",
     "modules/tidysw5e-sheet/templates/actors/parts/tidysw5e-inventory-footer.html",
     "modules/tidysw5e-sheet/templates/actors/parts/tidysw5e-features.html",
-    "modules/tidysw5e-sheet/templates/actors/parts/tidysw5e-spellbook.html",
-    "modules/tidysw5e-sheet/templates/actors/parts/tidysw5e-spellbook-grid.html",
-    "modules/tidysw5e-sheet/templates/actors/parts/tidysw5e-spellbook-header.html",
-    "modules/tidysw5e-sheet/templates/actors/parts/tidysw5e-spellbook-footer.html",
+    "modules/tidysw5e-sheet/templates/actors/parts/tidysw5e-powerbook.html",
+    "modules/tidysw5e-sheet/templates/actors/parts/tidysw5e-powerbook-grid.html",
+    "modules/tidysw5e-sheet/templates/actors/parts/tidysw5e-powerbook-header.html",
+    "modules/tidysw5e-sheet/templates/actors/parts/tidysw5e-powerbook-footer.html",
     "modules/tidysw5e-sheet/templates/actors/parts/tidysw5e-effects.html"
   ];
 

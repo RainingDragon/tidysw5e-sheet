@@ -81,11 +81,11 @@ export class TidySW5eSheet extends ActorSheet5eCharacter {
     html.find(".toggle-layout.inventory-layout").click(async (event) => {
       event.preventDefault();
 
-      if ($(event.currentTarget).hasClass("spellbook-layout")) {
-        if (actor.getFlag("tidysw5e-sheet", "spellbook-grid")) {
-          await actor.unsetFlag("tidysw5e-sheet", "spellbook-grid");
+      if ($(event.currentTarget).hasClass("powerbook-layout")) {
+        if (actor.getFlag("tidysw5e-sheet", "powerbook-grid")) {
+          await actor.unsetFlag("tidysw5e-sheet", "powerbook-grid");
         } else {
-          await actor.setFlag("tidysw5e-sheet", "spellbook-grid", true);
+          await actor.setFlag("tidysw5e-sheet", "powerbook-grid", true);
         }
       } else {
         if (actor.getFlag("tidysw5e-sheet", "inventory-grid")) {
@@ -322,11 +322,11 @@ async function editProtection(app, html, data) {
       html.find(".res-options").remove();
       html.find(".ability-modifiers .proficiency-toggle").remove();
       html.find("[contenteditable]").prop("contenteditable", false);
-      html.find(".spellcasting-attribute select").prop("disabled", true);
+      html.find(".powercasting-attribute select").prop("disabled", true);
     }
 
     let itemContainer = html.find(".inventory-list.items-list, .effects-list.items-list");
-    html.find(".inventory-list .items-header:not(.spellbook-header), .effects-list .items-header").each(function () {
+    html.find(".inventory-list .items-header:not(.powerbook-header), .effects-list .items-header").each(function () {
       if (
         $(this).next(".item-list").find("li").length - $(this).next(".item-list").find("li.items-footer").length ==
         0
@@ -406,18 +406,18 @@ async function addClassList(app, html, data) {
   }
 }
 
-// Calculate Spell Attack modifier
-async function spellAttackMod(app, html, data) {
+// Calculate Power Attack modifier
+async function powerAttackMod(app, html, data) {
   if (data.editable) {
     // let actor = game.actors.entities.find(a => a.data._id === data.actor._id),
     let actor = app.actor,
       prof = actor.data.data.attributes.prof,
-      spellAbility = html.find(".spellcasting-attribute select option:selected").val(),
-      abilityMod = spellAbility != "" ? actor.data.data.abilities[spellAbility].mod : 0,
-      spellAttackMod = prof + abilityMod,
-      text = spellAttackMod > 0 ? "+" + spellAttackMod : spellAttackMod;
-    // console.log('Prof: '+prof+ '/ Spell Ability: '+spellAbility+ '/ ability Mod: '+abilityMod+'/ Spell Attack Mod:'+spellAttackMod);
-    html.find(".spell-mod .spell-attack-mod").html(text);
+      powerAbility = html.find(".powercasting-attribute select option:selected").val(),
+      abilityMod = powerAbility != "" ? actor.data.data.abilities[powerAbility].mod : 0,
+      powerAttackMod = prof + abilityMod,
+      text = powerAttackMod > 0 ? "+" + powerAttackMod : powerAttackMod;
+    // console.log('Prof: '+prof+ '/ Power Ability: '+powerAbility+ '/ ability Mod: '+abilityMod+'/ Power Attack Mod:'+powerAttackMod);
+    html.find(".power-mod .power-attack-mod").html(text);
   }
 }
 
@@ -433,9 +433,9 @@ async function abbreviateCurrency(app, html, data) {
   });
 }
 
-// transform DAE formulas for maxPreparesSpells
+// transform DAE formulas for maxPreparesPowers
 function tidyCustomEffect(actor, change) {
-  if (change.key !== "data.details.maxPreparedSpells") return;
+  if (change.key !== "data.details.maxPreparedPowers") return;
   if (change.value?.length > 0) {
     let oldValue = getProperty(actor.data, change.key) || 0;
     let changeText = change.value.trim();
@@ -578,7 +578,7 @@ Hooks.on("renderTidySW5eSheet", (app, html, data) => {
   toggleTraitsList(app, html, data);
   checkDeathSaveStatus(app, html, data);
   abbreviateCurrency(app, html, data);
-  spellAttackMod(app, html, data);
+  powerAttackMod(app, html, data);
   addFavorites(app, html, data, position);
   countAttunedItems(app, html, data);
   countInventoryItems(app, html, data);

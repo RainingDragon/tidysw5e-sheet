@@ -22,8 +22,8 @@ export const tidysw5eSearchFilter = function (html, actor) {
       case "item-search":
         await actor.setFlag("tidysw5e-sheet", "item-search", value);
         break;
-      case "spell-search":
-        await actor.setFlag("tidysw5e-sheet", "spell-search", value);
+      case "power-search":
+        await actor.setFlag("tidysw5e-sheet", "power-search", value);
         break;
       case "feat-search":
         await actor.setFlag("tidysw5e-sheet", "feat-search", value);
@@ -44,12 +44,12 @@ export const tidysw5eSearchFilter = function (html, actor) {
     switch (id) {
       case "item-search":
         searchTarget = html.find(
-          ".list-layout .inventory-list:not(.spellbook-list):not(.features-list) .item-name, .grid-layout .inventory-list:not(.spellbook-list):not(.features-list) .info-card-name"
+          ".list-layout .inventory-list:not(.powerbook-list):not(.features-list) .item-name, .grid-layout .inventory-list:not(.powerbook-list):not(.features-list) .info-card-name"
         );
         break;
-      case "spell-search":
+      case "power-search":
         searchTarget = html.find(
-          ".list-layout .spellbook-list .item-name, .grid-layout .spellbook-list .info-card-name"
+          ".list-layout .powerbook-list .item-name, .grid-layout .powerbook-list .info-card-name"
         );
         break;
       case "feat-search":
@@ -58,9 +58,9 @@ export const tidysw5eSearchFilter = function (html, actor) {
     }
 
     // if(id == "item-search"){
-    //   searchTarget = html.find(".list-layout .inventory-list:not(.spellbook-list) .item-name, .grid-layout .inventory-list:not(.spellbook-list) .info-card-name");
+    //   searchTarget = html.find(".list-layout .inventory-list:not(.powerbook-list) .item-name, .grid-layout .inventory-list:not(.powerbook-list) .info-card-name");
     // } else {
-    //   searchTarget = html.find(".list-layout .spellbook-list .item-name, .grid-layout .spellbook-list .info-card-name");
+    //   searchTarget = html.find(".list-layout .powerbook-list .item-name, .grid-layout .powerbook-list .info-card-name");
     // }
 
     if (value != "") {
@@ -102,8 +102,8 @@ export const tidysw5eSearchFilter = function (html, actor) {
         case "item-search":
           await actor.setFlag("tidysw5e-sheet", "item-search", "");
           break;
-        case "spell-search":
-          await actor.setFlag("tidysw5e-sheet", "spell-search", "");
+        case "power-search":
+          await actor.setFlag("tidysw5e-sheet", "power-search", "");
           break;
         case "feat-search":
           await actor.setFlag("tidysw5e-sheet", "feat-search", "");
@@ -112,7 +112,7 @@ export const tidysw5eSearchFilter = function (html, actor) {
       // if(id == "item-search"){
       //   await actor.setFlag('tidysw5e-sheet', 'item-search', '');
       // } else {
-      //   await actor.setFlag('tidysw5e-sheet', 'spell-search', '');
+      //   await actor.setFlag('tidysw5e-sheet', 'power-search', '');
       // }
     });
   }

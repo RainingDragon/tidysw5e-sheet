@@ -54,7 +54,7 @@ export default class TidySW5eNPC extends ActorSheet5eNPC {
    * @private
    */
   _prepareItems(data) {
-    // Categorize Items as Features and Spells
+    // Categorize Items as Features and Powers
     const features = {
       passive: { label: game.i18n.localize("SW5E.Features"), items: [], dataset: { type: "feat" } },
       weapons: {
@@ -125,14 +125,14 @@ export default class TidySW5eNPC extends ActorSheet5eNPC {
    * @private
    */
   _prepareItemToggleState(item) {
-    if (item.type === "spell") {
+    if (item.type === "power") {
       const isAlways = getProperty(item.data, "preparation.mode") === "always";
       const isPrepared = getProperty(item.data, "preparation.prepared");
       item.toggleClass = isPrepared ? "active" : "";
       if (isAlways) item.toggleClass = "fixed";
-      if (isAlways) item.toggleTitle = CONFIG.SW5E.spellPreparationModes.always;
-      else if (isPrepared) item.toggleTitle = CONFIG.SW5E.spellPreparationModes.prepared;
-      else item.toggleTitle = game.i18n.localize("SW5E.SpellUnprepared");
+      if (isAlways) item.toggleTitle = CONFIG.SW5E.powerPreparationModes.always;
+      else if (isPrepared) item.toggleTitle = CONFIG.SW5E.powerPreparationModes.prepared;
+      else item.toggleTitle = game.i18n.localize("SW5E.PowerUnprepared");
     } else {
       const isActive = getProperty(item.data, "equipped");
       item.toggleClass = isActive ? "active" : "";
@@ -400,7 +400,7 @@ async function toggleItemMode(app, html, data) {
     ev.preventDefault();
     let itemId = ev.currentTarget.closest(".item").dataset.itemId;
     let item = app.actor.getOwnedItem(itemId);
-    let attr = item.data.type === "spell" ? "data.preparation.prepared" : "data.equipped";
+    let attr = item.data.type === "power" ? "data.preparation.prepared" : "data.equipped";
     return item.update({ [attr]: !getProperty(item.data, attr) });
   });
 }
@@ -492,23 +492,23 @@ async function setSheetClasses(app, html, data) {
   $(".info-card-hint .key").html(game.settings.get("tidysw5e-sheet", "itemCardsFixKey"));
 }
 
-// Hide empty Spellbook
-async function hideSpellbook(app, html, data) {
-  let spellbook = html.find(".spellbook-footer");
+// Hide empty Powerbook
+async function hidePowerbook(app, html, data) {
+  let powerbook = html.find(".powerbook-footer");
 
-  if (spellbook.hasClass("spellbook-empty")) {
-    html.find(".spellbook-title").addClass("toggle-spellbook");
-    // html.find('.spellbook-title .fa-caret-down').show();
-    // html.find('.spellbook-title .fa-caret-up').hide();
-    html.find(".spellbook-title + .list-layout").hide();
-    html.find(".spellcasting-ability").hide();
+  if (powerbook.hasClass("powerbook-empty")) {
+    html.find(".powerbook-title").addClass("toggle-powerbook");
+    // html.find('.powerbook-title .fa-caret-down').show();
+    // html.find('.powerbook-title .fa-caret-up').hide();
+    html.find(".powerbook-title + .list-layout").hide();
+    html.find(".powercasting-ability").hide();
 
-    $(".toggle-spellbook").on("click", function () {
-      html.find(".spellbook-title").toggleClass("show");
-      // html.find('.spellbook-title .fa-caret-down').toggle();
-      // html.find('.spellbook-title .fa-caret-up').toggle();
-      html.find(".spellbook-title + .list-layout").toggle();
-      html.find(".spellcasting-ability").toggle();
+    $(".toggle-powerbook").on("click", function () {
+      html.find(".powerbook-title").toggleClass("show");
+      // html.find('.powerbook-title .fa-caret-down').toggle();
+      // html.find('.powerbook-title .fa-caret-up').toggle();
+      html.find(".powerbook-title + .list-layout").toggle();
+      html.find(".powercasting-ability").toggle();
     });
   }
 }
@@ -530,11 +530,11 @@ async function editProtection(app, html, data) {
       html.find(".ability-modifiers .proficiency-toggle").remove();
       html.find("[contenteditable]").prop("contenteditable", false);
       html.find(".caster-level input").prop("disabled", true);
-      html.find(".spellcasting-attribute select").prop("disabled", true);
+      html.find(".powercasting-attribute select").prop("disabled", true);
     }
 
-    let itemContainer = html.find(".inventory-list:not(.spellbook-list).items-list");
-    html.find(".inventory-list:not(.spellbook-list) .items-header").each(function () {
+    let itemContainer = html.find(".inventory-list:not(.powerbook-list).items-list");
+    html.find(".inventory-list:not(.powerbook-list) .items-header").each(function () {
       if (
         $(this).next(".item-list").find("li").length - $(this).next(".item-list").find("li.items-footer").length ==
         0
@@ -621,7 +621,7 @@ Hooks.on("renderTidySW5eNPC", (app, html, data) => {
   toggleTraitsList(app, html, data);
   toggleItemMode(app, html, data);
   restoreScrollPosition(app, html, data);
-  hideSpellbook(app, html, data);
+  hidePowerbook(app, html, data);
   resetTempHp(app, html, data);
   editProtection(app, html, data);
   npcFavorites(app, html, data);

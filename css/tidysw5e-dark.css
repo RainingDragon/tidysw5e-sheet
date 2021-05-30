@@ -32,7 +32,7 @@
   background-color: var(--background);
 }
 
-.tidysw5eDark .tidysw5e.sheet.actor .spellcasting-ability {
+.tidysw5eDark .tidysw5e.sheet.actor .powercasting-ability {
   background: var(--background);
 }
 
@@ -153,20 +153,20 @@
   color: var(--danger-700);
 }
 
-.disable .tidysw5eDark .tidysw5e.sheet.actor .magic-items-feats-content .spellbook-filters.magic-items-head,
-.disable .tidysw5eDark .tidysw5e.sheet.actor .magic-items-spells-content .spellbook-filters.magic-items-head {
+.disable .tidysw5eDark .tidysw5e.sheet.actor .magic-items-feats-content .powerbook-filters.magic-items-head,
+.disable .tidysw5eDark .tidysw5e.sheet.actor .magic-items-powers-content .powerbook-filters.magic-items-head {
   border-color: var(--darkmode-light-color);
 }
 
 .disable .tidysw5eDark .tidysw5e.sheet.actor .magic-items-feats-content .magic-item div,
-.disable .tidysw5eDark .tidysw5e.sheet.actor .magic-items-spells-content .magic-item div {
+.disable .tidysw5eDark .tidysw5e.sheet.actor .magic-items-powers-content .magic-item div {
   border-color: var(--darkmode-faint-color);
 }
 
-.disable .tidysw5eDark .sw5e.sheet.actor .spell-rechargeable,
-.disable .tidysw5eDark .sw5e.sheet.actor .spell-level,
-.disable .tidysw5eDark .sw5e.sheet.actor .spell-consumption,
-.disable .tidysw5eDark .sw5e.sheet.actor .spell-upcast {
+.disable .tidysw5eDark .sw5e.sheet.actor .power-rechargeable,
+.disable .tidysw5eDark .sw5e.sheet.actor .power-level,
+.disable .tidysw5eDark .sw5e.sheet.actor .power-consumption,
+.disable .tidysw5eDark .sw5e.sheet.actor .power-upcast {
   color: var(--darkmode-primary-color);
   font-weight: 300;
 }
@@ -177,12 +177,12 @@
 }
 
 .disable .tidysw5eDark .tidysw5e.sheet.actor .magic-items-feats-content .item-name:hover .magic-item-image,
-.disable .tidysw5eDark .tidysw5e.sheet.actor .magic-items-spells-content .item-name:hover .magic-item-image {
+.disable .tidysw5eDark .tidysw5e.sheet.actor .magic-items-powers-content .item-name:hover .magic-item-image {
   background-image: url(../../images/d20-444.svg) !important;
 }
 
 .disable .tidysw5eDark .tidysw5e.sheet.actor .magic-items-feats-content .item-name:hover .magic-item-image:hover,
-.disable .tidysw5eDark .tidysw5e.sheet.actor .magic-items-spells-content .item-name:hover .magic-item-image:hover {
+.disable .tidysw5eDark .tidysw5e.sheet.actor .magic-items-powers-content .item-name:hover .magic-item-image:hover {
   background-image: url(../../images/d20-highlight-green.svg) !important;
 }
 
@@ -210,20 +210,20 @@
   color: var(--darkmode-primary-color);
 }
 
-.disable .tidysw5eDark .sw5e.sheet.item .magic-item-list .item .spell-level,
-.disable .tidysw5eDark .sw5e.sheet.item .magic-item-list .item .spell-consumption,
-.disable .tidysw5eDark .sw5e.sheet.item .magic-item-list .item .spell-upcast,
-.disable .tidysw5eDark .sw5e.sheet.item .magic-item-list .item .spell-cost {
+.disable .tidysw5eDark .sw5e.sheet.item .magic-item-list .item .power-level,
+.disable .tidysw5eDark .sw5e.sheet.item .magic-item-list .item .power-consumption,
+.disable .tidysw5eDark .sw5e.sheet.item .magic-item-list .item .power-upcast,
+.disable .tidysw5eDark .sw5e.sheet.item .magic-item-list .item .power-cost {
   color: var(--darkmode-primary-color);
 }
 
 .disable .tidysw5eDark .sw5e.sheet.item .magic-item-list .items-header:first-child,
 .disable .tidysw5eDark .sw5e.sheet.item .magic-item-list .items-header .item-name,
-.disable .tidysw5eDark .sw5e.sheet.item .magic-item-list .items-header .spell-level-head,
-.disable .tidysw5eDark .sw5e.sheet.item .magic-item-list .items-header .spell-consumption-head,
-.disable .tidysw5eDark .sw5e.sheet.item .magic-item-list .items-header .spell-upcast-head,
-.disable .tidysw5eDark .sw5e.sheet.item .magic-item-list .items-header .spell-cost-head,
-.disable .tidysw5eDark .sw5e.sheet.item .magic-item-list .items-header .spell-constrols-head {
+.disable .tidysw5eDark .sw5e.sheet.item .magic-item-list .items-header .power-level-head,
+.disable .tidysw5eDark .sw5e.sheet.item .magic-item-list .items-header .power-consumption-head,
+.disable .tidysw5eDark .sw5e.sheet.item .magic-item-list .items-header .power-upcast-head,
+.disable .tidysw5eDark .sw5e.sheet.item .magic-item-list .items-header .power-cost-head,
+.disable .tidysw5eDark .sw5e.sheet.item .magic-item-list .items-header .power-constrols-head {
   color: var(--darkmode-tertiary-color);
   font-weight: 400;
 }

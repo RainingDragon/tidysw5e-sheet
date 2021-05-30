@@ -2610,7 +2610,7 @@
   border-top-color: var(--encumbrance-outline);
 }
 
-.tidysw5e.sheet.actor .spellcasting-ability {
+.tidysw5e.sheet.actor .powercasting-ability {
   display: flex;
   justify-content: space-between;
   margin: 0rem 14px 0 0;
@@ -2619,32 +2619,32 @@
   align-items: center;
 }
 
-.tidysw5e.sheet.actor .spellcasting-ability .max-prepared-spells,
-.tidysw5e.sheet.actor .spellcasting-ability .spellcasting-attribute {
+.tidysw5e.sheet.actor .powercasting-ability .max-prepared-powers,
+.tidysw5e.sheet.actor .powercasting-ability .powercasting-attribute {
   display: flex;
   align-items: center;
   font-size: 12px;
 }
 
-.tidysw5e.sheet.actor .spellcasting-ability h3 {
+.tidysw5e.sheet.actor .powercasting-ability h3 {
   margin-right: 10px;
   font-size: 20px;
   font-family: var(--modesto);
 }
 
-.tidysw5e.sheet.actor .spellcasting-ability p {
+.tidysw5e.sheet.actor .powercasting-ability p {
   font-weight: 700;
   margin: 0 4px 0 0;
   white-space: nowrap;
 }
 
-.tidysw5e.sheet.actor .spellcasting-ability select {
+.tidysw5e.sheet.actor .powercasting-ability select {
   height: 19px;
   font-size: 12px;
   font-family: var(--signika);
 }
 
-.tidysw5e.sheet.actor .spellcasting-ability input {
+.tidysw5e.sheet.actor .powercasting-ability input {
   width: 20px;
   height: 20px;
 }
@@ -2771,7 +2771,7 @@
 }
 
 .tidysw5e.sheet.actor .items-list .item .item-charges .uses-max,
-.tidysw5e.sheet.actor .items-list .item .spell-slots .spell-max {
+.tidysw5e.sheet.actor .items-list .item .power-slots .power-max {
   text-align: left;
 }
 
@@ -3014,20 +3014,20 @@
   display: flex;
 }
 
-.tidysw5e.sheet.actor .items-list .spell-school {
+.tidysw5e.sheet.actor .items-list .power-school {
   flex: 0 0 50px;
 }
 
-.tidysw5e.sheet.actor .items-list .spell-range {
+.tidysw5e.sheet.actor .items-list .power-range {
   flex: 0 0 70px;
 }
 
-.tidysw5e.sheet.actor .items-list .spell-action,
-.tidysw5e.sheet.actor .items-list .spell-target {
+.tidysw5e.sheet.actor .items-list .power-action,
+.tidysw5e.sheet.actor .items-list .power-target {
   flex: 0 0 120px;
 }
 
-.tidysw5e.sheet.actor .items-list .items-header .spell-slots {
+.tidysw5e.sheet.actor .items-list .items-header .power-slots {
   display: flex;
   flex: 0 0 1px;
   align-items: center;
@@ -3036,21 +3036,21 @@
   padding: 0 5px;
 }
 
-.tidysw5e.sheet.actor .items-list .items-header .spell-slots .spell-max {
+.tidysw5e.sheet.actor .items-list .items-header .power-slots .power-max {
   display: flex;
   align-items: center;
   line-height: 12px;
   text-align: left;
 }
 
-.tidysw5e.sheet.actor .items-list .items-header .spell-slots input {
+.tidysw5e.sheet.actor .items-list .items-header .power-slots input {
   text-align: right;
   height: 13px;
   margin-top: -1px;
   min-width: 16px;
 }
 
-.tidysw5e.sheet.actor .items-list .items-header .spell-slots .slot-max-override {
+.tidysw5e.sheet.actor .items-list .items-header .power-slots .slot-max-override {
   margin: 0 0 0 4px;
   color: var(--tertiary-color);
   line-height: 12px;
@@ -3105,21 +3105,21 @@
   flex: 0 0 85px;
 }
 
-.tidysw5e.sheet.actor .list-layout .items-list.classic-controls.spellbook-list .items-header {
+.tidysw5e.sheet.actor .list-layout .items-list.classic-controls.powerbook-list .items-header {
   padding-right: 53px;
 }
 
-.tidysw5e.sheet.actor .list-layout .items-list.classic-controls.spellbook-list .item-controls:not(.context-menu) {
+.tidysw5e.sheet.actor .list-layout .items-list.classic-controls.powerbook-list .item-controls:not(.context-menu) {
   flex: 0 0 53px;
 }
 
-.tidysw5e.sheet.actor .list-layout .items-list.classic-controls.spellbook-list.unlocked .items-header {
+.tidysw5e.sheet.actor .list-layout .items-list.classic-controls.powerbook-list.unlocked .items-header {
   padding-right: 69px;
 }
 
 .tidysw5e.sheet.actor
   .list-layout
-  .items-list.classic-controls.spellbook-list.unlocked
+  .items-list.classic-controls.powerbook-list.unlocked
   .item-controls:not(.context-menu) {
   flex: 0 0 69px;
 }
@@ -3316,20 +3316,20 @@
   font-size: 12px;
 }
 
-.tidysw5e.sheet.actor .spell-level-slots {
+.tidysw5e.sheet.actor .power-level-slots {
   flex: 0;
   display: flex;
 }
 
-.tidysw5e.sheet.actor .spell-comps {
+.tidysw5e.sheet.actor .power-comps {
   flex: 0 0 70px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.tidysw5e.sheet.actor .spell-component.C,
-.tidysw5e.sheet.actor .spell-component.R {
+.tidysw5e.sheet.actor .power-component.C,
+.tidysw5e.sheet.actor .power-component.R {
   color: var(--background);
   background: var(--tertiary-color);
   border-radius: 2px;
@@ -4252,10 +4252,10 @@
   font-size: 16px;
 }
 
-.tidysw5e.sheet.actor.npc .items-list .spell-action,
-.tidysw5e.sheet.actor.npc .items-list .spell-target,
-.tidysw5e.sheet.actor.npc .items-list .spell-school,
-.tidysw5e.sheet.actor.npc .items-list .spell-comps {
+.tidysw5e.sheet.actor.npc .items-list .power-action,
+.tidysw5e.sheet.actor.npc .items-list .power-target,
+.tidysw5e.sheet.actor.npc .items-list .power-school,
+.tidysw5e.sheet.actor.npc .items-list .power-comps {
   overflow: hidden;
   white-space: nowrap;
 }
@@ -4274,18 +4274,18 @@
   width: 50px;
 }
 
-.tidysw5e.sheet.actor.npc .items-list .spellbook-header .items-header-usage {
+.tidysw5e.sheet.actor.npc .items-list .powerbook-header .items-header-usage {
   width: 90px;
 }
 
-.tidysw5e.sheet.actor.npc .items-list .spell-comps {
+.tidysw5e.sheet.actor.npc .items-list .power-comps {
   flex: 0 0 50px;
 }
 
 .tidysw5e.sheet.actor.npc .items-list .item-charges,
-.tidysw5e.sheet.actor.npc .items-list .spell-action,
-.tidysw5e.sheet.actor.npc .items-list .spell-target,
-.tidysw5e.sheet.actor.npc .items-list .spell-school {
+.tidysw5e.sheet.actor.npc .items-list .power-action,
+.tidysw5e.sheet.actor.npc .items-list .power-target,
+.tidysw5e.sheet.actor.npc .items-list .power-school {
   flex: 0 0 90px;
 }
 
@@ -4297,13 +4297,13 @@
   flex: 0 0 120px;
 }
 
-.tidysw5e.sheet.actor.npc .npc-spell-stats {
+.tidysw5e.sheet.actor.npc .npc-power-stats {
   display: flex;
   flex: 0;
   font-size: 12px;
 }
 
-.tidysw5e.sheet.actor.npc .spellcasting-ability {
+.tidysw5e.sheet.actor.npc .powercasting-ability {
   margin: 0;
   position: sticky;
   bottom: 0;
@@ -4311,18 +4311,18 @@
   background-attachment: fixed;
 }
 
-.tidysw5e.sheet.actor.npc .spellcasting-ability .spell-dc {
+.tidysw5e.sheet.actor.npc .powercasting-ability .power-dc {
   flex: 1;
   font-size: 20px;
   font-family: var(--modesto);
 }
 
-.tidysw5e.sheet.actor.npc .spellcasting-ability select {
+.tidysw5e.sheet.actor.npc .powercasting-ability select {
   flex: 0 0 90px;
   font-family: var(--signika);
 }
 
-.tidysw5e.sheet.actor.npc .spellcasting-ability input {
+.tidysw5e.sheet.actor.npc .powercasting-ability input {
   min-width: 16px;
   height: 16px;
 }
@@ -4335,7 +4335,7 @@
   margin-right: 4px;
 }
 
-.tidysw5e.sheet.actor.npc .spellbook-title {
+.tidysw5e.sheet.actor.npc .powerbook-title {
   display: flex;
   justify-content: space-between;
   padding: 0 4px 2px 0;
@@ -4349,28 +4349,28 @@
   font-size: 18px;
 }
 
-.tidysw5e.sheet.actor.npc .spellbook-title.toggle-spellbook.show .fa-caret-down,
-.tidysw5e.sheet.actor.npc .spellbook-title i {
+.tidysw5e.sheet.actor.npc .powerbook-title.toggle-powerbook.show .fa-caret-down,
+.tidysw5e.sheet.actor.npc .powerbook-title i {
   display: none;
 }
 
-.tidysw5e.sheet.actor.npc .spellbook-title.toggle-spellbook .fa-caret-down,
-.tidysw5e.sheet.actor.npc .spellbook-title.show .fa-caret-up {
+.tidysw5e.sheet.actor.npc .powerbook-title.toggle-powerbook .fa-caret-down,
+.tidysw5e.sheet.actor.npc .powerbook-title.show .fa-caret-up {
   display: inline-block;
 }
 
-.tidysw5e.sheet.actor.npc .spellbook-title.toggle-spellbook {
+.tidysw5e.sheet.actor.npc .powerbook-title.toggle-powerbook {
   opacity: 0.4;
   transition: opacity 0.3s ease;
   cursor: pointer;
 }
 
-.tidysw5e.sheet.actor.npc .spellbook-title:hover,
-.tidysw5e.sheet.actor.npc .spellbook-title.show {
+.tidysw5e.sheet.actor.npc .powerbook-title:hover,
+.tidysw5e.sheet.actor.npc .powerbook-title.show {
   opacity: 1;
 }
 
-.tidysw5e.sheet.actor.npc .spellbook-empty .notice {
+.tidysw5e.sheet.actor.npc .powerbook-empty .notice {
   font-size: 12px;
 }
 
@@ -5411,7 +5411,7 @@
   padding-left: 0;
 }
 
-.tidysw5e.sheet.actor .magic-items-spells-content,
+.tidysw5e.sheet.actor .magic-items-powers-content,
 .tidysw5e.sheet.actor .magic-items-feats-content {
   padding: 4px 6px;
   border: 1px solid yellow;
@@ -5420,70 +5420,70 @@
   margin: 8px 0 0 0;
 }
 
-.tidysw5e.sheet.actor .magic-items-spells-content .magic-items-head,
+.tidysw5e.sheet.actor .magic-items-powers-content .magic-items-head,
 .tidysw5e.sheet.actor .magic-items-feats-content .magic-items-head {
   margin: 0;
   padding: 0 0 2px 0;
 }
 
-.tidysw5e.sheet.actor .magic-items-spells-content .magic-items-head h3,
+.tidysw5e.sheet.actor .magic-items-powers-content .magic-items-head h3,
 .tidysw5e.sheet.actor .magic-items-feats-content .magic-items-head h3 {
   font-size: 13px;
 }
 
-.tidysw5e.sheet.actor .magic-items-spells-content .spellbook-header div:not(.spell-slots):not(.spell-rechargeable),
-.tidysw5e.sheet.actor .magic-items-feats-content .spellbook-header div:not(.spell-slots):not(.spell-rechargeable) {
+.tidysw5e.sheet.actor .magic-items-powers-content .powerbook-header div:not(.power-slots):not(.power-rechargeable),
+.tidysw5e.sheet.actor .magic-items-feats-content .powerbook-header div:not(.power-slots):not(.power-rechargeable) {
   color: var(--light-color);
 }
 
-.tidysw5e.sheet.actor .magic-items-spells-content .item-name,
+.tidysw5e.sheet.actor .magic-items-powers-content .item-name,
 .tidysw5e.sheet.actor .magic-items-feats-content .item-name {
   padding: 0 8px 0 0;
 }
 
-.tidysw5e.sheet.actor .magic-items-spells-content .spell-slots,
-.tidysw5e.sheet.actor .magic-items-feats-content .spell-slots {
+.tidysw5e.sheet.actor .magic-items-powers-content .power-slots,
+.tidysw5e.sheet.actor .magic-items-feats-content .power-slots {
   padding: 0 8px 0 0;
 }
 
-.tidysw5e.sheet.actor .magic-items-spells-content .spell-slots input:last-child,
-.tidysw5e.sheet.actor .magic-items-feats-content .spell-slots input:last-child {
+.tidysw5e.sheet.actor .magic-items-powers-content .power-slots input:last-child,
+.tidysw5e.sheet.actor .magic-items-feats-content .power-slots input:last-child {
   text-align: left;
 }
 
-.tidysw5e.sheet.actor .magic-items-spells-content .spell-level,
-.tidysw5e.sheet.actor .magic-items-spells-content .spell-consumption,
-.tidysw5e.sheet.actor .magic-items-spells-content .spell-upcast,
-.tidysw5e.sheet.actor .magic-items-feats-content .spell-level,
-.tidysw5e.sheet.actor .magic-items-feats-content .spell-consumption,
-.tidysw5e.sheet.actor .magic-items-feats-content .spell-upcast {
+.tidysw5e.sheet.actor .magic-items-powers-content .power-level,
+.tidysw5e.sheet.actor .magic-items-powers-content .power-consumption,
+.tidysw5e.sheet.actor .magic-items-powers-content .power-upcast,
+.tidysw5e.sheet.actor .magic-items-feats-content .power-level,
+.tidysw5e.sheet.actor .magic-items-feats-content .power-consumption,
+.tidysw5e.sheet.actor .magic-items-feats-content .power-upcast {
   flex: 0 0 70px;
   text-align: center;
 }
 
-.tidysw5e.sheet.actor .magic-items-spells-content .spellbook-header .spell-level,
-.tidysw5e.sheet.actor .magic-items-feats-content .spellbook-header .spell-level {
+.tidysw5e.sheet.actor .magic-items-powers-content .powerbook-header .power-level,
+.tidysw5e.sheet.actor .magic-items-feats-content .powerbook-header .power-level {
   text-align: right;
   padding-right: 20px;
 }
 
-.tidysw5e.sheet.actor .magic-items-spells-content .spell-rechargeable,
-.tidysw5e.sheet.actor .magic-items-feats-content .spell-rechargeable {
+.tidysw5e.sheet.actor .magic-items-powers-content .power-rechargeable,
+.tidysw5e.sheet.actor .magic-items-feats-content .power-rechargeable {
   flex: 0 0 1px;
   white-space: nowrap;
   padding: 0 8px 0 0;
 }
 
-.tidysw5e.sheet.actor .magic-items-spells-content .item-list .spell-level,
-.tidysw5e.sheet.actor .magic-items-spells-content .item-list .spell-consumption,
-.tidysw5e.sheet.actor .magic-items-spells-content .item-list .spell-upcast,
-.tidysw5e.sheet.actor .magic-items-spells-content .item-list .spell-slots,
-.tidysw5e.sheet.actor .magic-items-spells-content .item-list .spell-rechargeable,
-.tidysw5e.sheet.actor .magic-items-feats-content .item-list .spell-level,
-.tidysw5e.sheet.actor .magic-items-feats-content .item-list .spell-consumption,
-.tidysw5e.sheet.actor .magic-items-feats-content .item-list .spell-upcast,
-.tidysw5e.sheet.actor .magic-items-feats-content .item-list .spell-slots,
-.tidysw5e.sheet.actor .magic-items-feats-content .item-list .spell-rechargeable {
+.tidysw5e.sheet.actor .magic-items-powers-content .item-list .power-level,
+.tidysw5e.sheet.actor .magic-items-powers-content .item-list .power-consumption,
+.tidysw5e.sheet.actor .magic-items-powers-content .item-list .power-upcast,
+.tidysw5e.sheet.actor .magic-items-powers-content .item-list .power-slots,
+.tidysw5e.sheet.actor .magic-items-powers-content .item-list .power-rechargeable,
+.tidysw5e.sheet.actor .magic-items-feats-content .item-list .power-level,
+.tidysw5e.sheet.actor .magic-items-feats-content .item-list .power-consumption,
+.tidysw5e.sheet.actor .magic-items-feats-content .item-list .power-upcast,
+.tidysw5e.sheet.actor .magic-items-feats-content .item-list .power-slots,
+.tidysw5e.sheet.actor .magic-items-feats-content .item-list .power-rechargeable {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -5492,15 +5492,15 @@
   border-left: 1px solid var(--faint-color);
 }
 
-.tidysw5e.sheet.actor .magic-items-spells-content .item-list .spell-slots,
-.tidysw5e.sheet.actor .magic-items-feats-content .item-list .spell-slots {
+.tidysw5e.sheet.actor .magic-items-powers-content .item-list .power-slots,
+.tidysw5e.sheet.actor .magic-items-feats-content .item-list .power-slots {
   border: none;
   margin-left: 8px;
   flex: 0 0 1px;
 }
 
-.tidysw5e.sheet.actor .magic-items-spells-content .item-list .spell-slots input,
-.tidysw5e.sheet.actor .magic-items-feats-content .item-list .spell-slots input {
+.tidysw5e.sheet.actor .magic-items-powers-content .item-list .power-slots input,
+.tidysw5e.sheet.actor .magic-items-feats-content .item-list .power-slots input {
   width: 20px;
   height: 16px;
   background: var(--faint-color);
@@ -5508,28 +5508,28 @@
   border-radius: 3px;
 }
 
-.tidysw5e.sheet.actor .magic-items-spells-content .item-list .spell-slots input:first-child,
-.tidysw5e.sheet.actor .magic-items-feats-content .item-list .spell-slots input:first-child {
+.tidysw5e.sheet.actor .magic-items-powers-content .item-list .power-slots input:first-child,
+.tidysw5e.sheet.actor .magic-items-feats-content .item-list .power-slots input:first-child {
   text-align: right;
 }
 
-.tidysw5e.sheet.actor .magic-items-spells-content .item-list .spell-rechargeable,
-.tidysw5e.sheet.actor .magic-items-feats-content .item-list .spell-rechargeable {
+.tidysw5e.sheet.actor .magic-items-powers-content .item-list .power-rechargeable,
+.tidysw5e.sheet.actor .magic-items-feats-content .item-list .power-rechargeable {
   border: none;
 }
 
-.tidysw5e.sheet.actor .grid-layout .magic-items-spells-content .item-list {
+.tidysw5e.sheet.actor .grid-layout .magic-items-powers-content .item-list {
   display: block;
 }
 
-.tidysw5e.sheet.actor .grid-layout .magic-items-spells-content .item-list .item {
+.tidysw5e.sheet.actor .grid-layout .magic-items-powers-content .item-list .item {
   width: 100%;
   height: auto;
   margin: 2px 0;
   box-shadow: none;
 }
 
-.tidysw5e.sheet.actor .grid-layout .magic-items-spells-content .item-list .item .item-name {
+.tidysw5e.sheet.actor .grid-layout .magic-items-powers-content .item-list .item .item-name {
   display: flex;
   flex: 1;
   cursor: default;
@@ -5537,11 +5537,11 @@
   font-size: 12px;
 }
 
-.tidysw5e.sheet.actor .grid-layout .magic-items-spells-content .item-list .item .item-name.rollable:hover {
+.tidysw5e.sheet.actor .grid-layout .magic-items-powers-content .item-list .item .item-name.rollable:hover {
   color: inherit;
 }
 
-.tidysw5e.sheet.actor .grid-layout .magic-items-spells-content .item-list .item h4 {
+.tidysw5e.sheet.actor .grid-layout .magic-items-powers-content .item-list .item h4 {
   display: flex;
   align-items: center;
   flex: initial;
@@ -5549,11 +5549,11 @@
   font-weight: 400;
 }
 
-.tidysw5e.sheet.actor .grid-layout .magic-items-spells-content .item-list .item .rollable h4 {
+.tidysw5e.sheet.actor .grid-layout .magic-items-powers-content .item-list .item .rollable h4 {
   cursor: pointer;
 }
 
-.tidysw5e.sheet.actor .grid-layout .magic-items-spells-content .item-list .item .item-image {
+.tidysw5e.sheet.actor .grid-layout .magic-items-powers-content .item-list .item .item-image {
   height: 24px;
   margin-right: 4px;
   box-shadow: none;
@@ -5575,7 +5575,7 @@
   background: rgba(255, 255, 255, 0.1);
 }
 
-.tidysw5e.sheet.item .sheet-body .tab.magic-items .spell-drag-content {
+.tidysw5e.sheet.item .sheet-body .tab.magic-items .power-drag-content {
   height: 70px;
   text-align: center;
   color: #828180;
@@ -5690,11 +5690,11 @@
   font-weight: bold;
 }
 
-.tidysw5e.sheet.item .sheet-body .tab.magic-items .magic-items-content .magic-item-list .spell-level-head,
-.tidysw5e.sheet.item .sheet-body .tab.magic-items .magic-items-content .magic-item-list .spell-upcast-head,
-.tidysw5e.sheet.item .sheet-body .tab.magic-items .magic-items-content .magic-item-list .spell-consumption-head,
-.tidysw5e.sheet.item .sheet-body .tab.magic-items .magic-items-content .magic-item-list .spell-cost-head,
-.tidysw5e.sheet.item .sheet-body .tab.magic-items .magic-items-content .magic-item-list .spell-dc-head,
+.tidysw5e.sheet.item .sheet-body .tab.magic-items .magic-items-content .magic-item-list .power-level-head,
+.tidysw5e.sheet.item .sheet-body .tab.magic-items .magic-items-content .magic-item-list .power-upcast-head,
+.tidysw5e.sheet.item .sheet-body .tab.magic-items .magic-items-content .magic-item-list .power-consumption-head,
+.tidysw5e.sheet.item .sheet-body .tab.magic-items .magic-items-content .magic-item-list .power-cost-head,
+.tidysw5e.sheet.item .sheet-body .tab.magic-items .magic-items-content .magic-item-list .power-dc-head,
 .tidysw5e.sheet.item .sheet-body .tab.magic-items .magic-items-content .magic-item-list .feat-consumption-head,
 .tidysw5e.sheet.item .sheet-body .tab.magic-items .magic-items-content .magic-item-list .feat-effect-head {
   font-size: 12px;
@@ -5703,35 +5703,35 @@
   margin: 0 2px;
 }
 
-.tidysw5e.sheet.item .sheet-body .tab.magic-items .magic-items-content .magic-item-list .spell-level,
-.tidysw5e.sheet.item .sheet-body .tab.magic-items .magic-items-content .magic-item-list .spell-upcast,
-.tidysw5e.sheet.item .sheet-body .tab.magic-items .magic-items-content .magic-item-list .spell-consumption,
-.tidysw5e.sheet.item .sheet-body .tab.magic-items .magic-items-content .magic-item-list .spell-cost,
-.tidysw5e.sheet.item .sheet-body .tab.magic-items .magic-items-content .magic-item-list .spell-dc,
+.tidysw5e.sheet.item .sheet-body .tab.magic-items .magic-items-content .magic-item-list .power-level,
+.tidysw5e.sheet.item .sheet-body .tab.magic-items .magic-items-content .magic-item-list .power-upcast,
+.tidysw5e.sheet.item .sheet-body .tab.magic-items .magic-items-content .magic-item-list .power-consumption,
+.tidysw5e.sheet.item .sheet-body .tab.magic-items .magic-items-content .magic-item-list .power-cost,
+.tidysw5e.sheet.item .sheet-body .tab.magic-items .magic-items-content .magic-item-list .power-dc,
 .tidysw5e.sheet.item .sheet-body .tab.magic-items .magic-items-content .magic-item-list .feat-consumption,
 .tidysw5e.sheet.item .sheet-body .tab.magic-items .magic-items-content .magic-item-list .feat-effect {
   text-align: center;
   margin: 0 2px;
 }
 
-.tidysw5e.sheet.item .sheet-body .tab.magic-items .magic-items-content .magic-item-list .spell-level-head,
-.tidysw5e.sheet.item .sheet-body .tab.magic-items .magic-items-content .magic-item-list .spell-level {
+.tidysw5e.sheet.item .sheet-body .tab.magic-items .magic-items-content .magic-item-list .power-level-head,
+.tidysw5e.sheet.item .sheet-body .tab.magic-items .magic-items-content .magic-item-list .power-level {
   flex: 0 0 40px;
 }
 
-.tidysw5e.sheet.item .sheet-body .tab.magic-items .magic-items-content .magic-item-list .spell-dc-head,
-.tidysw5e.sheet.item .sheet-body .tab.magic-items .magic-items-content .magic-item-list .spell-cost-head,
-.tidysw5e.sheet.item .sheet-body .tab.magic-items .magic-items-content .magic-item-list .spell-cost {
+.tidysw5e.sheet.item .sheet-body .tab.magic-items .magic-items-content .magic-item-list .power-dc-head,
+.tidysw5e.sheet.item .sheet-body .tab.magic-items .magic-items-content .magic-item-list .power-cost-head,
+.tidysw5e.sheet.item .sheet-body .tab.magic-items .magic-items-content .magic-item-list .power-cost {
   flex: 0 0 56px;
 }
 
-.tidysw5e.sheet.item .sheet-body .tab.magic-items .magic-items-content .magic-item-list .spell-upcast-head,
-.tidysw5e.sheet.item .sheet-body .tab.magic-items .magic-items-content .magic-item-list .spell-upcast {
+.tidysw5e.sheet.item .sheet-body .tab.magic-items .magic-items-content .magic-item-list .power-upcast-head,
+.tidysw5e.sheet.item .sheet-body .tab.magic-items .magic-items-content .magic-item-list .power-upcast {
   flex: 0 0 80px;
 }
 
-.tidysw5e.sheet.item .sheet-body .tab.magic-items .magic-items-content .magic-item-list .spell-consumption-head,
-.tidysw5e.sheet.item .sheet-body .tab.magic-items .magic-items-content .magic-item-list .spell-consumption,
+.tidysw5e.sheet.item .sheet-body .tab.magic-items .magic-items-content .magic-item-list .power-consumption-head,
+.tidysw5e.sheet.item .sheet-body .tab.magic-items .magic-items-content .magic-item-list .power-consumption,
 .tidysw5e.sheet.item .sheet-body .tab.magic-items .magic-items-content .magic-item-list .feat-consumption-head,
 .tidysw5e.sheet.item .sheet-body .tab.magic-items .magic-items-content .magic-item-list .feat-consumption,
 .tidysw5e.sheet.item .sheet-body .tab.magic-items .magic-items-content .magic-item-list .feat-effect-head,
@@ -5739,11 +5739,11 @@
   flex: 0 0 80px;
 }
 
-.tidysw5e.sheet.item .sheet-body .tab.magic-items .magic-items-content .magic-item-list .spell-dc {
+.tidysw5e.sheet.item .sheet-body .tab.magic-items .magic-items-content .magic-item-list .power-dc {
   flex: 0 0 30px;
 }
 
-.tidysw5e.sheet.item .sheet-body .tab.magic-items .magic-items-content .magic-item-list .spell-controls-head {
+.tidysw5e.sheet.item .sheet-body .tab.magic-items .magic-items-content .magic-item-list .power-controls-head {
   flex: 0 0 28px;
 }
 

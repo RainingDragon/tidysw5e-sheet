@@ -8,7 +8,7 @@ export const preloadTidySW5eHandlebarsTemplates = async function () {
   // Define template paths to load
   const tidysw5etemplatePaths = [
     // Actor Sheet Partials
-    "modules/tidysw5e-sheet/templates/actors/parts/tidysw5e-npc-spellbook.html"
+    "modules/tidysw5e-sheet/templates/actors/parts/tidysw5e-npc-powerbook.html"
   ];
 
   // Load the template parts
