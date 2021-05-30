@@ -214,14 +214,8 @@ export const addFavorites = async function (app, html, data, position) {
       item.powerComps = "";
       if (item.type === "power" && item.data.components) {
         let comps = item.data.components;
-        let v = comps.vocal ? "V" : "";
-        let s = comps.somatic ? "S" : "";
-        let m = comps.material ? "M" : "";
         let c = comps.concentration ? true : false;
-        let r = comps.ritual ? true : false;
-        item.powerComps = `${v}${s}${m}`;
         item.powerCon = c;
-        item.powerRit = r;
       }
 
       item.favLabels = labels;

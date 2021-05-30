@@ -4,7 +4,7 @@
 <div class="list-layout">
 
   <ul class="inventory-list powerbook-list items-list {{#if actor.flags.tidysw5e-sheet.allow-edit}}unlocked{{/if}}">
-    {{#each powerbook as |section|}}
+    {{#each techPowerbook as |section|}}
     <li class="items-header powerbook-header">
       <div class="power-level-slots">
         <h3>{{section.label}}</h3>
@@ -27,7 +27,7 @@
 
       </div>
       <div class="items-header-labels">
-        <div class="items-header-comps"  title="{{localize 'SW5E.PowerComponents'}}"><i class="fas fa-mortar-pestle"></i></div>
+        <div class="items-header-comps"  title="{{localize 'SW5E.Concentration'}}"><i class="fas fa-brain"></i></div>
         <div class="items-header-school" title="{{localize 'SW5E.PowerSchool'}}"><i class="fas fa-hat-wizard"></i></div>
         <div class="items-header-target" title="{{localize 'SW5E.PowerTarget'}}">{{localize 'SW5E.Target'}}</div>
         <div class="items-header-range" title="{{localize 'SW5E.PowerRange'}}">{{localize 'SW5E.Range'}}</div>
