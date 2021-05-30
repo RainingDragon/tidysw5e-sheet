@@ -4,7 +4,7 @@
 <div class="list-layout">
 
   <ul class="inventory-list powerbook-list items-list {{#if actor.flags.tidysw5e-sheet.allow-edit}}unlocked{{/if}}">
-    {{#each forcePowerbook as |section|}}
+    {{#each powerbook as |section|}}
     <li class="items-header powerbook-header">
       <div class="power-level-slots">
         <h3>{{section.label}}</h3>

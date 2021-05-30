@@ -14,10 +14,14 @@ export const preloadTidySW5eHandlebarsTemplates = async function () {
     "modules/tidysw5e-sheet/templates/actors/parts/tidysw5e-inventory-header.html",
     "modules/tidysw5e-sheet/templates/actors/parts/tidysw5e-inventory-footer.html",
     "modules/tidysw5e-sheet/templates/actors/parts/tidysw5e-features.html",
-    "modules/tidysw5e-sheet/templates/actors/parts/tidysw5e-powerbook.html",
-    "modules/tidysw5e-sheet/templates/actors/parts/tidysw5e-powerbook-grid.html",
-    "modules/tidysw5e-sheet/templates/actors/parts/tidysw5e-powerbook-header.html",
-    "modules/tidysw5e-sheet/templates/actors/parts/tidysw5e-powerbook-footer.html",
+    "modules/tidysw5e-sheet/templates/actors/parts/tidysw5e-force-powerbook.html",
+    "modules/tidysw5e-sheet/templates/actors/parts/tidysw5e-force-powerbook-grid.html",
+    "modules/tidysw5e-sheet/templates/actors/parts/tidysw5e-force-powerbook-header.html",
+    "modules/tidysw5e-sheet/templates/actors/parts/tidysw5e-force-powerbook-footer.html",
+    "modules/tidysw5e-sheet/templates/actors/parts/tidysw5e-tech-powerbook.html",
+    "modules/tidysw5e-sheet/templates/actors/parts/tidysw5e-tech-powerbook-grid.html",
+    "modules/tidysw5e-sheet/templates/actors/parts/tidysw5e-tech-powerbook-header.html",
+    "modules/tidysw5e-sheet/templates/actors/parts/tidysw5e-tech-powerbook-footer.html",
     "modules/tidysw5e-sheet/templates/actors/parts/tidysw5e-effects.html"
   ];
 

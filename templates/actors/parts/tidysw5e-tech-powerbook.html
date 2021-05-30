@@ -1,10 +1,10 @@
 {{!-- Powerbook Header --}}
-{{> "modules/tidysw5e-sheet/templates/actors/parts/tidysw5e-tech-tech-powerbook-header.html"}}
+{{> "modules/tidysw5e-sheet/templates/actors/parts/tidysw5e-tech-powerbook-header.html"}}
 
 <div class="list-layout">
 
   <ul class="inventory-list powerbook-list items-list {{#if actor.flags.tidysw5e-sheet.allow-edit}}unlocked{{/if}}">
-    {{#each techPowerbook as |section|}}
+    {{#each powerbook as |section|}}
     <li class="items-header powerbook-header">
       <div class="power-level-slots">
         <h3>{{section.label}}</h3>
