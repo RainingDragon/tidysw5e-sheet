@@ -406,33 +406,6 @@ async function addClassList(app, html, data) {
   }
 }
 
-// Calculate Power Attack modifier
-async function powerAttackMod(app, html, data) {
-  if (data.editable) {
-    // let actor = game.actors.entities.find(a => a.data._id === data.actor._id),
-    let actor = app.actor,
-      prof = actor.data.data.attributes.prof,
-      powerAbility = html.find(".powercasting-attribute select option:selected").val(),
-      abilityMod = powerAbility != "" ? actor.data.data.abilities[powerAbility].mod : 0,
-      powerAttackMod = prof + abilityMod,
-      text = powerAttackMod > 0 ? "+" + powerAttackMod : powerAttackMod;
-    // console.log('Prof: '+prof+ '/ Power Ability: '+powerAbility+ '/ ability Mod: '+abilityMod+'/ Power Attack Mod:'+powerAttackMod);
-    html.find(".power-mod .power-attack-mod").html(text);
-  }
-}
-
-// Abbreviate Currency
-async function abbreviateCurrency(app, html, data) {
-  html.find(".currency .currency-item label").each(function () {
-    let currency = $(this).data("denom").toUpperCase();
-    let abbr = game.i18n.localize(`TIDYSW5E.CurrencyAbbr${currency}`);
-    if (abbr == `TIDYSW5E.CurrencyAbbr${currency}`) {
-      abbr = currency;
-    }
-    $(this).html(abbr);
-  });
-}
-
 // transform DAE formulas for maxPreparesPowers
 function tidyCustomEffect(actor, change) {
   if (change.key !== "data.details.maxPreparedPowers") return;
@@ -577,8 +550,6 @@ Hooks.on("renderTidySW5eSheet", (app, html, data) => {
   addClassList(app, html, data);
   toggleTraitsList(app, html, data);
   checkDeathSaveStatus(app, html, data);
-  abbreviateCurrency(app, html, data);
-  powerAttackMod(app, html, data);
   addFavorites(app, html, data, position);
   countAttunedItems(app, html, data);
   countInventoryItems(app, html, data);

@@ -247,7 +247,7 @@
   transform: translateY(-50%);
   width: 0px;
   height: 460px;
-  background: url(../../../ui/parchment.jpg);
+  background: linear-gradient(90deg, #afc6d6 0%, #d6d6d6 30%, #d6d6d6 70%, #afc6d6);
   border-radius: 5px 0 0 5px;
   z-index: -10;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
@@ -1566,9 +1566,18 @@
   fill: var(--light-color);
 }
 
+.tidysw5e.sheet.actor .header-attributes .ac-display .label {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 16px;
+  font-weight: 700;
+}
+
 .tidysw5e.sheet.actor .header-attributes .ac-display .value {
   position: absolute;
-  top: 50%;
+  top: 66%;
   left: 50%;
   transform: translate(-50%, -50%);
   font-size: 40px;
@@ -1848,6 +1857,30 @@
 
 .tidysw5e.sheet.actor .allow-edit .tidysw5e-navigation .toggle-allow-edit .fa-lock {
   display: none;
+}
+
+.tidysw5e.sheet.actor .toggle-view-force .fa-eye {
+  display: none;
+}
+
+.tidysw5e.sheet.actor .toggle-view-force .hide-force .fa-eye-slash {
+  display: none;
+}
+
+.tidysw5e.sheet.actor .toggle-view-force .hide-force .fa-eye {
+  display: inline-block;
+}
+
+.tidysw5e.sheet.actor .toggle-view-tech .fa-eye {
+  display: none;
+}
+
+.tidysw5e.sheet.actor .toggle-view-tech .hide-tech .fa-eye-slash {
+  display: none;
+}
+
+.tidysw5e.sheet.actor .toggle-view-tech .hide-tech .fa-eye {
+  display: inline-block;
 }
 
 .tidysw5e.sheet.actor .sheet-body {
@@ -2133,6 +2166,10 @@
 
 .tidysw5e.sheet.actor .resources .resource .resource-value .res-max {
   text-align: left;
+}
+
+.tidysw5e.sheet.actor .hide-tabs {
+  margin-top: 12px;
 }
 
 .tidysw5e.sheet.actor .traits {
@@ -2434,6 +2471,7 @@
   display: flex;
   flex: 0 0 30px;
   border-top: 1px solid var(--light-color);
+  justify-content: space-between;
 }
 
 .tidysw5e.sheet.actor .attuned-items-counter {
@@ -2710,12 +2748,12 @@
   float: left;
 }
 
-.tidysw5e.sheet.actor .items-list .items-header-labels .items-header-school {
-  width: 50px;
+.tidysw5e.sheet.actor .items-list .items-header-labels .items-header-comps {
+  width: 30px;
 }
 
 .tidysw5e.sheet.actor .items-list .items-header-labels .items-header-weight,
-.tidysw5e.sheet.actor .items-list .items-header-labels .items-header-comps,
+.tidysw5e.sheet.actor .items-list .items-header-labels .items-header-school,
 .tidysw5e.sheet.actor .items-list .items-header-labels .items-header-range {
   width: 70px;
 }
@@ -3015,7 +3053,7 @@
 }
 
 .tidysw5e.sheet.actor .items-list .power-school {
-  flex: 0 0 50px;
+  flex: 0 0 70px;
 }
 
 .tidysw5e.sheet.actor .items-list .power-range {
@@ -3322,7 +3360,7 @@
 }
 
 .tidysw5e.sheet.actor .power-comps {
-  flex: 0 0 70px;
+  flex: 0 0 30px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -4261,7 +4299,7 @@
 }
 
 .tidysw5e.sheet.actor.npc .items-list .items-header-labels .items-header-comps {
-  width: 50px;
+  width: 30px;
 }
 
 .tidysw5e.sheet.actor.npc .items-list .items-header-labels .items-header-uses,
@@ -4279,7 +4317,7 @@
 }
 
 .tidysw5e.sheet.actor.npc .items-list .power-comps {
-  flex: 0 0 50px;
+  flex: 0 0 30px;
 }
 
 .tidysw5e.sheet.actor.npc .items-list .item-charges,
@@ -4307,7 +4345,7 @@
   margin: 0;
   position: sticky;
   bottom: 0;
-  background: url(../../../systems/sw5e/ui/parchment.jpg) repeat;
+  background: linear-gradient(90deg, #afc6d6 0%, #d6d6d6 30%, #d6d6d6 70%, #afc6d6);
   background-attachment: fixed;
 }
 

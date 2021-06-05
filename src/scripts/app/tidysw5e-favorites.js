@@ -376,13 +376,6 @@ export const addFavorites = async function (app, html, data, position) {
         // app.activateFavs = true;
       });
 
-      // changing the power slot values and overrides
-      favHtml.find(".power-slots input").change((ev) => {
-        let path = ev.target.dataset.target;
-        let data = Number(ev.target.value);
-        app.actor.update({ [path]: data });
-      });
-
       // creating charges for the item
       favHtml.find(".addCharges").click((ev) => {
         let itemId = $(ev.target).parents(".item")[0].dataset.itemId;

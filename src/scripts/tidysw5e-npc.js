@@ -21,6 +21,14 @@ Handlebars.registerHelper("check", function (value, comparator) {
   return value === comparator ? "No content" : value;
 });
 
+Handlebars.registerHelper("positive-prefix", function (value) {
+  return value >= 0 ? `+${value}` : value;
+});
+
+Handlebars.registerHelper("max", function (value1, value2) {
+  return Math.max(value1, value2);
+});
+
 export default class TidySW5eNPC extends ActorSheet5eNPC {
   /**
    * Define default rendering options for the NPC sheet

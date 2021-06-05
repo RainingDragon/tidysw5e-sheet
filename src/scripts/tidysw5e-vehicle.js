@@ -136,15 +136,6 @@ async function toggleTraitsList(app, html, data) {
   }
 }
 
-// Abbreviate Currency
-async function abbreviateCurrency(app, html, data) {
-  html.find(".currency .currency-item label").each(function () {
-    let currency = $(this).data("denom").toUpperCase();
-    let abbr = game.i18n.localize(`TIDYSW5E.CurrencyAbbr${currency}`);
-    $(this).html(abbr);
-  });
-}
-
 // add sheet classes
 async function setSheetClasses(app, html, data) {
   if (game.settings.get("tidysw5e-sheet", "rightClickDisabled")) {
@@ -189,6 +180,5 @@ Hooks.on("renderTidySW5eVehicle", (app, html, data) => {
   setSheetClasses(app, html, data);
   editProtection(app, html, data);
   toggleTraitsList(app, html, data);
-  abbreviateCurrency(app, html, data);
   // console.log(data);
 });

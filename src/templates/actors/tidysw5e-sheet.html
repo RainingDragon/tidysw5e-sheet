@@ -210,10 +210,10 @@
 					{{!-- Header Attributes --}}
 					<ul class="header-attributes">
 						<li class="header-attribute ac-display" title="{{ localize 'SW5E.ArmorClass' }}">
-							<svg version="1.1" x="0px" y="0px" viewBox="0 0 90 100" xml:space="preserve">
-							<path d="M45,100C-2.6,79.3,0,12.6,0,12.6c0-2.2,1.8-4,4.4-4.6l39.1-7.9C44,0,44.5,0,45,0c0.5,0,1,0,1.4,0.1L85.5,8
-								c2.6,0.5,4.4,2.4,4.4,4.6C90,12.6,92.6,79.3,45,100L45,100z"/>
+							<svg version="1.1" x="0px" y="0px" viewBox="0 0 278.25 323.498" xml:space="preserve">
+							<path d="M141 19.5c5.569.15 11.227 2.296 15.75 3.75h3.75c7.851 2.547 17.641 4.223 25.5 6.75h3.75v.75h3v.75h3v.75q3.375.375 6.75.75a48.187 48.187 0 0 0 13.5 3q.375-11.624.75-23.25h.75c1.023-3.609-1.387-9.601.75-12q.75 18.373 1.5 36.75 14.999 3.375 30 6.75V39c1.185-1.381.748-4.964.75-7.5V12.75c.001-2.661-.519-6.785.75-8.25q.375 24.373.75 48.75c6.384 19.734 11.16 41.548 17.25 61.5q1.125 11.249 2.25 22.5c1.331 4.579 1.676 11.168 3 15.75v6h.75v5.25c1.476 5.048 2.422 13.129 3 18.75h-34.5c-2.096 5.745-.75 21.588-.75 29.25V276h20.25c.378 4.786 2.976 9.644 4.5 13.5q.375 2.625.75 5.25h.75q.375 2.25.75 4.5h.75v2.25h.75v2.25h.75V306h.75v2.25h.75v2.25h.75q.375 2.25.75 4.5a26.43 26.43 0 0 1 2.25 6.75h.75v.75h-.75c-1.908 1.658-14.854.75-18.75.75H0Q7.499 299.627 15 276h20.25v-92.25c-2.883-1.06-7.968-.75-12-.75H0a59.894 59.894 0 0 1 2.25-13.5v-6H3v-5.25h.75V153h.75v-6c2.391-8.11 2.124-18.886 4.5-27v-6c6.17-19.86 11.206-41.636 17.25-61.5q.375-17.623.75-35.25c0-3.561-1.082-11.419.75-13.5v36h.75v4.5q14.999-3.375 30-6.75v-12h.75V6.75H60V1.5h.75q.375 11.999.75 24h.75c1.022 3.617-.295 8.442.75 11.25 7.162-2.558 16.108-3.581 23.25-6q3-.375 6-.75v-.75H96v-.75h3v-.75h3V27h3.75v-.75h3v-.75h3v-.75h3.75c6.239-2.021 14.608-4.451 21.75-5.25v-2.25h.75V6.75h.75c.711-2.472-.658-5.192.75-6.75a106.569 106.569 0 0 0 1.5 19.5z" style="fill:#a6a5a5;fill-rule:evenodd"/>
 							</svg>
+							<span class="label">AC</span>
 							<input class="value" name="data.attributes.ac.value" type="text" value="{{data.attributes.ac.value}}" data-dtype="Number" placeholder="10"maxlength="2">
 						</li>
 						<li class="header-attribute initiative">
@@ -259,8 +259,12 @@
 		<nav class="tidysw5e-navigation root-tabs" data-group="primary">
 			<a class="item active" data-tab="attributes">{{ localize "SW5E.Attributes" }}</a>
 			<a class="item" data-tab="inventory">{{ localize "SW5E.Inventory" }}</a>
+			{{#unless actor.flags.tidysw5e-sheet.view-force}}
 			<a class="item" data-tab="force-powerbook">{{ localize "SW5E.ForcePowerbook" }}</a>
+			{{/unless}}
+			{{#unless actor.flags.tidysw5e-sheet.view-tech}}
 			<a class="item" data-tab="tech-powerbook">{{ localize "SW5E.TechPowerbook" }}</a>
+			{{/unless}}
 			<a class="item" data-tab="features">{{ localize "SW5E.Features" }}</a>
 			<a class="item" data-tab="effects">{{ localize "SW5E.Effects" }}</a>
 			<a class="item" data-tab="biography">{{ localize "SW5E.Biography" }}</a>
@@ -330,11 +334,22 @@
 						</li>
 						{{/each}}
 					</ul>
+
+					{{#if actor.flags.tidysw5e-sheet.allow-edit}}
+					{{#if owner}}
+					<div class="hide-tabs">
+						<div class="toggle-view-force">{{#if actor.flags.tidysw5e-sheet.view-force}}Show{{else}}Hide{{/if}} force powerbook: <span class="{{#if actor.flags.tidysw5e-sheet.view-force}}hide-force{{/if}}"><i class="fas fa-eye-slash" title="Hide the force powerbook"></i><i class="fas fa-eye"></i></span></div>
+						<div class="toggle-view-tech">{{#if actor.flags.tidysw5e-sheet.view-tech}}Show{{else}}Hide{{/if}} tech powerbook: <span class="{{#if actor.flags.tidysw5e-sheet.view-tech}}hide-tech{{/if}}"><i class="fas fa-eye-slash" title="Hide the tech powerbook"></i><i class="fas fa-eye"></i></span></div>
+					</div>
+					{{/if}}
+					{{/if}}
+
 					{{!-- Traits --}}
 					<div class="alt-trait-pos"></div>
 
 					{{!-- Actions --}}
 					<div class="actions-target list-layout"></div>
+
 					{{!-- Favorites --}}
 					<div class="favorites-target"></div>
 				</section>

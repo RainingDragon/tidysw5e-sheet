@@ -1,30 +1,9 @@
 <div class="powercasting-ability">
-  <h3 class="power-dc power-mod">
-    {{localize 'SW5E.PowerDC'}} {{data.attributes.powerdc}} / {{localize 'TIDYSW5E.PowerAttackMod'}}:
-    <span class="power-attack-mod"></span>
-  </h3>
-  <div class="max-prepared-powers">
-    <p>{{localize 'TIDYSW5E.PreparedPowers'}}</p>
-    <span class="powers-prepared">{{#if preparedPowers}}{{preparedPowers}}{{else}}0{{/if}}</span>/<input
-      class="max-preparation"
-      type="text"
-      name="data.details.maxPreparedPowers"
-      value="{{data.details.maxPreparedPowers}}"
-      data-dtype="Number"
-      placeholder="0"
-      title="{{localize 'TIDYSW5E.PreparedPowersMax'}}"
-    />
+  <div class="power-dc power-mod">
+    <h4>Tech</h4>
+    <span>DC {{data.attributes.powerTechDC}} / Mod {{positive-prefix data.abilities.int.mod}}
   </div>
-  <div class="powercasting-attribute">
-    <p>{{localize 'SW5E.PowerAbility'}}</p>
-    <select name="data.attributes.powercasting" data-type="String">
-      {{#select data.attributes.powercasting}}
-      <option value="">{{localize 'SW5E.None'}}</option>
-      {{#each data.abilities as |abl a|}}
-      <option value="{{a}}">{{abl.label}}</option>
-      {{/each}} {{/select}}
-    </select>
-  </div>
+
   {{#if isNPC}}
   <h3>{{localize 'SW5E.PowercasterLevel'}}</h3>
   <input

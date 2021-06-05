@@ -7,29 +7,12 @@
     <li class="items-header powerbook-header">
       <div class="power-level-slots">
         <h3>{{section.label}}</h3>
-
-        {{#if section.usesSlots}}
-        <div class="power-detail power-slots">
-          <input type="text" name="data.powers.{{section.prop}}.value" value="{{section.uses}}" placeholder="0"
-          data-dtype="Number"/>
-          <span class="sep"> / </span>
-          <span class="power-max" data-level="{{section.prop}}" data-slots="{{section.slots}}">
-            {{{section.slots}}}
-            {{#if ../editable}}
-            <a class="slot-max-override" title="{{localize 'SW5E.PowerProgOverride'}}">
-              <i class="fas fa-pencil-alt"></i>
-            </a>
-            {{/if}}
-          </span>
-        </div>
-        {{/if}}
-
       </div>
     </li>
 
     <ul class="item-list">
       {{#each section.powers as |item i|}}
-      <li class="item {{#if ../../owner}}context-enabled{{/if}} {{~#if section.canPrepare}} preparable{{/if}} {{~#if data.preparation.prepared}} prepared{{/if}}{{#if (eq data.preparation.mode 'always')}} alwaysPrepared{{/if}}" data-item-id="{{item._id}}">
+      <li class="item {{#if ../../owner}}context-enabled{{/if}}" data-item-id="{{item._id}}">
         {{~#if item.flags.favtab}} 
         {{~#if item.flags.favtab.isFavorite}} 
           <i class="fas fa-bookmark icon-fav" title="{{localize 'TIDYSW5E.isFav'}}"></i>
@@ -51,15 +34,10 @@
         </div>
         {{/if}}
 
-        <div class="info-card {{~#if item.data.preparation.prepared}} equipped {{/if}}{{#if (eq data.preparation.mode 'always')}} alwaysPrepared{{/if}}" data-item-id="{{item._id}}">
+        <div class="info-card" data-item-id="{{item._id}}">
           <p class="info-card-name">{{item.name}}</p>
           <div class="info-card-states">
             <span><!-- <i class="fas fa-hat-wizard"></i><b>{{localize 'SW5E.PowerSchool'}}:</b>  -->{{labels.school}}</span>
-            {{#if ../../owner}}
-            {{#if section.canPrepare}}
-              <span>{{item.toggleTitle}}</span>
-            {{/if}}
-            {{/if}}
           </div>
           <div class="info-card-amount">
             {{#if item.hasUses }}
@@ -79,10 +57,6 @@
           <i class="fas fa-ellipsis-v"></i>
         </div>
         <div class="item-controls context-menu">
-          <hr class="context-divider">
-          {{#if (and section.canPrepare (ne data.preparation.mode 'always')) }}
-          <a class="item-control item-toggle {{item.toggleClass}}"><i class="fas fa-book icon-on"></i><i class="fas fa-book icon-off"></i> {{#if (eq item.toggleClass 'active')}}{{localize 'TIDYSW5E.Unprepare'}}{{else}}{{localize 'TIDYSW5E.Prepare'}}{{/if}}</a>
-          {{/if}}
           <hr class="context-divider">
           <a class="item-control item-edit" title="{{localize 'TIDYSW5E.EditPower'}}"><i class="fas fa-pencil-alt"></i> {{localize 'TIDYSW5E.EditPower'}}</a>
           <hr class="context-divider">
