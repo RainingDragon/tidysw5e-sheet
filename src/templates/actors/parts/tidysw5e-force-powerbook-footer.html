@@ -1,17 +1,59 @@
 <div class="powercasting-ability">
+  <div class="resource">
+    <h4>{{localize "SW5E.ConsumableForce"}}</h4>
+
+    <div>
+      <input
+        name="data.attributes.force.points.value"
+        type="text"
+        value="{{data.attributes.force.points.value}}"
+        data-dtype="Number"
+        placeholder="0"
+      />
+      <span>/</span>
+      <input
+        name="data.attributes.force.points.max"
+        type="text"
+        value="{{data.attributes.force.points.max}}"
+        data-dtype="Number"
+        placeholder="0"
+      />
+    </div>
+
+    <footer>
+      <input
+        name="data.attributes.force.points.temp"
+        type="text"
+        placeholder="+Temp"
+        value="{{data.attributes.force.points.temp}}"
+        data-dtype="Number"
+      />
+      <input
+        name="data.attributes.force.points.tempmax"
+        type="text"
+        placeholder="+Max"
+        value="{{data.attributes.force.points.tempmax}}"
+        data-dtype="Number"
+      />
+    </footer>
+  </div>
+
   <div class="power-dc power-mod">
     <h4>Universal</h4>
-    <span>DC {{data.attributes.powerForceUnivDC}} / Mod {{positive-prefix (max data.abilities.wis.mod data.abilities.cha.mod)}}
+    <span
+      >DC {{data.attributes.powerForceUnivDC}} / Mod {{positive-prefix (max data.abilities.wis.mod
+      data.abilities.cha.mod)}}</span
+    >
   </div>
 
   <div class="power-dc power-mod">
     <h4>Light</h4>
-    <span>DC {{data.attributes.powerForceLightDC}} / Mod {{positive-prefix data.abilities.wis.mod}}
+    <span>DC {{data.attributes.powerForceLightDC}} / Mod {{positive-prefix data.abilities.wis.mod}}</span>
   </div>
 
   <div class="power-dc power-mod">
     <h4>Dark</h4>
-    <span>DC {{data.attributes.powerForceDarkDC}} / Mod {{positive-prefix data.abilities.cha.mod}}
+    <span>DC {{data.attributes.powerForceDarkDC}} / Mod {{positive-prefix data.abilities.cha.mod}}</span>
   </div>
 
   {{#if isNPC}}

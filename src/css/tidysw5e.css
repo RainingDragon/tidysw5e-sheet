@@ -2682,9 +2682,34 @@
   font-family: var(--signika);
 }
 
+.tidysw5e.sheet.actor .powercasting-ability .resource {
+  text-align: center;
+}
+
+.tidysw5e.sheet.actor .powercasting-ability .resource div,
+.tidysw5e.sheet.actor .powercasting-ability .resource footer {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+}
+
+.tidysw5e.sheet.actor .powercasting-ability .resource div {
+  font-size: 1.3em;
+}
+
+.tidysw5e.sheet.actor .powercasting-ability .resource footer {
+  font-size: 0.9em;
+  margin-top: 0;
+}
+
+.tidysw5e.sheet.actor .powercasting-ability .power-dc {
+  text-align: center;
+}
+
 .tidysw5e.sheet.actor .powercasting-ability input {
   width: 20px;
   height: 20px;
+  flex-grow: 1;
 }
 
 .tidysw5e.sheet.actor .items-list {
