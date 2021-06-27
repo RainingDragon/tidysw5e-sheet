@@ -101,6 +101,14 @@ export function settingsList() {
   // Settings Menu
 
   // PC Sheet Settings
+  game.settings.register("tidysw5e-sheet", "journalTabDisabled", {
+    name: `${game.i18n.localize("TIDYSW5E.Settings.JournalTab.name")}`,
+    hint: game.i18n.localize("TIDYSW5E.Settings.JournalTab.hint"),
+    scope: "user",
+    config: false,
+    default: false,
+    type: Boolean
+  });
 
   game.settings.register("tidysw5e-sheet", "classListDisabled", {
     name: `${game.i18n.localize("TIDYSW5E.Settings.ClassList.name")}`,
@@ -177,6 +185,15 @@ export function settingsList() {
   game.settings.register("tidysw5e-sheet", "traitsMovedBelowResource", {
     name: `${game.i18n.localize("TIDYSW5E.Settings.TraitsMovedBelowResource.name")}`,
     hint: game.i18n.localize("TIDYSW5E.Settings.TraitsMovedBelowResource.hint"),
+    scope: "user",
+    config: false,
+    default: false,
+    type: Boolean
+  });
+
+  game.settings.register("tidysw5e-sheet", "ammoEquippedOnly", {
+    name: `${game.i18n.localize("TIDYSW5E.Settings.AmmoEquippedOnly.name")}`,
+    hint: game.i18n.localize("TIDYSW5E.Settings.AmmoEquippedOnly.hint"),
     scope: "user",
     config: false,
     default: false,

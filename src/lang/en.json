@@ -157,6 +157,10 @@
 		"name": "Hide character class list.",
 		"hint": "Enable to hide the class list below the character's name."
 	},
+	"TIDYSW5E.Settings.JournalTab": {
+		"name": "Hide character journal.",
+		"hint": "Enable to hide the journal tab."
+	},
 	"TIDYSW5E.Settings.InspirationAnimation": {
 		"name": "Inanimate inspiration tracker.",
 		"hint": "Enable to turn off inspiration tracker glow animation."
@@ -188,6 +192,10 @@
 	"TIDYSW5E.Settings.TraitsMovedBelowResource": {
 		"name": "Move traits below resources.",
 		"hint": "Enable to move traits from the left side below resources."
+	},
+	"TIDYSW5E.Settings.AmmoEquippedOnly": {
+		"name": "Only show equipped ammunition.",
+		"hint": "Enable to only show currently equipped ammunition in Weapon ammo selector."
 	},
 	"TIDYSW5E.Settings.TraitsAlwaysShown": {
 		"name": "Always show traits.",
@@ -278,5 +286,11 @@
 		"unlinked": "Highlight unlinked tokens",
 		"linked": "Highlight linked tokens",
 		"both": "Highlight linked and unlinked tokens"
+	},
+	"TIDYSW5E.Settings.DefaultActionsTab": {
+		"name": "Default Tab when opening a sheet for the first time.",
+		"hint": "Chose between 'Actions' and 'Attributes'.",
+		"default": "Actions",
+		"attributes": "Attributes"
 	}
 }

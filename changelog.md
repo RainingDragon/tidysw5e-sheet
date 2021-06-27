@@ -16,7 +16,64 @@ Thank you very much!
 
 ## Version History
 
-### Version 0.4.29
+### Version 0.5.10 ###
+
+- definately fixed type selection for newly created NPCs (maybe)
+
+### Version 0.5.9 ###
+
+- fixed type selection for newly created NPCs
+
+### Version 0.5.8 ###
+
+- actually respect the npc/vehicle injection rules for Character Actions List
+- fixed exhaustion effects
+- added ranged ammo selection in inventory (thanks for the contribution @flamewave000)
+- ensured important input field identifiers are unique (thanks @calego)
+- updated japanese translation
+
+### Version 0.5.7 ###
+
+- jet again: fixed a bug related to Character Actions List
+
+### Version 0.5.6 ###
+
+- fixed a bug related to Character Actions List
+
+### Version 0.5.5 ###
+
+- updated character actions list integration
+- fixed display error for item info cards with 0 delay
+- new per player setting to hide the journal tab
+- new setting for Character Actions list module: Choose default tab for first time opening a sheet (actions or attributes)
+
+### Version 0.5.4 ###
+
+- added the new hit dice configurator that I was unaware of!
+
+### Version 0.5.3 ###
+
+- fixed alphabetical skill sorting for translations
+- fixed attunement tracker
+- fixed type selection for NPCs with empty type attribute
+- fixed ability rolls for observer (PC/NPC)
+
+- in sensitive data mode the skill list will keep proficiency marks while sheet is locked but prevent toggling them
+
+### Version 0.5.2 ###
+
+- Fix for some NPC sheets not opening due to DEFAULT_TOKEN error
+
+### Version 0.5.1 ###
+
+- Fixing version number issue
+
+### Version 0.5.0 ###
+
+- updated sheet for foundry 0.8.x and dnd5e 1.3.0 (required)
+- updated korean and japanese translation
+
+### Version 0.4.29 ###
 
 - fix for magic items on NPCs
 - fix for hidden NPC resources if actions/resistance values are 1

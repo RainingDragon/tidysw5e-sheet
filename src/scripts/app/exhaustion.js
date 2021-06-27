@@ -19,7 +19,7 @@ async function updateExhaustion(actorEntity) {
       let effect = {
         key: "flags.midi-qol.disadvantage.ability.check.all",
         value: true,
-        mode: ACTIVE_EFFECT_MODES.OVERRIDE,
+        mode: CONST.ACTIVE_EFFECT_MODES.OVERRIDE,
         priority: 20
       };
       exhaustionSet.push(effect);
@@ -53,7 +53,7 @@ async function updateExhaustion(actorEntity) {
       let effect = {
         key: "flags.midi-qol.disadvantage.ability.save.all",
         value: true,
-        mode: ACTIVE_EFFECT_MODES.OVERRIDE,
+        mode: CONST.ACTIVE_EFFECT_MODES.OVERRIDE,
         priority: 20
       };
       exhaustionSet.push(effect);
@@ -61,7 +61,7 @@ async function updateExhaustion(actorEntity) {
       effect = {
         key: "flags.midi-qol.disadvantage.attack.all",
         value: true,
-        mode: ACTIVE_EFFECT_MODES.OVERRIDE,
+        mode: CONST.ACTIVE_EFFECT_MODES.OVERRIDE,
         priority: 20
       };
       exhaustionSet.push(effect);
@@ -104,7 +104,7 @@ async function updateExhaustion(actorEntity) {
       let effect = {
         key: "data.attributes.hp.value",
         value: 0,
-        mode: ACTIVE_EFFECT_MODES.OVERRIDE,
+        mode: CONST.ACTIVE_EFFECT_MODES.OVERRIDE,
         priority: 20
       };
       exhaustionSet.push(effect);

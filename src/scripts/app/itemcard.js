@@ -111,15 +111,15 @@ export const tidysw5eItemCard = function (html, actor) {
     if (!itemCardIsFixed) infoContainer.removeClass("open");
   };
 
-  containerTrigger.mouseenter(function (event) {
-    if (!itemCardIsFixed) {
-      if (!itemCardDelay) infoContainer.addClass("open");
+  cardTrigger.mouseenter( function(event){
+    if(!itemCardIsFixed){
+      if(!itemCardDelay) infoContainer.addClass('open');
     }
   });
 
-  containerTrigger.mouseleave(function (event) {
-    if (!itemCardIsFixed) {
-      if (!itemCardDelay) hideContainer();
+  cardTrigger.mouseleave( function (event) {
+    if(!itemCardIsFixed){
+      if(!itemCardDelay) hideContainer();
     }
   });
 
@@ -163,13 +163,14 @@ export const tidysw5eItemCard = function (html, actor) {
   function showCard(event) {
     getBounds();
     event.preventDefault();
-    let li = $(event.currentTarget).closest(".item"),
-      item = actor.getOwnedItem(li.data("item-id")),
-      itemData = item.data,
-      chatData = item.getChatData({ secrets: actor.owner }),
-      itemDescription = chatData.description.value,
-      infoCard = li.find(".info-card");
-
+    let li = $(event.currentTarget).closest('.item'),
+        item = actor.items.get(li.data("item-id")),
+        itemData = item.data,
+        chatData = item.getChatData({secrets: actor.isOwner}),
+        itemDescription = chatData.description.value,
+        
+        infoCard = li.find('.info-card');
+        
     infoCard.clone().appendTo(infoContainerContent);
 
     let infoBackground = infoContainer.find(".item-info-container-background"),

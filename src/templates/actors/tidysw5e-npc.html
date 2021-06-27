@@ -1,20 +1,20 @@
 <form class="{{cssClass}} flexcol" autocomplete="off">
   <div class="tidysw5e-sheet tidysw5e-npc {{#if actor.flags.tidysw5e-sheet.allow-edit}}allow-edit{{/if}}">
     
-		{{!-- Item Info Card --}}
-		<section id="item-info-container">
-			<i class="item-info-container-background fab fa-d-and-d"></i>
-			<div class="info-wrap">
-				<article id="item-info-container-content">
-					<!-- Info Card here -->
-				</article>
-				
-				<article class="info-card-hint">
-					<p><span class="key">X</span> {{localize "TIDYSW5E.ItemCardsKeyHint"}}</p>
-					<p><i class="fas fa-mouse"></i> {{localize "TIDYSW5E.ItemCardsMouseHint"}}</p>
-				</article>
-			</div>
-		</section>
+    {{!-- Item Info Card --}}
+    <section id="item-info-container">
+      <i class="item-info-container-background fab fa-d-and-d"></i>
+      <div class="info-wrap">
+        <article id="item-info-container-content">
+          <!-- Info Card here -->
+        </article>
+        
+        <article class="info-card-hint">
+          <p><span class="key">X</span> {{localize "TIDYSW5E.ItemCardsKeyHint"}}</p>
+          <p><i class="fas fa-mouse"></i> {{localize "TIDYSW5E.ItemCardsMouseHint"}}</p>
+        </article>
+      </div>
+    </section>
     
     {{!-- NPC Sheet Header --}}
     <header class="tidysw5e-header">
@@ -23,10 +23,10 @@
           {{!-- Portrait --}}
           <div class="portrait">
             <img class="player-image" src="{{actor.img}}" alt="{{actor.name}}" title="{{ localize 'TIDYSW5E.EditActorImage' }} / {{ localize 'TIDYSW5E.ShowActorImage' }}" data-edit="img">
-						<div class="portrait-menu hidden">
-							<a class="showActorArt" id="showPortrait">{{ localize 'TIDYSW5E.ShowPortraitArt' }}</a>
-							<a class="showActorArt" id="showToken">{{ localize 'TIDYSW5E.ShowTokenArt' }}</a>
-						</div>
+            <div class="portrait-menu hidden">
+              <a class="showActorArt" id="showPortrait">{{ localize 'TIDYSW5E.ShowPortraitArt' }}</a>
+              <a class="showActorArt" id="showToken">{{ localize 'TIDYSW5E.ShowTokenArt' }}</a>
+            </div>
           </div>
 
           {{!-- HP Overlay --}}
@@ -47,12 +47,12 @@
           {{!-- Hit Points --}}
           <div class="portrait-hp" title="{{ localize 'SW5E.HitPoints' }}">
             <div class="hp-bar" style="background: linear-gradient(
-								-90deg,
-								transparent 0%,
-								transparent calc(100% - ((100% / ({{#if (eq data.attributes.hp.max 0)}} 1 {{else}} {{data.attributes.hp.max}} {{/if}} + {{#if data.attributes.hp.tempmax}}{{data.attributes.hp.tempmax}}{{else}}0{{/if}} )) * ({{data.attributes.hp.value}} + {{#if data.attributes.hp.temp}}{{data.attributes.hp.temp}}{{else}}0{{/if}})) ),
-								 	rgba(0,200,0,0.5) calc(100% - ((100% / ({{#if (eq data.attributes.hp.max 0)}} 1 {{else}} {{data.attributes.hp.max}} {{/if}} + {{#if data.attributes.hp.tempmax}}{{data.attributes.hp.tempmax}}{{else}}0{{/if}} )) * ({{data.attributes.hp.value}} + {{#if data.attributes.hp.temp}}{{data.attributes.hp.temp}}{{else}}0{{/if}})) ),
-								 	rgba(0,200,0,0.5) 100%);">
-						</div>
+                -90deg,
+                transparent 0%,
+                transparent calc(100% - ((100% / ({{#if (eq data.attributes.hp.max 0)}} 1 {{else}} {{data.attributes.hp.max}} {{/if}} + {{#if data.attributes.hp.tempmax}}{{data.attributes.hp.tempmax}}{{else}}0{{/if}} )) * ({{data.attributes.hp.value}} + {{#if data.attributes.hp.temp}}{{data.attributes.hp.temp}}{{else}}0{{/if}})) ),
+                   rgba(0,200,0,0.5) calc(100% - ((100% / ({{#if (eq data.attributes.hp.max 0)}} 1 {{else}} {{data.attributes.hp.max}} {{/if}} + {{#if data.attributes.hp.tempmax}}{{data.attributes.hp.tempmax}}{{else}}0{{/if}} )) * ({{data.attributes.hp.value}} + {{#if data.attributes.hp.temp}}{{data.attributes.hp.temp}}{{else}}0{{/if}})) ),
+                   rgba(0,200,0,0.5) 100%);">
+            </div>
             <input class="hp-min" name="data.attributes.hp.value" type="text" value="{{data.attributes.hp.value}}"
             data-dtype="Number" placeholder="0" maxlength="5">
             <span class="value-seperator">/</span>
@@ -108,12 +108,13 @@
                 </ul>
               </li>
             </ul>
-            <span contenteditable="true" powercheck="false" data-target="{{actor._id}}-type" data-placeholder="{{ localize 'SW5E.Type' }}">{{data.details.type}}</span>
-            <span class="environment" title="{{ localize 'TIDYSW5E.Environment' }}"><i class="fas fa-tree"></i><span class="environment-label"><span contenteditable="true" powercheck="false" data-target="{{actor._id}}-environment" data-placeholder="{{ localize 'TIDYSW5E.Environment' }}" data-maxlength="80">{{data.details.environment}}</span></span></span>
-            <span contenteditable="true" powercheck="false" data-target="{{actor._id}}-alignment" data-placeholder="{{ localize 'SW5E.Alignment' }}">{{data.details.alignment}}</span>
-            <span class="source-info" contenteditable="true" powercheck="false" data-target="{{actor._id}}-source" data-placeholder="{{ localize 'SW5E.Source' }}" class="source">{{data.details.source}}</span>
-            <input type="hidden" data-input="{{actor._id}}-type" name="data.details.type" value="{{data.details.type}}" placeholder="{{ localize 'SW5E.Type' }}">
-            <input type="hidden" data-input="{{actor._id}}-environment" name="data.details.environment" value="{{data.details.environment}}" placeholder="{{ localize 'TIDYSW5E.Environment' }}">
+            <span class="creature-type" title="{{labels.type}}">
+              <a class="config-button" data-action="type" title="{{localize 'SW5E.CreatureTypeConfig'}}">{{#if (or (eq labels.type '') (eq labels.type none))}} {{localize 'SW5E.CreatureType'}} {{else}} {{labels.type}} {{/if}}</a>
+            </span>
+            <span class="environment" title="{{ localize 'TIDY5E.Environment' }}"><i class="fas fa-tree"></i><span class="environment-label"><span contenteditable="true" spellcheck="false" data-target="{{actor._id}}-environment" data-placeholder="{{ localize 'TIDY5E.Environment' }}" data-maxlength="80">{{data.details.environment}}</span></span></span>
+            <span contenteditable="true" spellcheck="false" data-target="{{actor._id}}-alignment" data-placeholder="{{ localize 'SW5E.Alignment' }}">{{data.details.alignment}}</span>
+            <span class="source-info" contenteditable="true" spellcheck="false" data-target="{{actor._id}}-source" data-placeholder="{{ localize 'SW5E.Source' }}" class="source">{{data.details.source}}</span>
+            <input type="hidden" data-input="{{actor._id}}-environment" name="data.details.environment" value="{{data.details.environment}}" placeholder="{{ localize 'TIDY5E.Environment' }}">
             <input type="hidden" data-input="{{actor._id}}-alignment" name="data.details.alignment" value="{{data.details.alignment}}" placeholder="{{ localize 'SW5E.Alignment' }}">
             <input data-input="{{actor._id}}-source" name="data.details.source" type="hidden" value="{{data.details.source}}" placeholder="{{ localize 'SW5E.Source' }}">
           </li>
@@ -153,8 +154,8 @@
                 <span>{{numberFormat data.attributes.init.total decimals=0 sign=true}}</span>
               </div>
               <footer class="value-footer">
-                <label for="{{actor._id}}-ini-mod">{{ localize 'TIDYSW5E.AbbrMod' }}</label>
-                <input id="{{actor._id}}-ini-mod" class="ini-mod" name="data.attributes.init.value" type="text" placeholder="0" data-dtype="Number" value="{{numberFormat data.attributes.init.value decimals=0 sign=true}}" maxlength="2">
+                <label for="{{@root/appId}}-ini-mod">{{ localize 'TIDY5E.AbbrMod' }}</label>
+                <input id="{{@root/appId}}-ini-mod" class="ini-mod" name="data.attributes.init.value" type="text" placeholder="0" data-dtype="Number" value="{{numberFormat data.attributes.init.value decimals=0 sign=true}}" maxlength="2">
             </footer>
             </li>
           </ul>
@@ -163,17 +164,17 @@
           <ul class="ability-scores">
             {{#each data.abilities as |ability id|}}
             <li class="ability {{#if ability.proficient}}proficient{{/if}}" data-ability="{{id}}">
-							<div class="wrapper" data-ability="{{id}}">
+              <div class="wrapper" data-ability="{{id}}">
                 <h4 class="ability-name box-title rollable" title="{{ability.label}}">{{ability.abbr}}</h4>
                 <div class="value">
                   <input class="ability-score" name="data.abilities.{{id}}.value" type="text" value="{{ability.value}}" data-dtype="Number" placeholder="10">
                 </div>
                 <div class="ability-modifiers value-footer">
-                  <span class="ability-mod" title="{{ localize 'SW5E.AbilityModifier' }}">{{numberFormat ability.mod decimals=0 sign=true}}</span>
+                  <span class="ability-mod rollable" title="{{ localize 'SW5E.AbilityModifier' }}">{{numberFormat ability.mod decimals=0 sign=true}}</span>
                   <input type="hidden" name="data.abilities.{{id}}.proficient" value="{{ability.proficient}}" data-dtype="Number">
                   <a class="proficiency-toggle ability-proficiency" title="{{ localize 'SW5E.Proficiency' }}">
                   {{{ability.icon}}}</a>
-                  <span class="ability-save" title="{{ localize 'SW5E.ActionSave' }}">{{numberFormat ability.save decimals=0 sign=true}}</span>
+                  <span class="ability-save rollable" title="{{ localize 'SW5E.ActionSave' }}">{{numberFormat ability.save decimals=0 sign=true}}</span>
                 </div>
                 <span class="mod-label ability-mod-label">{{ localize 'TIDYSW5E.AbbrMod' }}</span>
                 <span class="mod-label save-mod-label">{{ localize 'TIDYSW5E.AbbrSavingThrow' }}</span>
@@ -256,7 +257,7 @@
           </div>
           
           {{!-- Alternative Trait Position --}}
-					<div class="alt-trait-pos"></div>
+          <div class="alt-trait-pos"></div>
 
           {{> "modules/tidysw5e-sheet/templates/actors/parts/tidysw5e-features.html" sections=features}}
           {{> "modules/tidysw5e-sheet/templates/actors/parts/tidysw5e-npc-force-powerbook.html"}}
@@ -272,36 +273,36 @@
       {{!-- Biography Tab --}}
       <div class="tab biography" data-group="primary" data-tab="biography">
         <div class="top-notes note-entries">
-					<article>
-						<ul class="character-details">
-							<li><span>{{ localize "TIDYSW5E.Gender" }}:</span><span {{#if owner}}contenteditable="true"{{/if}} powercheck="false" data-target="{{actor._id}}-gender" data-maxlength="40">{{data.details.gender}}</span><input data-input="{{actor._id}}-gender" type="hidden" name="data.details.gender" value="{{data.details.gender}}"></li>
-							<li><span>{{ localize "TIDYSW5E.Age" }}:</span><span {{#if owner}}contenteditable="true"{{/if}} powercheck="false" data-target="{{actor._id}}-age" data-maxlength="5">{{data.details.age}}</span><input data-input="{{actor._id}}-age" type="hidden" name="data.details.age" value="{{data.details.age}}"></li>
-							<li><span>{{ localize "TIDYSW5E.Height" }}:</span><span {{#if owner}}contenteditable="true"{{/if}} powercheck="false" data-target="{{actor._id}}-height" data-maxlength="20">{{data.details.height}}</span><input data-input="{{actor._id}}-height" type="hidden" name="data.details.height" value="{{data.details.height}}"></li>
-							<li><span>{{ localize "TIDYSW5E.Weight" }}:</span><span {{#if owner}}contenteditable="true"{{/if}} powercheck="false" data-target="{{actor._id}}-weight" data-maxlength="20">{{data.details.weight}}</span><input data-input="{{actor._id}}-weight" type="hidden" name="data.details.weight" value="{{data.details.weight}}"></li>
-							<li><span>{{ localize "TIDYSW5E.Eyes" }}:</span><span {{#if owner}}contenteditable="true"{{/if}} powercheck="false" data-target="{{actor._id}}-eyes" data-maxlength="40">{{data.details.eyes}}</span><input data-input="{{actor._id}}-eyes" type="hidden" name="data.details.eyes" value="{{data.details.eyes}}"></li>
-							<li><span>{{ localize "TIDYSW5E.Skin" }}:</span><span {{#if owner}}contenteditable="true"{{/if}} powercheck="false" data-target="{{actor._id}}-skin" data-maxlength="40">{{data.details.skin}}</span><input data-input="{{actor._id}}-skin" type="hidden" name="data.details.skin" value="{{data.details.skin}}"></li>
-							<li><span>{{ localize "TIDYSW5E.Hair" }}:</span><span {{#if owner}}contenteditable="true"{{/if}} powercheck="false" data-target="{{actor._id}}-hair" data-maxlength="40">{{data.details.hair}}</span><input data-input="{{actor._id}}-hair" type="hidden" name="data.details.hair" value="{{data.details.hair}}"></li>
-						</ul>
-					</article>
-				</div>
+          <article>
+            <ul class="character-details">
+              <li><span>{{ localize "TIDYSW5E.Gender" }}:</span><span {{#if owner}}contenteditable="true"{{/if}} powercheck="false" data-target="{{actor._id}}-gender" data-maxlength="40">{{data.details.gender}}</span><input data-input="{{actor._id}}-gender" type="hidden" name="data.details.gender" value="{{data.details.gender}}"></li>
+              <li><span>{{ localize "TIDYSW5E.Age" }}:</span><span {{#if owner}}contenteditable="true"{{/if}} powercheck="false" data-target="{{actor._id}}-age" data-maxlength="5">{{data.details.age}}</span><input data-input="{{actor._id}}-age" type="hidden" name="data.details.age" value="{{data.details.age}}"></li>
+              <li><span>{{ localize "TIDYSW5E.Height" }}:</span><span {{#if owner}}contenteditable="true"{{/if}} powercheck="false" data-target="{{actor._id}}-height" data-maxlength="20">{{data.details.height}}</span><input data-input="{{actor._id}}-height" type="hidden" name="data.details.height" value="{{data.details.height}}"></li>
+              <li><span>{{ localize "TIDYSW5E.Weight" }}:</span><span {{#if owner}}contenteditable="true"{{/if}} powercheck="false" data-target="{{actor._id}}-weight" data-maxlength="20">{{data.details.weight}}</span><input data-input="{{actor._id}}-weight" type="hidden" name="data.details.weight" value="{{data.details.weight}}"></li>
+              <li><span>{{ localize "TIDYSW5E.Eyes" }}:</span><span {{#if owner}}contenteditable="true"{{/if}} powercheck="false" data-target="{{actor._id}}-eyes" data-maxlength="40">{{data.details.eyes}}</span><input data-input="{{actor._id}}-eyes" type="hidden" name="data.details.eyes" value="{{data.details.eyes}}"></li>
+              <li><span>{{ localize "TIDYSW5E.Skin" }}:</span><span {{#if owner}}contenteditable="true"{{/if}} powercheck="false" data-target="{{actor._id}}-skin" data-maxlength="40">{{data.details.skin}}</span><input data-input="{{actor._id}}-skin" type="hidden" name="data.details.skin" value="{{data.details.skin}}"></li>
+              <li><span>{{ localize "TIDYSW5E.Hair" }}:</span><span {{#if owner}}contenteditable="true"{{/if}} powercheck="false" data-target="{{actor._id}}-hair" data-maxlength="40">{{data.details.hair}}</span><input data-input="{{actor._id}}-hair" type="hidden" name="data.details.hair" value="{{data.details.hair}}"></li>
+            </ul>
+          </article>
+        </div>
         <div class="toggle-personality-info" title="{{localize 'TIDYSW5E.TogglePersonalityInfo'}}">{{#if actor.flags.tidysw5e-sheet.showNpcPersonalityInfo}}<i class="fas fa-angle-double-left"></i>{{else}}<i class="fas fa-angle-double-right"></i>{{/if}}</div>
         <div class="left-notes note-entries hidden">
           <article>
-						<div class="section-titles biopage">{{ localize "SW5E.PersonalityTraits" }}</div>
-						{{editor content=data.details.trait target="data.details.trait" button=true owner=owner editable=editable}}
-					</article>
-					<article>
-						<div class="section-titles biopage">{{ localize "SW5E.Ideals" }}</div>
-						{{editor content=data.details.ideal target="data.details.ideal" button=true owner=owner editable=editable}}
-					</article>
-					<article>
-						<div class="section-titles biopage">{{ localize "SW5E.Bonds" }}</div>
-						{{editor content=data.details.bond target="data.details.bond" button=true owner=owner editable=editable}}
-					</article>
-					<article>
-						<div class="section-titles biopage">{{ localize "SW5E.Flaws" }}</div>
-						{{editor content=data.details.flaw target="data.details.flaw" button=true owner=owner editable=editable}}
-					</article>
+            <div class="section-titles biopage">{{ localize "SW5E.PersonalityTraits" }}</div>
+            {{editor content=data.details.trait target="data.details.trait" button=true owner=owner editable=editable}}
+          </article>
+          <article>
+            <div class="section-titles biopage">{{ localize "SW5E.Ideals" }}</div>
+            {{editor content=data.details.ideal target="data.details.ideal" button=true owner=owner editable=editable}}
+          </article>
+          <article>
+            <div class="section-titles biopage">{{ localize "SW5E.Bonds" }}</div>
+            {{editor content=data.details.bond target="data.details.bond" button=true owner=owner editable=editable}}
+          </article>
+          <article>
+            <div class="section-titles biopage">{{ localize "SW5E.Flaws" }}</div>
+            {{editor content=data.details.flaw target="data.details.flaw" button=true owner=owner editable=editable}}
+          </article>
         </div>
 
         <div class="right-notes note-entries">

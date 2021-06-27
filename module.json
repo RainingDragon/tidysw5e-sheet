@@ -2,11 +2,13 @@
     "name": "tidysw5e-sheet",
     "title": "TidySW5e Sheet",
     "description": "Replaces the default D&D 5e character and NPC sheet with an alternate layout focused on a cleaner UI",
-    "version": "0.4.29-sw-0.0.15",
+    "version": "0.5.0-sw-0.0.1",
     "author": "sdenec#3813",
-    "minimumCoreVersion": "0.7.6",
-    "compatibleCoreVersion": "0.7.9",
-    "system": "sw5e",
+    "minimumCoreVersion": "0.8.3",
+    "compatibleCoreVersion": "0.8.6",
+    "system": [
+        "sw5e"
+    ],
     "esmodules": [
         "./scripts/tidysw5e-sheet.js",
         "./scripts/tidysw5e-npc.js",
