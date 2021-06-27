@@ -4,7 +4,7 @@
     {{#if isCharacter}}
     <div class="attuned-items-counter" title="{{localize 'DND5E.Attunement'}}">
       <i class="fas fa-sun"></i> <span class="attuned-items-current">{{#if data.details.attunedItemsCount}}{{data.details.attunedItemsCount}}{{else}}0{{/if}}</span>/<span class="attuned-items-max">{{data.details.attunedItemsMax}}</span>
-      <input type="text" class="attuned-items-max" name="data.details.attunedItemsMax" value="{{#if data.details.attunedItemsMax}}{{data.details.attunedItemsMax}}{{else}}3{{/if}}" placeholder="0" title="{{localize 'TIDY5E.AttunementMax'}}">
+      <input type="text" class="attuned-items-max" name="data.details.attunedItemsMax" value="{{#if data.details.attunedItemsMax}}{{data.details.attunedItemsMax}}{{else}}3{{/if}}" placeholder="0" title="{{localize 'TIDYSW5E.AttunementMax'}}">
     </div>
     {{/if}}
 
@@ -29,7 +29,7 @@
 
   {{#unless isNPC}}
     {{#with data.attributes.encumbrance}}
-    <div class="encumbrance {{#if encumbered}}encumbered{{/if}}" title="{{localize 'TIDY5E.Encumbrance'}}">
+    <div class="encumbrance {{#if encumbered}}encumbered{{/if}}" title="{{localize 'TIDYSW5E.Encumbrance'}}">
       <span class="encumbrance-bar" style="width:{{pct}}%"></span>
       <span class="encumbrance-label">{{value}} / {{max}}</span>
       <i class="encumbrance-breakpoint encumbrance-33 arrow-up"></i>

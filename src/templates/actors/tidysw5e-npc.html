@@ -111,10 +111,10 @@
             <span class="creature-type" title="{{labels.type}}">
               <a class="config-button" data-action="type" title="{{localize 'SW5E.CreatureTypeConfig'}}">{{#if (or (eq labels.type '') (eq labels.type none))}} {{localize 'SW5E.CreatureType'}} {{else}} {{labels.type}} {{/if}}</a>
             </span>
-            <span class="environment" title="{{ localize 'TIDY5E.Environment' }}"><i class="fas fa-tree"></i><span class="environment-label"><span contenteditable="true" spellcheck="false" data-target="{{actor._id}}-environment" data-placeholder="{{ localize 'TIDY5E.Environment' }}" data-maxlength="80">{{data.details.environment}}</span></span></span>
+            <span class="environment" title="{{ localize 'TIDYSW5E.Environment' }}"><i class="fas fa-tree"></i><span class="environment-label"><span contenteditable="true" spellcheck="false" data-target="{{actor._id}}-environment" data-placeholder="{{ localize 'TIDYSW5E.Environment' }}" data-maxlength="80">{{data.details.environment}}</span></span></span>
             <span contenteditable="true" spellcheck="false" data-target="{{actor._id}}-alignment" data-placeholder="{{ localize 'SW5E.Alignment' }}">{{data.details.alignment}}</span>
             <span class="source-info" contenteditable="true" spellcheck="false" data-target="{{actor._id}}-source" data-placeholder="{{ localize 'SW5E.Source' }}" class="source">{{data.details.source}}</span>
-            <input type="hidden" data-input="{{actor._id}}-environment" name="data.details.environment" value="{{data.details.environment}}" placeholder="{{ localize 'TIDY5E.Environment' }}">
+            <input type="hidden" data-input="{{actor._id}}-environment" name="data.details.environment" value="{{data.details.environment}}" placeholder="{{ localize 'TIDYSW5E.Environment' }}">
             <input type="hidden" data-input="{{actor._id}}-alignment" name="data.details.alignment" value="{{data.details.alignment}}" placeholder="{{ localize 'SW5E.Alignment' }}">
             <input data-input="{{actor._id}}-source" name="data.details.source" type="hidden" value="{{data.details.source}}" placeholder="{{ localize 'SW5E.Source' }}">
           </li>
@@ -154,7 +154,7 @@
                 <span>{{numberFormat data.attributes.init.total decimals=0 sign=true}}</span>
               </div>
               <footer class="value-footer">
-                <label for="{{@root/appId}}-ini-mod">{{ localize 'TIDY5E.AbbrMod' }}</label>
+                <label for="{{@root/appId}}-ini-mod">{{ localize 'TIDYSW5E.AbbrMod' }}</label>
                 <input id="{{@root/appId}}-ini-mod" class="ini-mod" name="data.attributes.init.value" type="text" placeholder="0" data-dtype="Number" value="{{numberFormat data.attributes.init.value decimals=0 sign=true}}" maxlength="2">
             </footer>
             </li>
