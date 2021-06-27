@@ -1,0 +1,102 @@
+{{!-- Powerbook Header --}}
+{{> "modules/tidysw5e-sheet/templates/actors/parts/tidysw5e-tech-powerbook-header.html"}}
+
+<div class="grid-layout">
+  <ul class="inventory-list powerbook-list items-list">
+    {{#each techPowerbook as |section|}}
+    <li class="items-header powerbook-header">
+      <div class="power-level-slots">
+        <h3>{{section.label}}</h3>
+      </div>
+    </li>
+
+    <ul class="item-list">
+      {{#each section.powers as |item i|}}
+      <li class="item {{#if ../../owner}}context-enabled{{/if}}" data-item-id="{{item._id}}">
+        {{~#if item.flags.favtab}} 
+        {{~#if item.flags.favtab.isFavorite}} 
+          <i class="fas fa-bookmark icon-fav" title="{{localize 'TIDYSW5E.isFav'}}"></i>
+        {{/if}}
+        {{/if}}
+        <div class="item-name rollable">
+          <div class="item-image" style="background-image: url({{item.img}})">
+            <i class="fa fa-dice-d20"></i>
+          </div>
+        </div>
+
+        {{#if item.data.uses.per }}
+        <div class="item-stats">
+          <div class="item-detail item-charges" title="{{localize 'SW5E.Charges'}}: {{item.data.uses.value}}/{{item.data.uses.max}} ">
+            {{#if item.hasUses }}
+            <i class="fas fa-bolt"></i><input type="text" data-path="data.uses.value" value="{{item.data.uses.value}}" placeholder="0" maxlength="2" >
+            {{/if}}
+          </div>
+        </div>
+        {{/if}}
+
+        <div class="info-card" data-item-id="{{item._id}}">
+          <p class="info-card-name">{{item.name}}</p>
+          <div class="info-card-states">
+            <span><!-- <i class="fas fa-hat-wizard"></i><b>{{localize 'SW5E.PowerSchool'}}:</b>  -->{{labels.school}}</span>
+          </div>
+          <div class="info-card-amount">
+            {{#if item.hasUses }}
+            <span><i class="fas fa-bolt"></i><b>{{localize 'SW5E.Charges'}}:</b> {{item.data.uses.value}}/{{item.data.uses.max}}</span>
+            {{/if}}
+          </div>
+          <div class="description-wrap">
+            <div class="info-card-description">
+              <!-- item description -->
+            </div>
+          </div>
+				  <article class="mod-roll-buttons"></article>
+        </div>
+
+        {{#if ../../owner}}
+        <div class="activate-context-menu">
+          <i class="fas fa-ellipsis-v"></i>
+        </div>
+        <div class="item-controls context-menu">
+          <hr class="context-divider">
+          <a class="item-control item-edit" title="{{localize 'TIDYSW5E.EditPower'}}"><i class="fas fa-pencil-alt"></i> {{localize 'TIDYSW5E.EditPower'}}</a>
+          <hr class="context-divider">
+          <a class="item-control item-delete warning" title="{{localize 'TIDYSW5E.DeletePower'}}"><i class="fas fa-trash"></i> {{localize 'TIDYSW5E.DeletePower'}}</a>
+        </div>
+        {{/if}}
+      </li>
+      {{/each}}
+
+      {{#if section.canCreate}}
+      <li class="items-footer">
+        <a class="item-create" title="{{localize 'SW5E.PowerCreate'}}" {{#each section.dataset as |v k|}}data-{{k}}="{{v}}"{{/each}}>
+          <i class="fas fa-plus-circle"></i>
+        </a>
+        {{else}}
+        <!-- add button for all power categories -->
+        <a class="item-create" title="{{localize 'SW5E.PowerCreate'}}" {{#each section.dataset as |v k|}}data-{{k}}="{{v}}"{{/each}}>
+          <i class="fas fa-plus-circle"></i>
+        </a>
+      </li>
+      {{/if}}
+    </ul>
+    {{else}}
+    {{#if owner}}
+    {{#if filters.powerbook.size}}
+    <li class="notice">{{localize 'SW5E.FilterNoPowers'}}</li>
+    {{else}}
+
+    <ul class="item-list">
+      <li class="notice">{{localize 'SW5E.NoPowerLevels'}}</li>
+      <li class="items-footer">
+        <a class="item-create" title="{{localize 'SW5E.PowerCreate'}}" data-type="power"
+        data-level="{{lvl}}"><i class="fas fa-plus-circle"></i></a>
+      </li>
+    </ul>
+    {{/if}}
+    {{/if}}
+    {{/each}}
+  </ul>
+</div>
+
+{{!-- Powerbook Footer --}}
+{{> "modules/tidysw5e-sheet/templates/actors/parts/tidysw5e-tech-powerbook-footer.html"}}

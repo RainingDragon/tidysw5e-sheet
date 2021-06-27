@@ -1,0 +1,142 @@
+<h2 class="powerbook-title">{{ localize "SW5E.TechPowerbook" }} <i class="fas fa-caret-down"></i><i class="fas fa-caret-up"></i></h2>
+
+<div class="powerbook list-layout">
+
+  <ul class="inventory-list items-list powerbook-list {{#if actor.flags.tidysw5e-sheet.allow-edit}}unlocked{{/if}}">
+    {{#each techPowerbook as |section|}}
+    <li class="items-header powerbook-header">
+      <div class="power-level-slots">
+        <h3>{{section.label}}</h3>
+      </div>
+
+      <div class="items-header-labels">
+        <div class="items-header-comps" title="{{localize 'TIDYSW5E.Components'}}"><i class="fas fa-brain"></i></div>
+        <!-- <div class="items-header-school">{{localize 'SW5E.PowerSchool'}}</div> -->
+        <div class="items-header-target" title="{{localize 'SW5E.PowerTarget'}}">{{localize 'SW5E.Target'}}</div>
+        <div class="items-header-usage" title="{{localize 'SW5E.PowerUsage'}}">{{localize 'SW5E.Usage'}}</div>
+      </div>
+
+    </li>
+
+    <ul class="item-list">
+      {{#each section.powers as |item i|}}
+      <li class="item {{#if ../../owner}}context-enabled{{/if}}" data-item-id="{{item._id}}">
+        <div class="item-name rollable">
+          <div class="item-image" style="background-image: url({{item.img}})">
+            <i class="fa fa-dice-d20"></i>
+          </div>
+          <h4 title="{{localize 'TIDYSW5E.ToggleInfo'}} ({{item.name}})">
+            {{item.name}}
+          </h4>
+
+        </div>          
+
+        {{#if item.data.uses.per }}
+        <div class="item-detail item-charges">
+          <input data-path="data.uses.value" type="text" value="{{item.data.uses.value}}">/ <input  class="uses-max" data-path="data.uses.max" type="text" value="{{item.data.uses.max}}">
+        </div>
+        {{/if}}
+        <div class="item-detail power-comps">
+          {{#each labels.components}}
+          <span class="power-component {{this}}">{{this}}</span>
+          {{/each}}
+        </div>
+        <!-- <div class="item-detail power-school">{{labels.school}}</div> -->
+        <div class="item-detail power-target" title="{{localize 'SW5E.Range'}}: {{labels.range}}">
+          {{#if labels.target}}
+          {{labels.target}}
+          {{else}}{{ localize 'SW5E.None' }}
+          {{/if}}
+        </div>
+
+        <div class="item-detail power-action">{{labels.activation}}</div>
+
+        <div class="info-card" data-item-id="{{item._id}}">
+          <p class="info-card-name">{{item.name}}</p>
+          <div class="info-card-states">
+            <span><!-- <i class="fas fa-hat-wizard"></i><b>{{localize 'SW5E.PowerSchool'}}:</b>  -->{{labels.school}}</span>
+          </div>
+          <div class="info-card-amount">
+            {{#if item.hasUses }}
+            <span><i class="fas fa-bolt"></i><b>{{localize 'SW5E.Charges'}}:</b> {{item.data.uses.value}}/{{item.data.uses.max}}</span>
+            {{/if}}
+          </div>
+          <div class="description-wrap">
+            <div class="info-card-description">
+              <!-- item description -->
+            </div>
+          </div>
+				  <article class="mod-roll-buttons"></article>
+        </div>
+
+
+        {{#if ../../owner}}
+        <div class="activate-context-menu">
+          <i class="fas fa-ellipsis-v"></i>
+        </div>
+        <div class="item-controls context-menu">
+          <hr class="context-divider">
+          <a class="item-control item-edit" title="{{localize 'TIDYSW5E.EditPower'}}"><i class="fas fa-pencil-alt"></i>  <span class="control-label">{{localize 'TIDYSW5E.EditPower'}}</span></a>
+          <hr class="context-divider">
+          <a class="item-control item-delete warning" title="{{localize 'TIDYSW5E.DeletePower'}}"><i class="fas fa-trash"></i>  <span class="control-label">{{localize 'TIDYSW5E.DeletePower'}}</span></a>
+        </div>
+        {{/if}}
+
+      </li>
+      {{/each}}
+      {{#if ../../owner}}
+      {{#if section.canCreate}}
+      <li class="items-footer">
+        <a class="item-create" title="{{localize 'SW5E.PowerCreate'}}" {{#each section.dataset as |v k|}}data-{{k}}="{{v}}"{{/each}}>
+          <i class="fas fa-plus-circle"></i> {{localize 'SW5E.Add'}}
+        </a>
+        {{else}}
+        <!-- add button for all power categories -->
+        <a class="item-create" title="{{localize 'SW5E.PowerCreate'}}" {{#each section.dataset as |v k|}}data-{{k}}="{{v}}"{{/each}}>
+          <i class="fas fa-plus-circle"></i> {{localize 'SW5E.Add'}}
+        </a>
+      </li>
+      {{/if}}
+      {{/if}}
+    </ul>
+    {{else}}
+    {{#if owner}}
+    {{#if filters.powerbook.size}}
+
+    <li><p>{{localize "SW5E.FilterNoPowers"}}</p></li>
+
+    {{else}}
+    <li class="powerbook-footer powerbook-empty">
+      <p class="notice">{{localize "SW5E.NoPowerLevels"}}</p>
+      <div class="items-footer">
+        <a class="item-create" title="{{localize 'SW5E.PowerCreate'}}" data-type="power"
+        data-level="{{lvl}}"><i class="fas fa-plus-circle"></i> {{localize 'SW5E.PowerAdd'}}</a>
+      </div>
+    </li>
+    {{/if}}
+    {{/if}}
+    {{/each}}
+  </ul>
+</div>
+
+<div class="powercasting-ability">
+  <h3 class="power-dc">{{localize 'SW5E.PowerDC'}} {{data.attributes.powerdc}}</h3>
+  <div class="npc-power-stats">
+    <div class="caster-level">
+      <p>{{localize 'SW5E.PowercasterLevel'}}</p>
+      <input class="powercasting-level" type="text" name="data.details.powerLevel"
+      value="{{data.details.powerLevel}}" data-dtype="Number" placeholder="0"/>
+    </div>
+    <div class="powercasting-attribute">
+      <p>{{localize 'SW5E.PowerAbility'}}</p>
+      <select name="data.attributes.powercasting" data-type="String">
+        {{#select data.attributes.powercasting}}
+        <option value="">{{localize 'SW5E.None'}}</option>
+        {{#each data.abilities as |abl a|}}
+        <option value="{{a}}">{{abl.label}}</option>
+        {{/each}}
+        {{/select}}
+      </select>
+    </div>
+  </div>
+</div>

@@ -1,5 +1,5 @@
 {{!-- Inventory Header --}}
-{{> "modules/tidy5e-sheet/templates/actors/parts/tidy5e-inventory-header.html"}}
+{{> "modules/tidysw5e-sheet/templates/actors/parts/tidysw5e-inventory-header.html"}}
 
 <div class="grid-layout">
   <ul class="inventory-list items-list">
@@ -16,7 +16,7 @@
         {{/if}}
         {{~#if item.flags.favtab}} 
         {{~#if item.flags.favtab.isFavorite}} 
-          <i class="fas fa-bookmark icon-fav" title="{{localize 'TIDY5E.isFav'}}"></i>
+          <i class="fas fa-bookmark icon-fav" title="{{localize 'TIDYSW5E.isFav'}}"></i>
         {{/if}}
         {{/if}}
         <div class="item-name rollable" >
@@ -27,11 +27,11 @@
         <div class="item-stats">
           
           <!-- {{#if item.data.quantity}} {{/if}} -->
-          <span class="item-quantity{{#if item.isStack}} isStack{{/if}}" title="{{localize 'DND5E.Quantity'}}">
+          <span class="item-quantity{{#if item.isStack}} isStack{{/if}}" title="{{localize 'SW5E.Quantity'}}">
             <input class="item-count" data-path="data.quantity" type="text" value="{{item.data.quantity}}" maxlength="2" >
           </span>
 
-          <div class="item-detail item-charges" title="{{localize 'DND5E.Charges'}}: {{item.data.uses.value}}/{{item.data.uses.max}} ">
+          <div class="item-detail item-charges" title="{{localize 'SW5E.Charges'}}: {{item.data.uses.value}}/{{item.data.uses.max}} ">
             {{#if item.hasUses }}
             <i class="fas fa-bolt"></i><input type="text" data-path="data.uses.value" value="{{item.data.uses.value}}" placeholder="0" maxlength="2" >
             {{/if}}
@@ -50,14 +50,14 @@
           </div>
           {{#if item.hasUses }}
           <div class="info-card-amount">
-            <span><i class="fas fa-bolt"></i><b>{{localize 'DND5E.Charges'}}:</b> {{item.data.uses.value}}/{{item.data.uses.max}}</span>
+            <span><i class="fas fa-bolt"></i><b>{{localize 'SW5E.Charges'}}:</b> {{item.data.uses.value}}/{{item.data.uses.max}}</span>
           </div>
            {{/if}}
           <div class="info-card-amount">
             <!-- {{#if item.totalWeight}} {{/if}} -->
-            <span class="info-weight"><b>{{localize 'DND5E.Weight'}}:</b> {{ item.totalWeight }} {{localize "DND5E.AbbreviationLbs"}}</span>
+            <span class="info-weight"><b>{{localize 'SW5E.Weight'}}:</b> {{ item.totalWeight }} {{localize "SW5E.AbbreviationLbs"}}</span>
             <!-- {{#if item.data.quantity}} {{/if}} -->
-            <span class="info-quantity"><b>{{localize 'DND5E.Quantity'}}:</b> {{item.data.quantity}}</span>
+            <span class="info-quantity"><b>{{localize 'SW5E.Quantity'}}:</b> {{item.data.quantity}}</span>
           </div>
           <div class="description-wrap">
             <div class="info-card-description">
@@ -76,16 +76,16 @@
           
           {{#if item.attunement}}
             <a class="item-control item-attunement {{#if (eq item.data.attunement 2) }}active{{/if}} {{item.attunement.cls}}" title="{{localize item.attunement.title}}">
-              <i class="fas fa-sun"></i> <span class="control-label">{{#if (eq item.data.attunement 2) }}{{localize "TIDY5E.Deattune"}}{{else}}{{localize "TIDY5E.Attune"}}{{/if}}</span>
+              <i class="fas fa-sun"></i> <span class="control-label">{{#if (eq item.data.attunement 2) }}{{localize "TIDYSW5E.Deattune"}}{{else}}{{localize "TIDYSW5E.Attune"}}{{/if}}</span>
             </a>
           {{/if}}
 
-          <a class="item-control item-toggle {{item.toggleClass}}">{{#if (eq item.toggleClass 'active')}}<i class="fas fa-user-alt"></i> <span class="control-label">{{localize "TIDY5E.Unequip"}}</span>{{else}}<i class="fas fa-user-alt inactive"></i> <span class="control-label">{{localize "TIDY5E.Equip"}}</span>{{/if}}</a>
+          <a class="item-control item-toggle {{item.toggleClass}}">{{#if (eq item.toggleClass 'active')}}<i class="fas fa-user-alt"></i> <span class="control-label">{{localize "TIDYSW5E.Unequip"}}</span>{{else}}<i class="fas fa-user-alt inactive"></i> <span class="control-label">{{localize "TIDYSW5E.Equip"}}</span>{{/if}}</a>
           
           <hr class="context-divider">
-          <a class="item-control item-edit"><i class="fas fa-pencil-alt"></i>{{localize "DND5E.ItemEdit"}}</a>
+          <a class="item-control item-edit"><i class="fas fa-pencil-alt"></i>{{localize "SW5E.ItemEdit"}}</a>
           <hr class="context-divider">
-          <a class="item-control item-delete warning"><i class="fas fa-trash"></i>{{localize "DND5E.ItemDelete"}}</a>
+          <a class="item-control item-delete warning"><i class="fas fa-trash"></i>{{localize "SW5E.ItemDelete"}}</a>
         </div>
         {{/if}}
       </li>
@@ -93,7 +93,7 @@
 
       {{#if ../owner}}
       <li class="items-footer">
-        <a class="item-create" title='{{localize "DND5E.ItemCreate"}}' {{#each section.dataset as |v k|}}data-{{k}}="{{v}}"{{/each}}>
+        <a class="item-create" title='{{localize "SW5E.ItemCreate"}}' {{#each section.dataset as |v k|}}data-{{k}}="{{v}}"{{/each}}>
           <i class="fas fa-plus-circle"></i>
         </a>
       </li>
@@ -105,4 +105,4 @@
 </div>
 
 {{!-- Inventory Footer --}}
-{{> "modules/tidy5e-sheet/templates/actors/parts/tidy5e-inventory-footer.html"}}
+{{> "modules/tidysw5e-sheet/templates/actors/parts/tidysw5e-inventory-footer.html"}}
