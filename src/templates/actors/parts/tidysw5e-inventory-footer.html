@@ -34,7 +34,7 @@
 {{#unless isNPC}} {{#with data.attributes.encumbrance}}
 <div class="encumbrance {{#if encumbered}}encumbered{{/if}}" title="{{localize 'TIDYSW5E.Encumbrance'}}">
   <span class="encumbrance-bar" style="width:{{pct}}%"></span>
-  <span class="encumbrance-label">{{value}} / {{max}}</span>
+  <span class="encumbrance-label">{{value}} / {{number max}}</span>
   <i class="encumbrance-breakpoint encumbrance-33 arrow-up"></i>
   <i class="encumbrance-breakpoint encumbrance-33 arrow-down"></i>
   <i class="encumbrance-breakpoint encumbrance-66 arrow-up"></i>

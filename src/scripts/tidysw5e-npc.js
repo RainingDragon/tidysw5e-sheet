@@ -29,6 +29,15 @@ Handlebars.registerHelper("max", function (value1, value2) {
   return Math.max(value1, value2);
 });
 
+Handlebars.registerHelper("number", function (value) {
+  return Number(value);
+});
+
+Handlebars.registerHelper("debug", function (value) {
+  console.log(`Handlebars: ${value}`);
+  return;
+});
+
 export default class TidySW5eNPC extends ActorSheet5eNPC {
   /**
    * Define default rendering options for the NPC sheet
