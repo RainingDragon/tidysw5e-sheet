@@ -258,14 +258,12 @@ async function countAttunedItems(app, html, data) {
       await actor.update({ "data.details.attunedItemsCount": 0 });
     }
 
-    let items = actor.data.items;
-    let attunedItems = 0;
-
-    for (var i = 0; i < items.length; i++) {
-      if (items[i].data.attunement == 2) {
-        attunedItems++;
+    let attunedItems = actor.data.items.reduce((acc, i) => {
+      if (i.data.data.attunement === 2) {
+        return acc + 1;
       }
-    }
+      return acc;
+    }, 0);
 
     await actor.update({ "data.details.attunedItemsCount": attunedItems });
 
