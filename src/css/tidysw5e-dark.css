@@ -202,7 +202,8 @@
 .disable .tidysw5eDark .sw5e.sheet.item .magic-items-content select:hover,
 .disable .tidysw5eDark .sw5e.sheet.item .magic-items-content select:focus {
   border: none !important;
-  box-shadow: 0 0 0 1px var(--darkmode-primary-accent);
+  -webkit-box-shadow: 0 0 0 1px var(--darkmode-primary-accent);
+          box-shadow: 0 0 0 1px var(--darkmode-primary-accent);
 }
 
 .disable .tidysw5eDark .sw5e.sheet.item .magic-item-list .item:not(.items-header) {
@@ -245,7 +246,8 @@
 .disable .tidysw5eDark .tidysw5e.sheet.actor .skills-list > .skill > .skill-ability-select:focus {
   background: var(--darkmode-primary-accent);
   color: var(--darkmode-primary-color);
-  box-shadow: 0 0 0 1px var(--darkmode-primary-accent);
+  -webkit-box-shadow: 0 0 0 1px var(--darkmode-primary-accent);
+          box-shadow: 0 0 0 1px var(--darkmode-primary-accent);
 }
 
 .disable .tidysw5eDark .tidysw5e.sheet.actor .skills-list > .skill > .skill-ability-select:hover option,
@@ -255,10 +257,13 @@
 }
 
 .disable .tidysw5eDark .tidysw5e.sheet.actor .skills-list > .skill > .skill-cust-bonus {
-  box-shadow: 0 0 0 1px var(--darkmode-tertiary-color) inset;
+  -webkit-box-shadow: 0 0 0 1px var(--darkmode-tertiary-color) inset;
+          box-shadow: 0 0 0 1px var(--darkmode-tertiary-color) inset;
 }
 
 .disable .tidysw5eDark .tidysw5e.sheet.actor .skills-list > .skill > .skill-cust-bonus:hover,
 .disable .tidysw5eDark .tidysw5e.sheet.actor .skills-list > .skill > .skill-cust-bonus:focus {
-  box-shadow: 0 0 0 1px var(--darkmode-primary-accent) inset;
+  -webkit-box-shadow: 0 0 0 1px var(--darkmode-primary-accent) inset;
+          box-shadow: 0 0 0 1px var(--darkmode-primary-accent) inset;
 }
+/*# sourceMappingURL=tidy5e-dark.css.map */
