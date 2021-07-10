@@ -3134,6 +3134,32 @@
   height: 20px;
 }
 
+.tidysw5e.sheet.actor .powercasting-ability .resource {
+  text-align: center;
+}
+
+.tidysw5e.sheet.actor .powercasting-ability .resource div,
+.tidysw5e.sheet.actor .powercasting-ability .resource footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.tidysw5e.sheet.actor .powercasting-ability .resource div {
+  font-size: 1.3em;
+}
+
+.tidysw5e.sheet.actor .powercasting-ability .resource footer {
+  font-size: 0.9em;
+  margin-top: 0;
+}
+
 .tidysw5e.sheet.actor .items-list {
   -webkit-box-flex: 1;
       -ms-flex: 1;
@@ -3266,8 +3292,8 @@
   width: 100%;
   text-align: center;
   opacity: 0;
-  -webkit-transition: opacity .3s ease;
-  transition: opacity .3s ease;
+  -webkit-transition: opacity 0.3s ease;
+  transition: opacity 0.3s ease;
 }
 
 .tidysw5e.sheet.actor .items-list .item .item-charges:hover a.addCharges {
@@ -3289,8 +3315,8 @@
   display: flex;
   margin-left: 4px;
   text-align: center;
-  -webkit-transition: opacity .3s ease;
-  transition: opacity .3s ease;
+  -webkit-transition: opacity 0.3s ease;
+  transition: opacity 0.3s ease;
 }
 
 .tidysw5e.sheet.actor .items-list .item .item-quantity input {
@@ -3361,7 +3387,7 @@
   height: unset;
   margin-left: 4px;
   font-size: 12px;
-  font-family: 'Signika';
+  font-family: "Signika";
 }
 
 .tidysw5e.sheet.actor .items-list .item .item-charges {
@@ -3402,13 +3428,13 @@
   -webkit-box-flex: 0;
       -ms-flex: 0 0 100%;
           flex: 0 0 100%;
-  padding: .5rem;
+  padding: 0.5rem;
   border-top: 1px solid var(--faint-color);
   font-size: 12px;
 }
 
 .tidysw5e.sheet.actor .items-list .item .item-summary p:not(:first-child) {
-  margin-top: .5em;
+  margin-top: 0.5em;
 }
 
 .tidysw5e.sheet.actor .items-list .item .activate-context-menu {
