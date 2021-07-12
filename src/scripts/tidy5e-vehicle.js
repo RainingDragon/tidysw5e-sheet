@@ -1,18 +1,22 @@
 import ActorSheet5e from "../../../systems/sw5e/module/actor/sheets/newSheet/base.js";
 import ActorSheet5eVehicle from "../../../systems/sw5e/module/actor/sheets/newSheet/vehicle.js";
 
-import { tidysw5eContextMenu } from "./app/context-menu.js";
-import { tidysw5eListeners } from "./app/listeners.js";
-import { tidysw5eClassicControls } from "./app/classic-controls.js";
-import { tidysw5eShowActorArt } from "./app/show-actor-art.js";
-import { tidysw5eItemCard } from "./app/itemcard.js";
+import { tidy5eContextMenu } from "./app/context-menu.js";
+import { tidy5eListeners } from "./app/listeners.js";
+import { tidy5eClassicControls } from "./app/classic-controls.js";
+import { tidy5eShowActorArt } from "./app/show-actor-art.js";
+import { tidy5eItemCard } from "./app/itemcard.js";
 
-export class TidySW5eVehicle extends ActorSheet5eVehicle {
+export class Tidy5eVehicle extends ActorSheet5eVehicle {
   static get defaultOptions() {
+    let defaultTab = game.settings.get("tidysw5e-sheet", "defaultActionsTab") != "default" ? "attributes" : "actions";
+    if (!game.modules.get("character-actions-list-5e")?.active) defaultTab = "description";
+
     return mergeObject(super.defaultOptions, {
-      classes: ["tidysw5e", "sheet", "actor", "vehicle"],
+      classes: ["tidy5e", "sheet", "actor", "vehicle"],
       width: 740,
-      height: 720
+      height: 720,
+      tabs: [{ navSelector: ".tabs", contentSelector: ".sheet-body", initial: defaultTab }]
     });
   }
 
@@ -25,9 +29,8 @@ export class TidySW5eVehicle extends ActorSheet5eVehicle {
    * @type {String}
    */
   get template() {
-    if (!game.user.isGM && this.actor.limited)
-      return "modules/tidysw5e-sheet/templates/actors/tidysw5e-vehicle-ltd.html";
-    return "modules/tidysw5e-sheet/templates/actors/tidysw5e-vehicle.html";
+    if (!game.user.isGM && this.actor.limited) return "modules/tidysw5e-sheet/templates/actors/tidy5e-vehicle-ltd.html";
+    return "modules/tidysw5e-sheet/templates/actors/tidy5e-vehicle.html";
   }
 
   /**
@@ -49,11 +52,11 @@ export class TidySW5eVehicle extends ActorSheet5eVehicle {
 
     let actor = this.actor;
 
-    tidysw5eListeners(html, actor);
-    tidysw5eContextMenu(html);
-    tidysw5eShowActorArt(html, actor);
+    tidy5eListeners(html, actor);
+    tidy5eContextMenu(html);
+    tidy5eShowActorArt(html, actor);
     if (game.settings.get("tidysw5e-sheet", "itemCardsForNpcs")) {
-      tidysw5eItemCard(html, actor);
+      tidy5eItemCard(html, actor);
     }
 
     // toggle empty traits visibility in the traits list
@@ -69,9 +72,13 @@ export class TidySW5eVehicle extends ActorSheet5eVehicle {
   // add actions module
   async _renderInner(...args) {
     const html = await super._renderInner(...args);
+    const actionsListApi = game.modules.get("character-actions-list-5e")?.api;
+    let injectVehicleSheet;
+    if (game.modules.get("character-actions-list-5e")?.active)
+      injectVehicleSheet = game.settings.get("character-actions-list-5e", "inject-vehicles");
 
     try {
-      if (game.modules.get("character-actions-list-5e")?.active) {
+      if (game.modules.get("character-actions-list-5e")?.active && injectVehicleSheet) {
         // Update the nav menu
         const actionsTabButton = $(
           '<a class="item" data-tab="actions">' + game.i18n.localize(`SW5E.ActionPl`) + "</a>"
@@ -88,7 +95,7 @@ export class TidySW5eVehicle extends ActorSheet5eVehicle {
 
         // const actionsTab = html.find('.actions-target');
 
-        const actionsTabHtml = $(await CAL5E.renderActionsList(this.actor));
+        const actionsTabHtml = $(await actionsListApi.renderActionsList(this.actor));
         actionsLayout.html(actionsTabHtml);
       }
     } catch (e) {
@@ -140,19 +147,19 @@ async function toggleTraitsList(app, html, data) {
 async function setSheetClasses(app, html, data) {
   if (game.settings.get("tidysw5e-sheet", "rightClickDisabled")) {
     if (game.settings.get("tidysw5e-sheet", "classicControlsEnabled")) {
-      html.find(".tidysw5e-sheet .grid-layout .items-list").addClass("alt-context");
+      html.find(".tidy5e-sheet .grid-layout .items-list").addClass("alt-context");
     } else {
-      html.find(".tidysw5e-sheet .items-list").addClass("alt-context");
+      html.find(".tidy5e-sheet .items-list").addClass("alt-context");
     }
   }
   if (game.settings.get("tidysw5e-sheet", "classicControlsEnabled")) {
-    tidysw5eClassicControls(html);
+    tidy5eClassicControls(html);
   }
   if (
     game.settings.get("tidysw5e-sheet", "portraitStyle") == "npc" ||
     game.settings.get("tidysw5e-sheet", "portraitStyle") == "all"
   ) {
-    html.find(".tidysw5e-sheet.tidysw5e-vehicle .profile").addClass("roundPortrait");
+    html.find(".tidy5e-sheet.tidy5e-vehicle .profile").addClass("roundPortrait");
   }
   if (game.settings.get("tidysw5e-sheet", "hpOverlayBorderVehicle") > 0) {
     $(".system-sw5e")
@@ -162,21 +169,21 @@ async function setSheetClasses(app, html, data) {
     $(".system-sw5e").get(0).style.removeProperty("--vehicle-border");
   }
   if (game.settings.get("tidysw5e-sheet", "hpOverlayDisabledVehicle")) {
-    html.find(".tidysw5e-sheet.tidysw5e-vehicle .profile").addClass("disable-hp-overlay");
+    html.find(".tidy5e-sheet.tidy5e-vehicle .profile").addClass("disable-hp-overlay");
   }
   if (game.settings.get("tidysw5e-sheet", "hpBarDisabled")) {
-    html.find(".tidysw5e-sheet .profile").addClass("disable-hp-bar");
+    html.find(".tidy5e-sheet .profile").addClass("disable-hp-bar");
   }
   $(".info-card-hint .key").html(game.settings.get("tidysw5e-sheet", "itemCardsFixKey"));
 }
 
-// Register TidySW5e Vehicle Sheet and make default vehicle sheet
-Actors.registerSheet("sw5e", TidySW5eVehicle, {
+// Register Tidy5e Vehicle Sheet and make default vehicle sheet
+Actors.registerSheet("sw5e", Tidy5eVehicle, {
   types: ["vehicle"],
   makeDefault: true
 });
 
-Hooks.on("renderTidySW5eVehicle", (app, html, data) => {
+Hooks.on("renderTidy5eVehicle", (app, html, data) => {
   setSheetClasses(app, html, data);
   editProtection(app, html, data);
   toggleTraitsList(app, html, data);

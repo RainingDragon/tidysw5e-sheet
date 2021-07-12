@@ -1,12 +1,12 @@
 import { settingsList } from "./settingsList.js";
 
-export class TidySW5eUserSettings extends FormApplication {
+export class Tidy5eUserSettings extends FormApplication {
   static init() {
     game.settings.registerMenu("tidysw5e-sheet", "userMenu", {
       name: "",
-      label: game.i18n.localize("TIDYSW5E.Settings.SheetMenu.label"),
+      label: game.i18n.localize("TIDY5E.Settings.SheetMenu.label"),
       icon: "fas fa-cog",
-      type: TidySW5eUserSettings,
+      type: Tidy5eUserSettings,
       restricted: false
     });
 
@@ -19,9 +19,9 @@ export class TidySW5eUserSettings extends FormApplication {
       ...super.defaultOptions,
       template: "modules/tidysw5e-sheet/templates/settings.html",
       height: 500,
-      title: game.i18n.localize("TIDYSW5E.Settings.SheetMenu.title"),
+      title: game.i18n.localize("TIDY5E.Settings.SheetMenu.title"),
       width: 600,
-      classes: ["tidysw5e", "settings"],
+      classes: ["tidy5e", "settings"],
       tabs: [
         {
           navSelector: ".tabs",
@@ -44,7 +44,7 @@ export class TidySW5eUserSettings extends FormApplication {
   }
 
   getSettingsData() {
-    // console.log(game.settings.get('tidysw5e-sheet'))
+    // console.log(game.settings.get('tidy5e-sheet'))
     const settings = [
       "itemCardsForAllItems",
       "itemCardsAreFloating",
@@ -102,7 +102,7 @@ export class TidySW5eUserSettings extends FormApplication {
       "defaultActionsTab"
     ];
 
-    // return game.settings.get('tidysw5e-sheet', 'user-settings');
+    // return game.settings.get('tidy5e-sheet', 'user-settings');
     let data = {};
     settings.forEach((setting) => {
       data[setting] = { value: game.settings.get("tidysw5e-sheet", setting) };
@@ -130,7 +130,7 @@ export class TidySW5eUserSettings extends FormApplication {
         html.find("input#exhaustionEffectIcon").closest(".setting").hide();
         html.find("input#exhaustionEffectCustom").closest(".setting").hide();
         break;
-      case "tidysw5e":
+      case "tidy5e":
         html.find("input#exhaustionEffectCustom").closest(".setting").hide();
         break;
       case "custom":
@@ -143,7 +143,7 @@ export class TidySW5eUserSettings extends FormApplication {
       html.find("input#exhaustionEffectCustom").closest(".setting").hide();
 
       let value = e.target.value;
-      if (value == "tidysw5e") {
+      if (value == "tidy5e") {
         html.find("input#exhaustionEffectIcon").closest(".setting").show();
       } else if (value == "custom") {
         html.find("input#exhaustionEffectCustom").closest(".setting").show();
@@ -173,7 +173,7 @@ export class TidySW5eUserSettings extends FormApplication {
       let newSetting = data[key];
       if (oldSetting == newSetting) continue;
       // console.log(`${key} changed to "${data[key]}"`);
-      game.settings.set("tidysw5e-sheet", key, data[key]);
+      game.settings.set("tidy5e-sheet", key, data[key]);
       settingsUpdated = true;
     }
 
@@ -183,9 +183,9 @@ export class TidySW5eUserSettings extends FormApplication {
   }
 }
 
-Hooks.on("renderTidySW5eUserSettings", () => {
+Hooks.on("renderTidy5eUserSettings", () => {
   if (!game.user.isGM) {
-    document.querySelectorAll(".tidysw5e.settings .gm-only").forEach(function (el) {
+    document.querySelectorAll(".tidy5e.settings .gm-only").forEach(function (el) {
       el.remove();
     });
   }

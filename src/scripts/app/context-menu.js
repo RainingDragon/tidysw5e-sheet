@@ -1,4 +1,4 @@
-export const tidysw5eContextMenu = function (html) {
+export const tidy5eContextMenu = function (html) {
   // open context menu
 
   html.find(".item-list .item.context-enabled").mousedown(async (event) => {

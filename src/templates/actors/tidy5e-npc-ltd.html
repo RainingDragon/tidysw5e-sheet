@@ -1,7 +1,7 @@
 <form class="{{cssClass}} flexcol" autocomplete="off">
-  <div class="tidysw5e-sheet limited">
+  <div class="tidy5e-sheet limited">
     {{!-- Sheet Header --}}
-    <header class="flex tidysw5e-header">
+    <header class="flex tidy5e-header">
       <div class="profile">
         <div class="portrait">
           <img src="{{actor.img}}" alt="{{actor.name}}" data-edit="img" />
@@ -15,7 +15,7 @@
       <div class="tab biography flexrow">
         <div class="note-entries">
           <article class="background-notes">
-            <div class="section-titles">{{localize 'SW5E.Description'}}</div>
+            <div class="section-titles">{{localize "SW5E.Background"}}</div>
             {{editor content=data.details.biography.value target="data.details.biography.value" button=true owner=owner
             editable=editable}}
           </article>

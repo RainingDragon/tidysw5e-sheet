@@ -137,7 +137,7 @@ async function updateExhaustion(actorEntity) {
         icon: icon,
         changes: exhaustionSet,
         flags: {
-          "tidysw5e-sheet": {
+          "tidy5e-sheet": {
             exhaustion: exhaustion
           }
         },
@@ -153,7 +153,7 @@ async function updateExhaustion(actorEntity) {
 // Hooks Update Actor
 
 Hooks.on("updateActor", function (actorEntity, _, __, userId) {
-  if (game.settings.get("tidysw5e-sheet", "exhaustionEffectsEnabled") == "tidysw5e") {
+  if (game.settings.get("tidysw5e-sheet", "exhaustionEffectsEnabled") == "tidy5e") {
     if (game.userId !== userId || actorEntity.constructor.name != "Actor5e") {
       // Only act if we initiated the update ourselves, and the effect is a child of a character
       return;

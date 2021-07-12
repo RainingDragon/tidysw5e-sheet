@@ -445,7 +445,7 @@
     }
 
     .item-charges .uses-max,
-    .spell-slots .spell-max {
+    .power-slots .power-max {
       text-align: left;
     }
 
@@ -698,20 +698,20 @@
     display: flex;
   }
 
-  .spell-school {
+  .power-school {
     flex: 0 0 50px;
   }
 
-  .spell-range {
+  .power-range {
     flex: 0 0 70px;
   }
 
-  .spell-action,
-  .spell-target {
+  .power-action,
+  .power-target {
     flex: 0 0 120px;
   }
 
-  .items-header .spell-slots {
+  .items-header .power-slots {
     display: flex;
     flex: 0 0 1px;
     align-items: center;

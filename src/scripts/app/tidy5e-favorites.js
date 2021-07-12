@@ -1,6 +1,6 @@
 /*
  * This file and its functions are
- * adapted for the TidySW5eSheet from
+ * adapted for the Tidy5eSheet from
  * FavTab Module version 0.5.4
  * by Felix M�ller aka syl3r96
  * (Felix#6196 on Discord).
@@ -10,7 +10,7 @@
  * and can be found at https://github.com/syl3r86/favtab.
  */
 
-import { tidysw5eContextMenu } from "./context-menu.js";
+import { tidy5eContextMenu } from "./context-menu.js";
 
 export const addFavorites = async function (app, html, data, position) {
   // creating the favourite tab and loading favourited items
@@ -88,7 +88,7 @@ export const addFavorites = async function (app, html, data, position) {
 
   // processing all items and put them in their respective lists if they're favorited
   for (let item of items) {
-    item.owner = app.actor.owner;
+    item.owner = app.actor.isOwner;
 
     // do not add the fav button for class items
     if (item.type == "class") continue;
@@ -110,11 +110,11 @@ export const addFavorites = async function (app, html, data, position) {
     if (app.options.editable) {
       let favBtn = $(
         `<a class="item-control item-fav ${isFav ? "active" : ""}" title="${
-          isFav ? game.i18n.localize("TIDYSW5E.RemoveFav") : game.i18n.localize("TIDYSW5E.AddFav")
+          isFav ? game.i18n.localize("TIDY5E.RemoveFav") : game.i18n.localize("TIDY5E.AddFav")
         }" data-fav="${isFav}"><i class="${
           isFav ? "fas fa-bookmark" : "fas fa-bookmark inactive"
         }"></i> <span class="control-label">${
-          isFav ? game.i18n.localize("TIDYSW5E.RemoveFav") : game.i18n.localize("TIDYSW5E.AddFav")
+          isFav ? game.i18n.localize("TIDY5E.RemoveFav") : game.i18n.localize("TIDY5E.AddFav")
         }</span></a>`
       );
       favBtn.click((ev) => {
@@ -311,7 +311,7 @@ export const addFavorites = async function (app, html, data, position) {
     // showing item summary
     favHtml.find(".item-name h4").click((event) => app._onItemSummary(event));
 
-    tidysw5eContextMenu(favHtml);
+    tidy5eContextMenu(favHtml);
 
     // the rest is only needed if the sheet is editable
     if (app.options.editable) {
@@ -352,7 +352,7 @@ export const addFavorites = async function (app, html, data, position) {
         } else {
           if (app.actor.data.data.details.attunedItemsCount >= app.actor.data.data.details.attunedItemsMax) {
             let count = actor.data.data.details.attunedItemsCount;
-            ui.notifications.warn(`${game.i18n.format("TIDYSW5E.AttunementWarning", { number: count })}`);
+            ui.notifications.warn(`${game.i18n.format("TIDY5E.AttunementWarning", { number: count })}`);
           } else {
             app.actor.getOwnedItem(itemId).update({ "data.attunement": 2 });
           }
@@ -374,6 +374,13 @@ export const addFavorites = async function (app, html, data, position) {
         data[path] = Number(ev.target.value);
         app.actor.getOwnedItem(itemId).update(data);
         // app.activateFavs = true;
+      });
+
+      // changing the power slot values and overrides
+      favHtml.find(".power-slots input").change((ev) => {
+        let path = ev.target.dataset.target;
+        let data = Number(ev.target.value);
+        app.actor.update({ [path]: data });
       });
 
       // creating charges for the item
@@ -457,5 +464,5 @@ export const addFavorites = async function (app, html, data, position) {
     }
   }
 
-  // Hooks.callAll("renderedTidySW5eSheet", app, html, data);
+  // Hooks.callAll("renderedTidy5eSheet", app, html, data);
 };

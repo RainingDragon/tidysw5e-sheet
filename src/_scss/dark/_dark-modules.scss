@@ -3,140 +3,140 @@
   /*   Support Better Rolls / Minor QOL   */
   /* ------------------------------------ */
 
-  .tidysw5eDark .tidysw5e.sheet.actor .items-list .item-summary .item-buttons .tag button:hover {
+  .tidy5eDark .tidy5e.sheet.actor .items-list .item-summary .item-buttons .tag button:hover {
     background: var(--darkmode-primary-accent);
   }
 
   /* ------------------------ */
   /* Support Dynamic Effects  */
   /* ------------------------ */
-  .tidysw5eDark .sw5e.sheet.item .effect-header:first-child,
-  .tidysw5eDark .sw5e.sheet.item .dynamiceffects-effect-list .effect-name,
-  .tidysw5eDark .sw5e.sheet.item .dynamiceffects-effect-list .effect-mode,
-  .tidysw5eDark .sw5e.sheet.item .dynamiceffects-effect-list .effect-value,
-  .tidysw5eDark .sw5e.sheet.item .dynamiceffects-effect-list .effect-header .effect-controls {
+  .tidy5eDark .dnd5e.sheet.item .effect-header:first-child,
+  .tidy5eDark .dnd5e.sheet.item .dynamiceffects-effect-list .effect-name,
+  .tidy5eDark .dnd5e.sheet.item .dynamiceffects-effect-list .effect-mode,
+  .tidy5eDark .dnd5e.sheet.item .dynamiceffects-effect-list .effect-value,
+  .tidy5eDark .dnd5e.sheet.item .dynamiceffects-effect-list .effect-header .effect-controls {
     color: var(--darkmode-primary-color);
     font-weight: 400;
   }
 
-  .tidysw5eDark .sw5e.sheet.item .dynamiceffects-effect-list .effect-header,
-  .tidysw5eDark .sw5e.sheet.item .dynamiceffects-effect-list .effect-header .effect-name,
-  .tidysw5eDark .sw5e.sheet.item .dynamiceffects-effect-list .effect-header .effect-controls {
+  .tidy5eDark .dnd5e.sheet.item .dynamiceffects-effect-list .effect-header,
+  .tidy5eDark .dnd5e.sheet.item .dynamiceffects-effect-list .effect-header .effect-name,
+  .tidy5eDark .dnd5e.sheet.item .dynamiceffects-effect-list .effect-header .effect-controls {
     color: var(--darkmode-tertiary-color);
   }
 
-  .tidysw5eDark .sw5e.sheet.item .dynamiceffects-effect-list .effect {
+  .tidy5eDark .dnd5e.sheet.item .dynamiceffects-effect-list .effect {
     background: var(--darkmode-faint-color);
   }
 
-  .tidysw5eDark .sw5e.sheet.item .dynamiceffects-effect-list .effect .effect-name {
+  .tidy5eDark .dnd5e.sheet.item .dynamiceffects-effect-list .effect .effect-name {
     cursor: default;
   }
 
-  .tidysw5eDark .sw5e.sheet.item .dynamiceffects-effect-list .effect-controls .effect-create {
+  .tidy5eDark .dnd5e.sheet.item .dynamiceffects-effect-list .effect-controls .effect-create {
     background: var(--darkmode-light-color);
   }
 
-  .tidysw5eDark .sw5e.sheet.item .dynamiceffects-effect-list .effect-controls .effect-create:hover {
+  .tidy5eDark .dnd5e.sheet.item .dynamiceffects-effect-list .effect-controls .effect-create:hover {
     background: var(--darkmode-primary-accent);
   }
 
-  .tidysw5eDark .sw5e.sheet.item .dynamiceffects-effect-list .effect-controls .effect-edit:hover {
+  .tidy5eDark .dnd5e.sheet.item .dynamiceffects-effect-list .effect-controls .effect-edit:hover {
     color: var(--darkmode-primary-accent);
   }
 
-  .tidysw5eDark .sw5e.sheet.item .dynamiceffects-effect-list .effect-controls .effect-delete {
+  .tidy5eDark .dnd5e.sheet.item .dynamiceffects-effect-list .effect-controls .effect-delete {
     color: var(--danger-500);
   }
 
-  .tidysw5eDark .sw5e.sheet.item .dynamiceffects-effect-list .effect-controls .effect-delete:hover {
+  .tidy5eDark .dnd5e.sheet.item .dynamiceffects-effect-list .effect-controls .effect-delete:hover {
     color: var(--danger-700);
   }
   /* ------------------------ */
   /*    Support Magic Items   */
   /* ------------------------ */
-  .tidysw5eDark .tidysw5e.sheet.actor .magic-items-feats-content .powerbook-filters.magic-items-head,
-  .tidysw5eDark .tidysw5e.sheet.actor .magic-items-powers-content .powerbook-filters.magic-items-head {
+  .tidy5eDark .tidy5e.sheet.actor .magic-items-feats-content .powerbook-filters.magic-items-head,
+  .tidy5eDark .tidy5e.sheet.actor .magic-items-powers-content .powerbook-filters.magic-items-head {
     border-color: var(--darkmode-light-color);
   }
 
-  .tidysw5eDark .tidysw5e.sheet.actor .magic-items-feats-content .magic-item div,
-  .tidysw5eDark .tidysw5e.sheet.actor .magic-items-powers-content .magic-item div {
+  .tidy5eDark .tidy5e.sheet.actor .magic-items-feats-content .magic-item div,
+  .tidy5eDark .tidy5e.sheet.actor .magic-items-powers-content .magic-item div {
     border-color: var(--darkmode-faint-color);
   }
 
-  .tidysw5eDark .sw5e.sheet.actor .power-rechargeable,
-  .tidysw5eDark .sw5e.sheet.actor .power-level,
-  .tidysw5eDark .sw5e.sheet.actor .power-consumption,
-  .tidysw5eDark .sw5e.sheet.actor .power-upcast {
+  .tidy5eDark .dnd5e.sheet.actor .power-rechargeable,
+  .tidy5eDark .dnd5e.sheet.actor .power-level,
+  .tidy5eDark .dnd5e.sheet.actor .power-consumption,
+  .tidy5eDark .dnd5e.sheet.actor .power-upcast {
     color: var(--darkmode-primary-color);
     font-weight: 300;
   }
 
-  .tidysw5eDark .sw5e.sheet.item .dynamiceffects-effect-list .effect-header .effect-mode,
-  .tidysw5eDark .sw5e.sheet.item .dynamiceffects-effect-list .effect-header .effect-value {
+  .tidy5eDark .dnd5e.sheet.item .dynamiceffects-effect-list .effect-header .effect-mode,
+  .tidy5eDark .dnd5e.sheet.item .dynamiceffects-effect-list .effect-header .effect-value {
     color: var(--darkmode-primary-color);
   }
 
-  .tidysw5eDark .tidysw5e.sheet.actor .magic-items-feats-content .item-name:hover .magic-item-image,
-  .tidysw5eDark .tidysw5e.sheet.actor .magic-items-powers-content .item-name:hover .magic-item-image {
+  .tidy5eDark .tidy5e.sheet.actor .magic-items-feats-content .item-name:hover .magic-item-image,
+  .tidy5eDark .tidy5e.sheet.actor .magic-items-powers-content .item-name:hover .magic-item-image {
     background-image: url(../../images/d20-444.svg) !important;
   }
 
-  .tidysw5eDark .tidysw5e.sheet.actor .magic-items-feats-content .item-name:hover .magic-item-image:hover,
-  .tidysw5eDark .tidysw5e.sheet.actor .magic-items-powers-content .item-name:hover .magic-item-image:hover {
+  .tidy5eDark .tidy5e.sheet.actor .magic-items-feats-content .item-name:hover .magic-item-image:hover,
+  .tidy5eDark .tidy5e.sheet.actor .magic-items-powers-content .item-name:hover .magic-item-image:hover {
     background-image: url(../../images/d20-highlight-green.svg) !important;
   }
 
   /* Magic Item Sheet */
 
-  .tidysw5eDark .sw5e.sheet.item .sheet-body .tab.magic-items label {
+  .tidy5eDark .dnd5e.sheet.item .sheet-body .tab.magic-items label {
     color: var(--darkmode-primary-color);
     font-weight: 300;
   }
 
-  .tidysw5eDark .sw5e.sheet.item .magic-items-content input[type="text"],
-  .tidysw5eDark .sw5e.sheet.item .magic-items-content select {
+  .tidy5eDark .dnd5e.sheet.item .magic-items-content input[type="text"],
+  .tidy5eDark .dnd5e.sheet.item .magic-items-content select {
     border: none !important;
     background: var(--darkmode-faint-color);
     color: var(--darkmode-primary-color);
   }
 
-  .tidysw5eDark .sw5e.sheet.item .magic-items-content input[type="text"]:hover,
-  .tidysw5eDark .sw5e.sheet.item .magic-items-content select:hover,
-  .tidysw5eDark .sw5e.sheet.item .magic-items-content select:focus {
+  .tidy5eDark .dnd5e.sheet.item .magic-items-content input[type="text"]:hover,
+  .tidy5eDark .dnd5e.sheet.item .magic-items-content select:hover,
+  .tidy5eDark .dnd5e.sheet.item .magic-items-content select:focus {
     border: none !important;
     box-shadow: 0 0 0 1px var(--darkmode-primary-accent);
   }
 
-  .tidysw5eDark .sw5e.sheet.item .magic-item-list .item:not(.items-header) {
+  .tidy5eDark .dnd5e.sheet.item .magic-item-list .item:not(.items-header) {
     background: var(--darkmode-faint-color);
     color: var(--darkmode-primary-color);
   }
 
-  .tidysw5eDark .sw5e.sheet.item .magic-item-list .item .power-level,
-  .tidysw5eDark .sw5e.sheet.item .magic-item-list .item .power-consumption,
-  .tidysw5eDark .sw5e.sheet.item .magic-item-list .item .power-upcast,
-  .tidysw5eDark .sw5e.sheet.item .magic-item-list .item .power-cost {
+  .tidy5eDark .dnd5e.sheet.item .magic-item-list .item .power-level,
+  .tidy5eDark .dnd5e.sheet.item .magic-item-list .item .power-consumption,
+  .tidy5eDark .dnd5e.sheet.item .magic-item-list .item .power-upcast,
+  .tidy5eDark .dnd5e.sheet.item .magic-item-list .item .power-cost {
     color: var(--darkmode-primary-color);
   }
 
-  .tidysw5eDark .sw5e.sheet.item .magic-item-list .items-header:first-child,
-  .tidysw5eDark .sw5e.sheet.item .magic-item-list .items-header .item-name,
-  .tidysw5eDark .sw5e.sheet.item .magic-item-list .items-header .power-level-head,
-  .tidysw5eDark .sw5e.sheet.item .magic-item-list .items-header .power-consumption-head,
-  .tidysw5eDark .sw5e.sheet.item .magic-item-list .items-header .power-upcast-head,
-  .tidysw5eDark .sw5e.sheet.item .magic-item-list .items-header .power-cost-head,
-  .tidysw5eDark .sw5e.sheet.item .magic-item-list .items-header .power-constrols-head {
+  .tidy5eDark .dnd5e.sheet.item .magic-item-list .items-header:first-child,
+  .tidy5eDark .dnd5e.sheet.item .magic-item-list .items-header .item-name,
+  .tidy5eDark .dnd5e.sheet.item .magic-item-list .items-header .power-level-head,
+  .tidy5eDark .dnd5e.sheet.item .magic-item-list .items-header .power-consumption-head,
+  .tidy5eDark .dnd5e.sheet.item .magic-item-list .items-header .power-upcast-head,
+  .tidy5eDark .dnd5e.sheet.item .magic-item-list .items-header .power-cost-head,
+  .tidy5eDark .dnd5e.sheet.item .magic-item-list .items-header .power-constrols-head {
     color: var(--darkmode-tertiary-color);
     font-weight: 400;
   }
 
-  .tidysw5eDark .sw5e.sheet.item .magic-item-list .item-controls a {
+  .tidy5eDark .dnd5e.sheet.item .magic-item-list .item-controls a {
     color: var(--danger-500);
   }
 
-  .tidysw5eDark .sw5e.sheet.item .magic-item-list .item-controls a:hover {
+  .tidy5eDark .dnd5e.sheet.item .magic-item-list .item-controls a:hover {
     color: var(--danger-700);
   }
 
@@ -144,30 +144,30 @@
   /*    Support Skill Customizer   */
   /* ----------------------------- */
 
-  .tidysw5eDark .tidysw5e.sheet.actor .skills-list > .skill > .skill-ability-select,
-  .tidysw5eDark .tidysw5e.sheet.actor .skills-list > .skill > .skill-cust-bonus {
+  .tidy5eDark .tidy5e.sheet.actor .skills-list > .skill > .skill-ability-select,
+  .tidy5eDark .tidy5e.sheet.actor .skills-list > .skill > .skill-cust-bonus {
     color: var(--darkmode-primary-color);
   }
 
-  .tidysw5eDark .tidysw5e.sheet.actor .skills-list > .skill > .skill-ability-select:hover,
-  .tidysw5eDark .tidysw5e.sheet.actor .skills-list > .skill > .skill-ability-select:focus {
+  .tidy5eDark .tidy5e.sheet.actor .skills-list > .skill > .skill-ability-select:hover,
+  .tidy5eDark .tidy5e.sheet.actor .skills-list > .skill > .skill-ability-select:focus {
     background: var(--darkmode-primary-accent);
     color: var(--darkmode-primary-color);
     box-shadow: 0 0 0 1px var(--darkmode-primary-accent);
   }
 
-  .tidysw5eDark .tidysw5e.sheet.actor .skills-list > .skill > .skill-ability-select:hover option,
-  .tidysw5eDark .tidysw5e.sheet.actor .skills-list > .skill > .skill-ability-select:focus option {
+  .tidy5eDark .tidy5e.sheet.actor .skills-list > .skill > .skill-ability-select:hover option,
+  .tidy5eDark .tidy5e.sheet.actor .skills-list > .skill > .skill-ability-select:focus option {
     background: #fff;
     color: #121212;
   }
 
-  .tidysw5eDark .tidysw5e.sheet.actor .skills-list > .skill > .skill-cust-bonus {
+  .tidy5eDark .tidy5e.sheet.actor .skills-list > .skill > .skill-cust-bonus {
     box-shadow: 0 0 0 1px var(--darkmode-tertiary-color) inset;
   }
 
-  .tidysw5eDark .tidysw5e.sheet.actor .skills-list > .skill > .skill-cust-bonus:hover,
-  .tidysw5eDark .tidysw5e.sheet.actor .skills-list > .skill > .skill-cust-bonus:focus {
+  .tidy5eDark .tidy5e.sheet.actor .skills-list > .skill > .skill-cust-bonus:hover,
+  .tidy5eDark .tidy5e.sheet.actor .skills-list > .skill > .skill-cust-bonus:focus {
     box-shadow: 0 0 0 1px var(--darkmode-primary-accent) inset;
   }
 }

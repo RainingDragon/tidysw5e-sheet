@@ -1,28 +1,42 @@
 <form onsubmit="event.preventDefault();" class="{{classes}}" autocomplete="off">
   <nav class="sheet-tabs tabs">
-    <a class="item" data-tab="pc-sheet">{{localize 'TIDYSW5E.Settings.TabPlayers.tabLabel'}}</a>
-    <a class="item" data-tab="npc-sheet">{{localize 'TIDYSW5E.Settings.TabNPCsVehicles.tabLabel'}}</a>
-    <a class="item gm-only" data-tab="gm-options">{{localize 'TIDYSW5E.Settings.TabGM.tabLabel'}}</a>
-    <a class="item gm-only" data-tab="modules">{{localize 'TIDYSW5E.Settings.TabModules.tabLabel'}}</a>
-    <a class="item" data-tab="info">{{localize 'TIDYSW5E.Settings.TabInfo.tabLabel'}}</a>
+    <a class="item" data-tab="pc-sheet">{{localize 'TIDY5E.Settings.TabPlayers.tabLabel'}}</a>
+    <a class="item" data-tab="npc-sheet">{{localize 'TIDY5E.Settings.TabNPCsVehicles.tabLabel'}}</a>
+    <a class="item gm-only" data-tab="gm-options">{{localize 'TIDY5E.Settings.TabGM.tabLabel'}}</a>
+    <a class="item gm-only" data-tab="modules">{{localize 'TIDY5E.Settings.TabModules.tabLabel'}}</a>
+    <a class="item" data-tab="info">{{localize 'TIDY5E.Settings.TabInfo.tabLabel'}}</a>
   </nav>
 
   {{!-- PC OPTIONS --}}
 
   <section class="tab" data-tab="pc-sheet">
-    <h2>{{localize 'TIDYSW5E.Settings.TabPlayers.header'}}</h2>
+    <h2>{{localize 'TIDY5E.Settings.TabPlayers.header'}}</h2>
     <article class="setting">
-      <input type="checkbox" data-dtype='boolean' name='journalTabDisabled' id='journalTabDisabled' {{checked settings.journalTabDisabled.value}}>
+      <input
+        type="checkbox"
+        data-dtype="boolean"
+        name="journalTabDisabled"
+        id="journalTabDisabled"
+        {{checked
+        settings.journalTabDisabled.value}}
+      />
       <div class="description">
-        <label for="journalTabDisabled">{{localize 'TIDYSW5E.Settings.JournalTab.name'}}</label>
-        <p class="notes">{{localize 'TIDYSW5E.Settings.JournalTab.hint'}}</p>
+        <label for="journalTabDisabled">{{localize 'TIDY5E.Settings.JournalTab.name'}}</label>
+        <p class="notes">{{localize 'TIDY5E.Settings.JournalTab.hint'}}</p>
       </div>
     </article>
     <article class="setting">
-      <input type="checkbox" data-dtype='boolean' name='classListDisabled' id='classListDisabled' {{checked settings.classListDisabled.value}}>
+      <input
+        type="checkbox"
+        data-dtype="boolean"
+        name="classListDisabled"
+        id="classListDisabled"
+        {{checked
+        settings.classListDisabled.value}}
+      />
       <div class="description">
-        <label for="classListDisabled">{{localize 'TIDYSW5E.Settings.ClassList.name'}}</label>
-        <p class="notes">{{localize 'TIDYSW5E.Settings.ClassList.hint'}}</p>
+        <label for="classListDisabled">{{localize 'TIDY5E.Settings.ClassList.name'}}</label>
+        <p class="notes">{{localize 'TIDY5E.Settings.ClassList.hint'}}</p>
       </div>
     </article>
     <article class="setting">
@@ -35,8 +49,8 @@
         settings.inspirationAnimationDisabled.value}}
       />
       <div class="description">
-        <label for="inspirationAnimationDisabled">{{localize 'TIDYSW5E.Settings.InspirationAnimation.name'}}</label>
-        <p class="notes">{{localize 'TIDYSW5E.Settings.InspirationAnimation.hint'}}</p>
+        <label for="inspirationAnimationDisabled">{{localize 'TIDY5E.Settings.InspirationAnimation.name'}}</label>
+        <p class="notes">{{localize 'TIDY5E.Settings.InspirationAnimation.hint'}}</p>
       </div>
     </article>
     <article class="setting">
@@ -49,8 +63,8 @@
         settings.hideIfZero.value}}
       />
       <div class="description">
-        <label for="hideIfZero">{{localize 'TIDYSW5E.Settings.HideIfZero.name'}}</label>
-        <p class="notes">{{localize 'TIDYSW5E.Settings.HideIfZero.hint'}}</p>
+        <label for="hideIfZero">{{localize 'TIDY5E.Settings.HideIfZero.name'}}</label>
+        <p class="notes">{{localize 'TIDY5E.Settings.HideIfZero.hint'}}</p>
       </div>
     </article>
     <article class="setting">
@@ -63,8 +77,8 @@
         settings.inspirationOnHover.value}}
       />
       <div class="description">
-        <label for="inspirationOnHover">{{localize 'TIDYSW5E.Settings.InspirationOnHover.name'}}</label>
-        <p class="notes">{{localize 'TIDYSW5E.Settings.InspirationOnHover.hint'}}</p>
+        <label for="inspirationOnHover">{{localize 'TIDY5E.Settings.InspirationOnHover.name'}}</label>
+        <p class="notes">{{localize 'TIDY5E.Settings.InspirationOnHover.hint'}}</p>
       </div>
     </article>
     <article class="setting">
@@ -77,8 +91,8 @@
         settings.exhaustionOnHover.value}}
       />
       <div class="description">
-        <label for="exhaustionOnHover">{{localize 'TIDYSW5E.Settings.ExhaustionOnHover.name'}}</label>
-        <p class="notes">{{localize 'TIDYSW5E.Settings.ExhaustionOnHover.hint'}}</p>
+        <label for="exhaustionOnHover">{{localize 'TIDY5E.Settings.ExhaustionOnHover.name'}}</label>
+        <p class="notes">{{localize 'TIDY5E.Settings.ExhaustionOnHover.hint'}}</p>
       </div>
     </article>
     <article class="setting">
@@ -91,8 +105,8 @@
         settings.hpBarDisabled.value}}
       />
       <div class="description">
-        <label for="hpBarDisabled">{{localize 'TIDYSW5E.Settings.HpBar.name'}}</label>
-        <p class="notes">{{localize 'TIDYSW5E.Settings.HpBar.hint'}}</p>
+        <label for="hpBarDisabled">{{localize 'TIDY5E.Settings.HpBar.name'}}</label>
+        <p class="notes">{{localize 'TIDY5E.Settings.HpBar.hint'}}</p>
       </div>
     </article>
     <article class="setting">
@@ -105,8 +119,8 @@
         settings.hpOverlayDisabled.value}}
       />
       <div class="description">
-        <label for="hpOverlayDisabled">{{localize 'TIDYSW5E.Settings.HpOverlay.name'}}</label>
-        <p class="notes">{{localize 'TIDYSW5E.Settings.HpOverlay.hint'}}</p>
+        <label for="hpOverlayDisabled">{{localize 'TIDY5E.Settings.HpOverlay.name'}}</label>
+        <p class="notes">{{localize 'TIDY5E.Settings.HpOverlay.hint'}}</p>
       </div>
     </article>
     <article class="setting">
@@ -119,8 +133,8 @@
         settings.traitLabelsEnabled.value}}
       />
       <div class="description">
-        <label for="traitLabelsEnabled">{{localize 'TIDYSW5E.Settings.TraitLabels.name'}}</label>
-        <p class="notes">{{localize 'TIDYSW5E.Settings.TraitLabels.hint'}}</p>
+        <label for="traitLabelsEnabled">{{localize 'TIDY5E.Settings.TraitLabels.name'}}</label>
+        <p class="notes">{{localize 'TIDY5E.Settings.TraitLabels.hint'}}</p>
       </div>
     </article>
     <article class="setting">
@@ -133,8 +147,8 @@
         settings.traitsTogglePc.value}}
       />
       <div class="description">
-        <label for="traitsTogglePc">{{localize 'TIDYSW5E.Settings.TraitsTogglePc.name'}}</label>
-        <p class="notes">{{localize 'TIDYSW5E.Settings.TraitsTogglePc.hint'}}</p>
+        <label for="traitsTogglePc">{{localize 'TIDY5E.Settings.TraitsTogglePc.name'}}</label>
+        <p class="notes">{{localize 'TIDY5E.Settings.TraitsTogglePc.hint'}}</p>
       </div>
     </article>
     <article class="setting">
@@ -147,15 +161,22 @@
         settings.traitsMovedBelowResource.value}}
       />
       <div class="description">
-        <label for="traitsMovedBelowResource">{{localize 'TIDYSW5E.Settings.TraitsMovedBelowResource.name'}}</label>
-        <p class="notes">{{localize 'TIDYSW5E.Settings.TraitsMovedBelowResource.hint'}}</p>
+        <label for="traitsMovedBelowResource">{{localize 'TIDY5E.Settings.TraitsMovedBelowResource.name'}}</label>
+        <p class="notes">{{localize 'TIDY5E.Settings.TraitsMovedBelowResource.hint'}}</p>
       </div>
     </article>
     <article class="setting">
-      <input type="checkbox" data-dtype='boolean' name='ammoEquippedOnly' id='ammoEquippedOnly' {{checked settings.ammoEquippedOnly.value}}>
+      <input
+        type="checkbox"
+        data-dtype="boolean"
+        name="ammoEquippedOnly"
+        id="ammoEquippedOnly"
+        {{checked
+        settings.ammoEquippedOnly.value}}
+      />
       <div class="description">
-        <label for="ammoEquippedOnly">{{localize 'TIDYSW5E.Settings.AmmoEquippedOnly.name'}}</label>
-        <p class="notes">{{localize 'TIDYSW5E.Settings.AmmoEquippedOnly.hint'}}</p>
+        <label for="ammoEquippedOnly">{{localize 'TIDY5E.Settings.AmmoEquippedOnly.name'}}</label>
+        <p class="notes">{{localize 'TIDY5E.Settings.AmmoEquippedOnly.hint'}}</p>
       </div>
     </article>
   </section>
@@ -163,9 +184,9 @@
   {{!-- NPC/VEHICLE OPTIONS --}}
 
   <section class="tab" data-tab="npc-sheet">
-    <h2>{{localize 'TIDYSW5E.Settings.TabNPCsVehicles.header'}}</h2>
+    <h2>{{localize 'TIDY5E.Settings.TabNPCsVehicles.header'}}</h2>
 
-    <h3>{{localize 'TIDYSW5E.Settings.TabNPCsVehicles.labelNPCs'}}</h3>
+    <h3>{{localize 'TIDY5E.Settings.TabNPCsVehicles.labelNPCs'}}</h3>
     <article class="setting gm-only">
       <input
         type="checkbox"
@@ -176,8 +197,8 @@
         settings.restingForNpcsEnabled.value}}
       />
       <div class="description">
-        <label for="restingForNpcsEnabled">{{localize 'TIDYSW5E.Settings.RestingForNpcs.name'}}</label>
-        <p class="notes">{{localize 'TIDYSW5E.Settings.RestingForNpcs.hint'}}</p>
+        <label for="restingForNpcsEnabled">{{localize 'TIDY5E.Settings.RestingForNpcs.name'}}</label>
+        <p class="notes">{{localize 'TIDY5E.Settings.RestingForNpcs.hint'}}</p>
       </div>
     </article>
     <article class="setting gm-only">
@@ -190,22 +211,22 @@
         settings.restingForNpcsChatDisabled.value}}
       />
       <div class="description">
-        <label for="restingForNpcsChatDisabled">{{localize 'TIDYSW5E.Settings.RestingForNpcsChat.name'}}</label>
-        <p class="notes">{{localize 'TIDYSW5E.Settings.RestingForNpcsChat.hint'}}</p>
+        <label for="restingForNpcsChatDisabled">{{localize 'TIDY5E.Settings.RestingForNpcsChat.name'}}</label>
+        <p class="notes">{{localize 'TIDY5E.Settings.RestingForNpcsChat.hint'}}</p>
       </div>
     </article>
     <article class="setting group gm-only">
       <div>
         <div class="description">
-          <label for="linkMarkerNpc">{{localize 'TIDYSW5E.Settings.LinkMarker.name'}}</label>
-          <p class="notes">{{localize 'TIDYSW5E.Settings.LinkMarker.hint'}}</p>
+          <label for="linkMarkerNpc">{{localize 'TIDY5E.Settings.LinkMarker.name'}}</label>
+          <p class="notes">{{localize 'TIDY5E.Settings.LinkMarker.hint'}}</p>
         </div>
         <div class="settings-group">
           <select name="linkMarkerNpc" id="linkMarkerNpc">
             {{#select settings.linkMarkerNpc.value}}
-            <option value="default">{{localize "TIDYSW5E.Settings.LinkMarker.default"}}</option>
-            <option value="unlinked">{{localize "TIDYSW5E.Settings.LinkMarker.unlinked"}}</option>
-            <option value="both">{{localize "TIDYSW5E.Settings.LinkMarker.both"}}</option>
+            <option value="default">{{localize "TIDY5E.Settings.LinkMarker.default"}}</option>
+            <option value="unlinked">{{localize "TIDY5E.Settings.LinkMarker.unlinked"}}</option>
+            <option value="both">{{localize "TIDY5E.Settings.LinkMarker.both"}}</option>
             {{/select}}
           </select>
         </div>
@@ -221,8 +242,8 @@
         settings.hpBarDisabledNpc.value}}
       />
       <div class="description">
-        <label for="hpBarDisabledNpc">{{localize 'TIDYSW5E.Settings.HpBar.name'}}</label>
-        <p class="notes">{{localize 'TIDYSW5E.Settings.HpBar.hint'}}</p>
+        <label for="hpBarDisabledNpc">{{localize 'TIDY5E.Settings.HpBar.name'}}</label>
+        <p class="notes">{{localize 'TIDY5E.Settings.HpBar.hint'}}</p>
       </div>
     </article>
     <article class="setting">
@@ -235,8 +256,8 @@
         settings.hpOverlayDisabledNpc.value}}
       />
       <div class="description">
-        <label for="hpOverlayDisabledNpc">{{localize 'TIDYSW5E.Settings.HpOverlay.name'}}</label>
-        <p class="notes">{{localize 'TIDYSW5E.Settings.HpOverlay.hint'}}</p>
+        <label for="hpOverlayDisabledNpc">{{localize 'TIDY5E.Settings.HpOverlay.name'}}</label>
+        <p class="notes">{{localize 'TIDY5E.Settings.HpOverlay.hint'}}</p>
       </div>
     </article>
     <article class="setting">
@@ -249,8 +270,8 @@
         settings.traitsAlwaysShownNpc.value}}
       />
       <div class="description">
-        <label for="traitsAlwaysShownNpc">{{localize 'TIDYSW5E.Settings.TraitsAlwaysShown.name'}}</label>
-        <p class="notes">{{localize 'TIDYSW5E.Settings.TraitsAlwaysShown.hint'}}</p>
+        <label for="traitsAlwaysShownNpc">{{localize 'TIDY5E.Settings.TraitsAlwaysShown.name'}}</label>
+        <p class="notes">{{localize 'TIDY5E.Settings.TraitsAlwaysShown.hint'}}</p>
       </div>
     </article>
     <article class="setting">
@@ -263,8 +284,8 @@
         settings.traitsMovedBelowResourceNpc.value}}
       />
       <div class="description">
-        <label for="traitsMovedBelowResourceNpc">{{localize 'TIDYSW5E.Settings.TraitsMovedBelowResource.name'}}</label>
-        <p class="notes">{{localize 'TIDYSW5E.Settings.TraitsMovedBelowResource.hint'}}</p>
+        <label for="traitsMovedBelowResourceNpc">{{localize 'TIDY5E.Settings.TraitsMovedBelowResource.name'}}</label>
+        <p class="notes">{{localize 'TIDY5E.Settings.TraitsMovedBelowResource.hint'}}</p>
       </div>
     </article>
     <article class="setting">
@@ -277,12 +298,12 @@
         settings.skillsAlwaysShownNpc.value}}
       />
       <div class="description">
-        <label for="skillsAlwaysShownNpc">{{localize 'TIDYSW5E.Settings.SkillsAlwaysShown.name'}}</label>
-        <p class="notes">{{localize 'TIDYSW5E.Settings.SkillsAlwaysShown.hint'}}</p>
+        <label for="skillsAlwaysShownNpc">{{localize 'TIDY5E.Settings.SkillsAlwaysShown.name'}}</label>
+        <p class="notes">{{localize 'TIDY5E.Settings.SkillsAlwaysShown.hint'}}</p>
       </div>
     </article>
 
-    <h3>{{localize 'TIDYSW5E.Settings.TabNPCsVehicles.labelVehicles'}}</h3>
+    <h3>{{localize 'TIDY5E.Settings.TabNPCsVehicles.labelVehicles'}}</h3>
     <article class="setting">
       <input
         type="checkbox"
@@ -293,8 +314,8 @@
         settings.hpBarDisabledVehicle.value}}
       />
       <div class="description">
-        <label for="hpBarDisabledVehicle">{{localize 'TIDYSW5E.Settings.HpBar.name'}}</label>
-        <p class="notes">{{localize 'TIDYSW5E.Settings.HpBar.hint'}}</p>
+        <label for="hpBarDisabledVehicle">{{localize 'TIDY5E.Settings.HpBar.name'}}</label>
+        <p class="notes">{{localize 'TIDY5E.Settings.HpBar.hint'}}</p>
       </div>
     </article>
     <article class="setting">
@@ -307,8 +328,8 @@
         settings.hpOverlayDisabledVehicle.value}}
       />
       <div class="description">
-        <label for="hpOverlayDisabledVehicle">{{localize 'TIDYSW5E.Settings.HpOverlay.name'}}</label>
-        <p class="notes">{{localize 'TIDYSW5E.Settings.HpOverlay.hint'}}</p>
+        <label for="hpOverlayDisabledVehicle">{{localize 'TIDY5E.Settings.HpOverlay.name'}}</label>
+        <p class="notes">{{localize 'TIDY5E.Settings.HpOverlay.hint'}}</p>
       </div>
     </article>
   </section>
@@ -316,7 +337,7 @@
   {{!-- GM OPTIONS --}}
 
   <section class="tab gm-only" data-tab="gm-options">
-    <h2>{{localize 'TIDYSW5E.Settings.TabGM.header'}}</h2>
+    <h2>{{localize 'TIDY5E.Settings.TabGM.header'}}</h2>
 
     <article class="setting">
       <input
@@ -328,8 +349,8 @@
         settings.playerNameEnabled.value}}
       />
       <div class="description">
-        <label for="playerNameEnabled">{{localize 'TIDYSW5E.Settings.PlayerName.name'}}</label>
-        <p class="notes">{{localize 'TIDYSW5E.Settings.PlayerName.hint'}}</p>
+        <label for="playerNameEnabled">{{localize 'TIDY5E.Settings.PlayerName.name'}}</label>
+        <p class="notes">{{localize 'TIDY5E.Settings.PlayerName.hint'}}</p>
       </div>
     </article>
     <article class="setting">
@@ -342,8 +363,8 @@
         settings.rightClickDisabled.value}}
       />
       <div class="description">
-        <label for="rightClickDisabled">{{localize 'TIDYSW5E.Settings.RightClick.name'}}</label>
-        <p class="notes">{{localize 'TIDYSW5E.Settings.RightClick.hint'}}</p>
+        <label for="rightClickDisabled">{{localize 'TIDY5E.Settings.RightClick.name'}}</label>
+        <p class="notes">{{localize 'TIDY5E.Settings.RightClick.hint'}}</p>
       </div>
     </article>
     <article class="setting">
@@ -356,15 +377,15 @@
         settings.expandedSheetEnabled.value}}
       />
       <div class="description">
-        <label for="expandedSheetEnabled">{{localize 'TIDYSW5E.Settings.ExpandedSheet.name'}}</label>
-        <p class="notes">{{localize 'TIDYSW5E.Settings.ExpandedSheet.hint'}}</p>
+        <label for="expandedSheetEnabled">{{localize 'TIDY5E.Settings.ExpandedSheet.name'}}</label>
+        <p class="notes">{{localize 'TIDY5E.Settings.ExpandedSheet.hint'}}</p>
       </div>
     </article>
     <article class="setting group">
       <div>
         <div class="description">
-          <label for="itemCardsFixKey">{{localize 'TIDYSW5E.Settings.ItemCardsFixKey.name'}}</label>
-          <p class="notes">{{localize 'TIDYSW5E.Settings.ItemCardsFixKey.hint'}}</p>
+          <label for="itemCardsFixKey">{{localize 'TIDY5E.Settings.ItemCardsFixKey.name'}}</label>
+          <p class="notes">{{localize 'TIDY5E.Settings.ItemCardsFixKey.hint'}}</p>
         </div>
         <div class="settings-group">
           <article>
@@ -383,16 +404,16 @@
     <article class="setting group">
       <section>
         <div class="description">
-          <label for="portraitStyle">{{localize 'TIDYSW5E.Settings.PortraitStyle.name'}}</label>
-          <p class="notes">{{localize 'TIDYSW5E.Settings.PortraitStyle.hint'}}</p>
+          <label for="portraitStyle">{{localize 'TIDY5E.Settings.PortraitStyle.name'}}</label>
+          <p class="notes">{{localize 'TIDY5E.Settings.PortraitStyle.hint'}}</p>
         </div>
         <div class="settings-group">
           <select name="portraitStyle" id="portraitStyle">
             {{#select settings.portraitStyle.value}}
-            <option value="default">{{localize "TIDYSW5E.Settings.PortraitStyle.default"}}</option>
-            <option value="pc">{{localize "TIDYSW5E.Settings.PortraitStyle.pc"}}</option>
-            <option value="npc">{{localize "TIDYSW5E.Settings.PortraitStyle.npc"}}</option>
-            <option value="all">{{localize "TIDYSW5E.Settings.PortraitStyle.all"}}</option>
+            <option value="default">{{localize "TIDY5E.Settings.PortraitStyle.default"}}</option>
+            <option value="pc">{{localize "TIDY5E.Settings.PortraitStyle.pc"}}</option>
+            <option value="npc">{{localize "TIDY5E.Settings.PortraitStyle.npc"}}</option>
+            <option value="all">{{localize "TIDY5E.Settings.PortraitStyle.all"}}</option>
             {{/select}}
           </select>
         </div>
@@ -401,12 +422,12 @@
     <article class="setting group">
       <section>
         <div class="description">
-          <label>{{localize 'TIDYSW5E.Settings.HpOverlayBorder.name'}}</label>
-          <p class="notes">{{localize 'TIDYSW5E.Settings.HpOverlayBorder.hint'}}</p>
+          <label>{{localize 'TIDY5E.Settings.HpOverlayBorder.name'}}</label>
+          <p class="notes">{{localize 'TIDY5E.Settings.HpOverlayBorder.hint'}}</p>
         </div>
         <div class="settings-group">
           <article>
-            <label for="hpOverlayBorder">{{localize 'TIDYSW5E.Settings.PcLabel'}}</label>
+            <label for="hpOverlayBorder">{{localize 'TIDY5E.Settings.PcLabel'}}</label>
             <input
               type="text"
               data-dtype="string"
@@ -416,7 +437,7 @@
             />
           </article>
           <article>
-            <label for="hpOverlayBorderNpc">{{localize 'TIDYSW5E.Settings.NpcLabel'}}</label>
+            <label for="hpOverlayBorderNpc">{{localize 'TIDY5E.Settings.NpcLabel'}}</label>
             <input
               type="text"
               data-dtype="string"
@@ -426,7 +447,7 @@
             />
           </article>
           <article>
-            <label for="hpOverlayBorderVehicle">{{localize 'TIDYSW5E.Settings.VehicleLabel'}}</label>
+            <label for="hpOverlayBorderVehicle">{{localize 'TIDY5E.Settings.VehicleLabel'}}</label>
             <input
               type="text"
               data-dtype="string"
@@ -448,8 +469,8 @@
         settings.editTotalLockEnabled.value}}
       />
       <div class="description">
-        <label for="editTotalLockEnabled">{{localize 'TIDYSW5E.Settings.EditTotalLock.name'}}</label>
-        <p class="notes">{{localize 'TIDYSW5E.Settings.EditTotalLock.hint'}}</p>
+        <label for="editTotalLockEnabled">{{localize 'TIDY5E.Settings.EditTotalLock.name'}}</label>
+        <p class="notes">{{localize 'TIDY5E.Settings.EditTotalLock.hint'}}</p>
       </div>
     </article>
     <article class="setting">
@@ -462,8 +483,8 @@
         settings.editGmAlwaysEnabled.value}}
       />
       <div class="description">
-        <label for="editGmAlwaysEnabled">{{localize 'TIDYSW5E.Settings.EditGmAlways.name'}}</label>
-        <p class="notes">{{localize 'TIDYSW5E.Settings.EditGmAlways.hint'}}</p>
+        <label for="editGmAlwaysEnabled">{{localize 'TIDY5E.Settings.EditGmAlways.name'}}</label>
+        <p class="notes">{{localize 'TIDY5E.Settings.EditGmAlways.hint'}}</p>
       </div>
     </article>
     <article class="setting">
@@ -476,8 +497,8 @@
         settings.editEffectsGmOnlyEnabled.value}}
       />
       <div class="description">
-        <label for="editEffectsGmOnlyEnabled">{{localize 'TIDYSW5E.Settings.EditEffectsGmOnly.name'}}</label>
-        <p class="notes">{{localize 'TIDYSW5E.Settings.EditEffectsGmOnly.hint'}}</p>
+        <label for="editEffectsGmOnlyEnabled">{{localize 'TIDY5E.Settings.EditEffectsGmOnly.name'}}</label>
+        <p class="notes">{{localize 'TIDY5E.Settings.EditEffectsGmOnly.hint'}}</p>
       </div>
     </article>
     <article class="setting">
@@ -490,8 +511,8 @@
         settings.quantityAlwaysShownEnabled.value}}
       />
       <div class="description">
-        <label for="quantityAlwaysShownEnabled">{{localize 'TIDYSW5E.Settings.QuantityAlwaysShown.name'}}</label>
-        <p class="notes">{{localize 'TIDYSW5E.Settings.QuantityAlwaysShown.hint'}}</p>
+        <label for="quantityAlwaysShownEnabled">{{localize 'TIDY5E.Settings.QuantityAlwaysShown.name'}}</label>
+        <p class="notes">{{localize 'TIDY5E.Settings.QuantityAlwaysShown.hint'}}</p>
       </div>
     </article>
     <article class="setting">
@@ -504,23 +525,23 @@
         settings.inspirationDisabled.value}}
       />
       <div class="description">
-        <label for="inspirationDisabled">{{localize 'TIDYSW5E.Settings.InspirationDisabled.name'}}</label>
-        <p class="notes">{{localize 'TIDYSW5E.Settings.InspirationDisabled.hint'}}</p>
+        <label for="inspirationDisabled">{{localize 'TIDY5E.Settings.InspirationDisabled.name'}}</label>
+        <p class="notes">{{localize 'TIDY5E.Settings.InspirationDisabled.hint'}}</p>
       </div>
     </article>
     <article class="setting group">
       <section>
         <!-- <input type="checkbox" data-dtype='boolean' name='exhaustionEffectsEnabled' id='exhaustionEffectsEnabled' {{checked settings.exhaustionEffectsEnabled.value}}> -->
         <div class="description">
-          <label for="exhaustionEffectsEnabled">{{localize 'TIDYSW5E.Settings.ExhaustionEffects.name'}}</label>
-          <p class="notes">{{localize 'TIDYSW5E.Settings.ExhaustionEffects.hint'}}</p>
+          <label for="exhaustionEffectsEnabled">{{localize 'TIDY5E.Settings.ExhaustionEffects.name'}}</label>
+          <p class="notes">{{localize 'TIDY5E.Settings.ExhaustionEffects.hint'}}</p>
         </div>
         <div class="settings-group">
           <select name="exhaustionEffectsEnabled" id="exhaustionEffectsEnabled">
             {{#select settings.exhaustionEffectsEnabled.value}}
-            <option value="default">{{localize "TIDYSW5E.Settings.ExhaustionEffects.default"}}</option>
-            <option value="tidysw5e">{{localize "TIDYSW5E.Settings.ExhaustionEffects.tidysw5e"}}</option>
-            <option value="custom">{{localize "TIDYSW5E.Settings.ExhaustionEffects.custom"}}</option>
+            <option value="default">{{localize "TIDY5E.Settings.ExhaustionEffects.default"}}</option>
+            <option value="tidy5e">{{localize "TIDY5E.Settings.ExhaustionEffects.tidy5e"}}</option>
+            <option value="custom">{{localize "TIDY5E.Settings.ExhaustionEffects.custom"}}</option>
             {{/select}}
           </select>
         </div>
@@ -529,8 +550,8 @@
     <article class="setting group">
       <section>
         <div class="description">
-          <label for="exhaustionEffectIcon">{{localize 'TIDYSW5E.Settings.CustomExhaustionIcon.name'}}</label>
-          <p class="notes">{{localize 'TIDYSW5E.Settings.CustomExhaustionIcon.hint'}}</p>
+          <label for="exhaustionEffectIcon">{{localize 'TIDY5E.Settings.CustomExhaustionIcon.name'}}</label>
+          <p class="notes">{{localize 'TIDY5E.Settings.CustomExhaustionIcon.hint'}}</p>
         </div>
         <div class="settings-group">
           <article>
@@ -548,8 +569,8 @@
     <article class="setting group">
       <section>
         <div class="description">
-          <label for="exhaustionEffectCustom">{{localize 'TIDYSW5E.Settings.CustomExhaustionEffect.name'}}</label>
-          <p class="notes">{{localize 'TIDYSW5E.Settings.CustomExhaustionEffect.hint'}}</p>
+          <label for="exhaustionEffectCustom">{{localize 'TIDY5E.Settings.CustomExhaustionEffect.name'}}</label>
+          <p class="notes">{{localize 'TIDY5E.Settings.CustomExhaustionEffect.hint'}}</p>
         </div>
         <div class="settings-group">
           <article>
@@ -562,7 +583,7 @@
             />
           </article>
           <article>
-            <p class="notes">{{localize 'TIDYSW5E.Settings.CustomExhaustionEffect.tiers'}}</p>
+            <p class="notes">{{localize 'TIDY5E.Settings.CustomExhaustionEffect.tiers'}}</p>
             <input
               type="text"
               data-dtype="string"
@@ -584,38 +605,36 @@
         settings.exhaustionDisabled.value}}
       />
       <div class="description">
-        <label for="exhaustionDisabled">{{localize 'TIDYSW5E.Settings.ExhaustionDisabled.name'}}</label>
-        <p class="notes">{{localize 'TIDYSW5E.Settings.ExhaustionDisabled.hint'}}</p>
+        <label for="exhaustionDisabled">{{localize 'TIDY5E.Settings.ExhaustionDisabled.name'}}</label>
+        <p class="notes">{{localize 'TIDY5E.Settings.ExhaustionDisabled.hint'}}</p>
       </div>
     </article>
   </section>
 
   {{!-- MODULE OPTIONS --}}
 
-  <section class='tab gm-only' data-tab='modules'>
-    <h2>{{localize 'TIDYSW5E.Settings.TabModules.header'}}</h2>
-    
-    <h3>{{localize 'TIDYSW5E.Settings.TabModules.labelActionsFavorites'}}</h3>
+  <section class="tab gm-only" data-tab="modules">
+    <h2>{{localize 'TIDY5E.Settings.TabModules.header'}}</h2>
+
+    <h3>{{localize 'TIDY5E.Settings.TabModules.labelActionsFavorites'}}</h3>
     <article class="setting group">
       <section>
         <div class="description">
-          <label for="defaultActionsTab">{{localize 'TIDYSW5E.Settings.DefaultActionsTab.name'}}</label>
-          <p class="notes">{{localize 'TIDYSW5E.Settings.DefaultActionsTab.hint'}}</p>
+          <label for="defaultActionsTab">{{localize 'TIDY5E.Settings.DefaultActionsTab.name'}}</label>
+          <p class="notes">{{localize 'TIDY5E.Settings.DefaultActionsTab.hint'}}</p>
         </div>
-         <div class="settings-group">
-          <select name="defaultActionsTab" id="defaultActionsTab">  
+        <div class="settings-group">
+          <select name="defaultActionsTab" id="defaultActionsTab">
             {{#select settings.defaultActionsTab.value}}
-            <option value="default">{{localize "TIDYSW5E.Settings.DefaultActionsTab.default"}}</option>
-            <option value="attributes">{{localize "TIDYSW5E.Settings.DefaultActionsTab.attributes"}}</option>
+            <option value="default">{{localize "TIDY5E.Settings.DefaultActionsTab.default"}}</option>
+            <option value="attributes">{{localize "TIDY5E.Settings.DefaultActionsTab.attributes"}}</option>
             {{/select}}
           </select>
         </div>
       </section>
     </article>
 
-    <h3>{{localize 'TIDYSW5E.Settings.TabModules.labelActionsFavorites'}}</h3>
-
-    <h3>{{localize 'TIDYSW5E.Settings.TabModules.labelMidiQoL'}}</h3>
+    <h3>{{localize 'TIDY5E.Settings.TabModules.labelMidiQoL'}}</h3>
     <article class="setting">
       <input
         type="checkbox"
@@ -626,8 +645,8 @@
         settings.contextRollButtons.value}}
       />
       <div class="description">
-        <label for="contextRollButtons">{{localize 'TIDYSW5E.Settings.RollButtonsToCard.name'}}</label>
-        <p class="notes">{{localize 'TIDYSW5E.Settings.RollButtonsToCard.hint'}}</p>
+        <label for="contextRollButtons">{{localize 'TIDY5E.Settings.RollButtonsToCard.name'}}</label>
+        <p class="notes">{{localize 'TIDY5E.Settings.RollButtonsToCard.hint'}}</p>
       </div>
     </article>
     <article class="setting">
@@ -640,8 +659,8 @@
         settings.activeEffectsMarker.value}}
       />
       <div class="description">
-        <label for="activeEffectsMarker">{{localize 'TIDYSW5E.Settings.ActiveEffectsMarker.name'}}</label>
-        <p class="notes">{{localize 'TIDYSW5E.Settings.ActiveEffectsMarker.hint'}}</p>
+        <label for="activeEffectsMarker">{{localize 'TIDY5E.Settings.ActiveEffectsMarker.name'}}</label>
+        <p class="notes">{{localize 'TIDY5E.Settings.ActiveEffectsMarker.hint'}}</p>
       </div>
     </article>
   </section>
@@ -649,7 +668,7 @@
   {{!-- INFO --}}
 
   <section class="tab" data-tab="info">
-    <h2>{{localize 'TIDYSW5E.Settings.TabInfo.header'}}</h2>
+    <h2>{{localize 'TIDY5E.Settings.TabInfo.header'}}</h2>
   </section>
 
   <footer class="sheet-footer flexrow">

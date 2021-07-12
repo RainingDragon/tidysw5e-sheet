@@ -16,15 +16,15 @@ Thank you very much!
 
 ## Version History
 
-### Version 0.5.10 ###
+### Version 0.5.10
 
 - definately fixed type selection for newly created NPCs (maybe)
 
-### Version 0.5.9 ###
+### Version 0.5.9
 
 - fixed type selection for newly created NPCs
 
-### Version 0.5.8 ###
+### Version 0.5.8
 
 - actually respect the npc/vehicle injection rules for Character Actions List
 - fixed exhaustion effects
@@ -32,26 +32,26 @@ Thank you very much!
 - ensured important input field identifiers are unique (thanks @calego)
 - updated japanese translation
 
-### Version 0.5.7 ###
+### Version 0.5.7
 
 - jet again: fixed a bug related to Character Actions List
 
-### Version 0.5.6 ###
+### Version 0.5.6
 
 - fixed a bug related to Character Actions List
 
-### Version 0.5.5 ###
+### Version 0.5.5
 
 - updated character actions list integration
 - fixed display error for item info cards with 0 delay
 - new per player setting to hide the journal tab
 - new setting for Character Actions list module: Choose default tab for first time opening a sheet (actions or attributes)
 
-### Version 0.5.4 ###
+### Version 0.5.4
 
 - added the new hit dice configurator that I was unaware of!
 
-### Version 0.5.3 ###
+### Version 0.5.3
 
 - fixed alphabetical skill sorting for translations
 - fixed attunement tracker
@@ -60,20 +60,20 @@ Thank you very much!
 
 - in sensitive data mode the skill list will keep proficiency marks while sheet is locked but prevent toggling them
 
-### Version 0.5.2 ###
+### Version 0.5.2
 
 - Fix for some NPC sheets not opening due to DEFAULT_TOKEN error
 
-### Version 0.5.1 ###
+### Version 0.5.1
 
 - Fixing version number issue
 
-### Version 0.5.0 ###
+### Version 0.5.0
 
 - updated sheet for foundry 0.8.x and dnd5e 1.3.0 (required)
 - updated korean and japanese translation
 
-### Version 0.4.29 ###
+### Version 0.4.29
 
 - fix for magic items on NPCs
 - fix for hidden NPC resources if actions/resistance values are 1
@@ -181,7 +181,7 @@ Thank you very much!
 
 ### Version 0.4.11
 
-- Removed deprecated legacy speed due to bug causing all movement to be deleted during data migration in sw5e 1.2.x - I'm very sorry for any inconveniences caused by this
+- Removed deprecated legacy speed due to bug causing all movement to be deleted during data migration in 5e 1.2.x - I'm very sorry for any inconveniences caused by this
 - fixed missing items in observer view
 
 ### Version 0.4.10
@@ -262,7 +262,7 @@ Thank you very much!
 ### Version 0.4.0
 
 - complete sheet rewrite for better maintainablilty.
-- removed the sw5e css class. Mod developers should target .tidysw5e for sheet modifications.
+- removed the 5e css class. Mod developers should target .tidy5e for sheet modifications.
 - added a right click context menu for item controls.
 - added middle click to quickly open item editor.
 - added a grid layout for inventory and power book.
@@ -277,7 +277,7 @@ Thank you very much!
 
 ### Version 0.3.6
 
-- update to sw5e 1.2.0 - thanks to akrigline
+- update to 5e 1.2.0 - thanks to akrigline
 - css fix for effects text color in item sheets
 
 ### Version 0.3.5
@@ -359,8 +359,8 @@ Thank you very much!
 
 ### Version 0.2.21
 
-- item sheets are now registered as a specific TidySW5e-Sheet to prevent compatibitlity issues and consequently prefixing all styles to only apply to this sheet preventing default overrides. Big thanks to akrigline for the contribution :)
-  Please make sure to check you item sheet setting to make sure the TidySW5e Itemsheet is set as default!
+- item sheets are now registered as a specific Tidy5e-Sheet to prevent compatibitlity issues and consequently prefixing all styles to only apply to this sheet preventing default overrides. Big thanks to akrigline for the contribution :)
+  Please make sure to check you item sheet setting to make sure the Tidy5e Itemsheet is set as default!
 
 ### Version 0.2.20
 
@@ -451,7 +451,7 @@ Thank you very much!
 
 ### Version 0.2.6
 
-- reverted back to Nodesto until the Modesto Font becomes the default for sw5e System
+- reverted back to Nodesto until the Modesto Font becomes the default for 5e System
 
 ### Version 0.2.5
 
@@ -484,7 +484,7 @@ Thank you very much!
 - firefox css fix
 - various css width fixes
 - darkmode inline rolls fixed
-- more translations with default sw5e strings
+- more translations with default 5e strings
 - italian translation added
 - japanese translation added
 
@@ -540,7 +540,7 @@ The default NPC sheet was reoganized.
 
 ### Version 0.1.10
 
-- fix for trait selection (as of sw5e 0.93 patch)
+- fix for trait selection (as of 5e 0.93 patch)
 - added generic coloredd d20 icon for darksheet to better suite the custom colors option
 
 ### Version 0.1.9
@@ -553,7 +553,7 @@ Sheet:
 
 - Dark mode for Player Character Sheets and Item Sheets added!
 - minor CSS layout adjustments
-- minor css fixed to support sw5e v0.93 update
+- minor css fixed to support 5e v0.93 update
 
 ### Version 0.1.7
 
