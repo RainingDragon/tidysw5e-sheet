@@ -1,7 +1,7 @@
-export const tidysw5eClassicControls = function (html) {
-  let itemList = html.find(".tidysw5e-sheet .list-layout .items-list"),
-    item = html.find(".tidysw5e-sheet .list-layout .item"),
-    itemControls = html.find(".tidysw5e-sheet .list-layout .item-controls");
+export const tidy5eClassicControls = function (html) {
+  let itemList = html.find(".tidy5e-sheet .list-layout .items-list"),
+    item = html.find(".tidy5e-sheet .list-layout .item"),
+    itemControls = html.find(".tidy5e-sheet .list-layout .item-controls");
 
   itemList.addClass("classic-controls");
   item.removeClass("context-enabled").removeClass("context");

@@ -5,11 +5,11 @@
   transform: translateY(-50%);
   width: 0px;
   height: 460px;
-  background:url(../../../ui/parchment.jpg);
+  background: linear-gradient(90deg, #afc6d6 0, #d6d6d6 30%, #d6d6d6 70%, #afc6d6);
   border-radius: 5px 0 0 5px;
   z-index: -10;
-  box-shadow: 0 0 5px rgba(0,0,0,.5);
-  transition: width .2s ease;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  transition: width 0.2s ease;
   overflow: hidden;
 
   &.open {
@@ -17,15 +17,15 @@
   }
 
   &.floating {
-    position : fixed;
-    z-index : 100;
+    position: fixed;
+    z-index: 100;
     border-radius: 5px;
     right: auto;
     transform: translateY(0);
     transition: none;
 
     &.open {
-      transition: width .2s ease;
+      transition: width 0.2s ease;
     }
 
     .info-wrap {
@@ -106,7 +106,12 @@
 
     &.alwaysPrepared {
       background: var(--always-prepared);
-      background: linear-gradient(180deg, var(--always-prepared) 0px, var(--always-prepared) 26px, rgba(0, 0, 0, 0) 36px);
+      background: linear-gradient(
+        180deg,
+        var(--always-prepared) 0px,
+        var(--always-prepared) 26px,
+        rgba(0, 0, 0, 0) 36px
+      );
       // box-shadow: 0 0 10px var(--prepared) inset;
     }
 
@@ -126,7 +131,7 @@
       margin-left: 0;
       margin-bottom: 4px;
       font-size: 12px;
-      font-family: 'Signika';
+      font-family: "Signika";
     }
 
     .info-card-states,
@@ -153,7 +158,6 @@
       .info-quantity {
         margin-left: auto;
       }
-
     }
 
     .description-wrap {
@@ -173,7 +177,8 @@
         padding-right: 8px;
       }
 
-      ul, ol {
+      ul,
+      ol {
         list-style: disc;
         margin: 8px 0;
         padding: 0 0 0 16px;
@@ -191,11 +196,11 @@
         list-style: decimal;
       }
 
-      &>*:first-child {
+      & > *:first-child {
         margin-top: 0;
       }
 
-      &>*:last-child {
+      & > *:last-child {
         margin-bottom: 0;
       }
     }
@@ -227,6 +232,5 @@
         }
       }
     }
-    
   }
 }

@@ -1,4 +1,4 @@
-export const tidysw5eSearchFilter = function (html, actor) {
+export const tidy5eSearchFilter = function (html, actor) {
   // filter settings list
   let searchInput = html.find(".filter-search input");
 
@@ -110,9 +110,9 @@ export const tidysw5eSearchFilter = function (html, actor) {
           break;
       }
       // if(id == "item-search"){
-      //   await actor.setFlag('tidysw5e-sheet', 'item-search', '');
+      //   await actor.setFlag('tidy5e-sheet', 'item-search', '');
       // } else {
-      //   await actor.setFlag('tidysw5e-sheet', 'power-search', '');
+      //   await actor.setFlag('tidy5e-sheet', 'power-search', '');
       // }
     });
   }

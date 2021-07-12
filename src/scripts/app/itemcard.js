@@ -1,13 +1,13 @@
-export const tidysw5eItemCard = function (html, actor) {
+export const tidy5eItemCard = function (html, actor) {
   // show/hide grid layout item info card on mouse enter/leave
 
   let itemCardsForAllItems = game.settings.get("tidysw5e-sheet", "itemCardsForAllItems");
 
   let containerTrigger = itemCardsForAllItems
-    ? html.find(".inventory-list:not(.character-actions-sw5e)")
+    ? html.find(".inventory-list:not(.character-actions-dnd5e)")
     : html.find(".grid-layout .inventory-list");
   let cardTrigger = itemCardsForAllItems
-    ? html.find(".inventory-list:not(.character-actions-sw5e) .item-list .item")
+    ? html.find(".inventory-list:not(.character-actions-dnd5e) .item-list .item")
     : html.find(".grid-layout .item-list .item");
 
   let infoContainer = html.find("#item-info-container"),
@@ -38,7 +38,7 @@ export const tidysw5eItemCard = function (html, actor) {
   }
 
   function getBounds() {
-    sheet = $(".tidysw5e.sheet.actor");
+    sheet = $(".tidy5e.sheet.actor");
     if (sheet.length < 1) {
       // PoPOut "hack"
       sheet = $(html);
@@ -111,15 +111,15 @@ export const tidysw5eItemCard = function (html, actor) {
     if (!itemCardIsFixed) infoContainer.removeClass("open");
   };
 
-  cardTrigger.mouseenter( function(event){
-    if(!itemCardIsFixed){
-      if(!itemCardDelay) infoContainer.addClass('open');
+  cardTrigger.mouseenter(function (event) {
+    if (!itemCardIsFixed) {
+      if (!itemCardDelay) infoContainer.addClass("open");
     }
   });
 
-  cardTrigger.mouseleave( function (event) {
-    if(!itemCardIsFixed){
-      if(!itemCardDelay) hideContainer();
+  cardTrigger.mouseleave(function (event) {
+    if (!itemCardIsFixed) {
+      if (!itemCardDelay) hideContainer();
     }
   });
 
@@ -163,14 +163,13 @@ export const tidysw5eItemCard = function (html, actor) {
   function showCard(event) {
     getBounds();
     event.preventDefault();
-    let li = $(event.currentTarget).closest('.item'),
-        item = actor.items.get(li.data("item-id")),
-        itemData = item.data,
-        chatData = item.getChatData({secrets: actor.isOwner}),
-        itemDescription = chatData.description.value,
-        
-        infoCard = li.find('.info-card');
-        
+    let li = $(event.currentTarget).closest(".item"),
+      item = actor.items.get(li.data("item-id")),
+      itemData = item.data,
+      chatData = item.getChatData({ secrets: actor.isOwner }),
+      itemDescription = chatData.description.value,
+      infoCard = li.find(".info-card");
+
     infoCard.clone().appendTo(infoContainerContent);
 
     let infoBackground = infoContainer.find(".item-info-container-background"),
@@ -204,6 +203,6 @@ export const tidysw5eItemCard = function (html, actor) {
     e.preventDefault();
     let itemId = $(this).closest(".info-card").attr("data-item-id");
     let action = $(this).attr("data-action");
-    $(`.tidysw5e-sheet .item[data-item-id='${itemId}'] .item-buttons .button[data-action='${action}']`).trigger(e);
+    $(`.tidy5e-sheet .item[data-item-id='${itemId}'] .item-buttons .button[data-action='${action}']`).trigger(e);
   });
 };

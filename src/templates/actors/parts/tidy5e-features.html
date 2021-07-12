@@ -3,7 +3,7 @@
 <div class="inventory-filters">
   <ul class="filter-list" data-filter="features">
     <li class="filter-title" title="{{localize 'SW5E.Filter'}}"><i class="fas fa-filter"></i></li>
-    <li class="filter-search" title="{{localize 'TIDYSW5E.SearchHint'}}"><input type="text" id="feat-search" placeholder="{{localize 'TIDYSW5E.SearchFeat'}}" value="{{actor.flags.tidysw5e-sheet.feat-search}}"><span class="clear-search hidden" title="{{localize 'TIDYSW5E.SearchClear'}}"><i class="fas fa-times-circle"></i></span></li>
+    <li class="filter-search" title="{{localize 'TIDY5E.SearchHint'}}"><input type="text" id="feat-search" placeholder="{{localize 'TIDY5E.SearchFeat'}}" value="{{actor.flags.tidysw5e-sheet.feat-search}}"><span class="clear-search hidden" title="{{localize 'TIDY5E.SearchClear'}}"><i class="fas fa-times-circle"></i></span></li>
     <li class="filter-item" data-filter="action">{{localize "SW5E.Action"}}</li>
     <li class="filter-item" data-filter="bonus">{{localize "SW5E.BonusAction"}}</li>
     <li class="filter-item" data-filter="reaction">{{localize "SW5E.Reaction"}}</li>
@@ -28,7 +28,7 @@
           <div class="items-header-requirements">{{localize 'SW5E.Requirements'}}</div>
           {{/if}}
         {{else if section.isClass}}
-          <div class="items-header-archetype">{{localize 'TIDYSW5E.Archetype'}}</div>
+          <div class="items-header-archetype">{{localize 'TIDY5E.Archetype'}}</div>
           <div class="items-header-level">{{localize 'SW5E.Level'}}</div>
         {{else}}
         {{#if ../isCharacter}}
@@ -53,7 +53,7 @@
           <div class="item-image" style="background-image: url({{item.img}})">
             <i class="fa fa-dice-d20"></i>
           </div>
-          <h4 title="{{localize 'TIDYSW5E.ToggleInfo'}} ({{item.name}})">
+          <h4 title="{{localize 'TIDY5E.ToggleInfo'}} ({{item.name}})">
             {{item.name}}
           </h4>
           {{#unless ../../isCharacter}}

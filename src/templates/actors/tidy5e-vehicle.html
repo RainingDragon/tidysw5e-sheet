@@ -1,5 +1,5 @@
 <form class="{{cssClass}}" autocomplete="off">
-  <div class="tidysw5e-sheet tidysw5e-vehicle {{#if actor.flags.tidysw5e-sheet.allow-edit}}allow-edit{{/if}}">
+  <div class="tidy5e-sheet tidy5e-vehicle {{#if actor.flags.tidysw5e-sheet.allow-edit}}allow-edit{{/if}}">
     {{!-- Item Info Card --}}
     <section id="item-info-container">
       <div class="info-wrap">
@@ -8,13 +8,13 @@
         </article>
 
         <article class="info-card-hint">
-          <p><span class="key">X</span> {{localize "TIDYSW5E.ItemCardsKeyHint"}}</p>
-          <p><i class="fas fa-mouse"></i> {{localize "TIDYSW5E.ItemCardsMouseHint"}}</p>
+          <p><span class="key">X</span> {{localize "TIDY5E.ItemCardsKeyHint"}}</p>
+          <p><i class="fas fa-mouse"></i> {{localize "TIDY5E.ItemCardsMouseHint"}}</p>
         </article>
       </div>
     </section>
 
-    <header class="tidysw5e-header">
+    <header class="tidy5e-header">
       <section class="profile-wrap">
         <div
           class="profile hp-{{data.attributes.hp.value}}-{{#if data.attributes.hp.temp}}{{data.attributes.hp.temp}}{{else}}0{{/if}}"
@@ -25,12 +25,12 @@
               class="player-image"
               src="{{actor.img}}"
               alt="{{actor.name}}"
-              title="{{ localize 'TIDYSW5E.EditActorImage' }} / {{ localize 'TIDYSW5E.ShowActorImage' }}"
+              title="{{ localize 'TIDY5E.EditActorImage' }} / {{ localize 'TIDY5E.ShowActorImage' }}"
               data-edit="img"
             />
             <div class="portrait-menu hidden">
-              <a class="showActorArt" id="showPortrait">{{ localize 'TIDYSW5E.ShowPortraitArt' }}</a>
-              <a class="showActorArt" id="showToken">{{ localize 'TIDYSW5E.ShowTokenArt' }}</a>
+              <a class="showActorArt" id="showPortrait">{{ localize 'TIDY5E.ShowPortraitArt' }}</a>
+              <a class="showActorArt" id="showToken">{{ localize 'TIDY5E.ShowTokenArt' }}</a>
             </div>
           </div>
           {{!-- HP Overlay --}}
@@ -121,7 +121,7 @@
           <h1
             class="char-name"
             contenteditable="true"
-            powercheck="false"
+            spellcheck="false"
             data-target="{{actor._id}}-name"
             data-placeholder="{{ localize 'SW5E.Name' }}"
             data-maxlength="40"
@@ -149,14 +149,14 @@
             <span>{{localize 'SW5E.Vehicle'}}</span>
             <span
               contenteditable="true"
-              powercheck="false"
+              spellcheck="false"
               data-target="{{actor._id}}-dimensions"
               data-placeholder="{{localize 'SW5E.Dimensions'}}"
               >{{data.traits.dimensions}}</span
             >
             <span
               contenteditable="true"
-              powercheck="false"
+              spellcheck="false"
               data-target="{{actor._id}}-source"
               data-placeholder="{{localize 'SW5E.Source'}}"
               >{{data.details.source}}</span
@@ -255,7 +255,7 @@
       </div>
     </header>
 
-    <nav class="tidysw5e-navigation tabs" data-group="primary">
+    <nav class="tidy5e-navigation tabs" data-group="primary">
       <a class="item active" data-tab="attributes">{{localize 'SW5E.Attributes'}}</a>
       <!-- <a class="item" data-tab="features">{{localize 'SW5E.Features'}}</a> -->
       <a class="item" data-tab="cargo">{{localize 'SW5E.VehicleCargoCrew'}}</a>
@@ -263,11 +263,8 @@
       {{#if owner}}
       <div class="toggle-allow-edit">
         <span
-          ><i class="fas fa-lock" title="{{localize 'TIDYSW5E.EnableEdit'}} - {{localize 'TIDYSW5E.EditHint'}}"></i
-          ><i
-            class="fas fa-lock-open"
-            title="{{localize 'TIDYSW5E.DisableEdit'}} - {{localize 'TIDYSW5E.EditHint'}}"
-          ></i
+          ><i class="fas fa-lock" title="{{localize 'TIDY5E.EnableEdit'}} - {{localize 'TIDY5E.EditHint'}}"></i
+          ><i class="fas fa-lock-open" title="{{localize 'TIDY5E.DisableEdit'}} - {{localize 'TIDY5E.EditHint'}}"></i
         ></span>
       </div>
       {{/if}}
@@ -356,21 +353,21 @@
             </div>
           </div>
 
-          {{!-- Traits --}} {{> "modules/tidysw5e-sheet/templates/actors/parts/tidysw5e-traits.html"}}
+          {{!-- Traits --}} {{> "modules/tidysw5e-sheet/templates/actors/parts/tidy5e-traits.html"}}
         </div>
 
         <section class="center-pane">
-          {{> "modules/tidysw5e-sheet/templates/actors/parts/tidysw5e-features.html" sections=features}}
+          {{> "modules/tidysw5e-sheet/templates/actors/parts/tidy5e-features.html" sections=features}}
         </section>
       </div>
 
       {{!-- Features Tab --}}
       <div class="tab features" data-group="primary" data-tab="features">
-        {{> "modules/tidysw5e-sheet/templates/actors/parts/tidysw5e-features.html" sections=features}}
+        {{> "modules/tidysw5e-sheet/templates/actors/parts/tidy5e-features.html" sections=features}}
       </div>
 
       <div class="tab cargo" data-group="primary" data-tab="cargo">
-        {{> "modules/tidysw5e-sheet/templates/actors/parts/tidysw5e-inventory.html" sections=cargo}}
+        {{> "modules/tidysw5e-sheet/templates/actors/parts/tidy5e-inventory.html" sections=cargo}}
       </div>
 
       <div class="tab biography" data-group="primary" data-tab="biography">

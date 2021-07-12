@@ -1,4 +1,4 @@
-.tidysw5e.sheet.actor.npc {
+.tidy5e.sheet.actor.npc {
   min-width: 690px;
 
   .linked {
@@ -169,7 +169,6 @@
   }
 
   .origin-summary {
-
     .creature-type .config-button:hover {
       color: var(--primary-accent);
     }
@@ -421,7 +420,7 @@
     margin: 0;
     position: sticky;
     bottom: 0;
-    background: url(../../../systems/sw5e/ui/parchment.jpg) repeat;
+    background: linear-gradient(90deg, #afc6d6 0, #d6d6d6 30%, #d6d6d6 70%, #afc6d6);
     background-attachment: fixed;
 
     .power-dc {

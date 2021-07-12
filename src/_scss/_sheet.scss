@@ -14,7 +14,7 @@
 
 @import "partials/_variables.scss";
 
-.tidysw5e.sheet.actor {
+.tidy5e.sheet.actor {
   min-width: 680px;
   min-height: 210px;
 
@@ -33,7 +33,7 @@
     }
   }
 
-  .tidysw5e-sheet {
+  .tidy5e-sheet {
     display: flex;
     flex: 1;
     flex-direction: column;
@@ -55,7 +55,7 @@
   @import "partials/_item-info-card.scss";
 
   // ### HEADER ###
-  .tidysw5e-header {
+  .tidy5e-header {
     display: flex;
     justify-content: center;
     padding: 10px 16px 16px 16px;
@@ -263,6 +263,23 @@
     border: none;
     flex: 1;
     min-height: 100px;
+  }
+
+  .toggle-view-force,
+  .toggle-view-tech {
+    .fa-eye {
+      display: none;
+    }
+
+    .hide-force .fa-eye-slash,
+    .hide-tech .fa-eye-slash {
+      display: none;
+    }
+
+    .hide-force .fa-eye,
+    .hide-tech .fa-eye {
+      display: inline-block;
+    }
   }
 }
 

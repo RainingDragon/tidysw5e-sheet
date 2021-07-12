@@ -1,5 +1,5 @@
 {{!-- Inventory Header --}}
-{{> "modules/tidysw5e-sheet/templates/actors/parts/tidysw5e-inventory-header.html"}}
+{{> "modules/tidysw5e-sheet/templates/actors/parts/tidy5e-inventory-header.html"}}
 
 <div class="grid-layout">
   <ul class="inventory-list items-list">
@@ -16,7 +16,7 @@
         {{/if}}
         {{~#if item.flags.favtab}} 
         {{~#if item.flags.favtab.isFavorite}} 
-          <i class="fas fa-bookmark icon-fav" title="{{localize 'TIDYSW5E.isFav'}}"></i>
+          <i class="fas fa-bookmark icon-fav" title="{{localize 'TIDY5E.isFav'}}"></i>
         {{/if}}
         {{/if}}
         <div class="item-name rollable" >
@@ -76,11 +76,11 @@
           
           {{#if item.attunement}}
             <a class="item-control item-attunement {{#if (eq item.data.attunement 2) }}active{{/if}} {{item.attunement.cls}}" title="{{localize item.attunement.title}}">
-              <i class="fas fa-sun"></i> <span class="control-label">{{#if (eq item.data.attunement 2) }}{{localize "TIDYSW5E.Deattune"}}{{else}}{{localize "TIDYSW5E.Attune"}}{{/if}}</span>
+              <i class="fas fa-sun"></i> <span class="control-label">{{#if (eq item.data.attunement 2) }}{{localize "TIDY5E.Deattune"}}{{else}}{{localize "TIDY5E.Attune"}}{{/if}}</span>
             </a>
           {{/if}}
 
-          <a class="item-control item-toggle {{item.toggleClass}}">{{#if (eq item.toggleClass 'active')}}<i class="fas fa-user-alt"></i> <span class="control-label">{{localize "TIDYSW5E.Unequip"}}</span>{{else}}<i class="fas fa-user-alt inactive"></i> <span class="control-label">{{localize "TIDYSW5E.Equip"}}</span>{{/if}}</a>
+          <a class="item-control item-toggle {{item.toggleClass}}">{{#if (eq item.toggleClass 'active')}}<i class="fas fa-user-alt"></i> <span class="control-label">{{localize "TIDY5E.Unequip"}}</span>{{else}}<i class="fas fa-user-alt inactive"></i> <span class="control-label">{{localize "TIDY5E.Equip"}}</span>{{/if}}</a>
           
           <hr class="context-divider">
           <a class="item-control item-edit"><i class="fas fa-pencil-alt"></i>{{localize "SW5E.ItemEdit"}}</a>
@@ -105,4 +105,4 @@
 </div>
 
 {{!-- Inventory Footer --}}
-{{> "modules/tidysw5e-sheet/templates/actors/parts/tidysw5e-inventory-footer.html"}}
+{{> "modules/tidysw5e-sheet/templates/actors/parts/tidy5e-inventory-footer.html"}}

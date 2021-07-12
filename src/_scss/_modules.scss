@@ -2,7 +2,7 @@
 //   Support Better Rolls / Minor QOL
 // ------------------------------------
 
-.tidysw5e.sheet.actor .items-list .item-summary .item-properties .item-buttons {
+.tidy5e.sheet.actor .items-list .item-summary .item-properties .item-buttons {
   margin: 4px 0;
 
   .tag {
@@ -29,7 +29,7 @@
   }
 }
 
-.tidysw5e.sheet.item .sheet-body .tab.item-betterRolls {
+.tidy5e.sheet.item .sheet-body .tab.item-betterRolls {
   .item-betterRolls input[type="text"],
   .item-betterRolls select {
     height: 24px;
@@ -59,8 +59,8 @@
 //    Support Magic Items
 // ------------------------
 
-.tidysw5e.sheet.actor .magic-items-powers-content,
-.tidysw5e.sheet.actor .magic-items-feats-content {
+.tidy5e.sheet.actor .magic-items-powers-content,
+.tidy5e.sheet.actor .magic-items-feats-content {
   padding: 4px 6px;
   border: 1px solid yellow;
   box-shadow: 0 0 10px 0 yellow inset;
@@ -150,9 +150,9 @@
       border: none;
     }
   }
-} //.tidysw5e.sheet.actor .magic-items-powers-content
+} //.tidy5e.sheet.actor .magic-items-powers-content
 
-.tidysw5e.sheet.actor .grid-layout .magic-items-powers-content .item-list {
+.tidy5e.sheet.actor .grid-layout .magic-items-powers-content .item-list {
   display: block;
 
   .item {
@@ -191,10 +191,10 @@
       box-shadow: none;
     }
   } //.item
-} //.tidysw5e.sheet.actor .grid-layout .magic-items-powers-content .item-list
+} //.tidy5e.sheet.actor .grid-layout .magic-items-powers-content .item-list
 
 // Magic Item Sheet
-.tidysw5e.sheet.item .sheet-body .tab.magic-items {
+.tidy5e.sheet.item .sheet-body .tab.magic-items {
   input[type="checkbox"] {
     margin: 2px 2px 2px 4px !important;
   }
@@ -386,14 +386,14 @@
       }
     } //.magic-item-list
   }
-} //.tidysw5e.sheet.item .sheet-body .tab.magic-items
+} //.tidy5e.sheet.item .sheet-body .tab.magic-items
 
 // -----------------------------
 //    Support Skill Customizer
 // -----------------------------
 
-.tidysw5e.sheet.actor .skills-list > .skill > .skill-ability-select,
-.tidysw5e.sheet.actor .skills-list > .skill > .skill-cust-bonus {
+.tidy5e.sheet.actor .skills-list > .skill > .skill-ability-select,
+.tidy5e.sheet.actor .skills-list > .skill > .skill-cust-bonus {
   line-height: 14px;
   font-size: 12px;
   padding: 0;
@@ -405,19 +405,19 @@
   color: var(--primary-font);
 }
 
-.tidysw5e.sheet.actor .skills-list > .skill > .skill-ability-select:hover,
-.tidysw5e.sheet.actor .skills-list > .skill > .skill-ability-select:focus {
+.tidy5e.sheet.actor .skills-list > .skill > .skill-ability-select:hover,
+.tidy5e.sheet.actor .skills-list > .skill > .skill-ability-select:focus {
   background: var(--primary-accent);
   color: var(--primary-font);
   box-shadow: 0 0 0 1px var(--primary-accent);
 }
 
-.tidysw5e.sheet.actor .skills-list > .skill > .skill-ability-select:hover option,
-.tidysw5e.sheet.actor .skills-list > .skill > .skill-ability-select:focus option {
+.tidy5e.sheet.actor .skills-list > .skill > .skill-ability-select:hover option,
+.tidy5e.sheet.actor .skills-list > .skill > .skill-ability-select:focus option {
   background: #fff;
 }
 
-.tidysw5e.sheet.actor .skills-list > .skill > .skill-ability-select {
+.tidy5e.sheet.actor .skills-list > .skill > .skill-ability-select {
   text-align-last: left;
   -moz-text-align-last: left;
   -ms-text-align-last: left;
@@ -431,7 +431,7 @@
   margin-top: -2px;
 }
 
-.tidysw5e.sheet.actor .skills-list > .skill > .skill-cust-bonus {
+.tidy5e.sheet.actor .skills-list > .skill > .skill-cust-bonus {
   border: none;
   box-shadow: 0 0 0 1px var(--light-color) inset;
   margin-top: -2px;
@@ -439,8 +439,8 @@
   text-align: center;
 }
 
-.tidysw5e.sheet.actor .skills-list > .skill > .skill-cust-bonus:hover,
-.tidysw5e.sheet.actor .skills-list > .skill > .skill-cust-bonus:focus {
+.tidy5e.sheet.actor .skills-list > .skill > .skill-cust-bonus:hover,
+.tidy5e.sheet.actor .skills-list > .skill > .skill-cust-bonus:focus {
   box-shadow: 0 0 0 1px var(--primary-accent) inset;
 }
 
@@ -448,7 +448,7 @@
 //    Inventory Plus
 // -------------------
 
-.tidysw5e.sheet.actor {
+.tidy5e.sheet.actor {
   .custom-category {
     margin-right: auto;
     font-size: 12px;
@@ -526,7 +526,7 @@
 //   Support Actions Tab
 // ------------------------------------
 
-.tidysw5e.sheet.actor .list-layout .character-actions-sw5e.items-list {
+.tidy5e.sheet.actor .list-layout .character-actions-dnd5e.items-list {
   padding: 0 9px 8px 0;
   overflow-y: scroll;
 

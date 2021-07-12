@@ -1,4 +1,4 @@
-.system-sw5e.tidysw5eDark {
+.system-sw5e.tidy5eDark {
   // font color
   --primary-font: rgba(255, 255, 255, 0.8);
 
@@ -40,11 +40,11 @@
   --checkbox-outline: rgba(50, 50, 50, 1);
   --checkbox-unchecked: rgba(75, 75, 75, 1);
   --checkbox-checked: rgba(0, 255, 0, 0.5);
-} //.tidysw5eDark
+} //.tidy5eDark
 
-.tidysw5eDark {
-  .tidysw5e.sheet.actor {
-    .tidysw5e-sheet {
+.tidy5eDark {
+  .tidy5e.sheet.actor {
+    .tidy5e-sheet {
       background-color: var(--background);
     }
 
@@ -70,7 +70,7 @@
     }
   }
 
-  .tidysw5e.sheet.item {
+  .tidy5e.sheet.item {
     .window-content {
       color: var(--primary-font);
 
@@ -94,7 +94,7 @@
     }
   }
 
-  .tidysw5e.sheet.actor {
+  .tidy5e.sheet.actor {
     .tox-toolbar-overlord,
     .tox-toolbar__primary {
       background: #fff;

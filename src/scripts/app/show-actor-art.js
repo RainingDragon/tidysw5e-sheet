@@ -1,4 +1,4 @@
-export const tidysw5eShowActorArt = function (html, actor) {
+export const tidy5eShowActorArt = function (html, actor) {
   let portrait = html.find(".portrait"),
     portraitMenu = html.find(".portrait-menu"),
     portraitButton = html.find(".showActorArt");
