@@ -21,12 +21,37 @@ export const tidy5eAmmoSwitch = function (html, actor) {
       const actor = game.actors.get(selector.attr("data-actor"));
       const item = actor.items.get(selector.attr("data-item"));
       const ammo = actor.items.get(val);
+
+      let amount = null;
+      let type = "";
+
+      if (!!ammo) {
+        // Amount
+        const reloadValue = item.data.data.description.value.match(/Reload \d+/g)[0]?.split(" ")[1];
+        if (!!item.data.data.consume.amount) {
+          amount = item.data.data.consume.amount;
+        } else {
+          if (reloadValue) {
+            amount = ammo.data.data.uses ? ammo.data.data.uses.value / Number(reloadValue) : Number(reloadValue);
+          } else {
+            amount = 1;
+          }
+        }
+
+        // Type
+        if (ammo.data.data.uses?.value > 0) {
+          type = "charges";
+        } else {
+          type = ammo.data.data.consumableType;
+        }
+      }
+
       item.update({
         data: {
           consume: {
-            amount: !ammo ? null : !!item.data.data.consume.amount ? item.data.data.consume.amount : 1,
+            amount: amount,
             target: !ammo ? "" : val,
-            type: !ammo ? "" : ammo.data.data.consumableType
+            type: type
           }
         }
       });
