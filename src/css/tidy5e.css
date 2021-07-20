@@ -5400,6 +5400,10 @@
   color: var(--primary-font);
 }
 
+.tidy5e.sheet.item input[name="data.consume.amount"] {
+  min-width: 30px;
+}
+
 .tidy5e.sheet.item input[type="text"]:hover,
 .tidy5e.sheet.item input[type="text"]:focus {
   border: none;

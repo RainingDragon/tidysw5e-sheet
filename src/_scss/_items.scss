@@ -43,6 +43,10 @@
     color: var(--primary-font);
   }
 
+  input[name="data.consume.amount"] {
+    min-width: 30px;
+  }
+
   input[type="text"]:hover,
   input[type="text"]:focus {
     border: none;
