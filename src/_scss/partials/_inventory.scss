@@ -260,9 +260,9 @@
 	}
 }
 
-// Spellcasting Ability
+// Powercasting Ability
 
-.spellcasting-ability  {
+.powercasting-ability  {
 	display: flex;
 	justify-content: space-between;
   margin: 0rem 14px 0 0;
@@ -270,8 +270,8 @@
 	border-top: 2px solid var(--light-color);
 	align-items: center;
 
-	.max-prepared-spells,
-	.spellcasting-attribute {
+	.max-prepared-powers,
+	.powercasting-attribute {
 		display: flex;
 		align-items: center;
 		font-size: 12px;
@@ -300,8 +300,26 @@
 		height: 20px;
 	}
 
-} //.spellcasting-ability
+	.resource {
+		text-align: center;
 
+		div,
+		footer {
+			display: flex;
+			align-items: baseline;
+			justify-content: center;
+		}
+
+		div {
+			font-size: 1.3em;
+		}
+
+		footer {
+			font-size: 0.9em;
+			margin-top: 0;
+		}
+	}
+} //.powercasting-ability
 
 // Inventory Items
 
@@ -427,7 +445,7 @@
 		}
 
 		.item-charges .uses-max,
-		.spell-slots .spell-max {
+		.power-slots .power-max {
 			text-align: left;
 		}
 		
@@ -686,20 +704,20 @@
 		display: flex;
 	}
 
-	.spell-school {
+	.power-school {
 		flex: 0 0 50px;
 	}
 	
-	.spell-range {
+	.power-range {
 		flex: 0 0 70px;
 	}
 
-	.spell-action,
-	.spell-target {
+	.power-action,
+	.power-target {
 		flex: 0 0 120px;
 	}
 
-	.items-header .spell-slots {
+	.items-header .power-slots {
 		display: flex;
     flex: 0 0 1px;
     align-items: center;
@@ -707,7 +725,7 @@
     border-radius: 5px;
     padding: 0 5px;
 
-		.spell-max {    
+		.power-max {    
 			display: flex;
     	align-items: center;
     	line-height: 12px;
@@ -727,7 +745,7 @@
 			line-height: 12px;
 			height: 12px;
 		}
-	}//.items-header .spell-detail.spell-slots
+	}//.items-header .power-detail.power-slots
 
 	p.notes {
 		padding: .5rem;
@@ -783,7 +801,7 @@
 			}
 		}
 
-		&.classic-controls.spellbook-list {
+		&.classic-controls.powerbook-list {
 			.items-header {
 				padding-right: 53px;
 			}
@@ -984,7 +1002,7 @@
 
 	}// .items-list
 
-	// .spellbook-list .item {
+	// .powerbook-list .item {
 	// 	.item-controls:not(.context-menu) {
 	// 		flex: 0 0 70px;
 	// 	}
@@ -1016,22 +1034,22 @@
 	}
 }
 	
-// SPELL SLOTS
+// POWER SLOTS
 
-.spell-level-slots {
+.power-level-slots {
 	flex: 0;
 	display: flex;
 }
 
-.spell-comps {
+.power-comps {
 	flex: 0 0 70px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 }
 
-.spell-component.C,
-.spell-component.R {
+.power-component.C,
+.power-component.R {
 	color: var(--background);
 	background: var(--tertiary-color);
 	border-radius: 2px;

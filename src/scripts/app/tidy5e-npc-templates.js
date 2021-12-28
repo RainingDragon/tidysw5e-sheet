@@ -10,7 +10,8 @@ export const preloadTidy5eHandlebarsTemplates = async function() {
   const tidy5etemplatePaths = [
 
     // Actor Sheet Partials
-    "modules/tidy5e-sheet/templates/actors/parts/tidy5e-npc-spellbook.html"
+    "modules/tidysw5e-sheet/templates/actors/parts/tidy5e-npc-force-powerbook.html",
+    "modules/tidysw5e-sheet/templates/actors/parts/tidy5e-npc-tech-powerbook.html"
   ];
 
   // Load the template parts

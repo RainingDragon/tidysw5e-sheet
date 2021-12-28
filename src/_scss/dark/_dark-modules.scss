@@ -55,20 +55,20 @@
 /* ------------------------ */
 /*    Support Magic Items   */
 /* ------------------------ */
-.tidy5eDark .tidy5e.sheet.actor .magic-items-feats-content .spellbook-filters.magic-items-head,
-.tidy5eDark .tidy5e.sheet.actor .magic-items-spells-content .spellbook-filters.magic-items-head {
+.tidy5eDark .tidy5e.sheet.actor .magic-items-feats-content .powerbook-filters.magic-items-head,
+.tidy5eDark .tidy5e.sheet.actor .magic-items-powers-content .powerbook-filters.magic-items-head {
   border-color: var(--darkmode-light-color);
 }
 
 .tidy5eDark .tidy5e.sheet.actor .magic-items-feats-content .magic-item div,
-.tidy5eDark .tidy5e.sheet.actor .magic-items-spells-content .magic-item div {
+.tidy5eDark .tidy5e.sheet.actor .magic-items-powers-content .magic-item div {
   border-color: var(--darkmode-faint-color); 
 }
 
-.tidy5eDark .dnd5e.sheet.actor .spell-rechargeable,
-.tidy5eDark .dnd5e.sheet.actor .spell-level,
-.tidy5eDark .dnd5e.sheet.actor .spell-consumption,
-.tidy5eDark .dnd5e.sheet.actor .spell-upcast {
+.tidy5eDark .dnd5e.sheet.actor .power-rechargeable,
+.tidy5eDark .dnd5e.sheet.actor .power-level,
+.tidy5eDark .dnd5e.sheet.actor .power-consumption,
+.tidy5eDark .dnd5e.sheet.actor .power-upcast {
   color: var(--darkmode-primary-color);
   font-weight: 300;
 }
@@ -79,12 +79,12 @@
 }
 
 .tidy5eDark .tidy5e.sheet.actor .magic-items-feats-content .item-name:hover .magic-item-image,
-.tidy5eDark .tidy5e.sheet.actor .magic-items-spells-content .item-name:hover .magic-item-image {
+.tidy5eDark .tidy5e.sheet.actor .magic-items-powers-content .item-name:hover .magic-item-image {
   background-image: url('../../images/d20-444.svg') !important;
 }
 
 .tidy5eDark .tidy5e.sheet.actor .magic-items-feats-content .item-name:hover .magic-item-image:hover,
-.tidy5eDark .tidy5e.sheet.actor .magic-items-spells-content .item-name:hover .magic-item-image:hover {
+.tidy5eDark .tidy5e.sheet.actor .magic-items-powers-content .item-name:hover .magic-item-image:hover {
   background-image: url('../../images/d20-highlight-green.svg') !important;
 }
 
@@ -114,20 +114,20 @@
 	color: var(--darkmode-primary-color);
 }
 
-.tidy5eDark .dnd5e.sheet.item .magic-item-list .item .spell-level,
-.tidy5eDark .dnd5e.sheet.item .magic-item-list .item .spell-consumption,
-.tidy5eDark .dnd5e.sheet.item .magic-item-list .item .spell-upcast,
-.tidy5eDark .dnd5e.sheet.item .magic-item-list .item .spell-cost {
+.tidy5eDark .dnd5e.sheet.item .magic-item-list .item .power-level,
+.tidy5eDark .dnd5e.sheet.item .magic-item-list .item .power-consumption,
+.tidy5eDark .dnd5e.sheet.item .magic-item-list .item .power-upcast,
+.tidy5eDark .dnd5e.sheet.item .magic-item-list .item .power-cost {
 	color: var(--darkmode-primary-color);
 }
 
 .tidy5eDark .dnd5e.sheet.item .magic-item-list .items-header:first-child,
 .tidy5eDark .dnd5e.sheet.item .magic-item-list .items-header .item-name,
-.tidy5eDark .dnd5e.sheet.item .magic-item-list .items-header .spell-level-head,
-.tidy5eDark .dnd5e.sheet.item .magic-item-list .items-header .spell-consumption-head,
-.tidy5eDark .dnd5e.sheet.item .magic-item-list .items-header .spell-upcast-head,
-.tidy5eDark .dnd5e.sheet.item .magic-item-list .items-header .spell-cost-head,
-.tidy5eDark .dnd5e.sheet.item .magic-item-list .items-header .spell-constrols-head {
+.tidy5eDark .dnd5e.sheet.item .magic-item-list .items-header .power-level-head,
+.tidy5eDark .dnd5e.sheet.item .magic-item-list .items-header .power-consumption-head,
+.tidy5eDark .dnd5e.sheet.item .magic-item-list .items-header .power-upcast-head,
+.tidy5eDark .dnd5e.sheet.item .magic-item-list .items-header .power-cost-head,
+.tidy5eDark .dnd5e.sheet.item .magic-item-list .items-header .power-constrols-head {
 	color: var(--darkmode-tertiary-color);
 	font-weight: 400;
 }

@@ -2,7 +2,7 @@ import {settingsList} from './settingsList.js';
 
 export class Tidy5eUserSettings extends FormApplication {
 	static init() {
-		game.settings.registerMenu('tidy5e-sheet', 'userMenu', {
+		game.settings.registerMenu('tidysw5e-sheet', 'userMenu', {
       name: '',
       label: game.i18n.localize("TIDY5E.Settings.SheetMenu.label"),
       icon: 'fas fa-cog',
@@ -18,7 +18,7 @@ export class Tidy5eUserSettings extends FormApplication {
 	static get defaultOptions() {
 		return {
 			...super.defaultOptions,
-			template: "modules/tidy5e-sheet/templates/settings.html",
+			template: "modules/tidysw5e-sheet/templates/settings.html",
 			height: 500,
 			title: game.i18n.localize("TIDY5E.Settings.SheetMenu.title"),
 			width: 600,
@@ -46,7 +46,7 @@ export class Tidy5eUserSettings extends FormApplication {
 
 	getSettingsData() {		
 		
-		// console.log(game.settings.get('tidy5e-sheet'))
+		// console.log(game.settings.get('tidysw5e-sheet'))
 		const settings = [
 			'ammoEquippedOnly',
 			'activeEffectsMarker',
@@ -103,10 +103,10 @@ export class Tidy5eUserSettings extends FormApplication {
 			'traitsTogglePc'
 		]
 
-		// return game.settings.get('tidy5e-sheet', 'user-settings');
+		// return game.settings.get('tidysw5e-sheet', 'user-settings');
 		let data = {};
 		settings.forEach (setting => {
-			data[setting] = {'value' : game.settings.get('tidy5e-sheet', setting)};
+			data[setting] = {'value' : game.settings.get('tidysw5e-sheet', setting)};
 			// console.log(data[setting]);
 		})
 		return data;
@@ -154,7 +154,7 @@ export class Tidy5eUserSettings extends FormApplication {
 		html.find('input#exhaustionEffectIcon').on('change', function(e){
 			// console.log(e.target.value)
 			if(e.target.value == '' || e.target.value == null){
-				e.target.value="modules/tidy5e-sheet/images/exhaustion.svg";
+				e.target.value="modules/tidysw5e-sheet/images/exhaustion.svg";
 			}
 		})
 
@@ -171,11 +171,11 @@ export class Tidy5eUserSettings extends FormApplication {
 		// console.log(settingOptions);
 		for(let key in data) {
 			// console.log(`Key: ${key} with value: ${data[key]}`);
-			let oldSetting = game.settings.get('tidy5e-sheet', key);
+			let oldSetting = game.settings.get('tidysw5e-sheet', key);
 			let newSetting = data[key];
 			if(oldSetting == newSetting) continue;
 			// console.log(`${key} changed to "${data[key]}"`);
-			game.settings.set('tidy5e-sheet', key, data[key]);
+			game.settings.set('tidysw5e-sheet', key, data[key]);
 			settingsUpdated = true;
 		}
 

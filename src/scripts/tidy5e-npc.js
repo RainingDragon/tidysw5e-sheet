@@ -1,5 +1,5 @@
-import ActorSheet5e from "../../../systems/dnd5e/module/actor/sheets/base.js";
-import ActorSheet5eNPC from "../../../systems/dnd5e/module/actor/sheets/npc.js";
+import ActorSheet5e from "../../../systems/sw5e/module/actor/sheets/newSheet/base.js";
+import ActorSheet5eNPC from "../../../systems/sw5e/module/actor/sheets/newSheet/npc.js";
 import { preloadTidy5eHandlebarsTemplates } from "./app/tidy5e-npc-templates.js";
 
 import { tidy5eListeners } from "./app/listeners.js";
@@ -23,19 +23,31 @@ Handlebars.registerHelper('check', function(value, comparator) {
   return (value === comparator) ? 'No content' : value;
 });
 
-export default class Tidy5eNPC extends ActorSheet5eNPC {
+Handlebars.registerHelper("max", function (value1, value2) {
+  return Math.max(value1, value2);
+});
 
+Handlebars.registerHelper("number", function (value) {
+  return Number(value);
+});
+
+Handlebars.registerHelper("debug", function (value) {
+  console.log(`Handlebars: ${value}`);
+  return;
+});
+
+export default class Tidy5eNPC extends ActorSheet5eNPC {
   /**
    * Define default rendering options for the NPC sheet
    * @return {Object}
    */
 	static get defaultOptions() {
-    let defaultTab = game.settings.get("tidy5e-sheet", "defaultActionsTab") != 'default' ? 'attributes' : 'actions';
+    let defaultTab = game.settings.get("tidysw5e-sheet", "defaultActionsTab") != 'default' ? 'attributes' : 'actions';
 		if (!game.modules.get('character-actions-list-5e')?.active) defaultTab = 'description';
 
 	  return mergeObject(super.defaultOptions, {
       classes: ["tidy5e", "sheet", "actor", "npc"],
-      width: game.settings.get("tidy5e-sheet", "npsSheetWidth") ?? 740,
+      width: game.settings.get("tidysw5e-sheet", "npsSheetWidth") ?? 740,
       height: 720,
 			tabs: [{navSelector: ".tabs", contentSelector: ".sheet-body", initial: defaultTab}]
     });
@@ -50,8 +62,8 @@ export default class Tidy5eNPC extends ActorSheet5eNPC {
    * @type {String}
    */
   get template() {
-    if ( !game.user.isGM && this.actor.limited ) return "modules/tidy5e-sheet/templates/actors/tidy5e-npc-ltd.html";
-    return "modules/tidy5e-sheet/templates/actors/tidy5e-npc.html";
+    if ( !game.user.isGM && this.actor.limited ) return "modules/tidysw5e-sheet/templates/actors/tidy5e-npc-ltd.html";
+    return "modules/tidysw5e-sheet/templates/actors/tidy5e-npc.html";
   }
 
   /* -------------------------------------------- */
@@ -61,18 +73,16 @@ export default class Tidy5eNPC extends ActorSheet5eNPC {
    * @private
    */
   _prepareItems(data) {
-
-
-    // Categorize Items as Features and Spells
+    // Categorize Items as Features and Powers
     const features = {
-      passive: { label: game.i18n.localize("DND5E.Features"), items: [], dataset: {type: "feat"} },
-      weapons: { label: game.i18n.localize("DND5E.AttackPl"), items: [] , hasActions: true, dataset: {type: "weapon", "weapon-type": "natural"} },
-      actions: { label: game.i18n.localize("DND5E.ActionPl"), items: [] , hasActions: true, dataset: {type: "feat", "activation.type": "action"} },
-      equipment: { label: game.i18n.localize("DND5E.Inventory"), items: [], hasActions: true, dataset: {type: "loot"}}
+      passive: { label: game.i18n.localize("SW5E.Features"), items: [], dataset: {type: "feat"} },
+      weapons: { label: game.i18n.localize("SW5E.AttackPl"), items: [] , hasActions: true, dataset: {type: "weapon", "weapon-type": "natural"} },
+      actions: { label: game.i18n.localize("SW5E.ActionPl"), items: [] , hasActions: true, dataset: {type: "feat", "activation.type": "action"} },
+      equipment: { label: game.i18n.localize("SW5E.Inventory"), items: [], hasActions: true, dataset: {type: "loot"}}
     };
 
     // Start by classifying items into groups for rendering
-    let [spells, other] = data.items.reduce((arr, item) => {
+    let [forcepowers, techpowers, other] = data.items.reduce((arr, item) => {
       item.img = item.img || CONST.DEFAULT_TOKEN;
       item.isStack = item.data.quantity ? item.data.quantity > 1 : false;
       item.hasUses = item.data.uses && (item.data.uses.max > 0);
@@ -83,17 +93,21 @@ export default class Tidy5eNPC extends ActorSheet5eNPC {
       // Item toggle state
       this._prepareItemToggleState(item);
       
-      if ( item.type === "spell" ) arr[0].push(item);
-      else arr[1].push(item);
+
+      if ( item.type === "power" && ["lgt", "drk", "uni"].includes(item.data.school) ) arr[0].push(item);
+      else if ( item.type === "power" && ["tec"].includes(item.data.school) ) arr[1].push(item);
+      else arr[2].push(item);
       return arr;
-    }, [[], []]);
+    }, [[], [], []]);
 
     // Apply item filters
-    spells = this._filterItems(spells, this._filters.spellbook);
+    forcepowers = this._filterItems(forcepowers, this._filters.forcePowerbook);
+    techpowers = this._filterItems(techpowers, this._filters.techPowerbook);
     other = this._filterItems(other, this._filters.features);
 
-    // Organize Spellbook
-    const spellbook = this._prepareSpellbook(data, spells);
+    // Organize Powerbook
+    const forcePowerbook = this._preparePowerbook(data, forcepowers, "uni");
+    const techPowerbook = this._preparePowerbook(data, techpowers, "tec");
 
     // Organize Features
     for ( let item of other ) {
@@ -126,7 +140,8 @@ export default class Tidy5eNPC extends ActorSheet5eNPC {
 
     // Assign and return
     data.features = Object.values(features);
-    data.spellbook = spellbook;
+    data.forcePowerbook = forcePowerbook;
+    data.techPowerbook = techPowerbook;
   }
 
   /* -------------------------------------------- */
@@ -137,19 +152,19 @@ export default class Tidy5eNPC extends ActorSheet5eNPC {
    * @private
    */
   _prepareItemToggleState(item) {
-    if (item.type === "spell") {
+    if (item.type === "power") {
       const isAlways = getProperty(item.data, "preparation.mode") === "always";
       const isPrepared =  getProperty(item.data, "preparation.prepared");
       item.toggleClass = isPrepared ? "active" : "";
       if ( isAlways ) item.toggleClass = "fixed";
-      if ( isAlways ) item.toggleTitle = CONFIG.DND5E.spellPreparationModes.always;
-      else if ( isPrepared ) item.toggleTitle = CONFIG.DND5E.spellPreparationModes.prepared;
-      else item.toggleTitle = game.i18n.localize("DND5E.SpellUnprepared");
+      if ( isAlways ) item.toggleTitle = CONFIG.SW5E.powerPreparationModes.always;
+      else if ( isPrepared ) item.toggleTitle = CONFIG.SW5E.powerPreparationModes.prepared;
+      else item.toggleTitle = game.i18n.localize("SW5E.PowerUnprepared");
     }
     else {
       const isActive = getProperty(item.data, "equipped");
       item.toggleClass = isActive ? "active" : "";
-      item.toggleTitle = game.i18n.localize(isActive ? "DND5E.Equipped" : "DND5E.Unequipped");
+      item.toggleTitle = game.i18n.localize(isActive ? "SW5E.Equipped" : "SW5E.Unequipped");
     }
   }
 
@@ -163,7 +178,7 @@ export default class Tidy5eNPC extends ActorSheet5eNPC {
     
     Object.keys(data.data.abilities).forEach(id => {
       let Id = id.charAt(0).toUpperCase() + id.slice(1);
-      data.data.abilities[id].abbr = game.i18n.localize(`DND5E.Ability${Id}Abbr`);
+      data.data.abilities[id].abbr = game.i18n.localize(`SW5E.Ability${Id}Abbr`);
     });
     
 		data.appId = this.appId;
@@ -187,7 +202,7 @@ export default class Tidy5eNPC extends ActorSheet5eNPC {
     tidy5eListeners(html, actor);
     tidy5eContextMenu(html);
 		tidy5eShowActorArt(html, actor);
-    if(game.settings.get("tidy5e-sheet", "itemCardsForNpcs")) {
+    if(game.settings.get("tidysw5e-sheet", "itemCardsForNpcs")) {
       tidy5eItemCard(html, actor);
     }
     tidy5eAmmoSwitch(html, actor);
@@ -239,7 +254,7 @@ export default class Tidy5eNPC extends ActorSheet5eNPC {
        if(actor.getFlag('tidy5e-sheet', 'showNpcPersonalityInfo')){
         await actor.unsetFlag('tidy5e-sheet', 'showNpcPersonalityInfo');
       } else {
-        await actor.setFlag('tidy5e-sheet', 'showNpcPersonalityInfo', true);
+        await actor.setFlag('tidysw5e-sheet', 'showNpcPersonalityInfo', true);
       }
     });
 
@@ -263,19 +278,19 @@ export default class Tidy5eNPC extends ActorSheet5eNPC {
 
     // toggle proficient skill visibility in the skill list
     html.find('.skills-list .toggle-proficient').click( async (event) => {
-      if(actor.getFlag('tidy5e-sheet', 'npcSkillsExpanded')){
-        await actor.unsetFlag('tidy5e-sheet', 'npcSkillsExpanded');
+      if(actor.getFlag('tidysw5e-sheet', 'npcSkillsExpanded')){
+        await actor.unsetFlag('tidysw5e-sheet', 'npcSkillsExpanded');
       } else {
-        await actor.setFlag('tidy5e-sheet', 'npcSkillsExpanded', true);
+        await actor.setFlag('tidysw5e-sheet', 'npcSkillsExpanded', true);
       }
     });
 
     // toggle empty traits visibility in the traits list
     html.find('.traits .toggle-traits').click( async (event) => {
-      if(actor.getFlag('tidy5e-sheet', 'traitsExpanded')){
-        await actor.unsetFlag('tidy5e-sheet', 'traitsExpanded');
+      if(actor.getFlag('tidysw5e-sheet', 'traitsExpanded')){
+        await actor.unsetFlag('tidysw5e-sheet', 'traitsExpanded');
       } else {
-        await actor.setFlag('tidy5e-sheet', 'traitsExpanded', true);
+        await actor.setFlag('tidysw5e-sheet', 'traitsExpanded', true);
       }
     });
     
@@ -335,7 +350,7 @@ export default class Tidy5eNPC extends ActorSheet5eNPC {
   async _onShortRest(event) {
     event.preventDefault();
     await this._onSubmit(event);
-    if(game.settings.get('tidy5e-sheet','restingForNpcsChatDisabled')){
+    if(game.settings.get('tidysw5e-sheet','restingForNpcsChatDisabled')){
 
       let obj = {
         dialog : true,
@@ -356,7 +371,7 @@ export default class Tidy5eNPC extends ActorSheet5eNPC {
   async _onLongRest(event) {
     event.preventDefault();
     await this._onSubmit(event);
-    if(game.settings.get('tidy5e-sheet','restingForNpcsChatDisabled')){
+    if(game.settings.get('tidysw5e-sheet','restingForNpcsChatDisabled')){
 
       let obj = {
         dialog : true,
@@ -378,7 +393,7 @@ export default class Tidy5eNPC extends ActorSheet5eNPC {
     try {
 			if(game.modules.get('character-actions-list-5e')?.active && injectNPCSheet){
         // Update the nav menu
-        const actionsTabButton = $('<a class="item" data-tab="actions">' + game.i18n.localize(`DND5E.ActionPl`) + '</a>');
+        const actionsTabButton = $('<a class="item" data-tab="actions">' + game.i18n.localize(`SW5E.ActionPl`) + '</a>');
         const tabs = html.find('.tabs[data-group="primary"]');
         tabs.prepend(actionsTabButton);
 
@@ -437,7 +452,7 @@ async function toggleItemMode(app, html, data){
     ev.preventDefault();
     let itemId = ev.currentTarget.closest(".item").dataset.itemId;
     let item = app.actor.items.get(itemId);
-    let attr = item.data.type === "spell" ? "data.preparation.prepared" : "data.equipped";
+    let attr = item.data.type === "power" ? "data.preparation.prepared" : "data.equipped";
     return item.update({ [attr]: !getProperty(item.data, attr) });
   });
 }
@@ -462,91 +477,91 @@ async  function resetTempHp(app, html, data){
 async function setSheetClasses(app, html, data) {
   const {token} = app;
   const actor = app.actor;
-  if(actor.getFlag('tidy5e-sheet', 'showNpcPersonalityInfo')){
+  if(actor.getFlag('tidysw5e-sheet', 'showNpcPersonalityInfo')){
     html.find('.tidy5e-sheet .left-notes').removeClass('hidden');
   }
-  if (game.settings.get("tidy5e-sheet", "rightClickDisabled")) {
-		if(game.settings.get("tidy5e-sheet", "classicControlsEnabled")){
+  if (game.settings.get("tidysw5e-sheet", "rightClickDisabled")) {
+		if(game.settings.get("tidysw5e-sheet", "classicControlsEnabled")){
 			html.find('.tidy5e-sheet .grid-layout .items-list').addClass('alt-context');
 		} else {
 			html.find('.tidy5e-sheet .items-list').addClass('alt-context');
 		}
 	}
-	if (game.settings.get("tidy5e-sheet", "classicControlsEnabled")) {
+	if (game.settings.get("tidysw5e-sheet", "classicControlsEnabled")) {
 		tidy5eClassicControls(html);
 	}
-  if (game.settings.get("tidy5e-sheet", "traitsMovedBelowResourceNpc")) {
+  if (game.settings.get("tidysw5e-sheet", "traitsMovedBelowResourceNpc")) {
 		let altPos = html.find('.alt-trait-pos');
 		let traits = html.find('.traits');
 		altPos.append(traits);
 	}
-  if (!game.settings.get("tidy5e-sheet", "restingForNpcsEnabled")) {
+  if (!game.settings.get("tidysw5e-sheet", "restingForNpcsEnabled")) {
     html.find('.tidy5e-sheet.tidy5e-npc .rest-container').remove();
   }
-  if (game.settings.get("tidy5e-sheet", "portraitStyle") == "npc" || game.settings.get("tidy5e-sheet", "portraitStyle") == "all") {
+  if (game.settings.get("tidysw5e-sheet", "portraitStyle") == "npc" || game.settings.get("tidysw5e-sheet", "portraitStyle") == "all") {
     html.find('.tidy5e-sheet.tidy5e-npc .profile').addClass('roundPortrait');
   }
-  if (game.settings.get("tidy5e-sheet", "hpOverlayDisabledNpc")) {
+  if (game.settings.get("tidysw5e-sheet", "hpOverlayDisabledNpc")) {
     html.find('.tidy5e-sheet.tidy5e-npc .profile').addClass('disable-hp-overlay');
   }
-	if (game.settings.get("tidy5e-sheet", "hpBarDisabled")) {
+	if (game.settings.get("tidysw5e-sheet", "hpBarDisabled")) {
 		html.find('.tidy5e-sheet .profile').addClass('disable-hp-bar');
 	}
-  if (game.settings.get("tidy5e-sheet", "hpOverlayBorderNpc") > 0) {
-    $('.system-dnd5e').get(0).style.setProperty('--npc-border', game.settings.get("tidy5e-sheet", "hpOverlayBorderNpc")+'px');
+  if (game.settings.get("tidysw5e-sheet", "hpOverlayBorderNpc") > 0) {
+    $('.system-sw5e').get(0).style.setProperty('--npc-border', game.settings.get("tidysw5e-sheet", "hpOverlayBorderNpc")+'px');
 	} else {
-     $('.system-dnd5e').get(0).style.removeProperty('--npc-border');
+     $('.system-sw5e').get(0).style.removeProperty('--npc-border');
   }
-  if (game.settings.get("tidy5e-sheet", "traitsAlwaysShownNpc")) {
+  if (game.settings.get("tidysw5e-sheet", "traitsAlwaysShownNpc")) {
     html.find('.tidy5e-sheet.tidy5e-npc .traits').addClass('always-visible');
   }
-  if (game.settings.get("tidy5e-sheet", "traitLabelsEnabled")) {
+  if (game.settings.get("tidysw5e-sheet", "traitLabelsEnabled")) {
 		html.find('.tidy5e-sheet.tidy5e-npc .traits').addClass('show-labels');
 	}
-  if (game.settings.get("tidy5e-sheet", "skillsAlwaysShownNpc")) {
+  if (game.settings.get("tidysw5e-sheet", "skillsAlwaysShownNpc")) {
     html.find('.tidy5e-sheet.tidy5e-npc .skills-list').addClass('always-visible');
   }
-  if (token && token.data.actorLink && game.settings.get("tidy5e-sheet", "linkMarkerNpc") == 'both') {
+  if (token && token.data.actorLink && game.settings.get("tidysw5e-sheet", "linkMarkerNpc") == 'both') {
     html.find('.tidy5e-sheet.tidy5e-npc').addClass('linked');
   }
-  if (token && !token.data.actorLink && ( game.settings.get("tidy5e-sheet", "linkMarkerNpc") == "unlinked" || game.settings.get("tidy5e-sheet", "linkMarkerNpc") == "both")) {
+  if (token && !token.data.actorLink && ( game.settings.get("tidysw5e-sheet", "linkMarkerNpc") == "unlinked" || game.settings.get("tidysw5e-sheet", "linkMarkerNpc") == "both")) {
     html.find('.tidy5e-sheet.tidy5e-npc').addClass('unlinked');
   }
-  if (!token && (game.settings.get("tidy5e-sheet", "linkMarkerNpc") == "unlinked" || game.settings.get("tidy5e-sheet", "linkMarkerNpc") == "both")) {
+  if (!token && (game.settings.get("tidysw5e-sheet", "linkMarkerNpc") == "unlinked" || game.settings.get("tidysw5e-sheet", "linkMarkerNpc") == "both")) {
     html.find('.tidy5e-sheet.tidy5e-npc').addClass('original');
   }
-	$('.info-card-hint .key').html(game.settings.get('tidy5e-sheet', 'itemCardsFixKey'));
+	$('.info-card-hint .key').html(game.settings.get('tidysw5e-sheet', 'itemCardsFixKey'));
 }
 
 // Abbreviate Currency
 async function abbreviateCurrency(app,html,data) {
 	html.find('.currency .currency-item label').each(function(){
 		let currency = $(this).data('denom').toUpperCase();
-		let abbr = game.i18n.localize(`DND5E.CurrencyAbbr${currency}`);
-		if(abbr == `DND5E.CurrencyAbbr${currency}`){
+		let abbr = game.i18n.localize(`SW5E.CurrencyAbbr${currency}`);
+		if(abbr == `SW5E.CurrencyAbbr${currency}`){
 			abbr = currency;
 		}
 		$(this).html(abbr);
 	});
 }
 
-// Hide empty Spellbook
-async function hideSpellbook(app, html, data) {
-  let spellbook = html.find('.spellbook-footer');
+// Hide empty Powerbook
+async function hidePowerbook(app, html, data) {
+  let powerbook = html.find('.powerbook-footer');
 
-  if (spellbook.hasClass('spellbook-empty')){
-    html.find('.spellbook-title').addClass('toggle-spellbook');
-    // html.find('.spellbook-title .fa-caret-down').show();
-    // html.find('.spellbook-title .fa-caret-up').hide();
-    html.find('.spellbook-title + .list-layout').hide();
-    html.find('.spellcasting-ability').hide();
+  if (powerbook.hasClass('powerbook-empty')){
+    html.find('.powerbook-title').addClass('toggle-powerbook');
+    // html.find('.powerbook-title .fa-caret-down').show();
+    // html.find('.powerbook-title .fa-caret-up').hide();
+    html.find('.powerbook-title + .list-layout').hide();
+    html.find('.powercasting-ability').hide();
 
-    $('.toggle-spellbook').on('click', function(){
-      html.find('.spellbook-title').toggleClass('show');
-      // html.find('.spellbook-title .fa-caret-down').toggle();
-      // html.find('.spellbook-title .fa-caret-up').toggle();
-      html.find('.spellbook-title + .list-layout').toggle();
-      html.find('.spellcasting-ability').toggle();
+    $('.toggle-powerbook').on('click', function(){
+      html.find('.powerbook-title').toggleClass('show');
+      // html.find('.powerbook-title .fa-caret-down').toggle();
+      // html.find('.powerbook-title .fa-caret-up').toggle();
+      html.find('.powerbook-title + .list-layout').toggle();
+      html.find('.powercasting-ability').toggle();
     });
   }
 }
@@ -554,9 +569,9 @@ async function hideSpellbook(app, html, data) {
 // Edit Protection - Hide empty Inventory Sections, add and delete-buttons
 async function editProtection(app, html, data) {
   let actor = app.actor;
-  if(!actor.getFlag('tidy5e-sheet', 'allow-edit')){
+  if(!actor.getFlag('tidysw5e-sheet', 'allow-edit')){
     
-		if(game.settings.get("tidy5e-sheet", "editTotalLockEnabled")){
+		if(game.settings.get("tidysw5e-sheet", "editTotalLockEnabled")){
 			html.find(".skill input").prop('disabled', true);
 			html.find(".skill .config-button").remove();
 			html.find(".skill .proficiency-toggle").remove();
@@ -572,11 +587,11 @@ async function editProtection(app, html, data) {
 			html.find(".traits .config-button,.traits .trait-selector,.traits .proficiency-selector").remove();
 			html.find('[contenteditable]').prop('contenteditable', false);
 			html.find(".caster-level input").prop('disabled', true);
-			html.find(".spellcasting-attribute select").prop('disabled', true);
+			html.find(".powercasting-attribute select").prop('disabled', true);
 		}
 
-    let itemContainer = html.find('.inventory-list:not(.spellbook-list).items-list');
-    html.find('.inventory-list:not(.spellbook-list) .items-header').each(function(){
+    let itemContainer = html.find('.inventory-list:not(.powerbook-list).items-list');
+    html.find('.inventory-list:not(.powerbook-list) .items-header').each(function(){
       if(($(this).next('.item-list').find('li').length - $(this).next('.item-list').find('li.items-footer').length) == 0){
         $(this).next('.item-list').addClass('hidden').hide();
 				$(this).addClass('hidden').hide();
@@ -631,7 +646,7 @@ async function npcFavorites (app, html, data){
   }
 }
 
-Actors.registerSheet("dnd5e", Tidy5eNPC, {
+Actors.registerSheet("sw5e", Tidy5eNPC, {
     types: ["npc"],
     makeDefault: true
 });
@@ -657,7 +672,7 @@ Hooks.on("renderTidy5eNPC", (app, html, data) => {
   toggleItemMode(app, html, data);
   restoreScrollPosition(app, html, data);
 	abbreviateCurrency(app,html,data);
-  hideSpellbook(app, html, data);
+  hidePowerbook(app, html, data);
   resetTempHp(app, html, data);
   editProtection(app, html, data);
   npcFavorites (app, html, data);

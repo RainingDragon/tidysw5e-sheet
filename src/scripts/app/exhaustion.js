@@ -6,11 +6,11 @@ async function updateExhaustion(actorEntity) {
   
   let exhaustion = actorEntity.data._source.data.attributes.exhaustion;
 
-  if(game.settings.get('tidy5e-sheet', 'exhaustionEffectsEnabled') == 'tidy5e') {
-    let icon = game.settings.get('tidy5e-sheet', 'exhaustionEffectIcon');
+  if(game.settings.get('tidysw5e-sheet', 'exhaustionEffectsEnabled') == 'tidy5e') {
+    let icon = game.settings.get('tidysw5e-sheet', 'exhaustionEffectIcon');
     let currentExhaustion;
     let exhaustionPresent = null;
-    let effectName = `${game.i18n.localize("DND5E.ConExhaustion")} ${game.i18n.localize("DND5E.AbbreviationLevel")} ${exhaustion}`;
+    let effectName = `${game.i18n.localize("SW5E.ConExhaustion")} ${game.i18n.localize("SW5E.AbbreviationLevel")} ${exhaustion}`;
 
     // define exhaustion effects by level
     let exhaustionSet = [];
@@ -148,9 +148,9 @@ async function updateExhaustion(actorEntity) {
     }
   }
 
-  if(game.settings.get('tidy5e-sheet', 'exhaustionEffectsEnabled') == 'custom'){	
-    const levels = game.settings.get('tidy5e-sheet', 'exhaustionEffectCustomTiers');
-    const effectName = game.settings.get('tidy5e-sheet', 'exhaustionEffectCustom');
+  if(game.settings.get('tidysw5e-sheet', 'exhaustionEffectsEnabled') == 'custom'){	
+    const levels = game.settings.get('tidysw5e-sheet', 'exhaustionEffectCustomTiers');
+    const effectName = game.settings.get('tidysw5e-sheet', 'exhaustionEffectCustom');
 
     const id = actorEntity.data._id;
     const tokens = canvas.tokens.placeables;
@@ -178,7 +178,7 @@ async function updateExhaustion(actorEntity) {
 
 // Hooks Update Actor
 Hooks.on('updateActor', function (actorEntity, _, __, userId) {
-  if(game.settings.get('tidy5e-sheet', 'exhaustionEffectsEnabled') != 'default') {
+  if(game.settings.get('tidysw5e-sheet', 'exhaustionEffectsEnabled') != 'default') {
     if (game.userId !== userId || actorEntity.constructor.name != "Actor5e") {
       // Only act if we initiated the update ourselves, and the effect is a child of a character
       return;
@@ -190,7 +190,7 @@ Hooks.on('updateActor', function (actorEntity, _, __, userId) {
 
 // Rest reduces by 1
 Hooks.on(`restCompleted`, (actorEntity, data) => { 
-  // if(game.settings.get('tidy5e-sheet', 'exhaustionEffectsEnabled') != 'default') {
+  // if(game.settings.get('tidysw5e-sheet', 'exhaustionEffectsEnabled') != 'default') {
     let actor = game.actors.get(actorEntity.data._id);
     if(data.longRest){
       let exhaustion = actorEntity.data._source.data.attributes.exhaustion;
@@ -201,11 +201,11 @@ Hooks.on(`restCompleted`, (actorEntity, data) => {
 
 // set exhaustion value to cub effect level
 Hooks.on(`createActiveEffect`, (effect, data, id) => { 
-  if(game.settings.get('tidy5e-sheet', 'exhaustionEffectsEnabled') == 'custom') {
+  if(game.settings.get('tidysw5e-sheet', 'exhaustionEffectsEnabled') == 'custom') {
 
     let actor = game.actors.get(effect.parent.data._id);
     let effectName = effect.data.label;
-    if (effectName.includes(game.settings.get('tidy5e-sheet', 'exhaustionEffectCustom'))) {
+    if (effectName.includes(game.settings.get('tidysw5e-sheet', 'exhaustionEffectCustom'))) {
       // console.log(effectName);
       let exhaustion = effectName.slice(-1);
       // console.log(exhaustion);
@@ -216,10 +216,10 @@ Hooks.on(`createActiveEffect`, (effect, data, id) => {
 
 // reset exhaustion value when cub effect is removed
 Hooks.on(`deleteActiveEffect`, (effect, data, id) => { 
-  if(game.settings.get('tidy5e-sheet', 'exhaustionEffectsEnabled') == 'custom') {
+  if(game.settings.get('tidysw5e-sheet', 'exhaustionEffectsEnabled') == 'custom') {
     const actor = game.actors.get(effect.parent.data._id);
-    const effectName = game.settings.get('tidy5e-sheet', 'exhaustionEffectCustom');
-    const levels = game.settings.get('tidy5e-sheet', 'exhaustionEffectCustomTiers');
+    const effectName = game.settings.get('tidysw5e-sheet', 'exhaustionEffectCustom');
+    const levels = game.settings.get('tidysw5e-sheet', 'exhaustionEffectCustomTiers');
     const effectLabel = effect.data.label;
     if (effectLabel.includes(effectName)) {
 

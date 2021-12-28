@@ -1,4 +1,4 @@
-import ItemSheet5e from "../../../systems/dnd5e/module/item/sheet.js";
+import ItemSheet5e from "../../../systems/sw5e/module/item/sheet.js";
 
 export class Tidy5eItemSheet extends ItemSheet5e {
   static get defaultOptions() {
@@ -14,7 +14,7 @@ async function addEditorHeadline(app, html, data) {
 }
  
 // Register Tidy5e Item Sheet and make default
-Items.registerSheet("dnd5e", Tidy5eItemSheet, {makeDefault: true});
+Items.registerSheet("sw5e", Tidy5eItemSheet, {makeDefault: true});
 
 Hooks.once("ready", () => {
 

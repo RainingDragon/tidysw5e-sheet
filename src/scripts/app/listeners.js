@@ -73,11 +73,32 @@ export const tidy5eListeners = function (html, actor) {
   html.find('.toggle-allow-edit span').click(async (event) => {
     event.preventDefault();
 
-    if(actor.getFlag('tidy5e-sheet', 'allow-edit')){
-      await actor.unsetFlag('tidy5e-sheet', 'allow-edit');
+    if(actor.getFlag('tidysw5e-sheet', 'allow-edit')){
+      await actor.unsetFlag('tidysw5e-sheet', 'allow-edit');
     } else {
-      await actor.setFlag('tidy5e-sheet', 'allow-edit', true);
+      await actor.setFlag('tidysw5e-sheet', 'allow-edit', true);
     }
   });
 
-}
+  // toggle force powerbook tab
+  html.find(".toggle-view-force span").click(async (event) => {
+    event.preventDefault();
+
+    if (actor.getFlag("tidysw5e-sheet", "view-force")) {
+      await actor.unsetFlag("tidysw5e-sheet", "view-force");
+    } else {
+      await actor.setFlag("tidysw5e-sheet", "view-force", true);
+    }
+  });
+
+  // toggle tech powerbook tab
+  html.find(".toggle-view-tech span").click(async (event) => {
+    event.preventDefault();
+
+    if (actor.getFlag("tidysw5e-sheet", "view-tech")) {
+      await actor.unsetFlag("tidysw5e-sheet", "view-tech");
+    } else {
+      await actor.setFlag("tidysw5e-sheet", "view-tech", true);
+    }
+  });
+};

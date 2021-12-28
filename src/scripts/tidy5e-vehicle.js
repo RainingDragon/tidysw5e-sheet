@@ -1,5 +1,5 @@
-import ActorSheet5e from "../../../systems/dnd5e/module/actor/sheets/base.js";
-import ActorSheet5eVehicle from "../../../systems/dnd5e/module/actor/sheets/vehicle.js";
+import ActorSheet5e from "../../../systems/sw5e/module/actor/sheets/newSheet/base.js";
+import ActorSheet5eVehicle from "../../../systems/sw5e/module/actor/sheets/newSheet/vehicle.js";
 
 import { tidy5eContextMenu } from "./app/context-menu.js";
 import { tidy5eListeners } from "./app/listeners.js";
@@ -10,12 +10,12 @@ import { tidy5eItemCard } from "./app/itemcard.js";
 export class Tidy5eVehicle extends ActorSheet5eVehicle {
 
 	static get defaultOptions() {
-    let defaultTab = game.settings.get("tidy5e-sheet", "defaultActionsTab") != 'default' ? 'attributes' : 'actions';
+    let defaultTab = game.settings.get("tidysw5e-sheet", "defaultActionsTab") != 'default' ? 'attributes' : 'actions';
 		if (!game.modules.get('character-actions-list-5e')?.active) defaultTab = 'description';
 
 	  return mergeObject(super.defaultOptions, {
 			classes: ["tidy5e", "sheet", "actor", "vehicle"],
-			width: game.settings.get("tidy5e-sheet", "vehicleSheetWidth") ?? 740,
+			width: game.settings.get("tidysw5e-sheet", "vehicleSheetWidth") ?? 740,
 			height: 720,
 			tabs: [{navSelector: ".tabs", contentSelector: ".sheet-body", initial: defaultTab}]
 		});
@@ -30,8 +30,8 @@ export class Tidy5eVehicle extends ActorSheet5eVehicle {
    * @type {String}
    */
   get template() {
-    if ( !game.user.isGM && this.actor.limited ) return "modules/tidy5e-sheet/templates/actors/tidy5e-vehicle-ltd.html";
-    return "modules/tidy5e-sheet/templates/actors/tidy5e-vehicle.html";
+    if ( !game.user.isGM && this.actor.limited ) return "modules/tidysw5e-sheet/templates/actors/tidy5e-vehicle-ltd.html";
+    return "modules/tidysw5e-sheet/templates/actors/tidy5e-vehicle.html";
   }
 
 	/**
@@ -42,7 +42,7 @@ export class Tidy5eVehicle extends ActorSheet5eVehicle {
 
     Object.keys(data.data.abilities).forEach(id => {
     	let Id = id.charAt(0).toUpperCase() + id.slice(1);
-      data.data.abilities[id].abbr = game.i18n.localize(`DND5E.Ability${Id}Abbr`);
+      data.data.abilities[id].abbr = game.i18n.localize(`SW5E.Ability${Id}Abbr`);
     });
 
     return data;
@@ -56,16 +56,16 @@ export class Tidy5eVehicle extends ActorSheet5eVehicle {
     tidy5eListeners(html, actor);
     tidy5eContextMenu(html);
 		tidy5eShowActorArt(html, actor);
-    if(game.settings.get("tidy5e-sheet", "itemCardsForNpcs")) {
+    if(game.settings.get("tidysw5e-sheet", "itemCardsForNpcs")) {
       tidy5eItemCard(html, actor);
     }
 
 		// toggle empty traits visibility in the traits list
     html.find('.traits .toggle-traits').click( async (event) => {
-      if(actor.getFlag('tidy5e-sheet', 'traitsExpanded')){
-        await actor.unsetFlag('tidy5e-sheet', 'traitsExpanded');
+      if(actor.getFlag('tidysw5e-sheet', 'traitsExpanded')){
+        await actor.unsetFlag('tidysw5e-sheet', 'traitsExpanded');
       } else {
-        await actor.setFlag('tidy5e-sheet', 'traitsExpanded', true);
+        await actor.setFlag('tidysw5e-sheet', 'traitsExpanded', true);
       }
     });
     
@@ -82,7 +82,7 @@ export class Tidy5eVehicle extends ActorSheet5eVehicle {
     try {
 			if(game.modules.get('character-actions-list-5e')?.active && injectVehicleSheet){
         // Update the nav menu
-        const actionsTabButton = $('<a class="item" data-tab="actions">' + game.i18n.localize(`DND5E.ActionPl`) + '</a>');
+        const actionsTabButton = $('<a class="item" data-tab="actions">' + game.i18n.localize(`SW5E.ActionPl`) + '</a>');
         const tabs = html.find('.tabs[data-group="primary"]');
         tabs.prepend(actionsTabButton);
 
@@ -111,7 +111,7 @@ export class Tidy5eVehicle extends ActorSheet5eVehicle {
 // Edit Protection - Hide empty Inventory Sections, add and delete-buttons
 async function editProtection(app, html, data) {
   let actor = app.actor;
-  if(!actor.getFlag('tidy5e-sheet', 'allow-edit')){
+  if(!actor.getFlag('tidysw5e-sheet', 'allow-edit')){
     let itemContainer = html.find('.inventory-list.items-list');
     html.find('.inventory-list .items-header').each(function(){
       if(($(this).next('.item-list').find('li').length - $(this).next('.item-list').find('li.items-footer').length) == 0){
@@ -146,42 +146,42 @@ async function toggleTraitsList(app, html, data){
 async function abbreviateCurrency(app,html,data) {
 	html.find('.currency .currency-item label').each(function(){
 		let currency = $(this).data('denom').toUpperCase();
-		let abbr = game.i18n.localize(`DND5E.CurrencyAbbr${currency}`);
+		let abbr = game.i18n.localize(`SW5E.CurrencyAbbr${currency}`);
 		$(this).html(abbr);
 	});
 }
 
 // add sheet classes
 async function setSheetClasses(app, html, data){
-  if (game.settings.get("tidy5e-sheet", "rightClickDisabled")) {
-		if(game.settings.get("tidy5e-sheet", "classicControlsEnabled")){
+  if (game.settings.get("tidysw5e-sheet", "rightClickDisabled")) {
+		if(game.settings.get("tidysw5e-sheet", "classicControlsEnabled")){
 			html.find('.tidy5e-sheet .grid-layout .items-list').addClass('alt-context');
 		} else {
 			html.find('.tidy5e-sheet .items-list').addClass('alt-context');
 		}
 	}
-	if (game.settings.get("tidy5e-sheet", "classicControlsEnabled")) {
+	if (game.settings.get("tidysw5e-sheet", "classicControlsEnabled")) {
 		tidy5eClassicControls(html);
 	}
-  if (game.settings.get("tidy5e-sheet", "portraitStyle") == "npc" || game.settings.get("tidy5e-sheet", "portraitStyle") == "all") {
+  if (game.settings.get("tidysw5e-sheet", "portraitStyle") == "npc" || game.settings.get("tidysw5e-sheet", "portraitStyle") == "all") {
     html.find('.tidy5e-sheet.tidy5e-vehicle .profile').addClass('roundPortrait');
   }
-	if (game.settings.get("tidy5e-sheet", "hpOverlayBorderVehicle") > 0) {
-		$('.system-dnd5e').get(0).style.setProperty('--vehicle-border', game.settings.get("tidy5e-sheet", "hpOverlayBorderVehicle")+'px');
+	if (game.settings.get("tidysw5e-sheet", "hpOverlayBorderVehicle") > 0) {
+		$('.system-sw5e').get(0).style.setProperty('--vehicle-border', game.settings.get("tidysw5e-sheet", "hpOverlayBorderVehicle")+'px');
   } else {
-		$('.system-dnd5e').get(0).style.removeProperty('--vehicle-border');
+		$('.system-sw5e').get(0).style.removeProperty('--vehicle-border');
   }
-	if (game.settings.get("tidy5e-sheet", "hpOverlayDisabledVehicle")) {
+	if (game.settings.get("tidysw5e-sheet", "hpOverlayDisabledVehicle")) {
 		html.find('.tidy5e-sheet.tidy5e-vehicle .profile').addClass('disable-hp-overlay');
   }
-	if (game.settings.get("tidy5e-sheet", "hpBarDisabled")) {
+	if (game.settings.get("tidysw5e-sheet", "hpBarDisabled")) {
 		html.find('.tidy5e-sheet .profile').addClass('disable-hp-bar');
 	}
-	$('.info-card-hint .key').html(game.settings.get('tidy5e-sheet', 'itemCardsFixKey'));
+	$('.info-card-hint .key').html(game.settings.get('tidysw5e-sheet', 'itemCardsFixKey'));
 }
 
 // Register Tidy5e Vehicle Sheet and make default vehicle sheet
-Actors.registerSheet("dnd5e", Tidy5eVehicle, {
+Actors.registerSheet("sw5e", Tidy5eVehicle, {
 	types: ["vehicle"],
 	makeDefault: true
 });

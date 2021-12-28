@@ -10,17 +10,21 @@ export const preloadTidy5eHandlebarsTemplates = async function() {
   const tidy5etemplatePaths = [
 
     // Actor Sheet Partials
-    "modules/tidy5e-sheet/templates/actors/parts/tidy5e-traits.html",
-    "modules/tidy5e-sheet/templates/actors/parts/tidy5e-inventory.html",
-    "modules/tidy5e-sheet/templates/actors/parts/tidy5e-inventory-grid.html",
-    "modules/tidy5e-sheet/templates/actors/parts/tidy5e-inventory-header.html",
-    "modules/tidy5e-sheet/templates/actors/parts/tidy5e-inventory-footer.html",
-    "modules/tidy5e-sheet/templates/actors/parts/tidy5e-features.html",
-    "modules/tidy5e-sheet/templates/actors/parts/tidy5e-spellbook.html",
-    "modules/tidy5e-sheet/templates/actors/parts/tidy5e-spellbook-grid.html",
-    "modules/tidy5e-sheet/templates/actors/parts/tidy5e-spellbook-header.html",
-    "modules/tidy5e-sheet/templates/actors/parts/tidy5e-spellbook-footer.html",
-    "modules/tidy5e-sheet/templates/actors/parts/tidy5e-effects.html"
+    "modules/tidysw5e-sheet/templates/actors/parts/tidy5e-traits.html",
+    "modules/tidysw5e-sheet/templates/actors/parts/tidy5e-inventory.html",
+    "modules/tidysw5e-sheet/templates/actors/parts/tidy5e-inventory-grid.html",
+    "modules/tidysw5e-sheet/templates/actors/parts/tidy5e-inventory-header.html",
+    "modules/tidysw5e-sheet/templates/actors/parts/tidy5e-inventory-footer.html",
+    "modules/tidysw5e-sheet/templates/actors/parts/tidy5e-features.html",
+    "modules/tidysw5e-sheet/templates/actors/parts/tidy5e-force-powerbook.html",
+    "modules/tidysw5e-sheet/templates/actors/parts/tidy5e-force-powerbook-grid.html",
+    "modules/tidysw5e-sheet/templates/actors/parts/tidy5e-force-powerbook-header.html",
+    "modules/tidysw5e-sheet/templates/actors/parts/tidy5e-force-powerbook-footer.html",
+    "modules/tidysw5e-sheet/templates/actors/parts/tidy5e-tech-powerbook.html",
+    "modules/tidysw5e-sheet/templates/actors/parts/tidy5e-tech-powerbook-grid.html",
+    "modules/tidysw5e-sheet/templates/actors/parts/tidy5e-tech-powerbook-header.html",
+    "modules/tidysw5e-sheet/templates/actors/parts/tidy5e-tech-powerbook-footer.html",
+    "modules/tidysw5e-sheet/templates/actors/parts/tidy5e-effects.html"
   ];
 
   // Load the template parts

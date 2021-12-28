@@ -283,6 +283,22 @@
 	    min-height: 100px;
 	}
 
+  .toggle-view-force,
+  .toggle-view-tech {
+    .fa-eye {
+      display: none;
+    }
+
+    .hide-force .fa-eye-slash,
+    .hide-tech .fa-eye-slash {
+      display: none;
+    }
+
+    .hide-force .fa-eye,
+    .hide-tech .fa-eye {
+      display: inline-block;
+    }
+  }
 }
 
 .minimized #item-info-container {

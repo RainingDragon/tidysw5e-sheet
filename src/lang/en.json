@@ -7,7 +7,7 @@
 	"TIDY5E.Eyes" : "Eyes",
 	"TIDY5E.Skin" : "Skin",
 	"TIDY5E.Hair" : "Hair",
-	"TIDY5E.Subclass": "Subclass",
+	"TIDY5E.Archetype": "Archetype",
 	"TIDY5E.EditActorImage": "left click: edit image",
 	"TIDY5E.ShowActorImage": "right click: show character art",
 	"TIDY5E.ShowPortraitArt": "show portrait",
@@ -47,7 +47,7 @@
 	"TIDY5E.Unequip": "Unequip Item",
 	"TIDY5E.Attune": "Attune to Item",
 	"TIDY5E.Deattune": "Break Attunement",
-	"TIDY5E.Prepare": "Prepare Spell",
+	"TIDY5E.Prepare": "Prepare Power",
 	"TIDY5E.Unprepare": "Remove Preparation",
 
 	"TIDY5E.EmptySection": "This section is empty. Unlock the sheet to edit.",
@@ -61,9 +61,8 @@
 	"TIDY5E.ListLayout": "List Layout",
 
 	"TIDY5E.Encumbrance": "Encumbrance",
-
-	"TIDY5E.EditSpell": "Edit Spell",
-	"TIDY5E.DeleteSpell": "Delete Spell",
+	"TIDY5E.EditPower": "Edit Power",
+	"TIDY5E.DeletePower": "Delete Power",
 	"TIDY5E.AddFav": "Add Favorite",
 	"TIDY5E.isFav": "Favorite",
 	"TIDY5E.RemoveFav": "Remove Favorite",
@@ -78,9 +77,10 @@
 	"TIDY5E.Abilities" : "Abilities",
 
 	"TIDY5E.Environment" : "Environment",
-	
+	"TIDY5E.CurrencyAbbrGP": "CR",
+
 	"TIDY5E.SearchItem" : "search item",
-	"TIDY5E.SearchSpell" : "search spell",
+	"TIDY5E.SearchPower" : "search power",
 	"TIDY5E.SearchFeat" : "search feature",
 	"TIDY5E.SearchClear" : "clear search",
 	"TIDY5E.SearchHint" : "Just start to type what you are searching for.",
@@ -90,12 +90,11 @@
 
 	"TIDY5E.AbbrMod" : "Mod",
 	"TIDY5E.AbbrSavingThrow" : "Save",
-	"TIDY5E.SpellAttackMod" : "Attack Mod",
-	"TIDY5E.PreparedSpells" : "Prepared spells",
-	"TIDY5E.PreparedSpellsMax" : "Maximum for prepared spells",
+	"TIDY5E.PowerAttackMod" : "Attack Mod",
+	"TIDY5E.PreparedPowers" : "Prepared powers",
+	"TIDY5E.PreparedPowersMax" : "Maximum for prepared powers",
 	"TIDY5E.Components" : "Comps",
-	"TIDY5E.SpellSchool" : "School",
-
+	"TIDY5E.PowerSchool" : "School",
 	"TIDY5E.TokenLinked" : "Token linked to actor",
 	"TIDY5E.TokenUnlinked" : "Token not linked to actor",
 
@@ -110,7 +109,7 @@
 
 	"TIDY5E.Settings.SheetMenu" : {
 		"label" : "Sheet Settings",
-		"title" : "Tidy5e Sheet Settings"
+		"title" : "TidySW5e Sheet Settings"
 	},
 	"TIDY5E.Settings.TabPlayers" : {
 		"tabLabel" : "Players",
@@ -159,15 +158,15 @@
 
 
 	"TIDY5E.Settings.SheetTheme" : {
-		"name" : "Tidy5e color theme.",
-		"hint" : "Use either the default light or alternate dark color theme of Tidy5e.",
+		"name" : "TidySW5e color theme.",
+		"hint" : "Use either the default light or alternate dark color theme of TidySW5e.",
 		"default": "Default (light)",
 		"dark": "Alternate (dark)"
 	},
 
 	"TIDY5E.Settings.ClassicControls" : {
 		"name" : "Use classic item controls in list view.",
-		"hint" : "Always shows item controls and disable right click menu. Only applies for PC item/spell inventory in list layout."
+		"hint" : "Always shows item controls and disable right click menu. Only applies for PC item/power inventory in list layout."
 	},
 	"TIDY5E.Settings.RollButtonsToCard" : {
 		"name" : "Show midiQol Item Buttons in item's info card",
@@ -293,7 +292,7 @@
 	},
 	"TIDY5E.Settings.CustomExhaustionIcon" : {
 		"name" : "Custom exhaustion effect icon.",
-		"hint" : "Set your custom exhaustion effect icon by providing an image url. Only available when Exhaustion Effect is set to \"tidy 5e\" (e. g.: modules/tidy5e-sheet/images/exhaustion.svg)."
+		"hint" : "Set your custom exhaustion effect icon by providing an image url. Only available when Exhaustion Effect is set to \"tidy 5e\" (e. g.: modules/tidysw5e-sheet/images/exhaustion.svg)."
 	},
 	"TIDY5E.Settings.CustomExhaustionEffect" : {
 		"name" : "Custom CUB exhaustion effect name.",

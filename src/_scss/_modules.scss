@@ -59,7 +59,7 @@
 //    Support Magic Items  
 // ------------------------
 
-.tidy5e.sheet.actor .magic-items-spells-content,
+.tidy5e.sheet.actor .magic-items-powers-content,
 .tidy5e.sheet.actor .magic-items-feats-content  {
 
 	padding: 4px 6px;
@@ -77,7 +77,7 @@
 		}
 	}
 
-	.spellbook-header div:not(.spell-slots):not(.spell-rechargeable) {
+	.powerbook-header div:not(.power-slots):not(.power-rechargeable) {
 		color: var(--light-color);
 	}
 
@@ -85,7 +85,7 @@
 		padding: 0 8px 0 0;
 	}
 
-	.spell-slots {
+	.power-slots {
 		padding: 0 8px 0 0;
 
 		input:last-child {
@@ -93,34 +93,34 @@
 		}
 	}
 
-	.spell-level,
-	.spell-consumption,
-	.spell-upcast {
+	.power-level,
+	.power-consumption,
+	.power-upcast {
 		flex: 0 0 70px;
 		text-align: center;
 	}
 
-	.spellbook-header .spell-level {
+	.powerbook-header .power-level {
 	  text-align: right;
 	  padding-right: 20px;
 	}
 
-	// .spellbook-header .spell-rechargeable+.spell-level {
+	// .powerbook-header .power-rechargeable+.power-level {
 	// 	flex-basis: calc(100% - 140px);
 	// }
 
-	.spell-rechargeable {
+	.power-rechargeable {
 		flex: 0 0 1px;
 		white-space: nowrap;
 		padding: 0 8px 0 0;
 	}
 
 	.item-list {
-		.spell-level,
-		.spell-consumption,
-		.spell-upcast,
-		.spell-slots,
-		.spell-rechargeable {
+		.power-level,
+		.power-consumption,
+		.power-upcast,
+		.power-slots,
+		.power-rechargeable {
 			display: flex;
 			justify-content: center;
 			align-items: center;
@@ -129,7 +129,7 @@
 			border-left: 1px solid var(--faint-color);
 		}
 
-		.spell-slots {
+		.power-slots {
 			border: none;
 			margin-left: 8px;
 			flex: 0 0 1px;
@@ -147,14 +147,14 @@
 			}
 		}
 
-		.spell-rechargeable {
+		.power-rechargeable {
 			border: none;
 		}
 
 	}
-}//.tidy5e.sheet.actor .magic-items-spells-content
+}//.tidy5e.sheet.actor .magic-items-powers-content
 
-.tidy5e.sheet.actor .grid-layout .magic-items-spells-content .item-list {
+.tidy5e.sheet.actor .grid-layout .magic-items-powers-content .item-list {
 
 	display: block;
 
@@ -196,7 +196,7 @@
 		}
 
 	}//.item
-}//.tidy5e.sheet.actor .grid-layout .magic-items-spells-content .item-list
+}//.tidy5e.sheet.actor .grid-layout .magic-items-powers-content .item-list
 
 
 // Magic Item Sheet
@@ -218,7 +218,7 @@
 		}
 	}
 
-	.spell-drag-content {
+	.power-drag-content {
 		height: 70px;
     text-align: center;
     color: #828180;
@@ -336,11 +336,11 @@
 		    font-weight: bold;
 			}
 
-			.spell-level-head, 
-			.spell-upcast-head, 
-			.spell-consumption-head, 
-			.spell-cost-head, 
-			.spell-dc-head,
+			.power-level-head, 
+			.power-upcast-head, 
+			.power-consumption-head, 
+			.power-cost-head, 
+			.power-dc-head,
 			.feat-consumption-head,
 			.feat-effect-head {
 		    font-size: 12px;
@@ -349,35 +349,35 @@
 		    margin: 0 2px;
 		  }
 
-		  .spell-level, 
-			.spell-upcast, 
-			.spell-consumption, 
-			.spell-cost, 
-			.spell-dc,
+		  .power-level, 
+			.power-upcast, 
+			.power-consumption, 
+			.power-cost, 
+			.power-dc,
 			.feat-consumption,
 			.feat-effect {
 		    text-align: center;
 		    margin: 0 2px;
 		  }
 
-			.spell-level-head,
-			.spell-level {
+			.power-level-head,
+			.power-level {
 				flex: 0 0 40px;
 			}
 
-			.spell-dc-head,
-			.spell-cost-head,
-			.spell-cost {
+			.power-dc-head,
+			.power-cost-head,
+			.power-cost {
 				flex: 0 0 56px;
 			}
 
-			.spell-upcast-head,
-			.spell-upcast {
+			.power-upcast-head,
+			.power-upcast {
 				flex: 0 0 80px;
 			}
 
-			.spell-consumption-head,
-			.spell-consumption,
+			.power-consumption-head,
+			.power-consumption,
 			.feat-consumption-head,
 			.feat-consumption,
 			.feat-effect-head,
@@ -385,11 +385,11 @@
 				flex: 0 0 80px;
 			}
 
-			.spell-dc {
+			.power-dc {
 				flex: 0 0 30px;
 			}
 
-			.spell-controls-head {
+			.power-controls-head {
 				flex: 0 0 28px;
 			}
 
