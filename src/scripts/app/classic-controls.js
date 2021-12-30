@@ -1,11 +1,11 @@
 export const tidy5eClassicControls = function (html) {
-  let itemList = html.find(".tidy5e-sheet .list-layout .items-list"),
-    item = html.find(".tidy5e-sheet .list-layout .item"),
-    itemControls = html.find(".tidy5e-sheet .list-layout .item-controls");
+  let itemList = html.find('.tidy5e-sheet .list-layout .items-list'),
+      item = html.find('.tidy5e-sheet .list-layout .item'),
+      itemControls = html.find('.tidy5e-sheet .list-layout .item-controls');
 
-  itemList.addClass("classic-controls");
-  item.removeClass("context-enabled").removeClass("context");
-  itemControls.removeClass("context-menu");
+  itemList.addClass('classic-controls');
+	item.removeClass('context-enabled').removeClass('context');
+  itemControls.removeClass('context-menu');
 
   /*
   itemControls.each(function(){
@@ -21,4 +21,4 @@ export const tidy5eClassicControls = function (html) {
     }, 50);
   })
   */
-};
+}

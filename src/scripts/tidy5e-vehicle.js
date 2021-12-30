@@ -8,17 +8,6 @@ import { tidy5eShowActorArt } from "./app/show-actor-art.js";
 import { tidy5eItemCard } from "./app/itemcard.js";
 
 export class Tidy5eVehicle extends ActorSheet5eVehicle {
-  static get defaultOptions() {
-    let defaultTab = game.settings.get("tidysw5e-sheet", "defaultActionsTab") != "default" ? "attributes" : "actions";
-    if (!game.modules.get("character-actions-list-5e")?.active) defaultTab = "description";
-
-    return mergeObject(super.defaultOptions, {
-      classes: ["tidy5e", "sheet", "actor", "vehicle"],
-      width: 740,
-      height: 720,
-      tabs: [{ navSelector: ".tabs", contentSelector: ".sheet-body", initial: defaultTab }]
-    });
-  }
 
 	static get defaultOptions() {
     let defaultTab = game.settings.get("tidysw5e-sheet", "defaultActionsTab") != 'default' ? 'attributes' : 'actions';
@@ -45,7 +34,7 @@ export class Tidy5eVehicle extends ActorSheet5eVehicle {
     return "modules/tidysw5e-sheet/templates/actors/tidy5e-vehicle.html";
   }
 
-  /**
+	/**
    * Add some extra data when rendering the sheet to reduce the amount of logic required within the template.
    */
   getData() {
@@ -59,10 +48,10 @@ export class Tidy5eVehicle extends ActorSheet5eVehicle {
     return data;
   }
 
-  activateListeners(html) {
-    super.activateListeners(html);
+	activateListeners(html) {
+		super.activateListeners(html);
 
-    let actor = this.actor;
+		let actor = this.actor;
 
     tidy5eListeners(html, actor);
     tidy5eContextMenu(html);
@@ -79,41 +68,44 @@ export class Tidy5eVehicle extends ActorSheet5eVehicle {
         await actor.setFlag('tidysw5e-sheet', 'traitsExpanded', true);
       }
     });
-  }
+    
+	}
 
-  // add actions module
+  
+	// add actions module
   async _renderInner(...args) {
     const html = await super._renderInner(...args);
-    const actionsListApi = game.modules.get("character-actions-list-5e")?.api;
+		const actionsListApi = game.modules.get('character-actions-list-5e')?.api;
     let injectVehicleSheet;
-    if (game.modules.get("character-actions-list-5e")?.active)
-      injectVehicleSheet = game.settings.get("character-actions-list-5e", "inject-vehicles");
-
+		if(game.modules.get('character-actions-list-5e')?.active) injectVehicleSheet = game.settings.get('character-actions-list-5e', 'inject-vehicles');
+    
     try {
-      if (game.modules.get("character-actions-list-5e")?.active && injectVehicleSheet) {
+			if(game.modules.get('character-actions-list-5e')?.active && injectVehicleSheet){
         // Update the nav menu
         const actionsTabButton = $('<a class="item" data-tab="actions">' + game.i18n.localize(`SW5E.ActionPl`) + '</a>');
         const tabs = html.find('.tabs[data-group="primary"]');
         tabs.prepend(actionsTabButton);
 
         // Create the tab
-        const sheetBody = html.find(".sheet-body");
+        const sheetBody = html.find('.sheet-body');
         const actionsTab = $(`<div class="tab actions" data-group="primary" data-tab="actions"></div>`);
         const actionsLayout = $(`<div class="list-layout"></div>`);
         actionsTab.append(actionsLayout);
         sheetBody.prepend(actionsTab);
 
         // const actionsTab = html.find('.actions-target');
-
+        
         const actionsTabHtml = $(await actionsListApi.renderActionsList(this.actor));
         actionsLayout.html(actionsTabHtml);
       }
     } catch (e) {
       // log(true, e);
     }
-
+    
     return html;
   }
+
+
 }
 
 // Edit Protection - Hide empty Inventory Sections, add and delete-buttons
@@ -128,26 +120,35 @@ async function editProtection(app, html, data) {
       }
     });
 
-    html.find(".inventory-list .items-footer").hide();
-    html.find(".inventory-list .item-control.item-delete").remove();
+    html.find('.inventory-list .items-footer').hide();
+    html.find('.inventory-list .item-control.item-delete').remove();
 
-    itemContainer.each(function () {
-      if ($(this).children().length < 1) {
-        $(this).append(`<span class="notice">This section is empty. Unlock the sheet to edit.</span>`);
-      }
+    itemContainer.each(function(){
+		  if($(this).children().length < 1){
+		    $(this).append(`<span class="notice">This section is empty. Unlock the sheet to edit.</span>`)
+		  }
     });
   }
 }
 
 // handle traits list display
-async function toggleTraitsList(app, html, data) {
-  html.find(".traits:not(.always-visible):not(.expanded) .form-group.inactive").addClass("trait-hidden").hide();
-  let visibleTraits = html.find(".traits .form-group:not(.trait-hidden)");
+async function toggleTraitsList(app, html, data){
+  html.find('.traits:not(.always-visible):not(.expanded) .form-group.inactive').addClass('trait-hidden').hide();
+  let visibleTraits = html.find('.traits .form-group:not(.trait-hidden)');
   for (let i = 0; i < visibleTraits.length; i++) {
-    if (i % 2 != 0) {
-      visibleTraits[i].classList.add("even");
+    if(i % 2 != 0){
+      visibleTraits[i].classList.add('even');
     }
   }
+}
+
+// Abbreviate Currency
+async function abbreviateCurrency(app,html,data) {
+	html.find('.currency .currency-item label').each(function(){
+		let currency = $(this).data('denom').toUpperCase();
+		let abbr = game.i18n.localize(`DND5E.CurrencyAbbr${currency}`);
+		$(this).html(abbr);
+	});
 }
 
 // add sheet classes
@@ -185,9 +186,11 @@ Actors.registerSheet("sw5e", Tidy5eVehicle, {
 	makeDefault: true
 });
 
+
 Hooks.on("renderTidy5eVehicle", (app, html, data) => {
-  setSheetClasses(app, html, data);
-  editProtection(app, html, data);
+  setSheetClasses(app,html,data);
+	editProtection(app, html, data);
   toggleTraitsList(app, html, data);
+  abbreviateCurrency(app,html,data);
   // console.log(data);
 });

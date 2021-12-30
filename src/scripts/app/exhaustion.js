@@ -1,4 +1,5 @@
 async function updateExhaustion(actorEntity) {
+  
   if (game.actors.get(actorEntity.data._id).data.type !== "character") {
     return;
   }
@@ -108,9 +109,9 @@ async function updateExhaustion(actorEntity) {
     }
 
     for (const effectEntity of actorEntity.effects) {
-      if (typeof effectEntity.getFlag('tidy5e-sheet', 'exhaustion') === 'number') {
+      if (typeof effectEntity.getFlag('tidysw5e-sheet', 'exhaustion') === 'number') {
         exhaustionPresent = effectEntity;
-        currentExhaustion = effectEntity.getFlag('tidy5e-sheet', 'exhaustion');
+        currentExhaustion = effectEntity.getFlag('tidysw5e-sheet', 'exhaustion');
         // console.log(currentExhaustion);
         if (currentExhaustion != exhaustion) {
           await exhaustionPresent.delete();
@@ -134,7 +135,7 @@ async function updateExhaustion(actorEntity) {
           changes: exhaustionSet,
           duration: {},
           flags: {
-            'tidy5e-sheet': {
+            'tidysw5e-sheet': {
               'exhaustion': exhaustion
             }
           },

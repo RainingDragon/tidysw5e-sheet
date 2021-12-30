@@ -1,20 +1,20 @@
 <form class="{{cssClass}} flexcol" autocomplete="off">
   <div class="tidy5e-sheet tidy5e-npc {{#if actor.flags.tidysw5e-sheet.allow-edit}}allow-edit{{/if}}">
     
-    {{!-- Item Info Card --}}
-    <section id="item-info-container">
-      <i class="item-info-container-background fab fa-d-and-d"></i>
-      <div class="info-wrap">
-        <article id="item-info-container-content">
-          <!-- Info Card here -->
-        </article>
-        
-        <article class="info-card-hint">
-          <p><span class="key">X</span> {{localize "TIDY5E.ItemCardsKeyHint"}}</p>
-          <p><i class="fas fa-mouse"></i> {{localize "TIDY5E.ItemCardsMouseHint"}}</p>
-        </article>
-      </div>
-    </section>
+		{{!-- Item Info Card --}}
+		<section id="item-info-container">
+			<i class="item-info-container-background fab fa-d-and-d"></i>
+			<div class="info-wrap">
+				<article id="item-info-container-content">
+					<!-- Info Card here -->
+				</article>
+				
+				<article class="info-card-hint">
+					<p><span class="key">X</span> {{localize "TIDY5E.ItemCardsKeyHint"}}</p>
+					<p><i class="fas fa-mouse"></i> {{localize "TIDY5E.ItemCardsMouseHint"}}</p>
+				</article>
+			</div>
+		</section>
     
     {{!-- NPC Sheet Header --}}
     <header class="tidy5e-header">
@@ -23,10 +23,10 @@
           {{!-- Portrait --}}
           <div class="portrait">
             <img class="player-image" src="{{actor.img}}" alt="{{actor.name}}" title="{{ localize 'TIDY5E.EditActorImage' }} / {{ localize 'TIDY5E.ShowActorImage' }}" data-edit="img">
-            <div class="portrait-menu hidden">
-              <a class="showActorArt" id="showPortrait">{{ localize 'TIDY5E.ShowPortraitArt' }}</a>
-              <a class="showActorArt" id="showToken">{{ localize 'TIDY5E.ShowTokenArt' }}</a>
-            </div>
+						<div class="portrait-menu hidden">
+							<a class="showActorArt" id="showPortrait">{{ localize 'TIDY5E.ShowPortraitArt' }}</a>
+							<a class="showActorArt" id="showToken">{{ localize 'TIDY5E.ShowTokenArt' }}</a>
+						</div>
           </div>
 
           {{!-- HP Overlay --}}
@@ -47,12 +47,12 @@
           {{!-- Hit Points --}}
           <div class="portrait-hp" title="{{ localize 'SW5E.HitPoints' }}">
             <div class="hp-bar" style="background: linear-gradient(
-                -90deg,
-                transparent 0%,
-                transparent calc(100% - ((100% / ({{#if (eq data.attributes.hp.max 0)}} 1 {{else}} {{data.attributes.hp.max}} {{/if}} + {{#if data.attributes.hp.tempmax}}{{data.attributes.hp.tempmax}}{{else}}0{{/if}} )) * ({{data.attributes.hp.value}} + {{#if data.attributes.hp.temp}}{{data.attributes.hp.temp}}{{else}}0{{/if}})) ),
-                   rgba(0,200,0,0.5) calc(100% - ((100% / ({{#if (eq data.attributes.hp.max 0)}} 1 {{else}} {{data.attributes.hp.max}} {{/if}} + {{#if data.attributes.hp.tempmax}}{{data.attributes.hp.tempmax}}{{else}}0{{/if}} )) * ({{data.attributes.hp.value}} + {{#if data.attributes.hp.temp}}{{data.attributes.hp.temp}}{{else}}0{{/if}})) ),
-                   rgba(0,200,0,0.5) 100%);">
-            </div>
+								-90deg,
+								transparent 0%,
+								transparent calc(100% - ((100% / ({{#if (eq data.attributes.hp.max 0)}} 1 {{else}} {{data.attributes.hp.max}} {{/if}} + {{#if data.attributes.hp.tempmax}}{{data.attributes.hp.tempmax}}{{else}}0{{/if}} )) * ({{data.attributes.hp.value}} + {{#if data.attributes.hp.temp}}{{data.attributes.hp.temp}}{{else}}0{{/if}})) ),
+								 	rgba(0,200,0,0.5) calc(100% - ((100% / ({{#if (eq data.attributes.hp.max 0)}} 1 {{else}} {{data.attributes.hp.max}} {{/if}} + {{#if data.attributes.hp.tempmax}}{{data.attributes.hp.tempmax}}{{else}}0{{/if}} )) * ({{data.attributes.hp.value}} + {{#if data.attributes.hp.temp}}{{data.attributes.hp.temp}}{{else}}0{{/if}})) ),
+								 	rgba(0,200,0,0.5) 100%);">
+						</div>
             <input class="hp-min" name="data.attributes.hp.value" type="text" value="{{data.attributes.hp.value}}"
             data-dtype="Number" placeholder="0" maxlength="5">
             <span class="value-seperator">/</span>
@@ -166,7 +166,7 @@
           <ul class="ability-scores">
             {{#each data.abilities as |ability id|}}
             <li class="ability {{#if ability.proficient}}proficient{{/if}}" data-ability="{{id}}">
-              <div class="wrapper" data-ability="{{id}}">
+							<div class="wrapper" data-ability="{{id}}">
                 <h4 class="ability-name box-title rollable" title="{{ability.label}}">{{ability.abbr}}</h4>
                 <div class="value">
                   <input class="ability-score" name="data.abilities.{{id}}.value" type="text" value="{{ability.value}}" data-dtype="Number" placeholder="10">
@@ -262,7 +262,7 @@
           </div>
           
           {{!-- Alternative Trait Position --}}
-          <div class="alt-trait-pos"></div>
+					<div class="alt-trait-pos"></div>
 
           {{> "modules/tidysw5e-sheet/templates/actors/parts/tidy5e-features.html" sections=features}}
           <div class="inventory-currency">  

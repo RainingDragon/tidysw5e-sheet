@@ -1,18 +1,19 @@
 /*
- * This file and its functions are
- * adapted for the Tidy5eSheet from
- * FavTab Module version 0.5.4
- * by Felix M�ller aka syl3r96
- * (Felix#6196 on Discord).
- *
- * It is licensed under a
- * Creative Commons Attribution 4.0 International License
- * and can be found at https://github.com/syl3r86/favtab.
- */
+* This file and its functions are 
+* adapted for the Tidy5eSheet from 
+* FavTab Module version 0.5.4 
+* by Felix M�ller aka syl3r96 
+* (Felix#6196 on Discord).
+*
+* It is licensed under a 
+* Creative Commons Attribution 4.0 International License 
+* and can be found at https://github.com/syl3r86/favtab.
+*/
 
 import { tidy5eContextMenu } from "./context-menu.js";
 
-export const addFavorites = async function (app, html, data, position) {
+export const addFavorites = async function(app, html, data, position) {
+
   // creating the favourite tab and loading favourited items
   let favMarker = $('<i class="fas fa-bookmark"></i>');
 
@@ -77,108 +78,27 @@ export const addFavorites = async function (app, html, data, position) {
 
   let renderFavTab = false;
 
+
   // processing all items and put them in their respective lists if they're favorited
   for (let item of items) {
-    item.owner = app.actor.isOwner;
 
-    // do not add the fav button for class items
-    if (item.type == "class") continue;
+      item.owner = app.actor.isOwner;
+      
+      // do not add the fav button for class items
+      if (item.type == "class") continue;
 
-    item.notFeat = true;
-    if (item.type == "feat") {
-      item.notFeat = false;
-    }
-
-    // making sure the flag to set favorites exists
-    if (item.flags.favtab === undefined || item.flags.favtab.isFavorite === undefined) {
-      item.flags.favtab = { isFavorite: false };
-      // DO NOT SAVE AT THIS POINT! saving for each and every item creates unneeded data and hogs the system
-      //app.actor.updateOwnedItem(item, true);
-    }
-    let isFav = item.flags.favtab.isFavorite;
-
-    // add button to toggle favorite of the item in their native tab
-    if (app.options.editable) {
-      let favBtn = $(
-        `<a class="item-control item-fav ${isFav ? "active" : ""}" title="${
-          isFav ? game.i18n.localize("TIDY5E.RemoveFav") : game.i18n.localize("TIDY5E.AddFav")
-        }" data-fav="${isFav}"><i class="${
-          isFav ? "fas fa-bookmark" : "fas fa-bookmark inactive"
-        }"></i> <span class="control-label">${
-          isFav ? game.i18n.localize("TIDY5E.RemoveFav") : game.i18n.localize("TIDY5E.AddFav")
-        }</span></a>`
-      );
-      favBtn.click((ev) => {
-        app.actor.getOwnedItem(item._id).update({ "flags.favtab.isFavorite": !item.flags.favtab.isFavorite });
-      });
-      html.find(`.item[data-item-id="${item._id}"]`).find(".item-controls .item-edit").before(favBtn);
-      if (item.flags.favtab.isFavorite) {
-        html.find(`.item[data-item-id="${item._id}"]`).addClass("isFav");
-      }
-    }
-
-    if (isFav) {
-      renderFavTab = true;
-
-      // creating specific labels to be displayed
-      let labels = {};
-      let translation = {
-        none: game.i18n.localize("SW5E.None"),
-        action: game.i18n.localize("SW5E.Action"),
-        bonus: game.i18n.localize("SW5E.BonusAction"),
-        reaction: game.i18n.localize("SW5E.Reaction"),
-        legendary: game.i18n.localize("SW5E.LegAct"),
-        lair: game.i18n.localize("SW5E.LairAct"),
-        special: game.i18n.localize("SW5E.Special"),
-        day: game.i18n.localize("SW5E.TimeDay"),
-        hour: game.i18n.localize("SW5E.TimeHour"),
-        minute: game.i18n.localize("SW5E.TimeMinute")
-      };
-
-      function translateLabels(key) {
-        let string = String(key);
-        return translation[string];
-      }
-      if (item.data.activation && item.data.activation.type) {
-        let key = item.data.activation.type;
-        // item.data.activation.type.capitalize()
-        labels.activation = `${item.data.activation.cost ? item.data.activation.cost + " " : ""}${translateLabels(
-          key
-        )}`;
+      item.notFeat = true;
+      if (item.type == "feat"){
+        item.notFeat = false;
       }
 
-      // adding info that damage and attacks are possible
-      if (["mwak", "rwak", "msak", "rsak"].indexOf(item.data.actionType) !== -1) {
-        item.hasAttack = true;
-      }
-      if (item.data.damage && item.data.damage.parts.length > 0) {
-        item.hasDamage = true;
-      }
-
-      // is item chargeable and on Cooldown
-      item.isOnCooldown = false;
-      if (item.data.recharge && item.data.recharge.value && item.data.recharge.charged === false) {
-        item.isOnCooldown = true;
-        item.labels = {
-          recharge: game.i18n.localize("SW5E.FeatureRechargeOn") + " [" + item.data.recharge.value + "+]",
-          rechargeValue: "[" + item.data.recharge.value + "+]"
-        };
-      }
-
-      // adding info if item has quantity more than one
-      item.isStack = false;
-      if (item.data.quantity && item.data.quantity > 1) {
-        item.isStack = true;
-      }
-
-      // adding attunement info
-      item.canAttune = false;
-
-      if (item.data.attunement) {
-        if (item.data.attunement == 1 || item.data.attunement == 2) {
-          item.canAttune = true;
+      // making sure the flag to set favorites exists
+      if (item.flags.favtab === undefined || item.flags.favtab.isFavorite === undefined) {
+        item.flags.favtab = { isFavorite: false };
+          // DO NOT SAVE AT THIS POINT! saving for each and every item creates unneeded data and hogs the system
+          //app.actor.updateOwnedItem(item, true);
         }
-      }
+        let isFav = item.flags.favtab.isFavorite;
 
       // add button to toggle favorite of the item in their native tab
       if (app.options.editable) {
@@ -190,8 +110,6 @@ export const addFavorites = async function (app, html, data, position) {
         if(item.flags.favtab.isFavorite){
           html.find(`.item[data-item-id="${item._id}"]`).addClass('isFav');
         }
-      } else {
-        item.toggleTitle = game.i18n.localize(isActive ? "SW5E.Equipped" : "SW5E.Unequipped");
       }
 
       if (isFav) {
@@ -212,31 +130,22 @@ export const addFavorites = async function (app, html, data, position) {
               minute : game.i18n.localize("SW5E.TimeMinute")
           }
 
-      item.favLabels = labels;
-
-      item.editable = app.options.editable;
-      switch (item.type) {
-        case "feat":
-          if (item.flags.favtab.sort === undefined) {
-            item.flags.favtab.sort = (favFeats.count + 1) * 100000; // initial sort key if not present
+          function translateLabels (key){
+            let string = String(key);
+            return translation[string];
           }
-          item.isFeat = true;
-          favFeats.push(item);
-          break;
-        case "power":
-          if (item.data.preparation.mode && item.data.preparation.mode !== "prepared") {
-            if (item.data.preparation.mode == "always") {
-              // favPowersPrepMode['always'].powers.push(item);
-              item.canPrep = true;
-              item.alwaysPrep = true;
-            } else if (item.data.preparation.mode == "atwill") {
-              favPowersPrepMode["atwill"].powers.push(item);
-            } else if (item.data.preparation.mode == "innate") {
-              favPowersPrepMode["innate"].powers.push(item);
-            }
-            powerPrepModeCount++;
-          } else {
-            item.canPrep = true;
+          if (item.data.activation && item.data.activation.type) {
+            let key = item.data.activation.type;
+            // item.data.activation.type.capitalize()
+            labels.activation = `${item.data.activation.cost ? item.data.activation.cost+' ':''}${translateLabels(key)}`;
+          }
+
+          // adding info that damage and attacks are possible
+          if (['mwak', 'rwak', 'mpak', 'rpak'].indexOf(item.data.actionType) !== -1) {
+            item.hasAttack = true;
+          }
+          if (item.data.damage && item.data.damage.parts.length > 0) {
+            item.hasDamage = true;
           }
 
           // is item chargeable and on Cooldown
@@ -245,48 +154,29 @@ export const addFavorites = async function (app, html, data, position) {
             item.isOnCooldown = true;
             item.labels = {recharge : game.i18n.localize("SW5E.FeatureRechargeOn")+" ["+item.data.recharge.value+"+]", rechargeValue : "["+item.data.recharge.value+"+]"};
           }
-          powerCount++;
-          break;
-        default:
-          if (item.flags.favtab.sort === undefined) {
-            item.flags.favtab.sort = (favItems.count + 1) * 100000; // initial sort key if not present
+
+          // adding info if item has quantity more than one
+          item.isStack = false;
+          if (item.data.quantity && item.data.quantity > 1) {
+            item.isStack = true;
           }
-          item.isItem = true;
-          favItems.push(item);
-          break;
-      }
-    }
-  }
 
-  // sorting favPowers alphabetically
-  const favPowersArray = Object.keys(favPowers);
-  for (let key of favPowersArray) {
-    favPowers[key].powers.sort(function (a, b) {
-      var nameA = a.name.toLowerCase(),
-        nameB = b.name.toLowerCase();
-      if (nameA < nameB)
-        //sort string ascending
-        return -1;
-      if (nameA > nameB) return 1;
-      return 0; //default return value (no sorting)
-    });
-  }
+          // adding attunement info
+          item.canAttune = false;
 
-  // sorting favPowersPrepMode alphabetically
-  const favPowersPrepModeArray = Object.keys(favPowersPrepMode);
-  for (let key of favPowersPrepModeArray) {
-    favPowersPrepMode[key].powers.sort(function (a, b) {
-      var nameA = a.name.toLowerCase(),
-        nameB = b.name.toLowerCase();
-      if (nameA < nameB)
-        //sort string ascending
-        return -1;
-      if (nameA > nameB) return 1;
-      return 0; //default return value (no sorting)
-    });
-  }
+          if (item.data.attunement) {
+            if( item.data.attunement == 1 || item.data.attunement == 2) {
+              item.canAttune = true;
+            }
+          }
 
-          let attr = item.type === "power" ? "preparation.prepared" : "equipped";
+          // check magic item
+          item.isMagic = false;
+          if (item.flags.magicitems && item.flags.magicitems.enabled || item.data.properties  && item.data.properties.mgc){
+            item.isMagic = true;
+          }
+
+          let attr = item.type === "spell" ? "preparation.prepared" : "equipped";
           let isActive = getProperty(item.data, attr);
           item.toggleClass = isActive ? "active" : "";
           if (item.type === "power") {
@@ -298,65 +188,9 @@ export const addFavorites = async function (app, html, data, position) {
           } else {
             item.toggleTitle = game.i18n.localize(isActive ? "SW5E.Equipped" : "SW5E.Unequipped");
           }
-        }
-      });
 
-      // removing item from favorite list
-      favHtml.find(".item-fav").click((ev) => {
-        let itemId = $(ev.target).parents(".item")[0].dataset.itemId;
-        let val = !app.actor.getOwnedItem(itemId).data.flags.favtab.isFavorite;
-        app.actor.getOwnedItem(itemId).update({ "flags.favtab.isFavorite": val });
-      });
 
-      // changing the charges values (removing if both value and max are 0)
-      favHtml.find(".item input").change((ev) => {
-        let itemId = $(ev.target).parents(".item")[0].dataset.itemId;
-        let path = ev.target.dataset.path;
-        let data = {};
-        data[path] = Number(ev.target.value);
-        app.actor.getOwnedItem(itemId).update(data);
-        // app.activateFavs = true;
-      });
 
-      // changing the power slot values and overrides
-      favHtml.find(".power-slots input").change((ev) => {
-        let path = ev.target.dataset.target;
-        let data = Number(ev.target.value);
-        app.actor.update({ [path]: data });
-      });
-
-      // creating charges for the item
-      favHtml.find(".addCharges").click((ev) => {
-        let itemId = $(ev.target).parents(".item")[0].dataset.itemId;
-        let item = app.actor.getOwnedItem(itemId);
-
-        item.data.uses = { value: 1, max: 1 };
-        let data = {};
-        data["data.uses.value"] = 1;
-        data["data.uses.max"] = 1;
-
-        app.actor.getOwnedItem(itemId).update(data);
-      });
-
-      // charging features
-      favHtml.find(".item-recharge").click((ev) => {
-        ev.preventDefault();
-        let itemId = $(ev.target).parents(".item")[0].dataset.itemId;
-        let item = app.actor.getOwnedItem(itemId);
-        return item.rollRecharge();
-      });
-
-      // custom sorting
-      favHtml.find(".item").on("drop", (ev) => {
-        ev.preventDefault();
-        ev.stopPropagation();
-
-        let dropData = JSON.parse(ev.originalEvent.dataTransfer.getData("text/plain"));
-
-        if (dropData.actorId !== app.actor.id || dropData.data.type === "power") {
-          // only do sorting if the item is from the same actor (not droped from outside) and is not a power
-          return;
-        }
 
           item.powerComps = "";
           if (item.type === "power" && item.data.components) {
@@ -413,6 +247,7 @@ export const addFavorites = async function (app, html, data, position) {
             break;
           }
         }
+      }
 
       // sorting favPowers alphabetically
       const favPowersArray = Object.keys(favPowers);
@@ -438,6 +273,7 @@ export const addFavorites = async function (app, html, data, position) {
           return 1;
          return 0; //default return value (no sorting)
         });
+      }
 
       let attributesTab = html.find('.item[data-tab="attributes"]');
       let favContainer = html.find('.favorites-wrap');
@@ -596,10 +432,10 @@ export const addFavorites = async function (app, html, data, position) {
             });
         }
 
-    // better rolls support
-    if (window.BetterRolls) {
-      BetterRolls.addItemContent(app.object, favHtml, ".item .item-name h4", ".item-properties", ".item-image");
-    }
+        // better rolls support
+        if (window.BetterRolls) {
+          BetterRolls.addItemContent(app.object, favHtml, ".item .item-name h4", ".item-properties", ".item-image");
+        }
 
       // adding the html to the appropiate containers
       favContainer.addClass('hasFavs');
@@ -610,7 +446,6 @@ export const addFavorites = async function (app, html, data, position) {
         favContent.find('.items-list').addClass('alt-context');
       }
     }
-  }
 
     // Hooks.callAll("renderedTidy5eSheet", app, html, data);
   }

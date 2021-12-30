@@ -17,38 +17,21 @@
     
     <header class="tidy5e-header">
 
-        <article class="info-card-hint">
-          <p><span class="key">X</span> {{localize "TIDY5E.ItemCardsKeyHint"}}</p>
-          <p><i class="fas fa-mouse"></i> {{localize "TIDY5E.ItemCardsMouseHint"}}</p>
-        </article>
-      </div>
-    </section>
-
-    <header class="tidy5e-header">
       <section class="profile-wrap">
-        <div
-          class="profile hp-{{data.attributes.hp.value}}-{{#if data.attributes.hp.temp}}{{data.attributes.hp.temp}}{{else}}0{{/if}}"
-        >
+        <div class="profile hp-{{data.attributes.hp.value}}-{{#if data.attributes.hp.temp}}{{data.attributes.hp.temp}}{{else}}0{{/if}}">
+
           {{!-- Portrait --}}
           <div class="portrait">
-            <img
-              class="player-image"
-              src="{{actor.img}}"
-              alt="{{actor.name}}"
-              title="{{ localize 'TIDY5E.EditActorImage' }} / {{ localize 'TIDY5E.ShowActorImage' }}"
-              data-edit="img"
-            />
-            <div class="portrait-menu hidden">
-              <a class="showActorArt" id="showPortrait">{{ localize 'TIDY5E.ShowPortraitArt' }}</a>
-              <a class="showActorArt" id="showToken">{{ localize 'TIDY5E.ShowTokenArt' }}</a>
-            </div>
+            <img class="player-image" src="{{actor.img}}" alt="{{actor.name}}" title="{{ localize 'TIDY5E.EditActorImage' }} / {{ localize 'TIDY5E.ShowActorImage' }}" data-edit="img">
+						<div class="portrait-menu hidden">
+							<a class="showActorArt" id="showPortrait">{{ localize 'TIDY5E.ShowPortraitArt' }}</a>
+							<a class="showActorArt" id="showToken">{{ localize 'TIDY5E.ShowTokenArt' }}</a>
+						</div>
           </div>
           {{!-- HP Overlay --}}
           <div class="hp-overlay-wrapper">
-            <div
-              class="hp-overlay"
-              style="background: linear-gradient(0deg, rgba(255,0,0,1) 0%, rgba(255,0,0,1) calc(100% - ((100% / ({{data.attributes.hp.max}} + {{#if data.attributes.hp.tempmax}}{{data.attributes.hp.tempmax}}{{else}}0{{/if}} )) * ({{data.attributes.hp.value}} + {{#if data.attributes.hp.temp}}{{data.attributes.hp.temp}}{{else}}0{{/if}})) ), rgba(255,255,255,1) calc(100% - ((100% / ({{data.attributes.hp.max}} + {{#if data.attributes.hp.tempmax}}{{data.attributes.hp.tempmax}}{{else}}0{{/if}} )) * ({{data.attributes.hp.value}} + {{#if data.attributes.hp.temp}}{{data.attributes.hp.temp}}{{else}}0{{/if}})) ), rgba(255,255,255,1) 100%);"
-            ></div>
+            <div class="hp-overlay" style="background: linear-gradient(0deg, rgba(255,0,0,1) 0%, rgba(255,0,0,1) calc(100% - ((100% / ({{data.attributes.hp.max}} + {{#if data.attributes.hp.tempmax}}{{data.attributes.hp.tempmax}}{{else}}0{{/if}} )) * ({{data.attributes.hp.value}} + {{#if data.attributes.hp.temp}}{{data.attributes.hp.temp}}{{else}}0{{/if}})) ), rgba(255,255,255,1) calc(100% - ((100% / ({{data.attributes.hp.max}} + {{#if data.attributes.hp.tempmax}}{{data.attributes.hp.tempmax}}{{else}}0{{/if}} )) * ({{data.attributes.hp.value}} + {{#if data.attributes.hp.temp}}{{data.attributes.hp.temp}}{{else}}0{{/if}})) ), rgba(255,255,255,1) 100%);">
+            </div>
           </div>
 
           {{!-- Hit Dice --}}
@@ -64,27 +47,13 @@
 								transparent 0%,
 								transparent calc(100% - ((100% / ({{#if (eq data.attributes.hp.max 0)}} 1 {{else}} {{data.attributes.hp.max}} {{/if}} + {{#if data.attributes.hp.tempmax}}{{data.attributes.hp.tempmax}}{{else}}0{{/if}} )) * ({{data.attributes.hp.value}} + {{#if data.attributes.hp.temp}}{{data.attributes.hp.temp}}{{else}}0{{/if}})) ),
 								 	rgba(0,200,0,0.5) calc(100% - ((100% / ({{#if (eq data.attributes.hp.max 0)}} 1 {{else}} {{data.attributes.hp.max}} {{/if}} + {{#if data.attributes.hp.tempmax}}{{data.attributes.hp.tempmax}}{{else}}0{{/if}} )) * ({{data.attributes.hp.value}} + {{#if data.attributes.hp.temp}}{{data.attributes.hp.temp}}{{else}}0{{/if}})) ),
-								 	rgba(0,200,0,0.5) 100%);"
-            ></div>
-            <input
-              class="hp-min"
-              name="data.attributes.hp.value"
-              type="text"
-              value="{{data.attributes.hp.value}}"
-              data-dtype="Number"
-              placeholder="0"
-              maxlength="5"
-            />
+								 	rgba(0,200,0,0.5) 100%);">
+						</div>
+            <input class="hp-min" name="data.attributes.hp.value" type="text" value="{{data.attributes.hp.value}}"
+            data-dtype="Number" placeholder="0" maxlength="5">
             <span class="value-seperator">/</span>
-            <input
-              class="hp-max"
-              name="data.attributes.hp.max"
-              type="text"
-              value="{{data.attributes.hp.max}}"
-              data-dtype="Number"
-              placeholder="0"
-              maxlength="5"
-            />
+            <input class="hp-max" name="data.attributes.hp.max" type="text" value="{{data.attributes.hp.max}}"
+            data-dtype="Number" placeholder="0" maxlength="5">
           </div>
         </div>
 
@@ -95,6 +64,7 @@
           <input name="data.attributes.hp.mt" type="text" class="max-temphp" placeholder="{{localize 'SW5E.VehicleMishap'}}" title="{{localize 'SW5E.VehicleMishap'}}"
           value="{{data.attributes.hp.mt}}" data-dtype="Number" maxlength="3">
         </div>
+
       </section>
 
       <div class="character-details">
@@ -108,10 +78,7 @@
         <ul class="origin-summary">
           <li>
             <ul class="actor-size-select">
-              <li>
-                <span class="size-label" data-size="{{data.traits.size}}"
-                  >{{lookup config.actorSizes data.traits.size}}</span
-                >
+              <li><span class="size-label" data-size="{{data.traits.size}}">{{lookup config.actorSizes data.traits.size}}</span>
                 <ul class="size-list" data-target="data.traits.size">
                   {{#each config.actorSizes as |label size|}}
                   <li data-size="{{size}}">{{label}}</li>
@@ -147,21 +114,14 @@
           <ul class="header-attributes">
             <li class="header-attribute ac-display" title="{{ localize 'SW5E.ArmorClass' }}">
               <svg version="1.1" x="0px" y="0px" viewBox="0 0 90 100" xml:space="preserve">
-                <path
-                  d="M45,100C-2.6,79.3,0,12.6,0,12.6c0-2.2,1.8-4,4.4-4.6l39.1-7.9C44,0,44.5,0,45,0c0.5,0,1,0,1.4,0.1L85.5,8
-                c2.6,0.5,4.4,2.4,4.4,4.6C90,12.6,92.6,79.3,45,100L45,100z"
-                />
+              <path d="M45,100C-2.6,79.3,0,12.6,0,12.6c0-2.2,1.8-4,4.4-4.6l39.1-7.9C44,0,44.5,0,45,0c0.5,0,1,0,1.4,0.1L85.5,8
+                c2.6,0.5,4.4,2.4,4.4,4.6C90,12.6,92.6,79.3,45,100L45,100z"/>
               </svg>
               <div class="attribute-value">
                 <input class="value" name="data.attributes.ac.flat" type="text" value="{{data.attributes.ac.flat}}" data-dtype="Number" placeholder="0" maxlength="2">
               </div>
               <footer class="value-footer">
-                <input
-                  type="text"
-                  name="data.attributes.ac.motionless"
-                  placeholder="&mdash;"
-                  value="{{data.attributes.ac.motionless}}"
-                />
+                <input type="text" name="data.attributes.ac.motionless" placeholder="&mdash;" value="{{data.attributes.ac.motionless}}">
               </footer>
             </li>
           </ul>
@@ -170,17 +130,10 @@
           <ul class="ability-scores">
             {{#each data.abilities as |ability id|}}
             <li class="ability" data-ability="{{id}}">
-              <div class="wrapper" data-ability="{{id}}">
+							<div class="wrapper" data-ability="{{id}}">
                 <h4 class="ability-name box-title rollable" title="{{ability.label}}">{{ability.abbr}}</h4>
                 <div class="value">
-                  <input
-                    class="ability-score"
-                    name="data.abilities.{{id}}.value"
-                    type="text"
-                    value="{{ability.value}}"
-                    data-dtype="Number"
-                    placeholder="10"
-                  />
+                  <input class="ability-score" name="data.abilities.{{id}}.value" type="text" value="{{ability.value}}" data-dtype="Number" placeholder="10">
                 </div>
                 <div class="ability-modifiers value-footer">
                   <span class="ability-mod" title="{{ localize 'SW5E.AbilityModifier' }}">{{numberFormat ability.mod decimals=0 sign=true}}</span>
@@ -199,94 +152,60 @@
       <a class="item" data-tab="cargo">{{localize 'SW5E.VehicleCargoCrew'}}</a>
       <a class="item" data-tab="biography">{{localize 'SW5E.Description'}}</a>
       {{#if owner}}
-      <div class="toggle-allow-edit">
-        <span
-          ><i class="fas fa-lock" title="{{localize 'TIDY5E.EnableEdit'}} - {{localize 'TIDY5E.EditHint'}}"></i
-          ><i class="fas fa-lock-open" title="{{localize 'TIDY5E.DisableEdit'}} - {{localize 'TIDY5E.EditHint'}}"></i
-        ></span>
-      </div>
+      <div class="toggle-allow-edit"><span><i class="fas fa-lock" title="{{localize 'TIDY5E.EnableEdit'}} - {{localize 'TIDY5E.EditHint'}}"></i><i class="fas fa-lock-open" title="{{localize 'TIDY5E.DisableEdit'}} - {{localize 'TIDY5E.EditHint'}}"></i></span></div>
       {{/if}}
     </nav>
 
     <section class="sheet-body">
+
       <div class="tab attributes" data-group="primary" data-tab="attributes">
         <div class="left-pane">
           <div class="counters">
             <div class="counter creature-cap">
               <h4>{{localize 'SW5E.VehicleCreatureCapacity'}}</h4>
               <div class="counter-value">
-                <input
-                  type="text"
-                  placeholder="&mdash;"
-                  name="data.attributes.capacity.creature"
-                  value="{{data.attributes.capacity.creature}}"
-                />
+                <input type="text" placeholder="&mdash;"
+                name="data.attributes.capacity.creature"
+                value="{{data.attributes.capacity.creature}}">
               </div>
             </div>
             <div class="counter cargo-cap">
               <h4>{{localize 'SW5E.VehicleCargoCapacity'}}</h4>
               <div class="counter-value">
-                <input
-                  type="text"
-                  name="data.attributes.capacity.cargo"
-                  placeholder="0"
-                  data-dtype="Number"
-                  value="{{data.attributes.capacity.cargo}}"
-                />
+                <input type="text" name="data.attributes.capacity.cargo" placeholder="0"
+                data-dtype="Number" value="{{data.attributes.capacity.cargo}}">
               </div>
             </div>
             <div class="counter stations">
               <h4>{{localize 'SW5E.VehicleActionStations'}}</h4>
               <div class="counter-value">
-                <input
-                  name="data.attributes.actions.stations"
-                  type="checkbox"
-                  data-dtype="Boolean"
-                  value="{{data.attributes.actions.stations}}"
-                  {{checked
-                  data.attributes.actions.stations}}
-                />
+                <input name="data.attributes.actions.stations" type="checkbox"
+                data-dtype="Boolean" value="{{data.attributes.actions.stations}}"
+                {{checked data.attributes.actions.stations}}>
               </div>
             </div>
             <div class="counter actions">
               <h4>{{localize 'SW5E.ActionPl'}}</h4>
               <div class="counter-value">
-                <input
-                  type="text"
-                  name="data.attributes.actions.value"
-                  placeholder="0"
-                  data-dtype="Number"
-                  value="{{data.attributes.actions.value}}"
-                />
+                <input type="text" name="data.attributes.actions.value" placeholder="0"
+                data-dtype="Number" value="{{data.attributes.actions.value}}">
               </div>
             </div>
             <div class="counter action-thresholds">
               <h4>{{localize 'SW5E.VehicleActionThresholds'}}</h4>
               <div class="counter-value">
                 <span class="sep">&lt;</span>
-                <input
-                  type="text"
-                  placeholder="&mdash;"
-                  data-dtype="Number"
-                  value="{{data.attributes.actions.thresholds.[2]}}"
-                  name="data.attributes.actions.thresholds.2"
-                />
+                <input type="text" placeholder="&mdash;" data-dtype="Number"
+                value="{{data.attributes.actions.thresholds.[2]}}"
+                name="data.attributes.actions.thresholds.2">
                 <span class="sep">&lt;</span>
-                <input
-                  type="text"
-                  placeholder="&mdash;"
-                  data-dtype="Number"
-                  value="{{data.attributes.actions.thresholds.[1]}}"
-                  name="data.attributes.actions.thresholds.1"
-                />
+                <input type="text" placeholder="&mdash;" data-dtype="Number"
+                value="{{data.attributes.actions.thresholds.[1]}}"
+                name="data.attributes.actions.thresholds.1">
                 <span class="sep">&lt;</span>
-                <input
-                  type="text"
-                  placeholder="&mdash;"
-                  data-dtype="Number"
-                  value="{{data.attributes.actions.thresholds.[0]}}"
-                  name="data.attributes.actions.thresholds.0"
-                />
+                <input type="text" placeholder="&mdash;" data-dtype="Number"
+                value="{{data.attributes.actions.thresholds.[0]}}"
+                name="data.attributes.actions.thresholds.0">
               </div>
             </div>
           </div>
@@ -312,8 +231,8 @@
       <div class="tab biography" data-group="primary" data-tab="biography">
         <div class="right-notes note-entries">
           <article class="biography-notes">
-            {{editor content=data.details.biography.value target='data.details.biography.value' button=true owner=owner
-            editable=editable}}
+          {{editor content=data.details.biography.value target='data.details.biography.value'
+          button=true owner=owner editable=editable}}
           </article>
         </div>
       </div>
