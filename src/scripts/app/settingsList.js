@@ -1,4 +1,4 @@
-export function settingsList(){
+export function settingsList() {
   // General Settings
 		// Color Theme
 		game.settings.register("tidysw5e-sheet", "colorScheme", {

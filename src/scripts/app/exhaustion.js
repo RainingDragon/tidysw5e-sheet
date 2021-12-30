@@ -1,5 +1,4 @@
 async function updateExhaustion(actorEntity) {
-  
   if (game.actors.get(actorEntity.data._id).data.type !== "character") {
     return;
   }

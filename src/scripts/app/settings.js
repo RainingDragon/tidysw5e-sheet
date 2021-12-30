@@ -1,11 +1,11 @@
-import {settingsList} from './settingsList.js';
+import { settingsList } from "./settingsList.js";
 
 export class Tidy5eUserSettings extends FormApplication {
 	static init() {
 		game.settings.registerMenu('tidysw5e-sheet', 'userMenu', {
       name: '',
       label: game.i18n.localize("TIDY5E.Settings.SheetMenu.label"),
-      icon: 'fas fa-cog',
+      icon: "fas fa-cog",
       type: Tidy5eUserSettings,
       restricted: false
     });
@@ -186,9 +186,9 @@ export class Tidy5eUserSettings extends FormApplication {
 }
 
 Hooks.on("renderTidy5eUserSettings", () => {
-	if (!game.user.isGM) {
-		document.querySelectorAll('.tidy5e.settings .gm-only').forEach(function(el){
-			el.remove();
-		});
-	}
+  if (!game.user.isGM) {
+    document.querySelectorAll(".tidy5e.settings .gm-only").forEach(function (el) {
+      el.remove();
+    });
+  }
 });

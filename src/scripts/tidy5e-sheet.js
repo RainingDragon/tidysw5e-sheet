@@ -2,7 +2,7 @@ import { SW5E } from "../../../systems/sw5e/module/config.js";
 import ActorSheet5e from "../../../systems/sw5e/module/actor/sheets/newSheet/base.js";
 import ActorSheet5eCharacter from "../../../systems/sw5e/module/actor/sheets/newSheet/character.js";
 // import { tidy5eSettings } from "./app/settings.js";
-import { Tidy5eUserSettings } from './app/settings.js';
+import { Tidy5eUserSettings } from "./app/settings.js";
 
 import { preloadTidy5eHandlebarsTemplates } from "./app/tidy5e-templates.js";
 import { tidy5eListeners } from "./app/listeners.js";
@@ -15,7 +15,6 @@ import { tidy5eItemCard } from "./app/itemcard.js";
 import { tidy5eAmmoSwitch } from "./app/ammo-switch.js";
 
 let position = 0;
-
 
 export class Tidy5eSheet extends ActorSheet5eCharacter {
 	
@@ -49,7 +48,7 @@ export class Tidy5eSheet extends ActorSheet5eCharacter {
       data.data.abilities[id].abbr = game.i18n.localize(`SW5E.Ability${Id}Abbr`);
 		});
 
-		data.appId = this.appId;
+    data.appId = this.appId;
 
     return data;
   }
@@ -143,8 +142,8 @@ export class Tidy5eSheet extends ActorSheet5eCharacter {
 
       item.data.uses = { value: 1, max: 1 };
       let data = {};
-      data['data.uses.value'] = 1;
-      data['data.uses.max'] = 1;
+      data["data.uses.value"] = 1;
+      data["data.uses.max"] = 1;
 
       actor.items.get(itemId).update(data);
     });
@@ -157,6 +156,40 @@ export class Tidy5eSheet extends ActorSheet5eCharacter {
         await actor.setFlag('tidysw5e-sheet', 'traitsExpanded', true);
       }
     });
+  }
+
+  // add actions module
+  async _renderInner(...args) {
+    const html = await super._renderInner(...args);
+    const actionsListApi = game.modules.get("character-actions-list-5e")?.api;
+    let injectCharacterSheet;
+    if (game.modules.get("character-actions-list-5e")?.active)
+      injectCharacterSheet = game.settings.get("character-actions-list-5e", "inject-characters");
+
+    try {
+      if (game.modules.get("character-actions-list-5e")?.active && injectCharacterSheet) {
+        // Update the nav menu
+        const actionsTabButton = $(
+          '<a class="item" data-tab="actions">' + game.i18n.localize(`SW5E.ActionPl`) + "</a>"
+        );
+        const tabs = html.find('.tabs[data-group="primary"]');
+        tabs.prepend(actionsTabButton);
+
+        // Create the tab
+        const sheetBody = html.find(".sheet-body");
+        const actionsTab = $(`<div class="tab actions" data-group="primary" data-tab="actions"></div>`);
+        const actionsLayout = $(`<div class="list-layout"></div>`);
+        actionsTab.append(actionsLayout);
+        sheetBody.prepend(actionsTab);
+
+        // const actionsTab = html.find('.actions-target');
+
+        const actionsTabHtml = $(await actionsListApi.renderActionsList(this.actor));
+        actionsLayout.html(actionsTabHtml);
+      }
+    } catch (e) {
+      // log(true, e);
+    }
 
 		// update item attunement
 		html.find('.item-control.item-attunement').click( async (event) => {
@@ -212,54 +245,57 @@ export class Tidy5eSheet extends ActorSheet5eCharacter {
 }
 
 // count inventory items
-async function countInventoryItems(app, html, data){
-	if(game.user.isGM) {
-		html.find('.attuned-items-counter').addClass('isGM');
-	}
-  html.find('.tab.inventory .item-list').each(function(){
-  	let itemlist = this;
-  	let items = $(itemlist).find('li');
-  	let itemCount = items.length - 1;
-  	$(itemlist).prev('.items-header').find('.item-name').append(' ('+itemCount+')');
+async function countInventoryItems(app, html, data) {
+  if (game.user.isGM) {
+    html.find(".attuned-items-counter").addClass("isGM");
+  }
+  html.find(".tab.inventory .item-list").each(function () {
+    let itemlist = this;
+    let items = $(itemlist).find("li");
+    let itemCount = items.length - 1;
+    $(itemlist)
+      .prev(".items-header")
+      .find(".item-name")
+      .append(" (" + itemCount + ")");
   });
 }
 
 // count attuned items
-async function countAttunedItems(app, html, data){
-	let actor = app.actor;
-	// console.log(actor)
-	// let actor = game.actors.entities.find(a => a.data._id === data.actor._id),
-	if(data.editable && !actor.compendium){
-		let	count = actor.data.data.details.attunedItemsCount;
-		// if no items are counted set default value to 3
-		if (!actor.data.data.details.attunedItemsMax) {
-			await actor.update({"data.details.attunedItemsMax": 3});
-		}
+async function countAttunedItems(app, html, data) {
+  let actor = app.actor;
+  // console.log(actor)
+  // let actor = game.actors.entities.find(a => a.data._id === data.actor._id),
+  if (data.editable && !actor.compendium) {
+    let count = actor.data.data.details.attunedItemsCount;
+    // if no items are counted set default value to 3
+    if (!actor.data.data.details.attunedItemsMax) {
+      await actor.update({ "data.details.attunedItemsMax": 3 });
+    }
 
-		if (!count) {
-			await actor.update({"data.details.attunedItemsCount": 0});
-		}
+    if (!count) {
+      await actor.update({ "data.details.attunedItemsCount": 0 });
+    }
 
-		let items = actor.data.items;
-		let attunedItems = items.filter(item => item.data.data.attunement === 2).length;
+    let items = actor.data.items;
+    let attunedItems = items.filter((item) => item.data.data.attunement === 2).length;
 
-		await actor.update({"data.details.attunedItemsCount": attunedItems});
+    await actor.update({ "data.details.attunedItemsCount": attunedItems });
 
-		// html.find('.attuned-items-counter .attuned-items-current').text(attunedItems);
-		if(actor.data.data.details.attunedItemsCount > actor.data.data.details.attunedItemsMax) {
-			html.find('.attuned-items-counter').addClass('overattuned');
-			ui.notifications.warn(`${game.i18n.format("TIDY5E.AttunementWarning", {number: count})}`);
-		}
-	}
+    // html.find('.attuned-items-counter .attuned-items-current').text(attunedItems);
+    if (actor.data.data.details.attunedItemsCount > actor.data.data.details.attunedItemsMax) {
+      html.find(".attuned-items-counter").addClass("overattuned");
+      ui.notifications.warn(`${game.i18n.format("TIDY5E.AttunementWarning", { number: count })}`);
+    }
+  }
 }
 
 // handle traits list display
-async function toggleTraitsList(app, html, data){
-  html.find('.traits:not(.always-visible):not(.expanded) .form-group.inactive').addClass('trait-hidden').hide();
-  let visibleTraits = html.find('.traits .form-group:not(.trait-hidden)');
+async function toggleTraitsList(app, html, data) {
+  html.find(".traits:not(.always-visible):not(.expanded) .form-group.inactive").addClass("trait-hidden").hide();
+  let visibleTraits = html.find(".traits .form-group:not(.trait-hidden)");
   for (let i = 0; i < visibleTraits.length; i++) {
-    if(i % 2 != 0){
-      visibleTraits[i].classList.add('even');
+    if (i % 2 != 0) {
+      visibleTraits[i].classList.add("even");
     }
   }
 }
@@ -421,10 +457,10 @@ async function abbreviateCurrency(app,html,data) {
 function tidyCustomEffect(actor, change) {
   if (change.key !== "data.details.maxPreparedPowers") return;
   if (change.value?.length > 0) {
-    let oldValue =  getProperty(actor.data, change.key) || 0;
+    let oldValue = getProperty(actor.data, change.key) || 0;
     let changeText = change.value.trim();
     let op = "none";
-    if (["+","-","/","*","="].includes(changeText[0])) {
+    if (["+", "-", "/", "*", "="].includes(changeText[0])) {
       op = changeText[0];
       changeText = changeText.slice(1);
     }
@@ -435,12 +471,18 @@ function tidyCustomEffect(actor, change) {
 		const value = new Roll(changeText, rollData).roll().total;
     oldValue = Number.isNumeric(oldValue) ? parseInt(oldValue) : 0;
     switch (op) {
-      case "+": return setProperty(actor.data, change.key, oldValue + value);
-      case "-": return setProperty(actor.data, change.key, oldValue - value);
-      case "*": return setProperty(actor.data, change.key, oldValue * value);
-      case "/": return setProperty(actor.data, change.key, oldValue / value);
-      case "=": return setProperty(actor.data, change.key, value);
-      default:  return setProperty(actor.data, change.key, value);
+      case "+":
+        return setProperty(actor.data, change.key, oldValue + value);
+      case "-":
+        return setProperty(actor.data, change.key, oldValue - value);
+      case "*":
+        return setProperty(actor.data, change.key, oldValue * value);
+      case "/":
+        return setProperty(actor.data, change.key, oldValue / value);
+      case "=":
+        return setProperty(actor.data, change.key, value);
+      default:
+        return setProperty(actor.data, change.key, value);
     }
   }
 }
@@ -541,11 +583,11 @@ async function setSheetClasses(app, html, data) {
 
 // Preload tidy5e Handlebars Templates
 Hooks.once("init", () => {
-	preloadTidy5eHandlebarsTemplates();
-	Hooks.on("applyActiveEffect", tidyCustomEffect);
+  preloadTidy5eHandlebarsTemplates();
+  Hooks.on("applyActiveEffect", tidyCustomEffect);
 
-	// init user settings menu
-	Tidy5eUserSettings.init();
+  // init user settings menu
+  Tidy5eUserSettings.init();
 });
 
 // Register Tidy5e Sheet and make default character sheet
