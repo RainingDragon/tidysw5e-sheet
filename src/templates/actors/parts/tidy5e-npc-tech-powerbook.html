@@ -22,10 +22,10 @@
       {{#each section.powers as |item i|}}
       <li class="item {{#if ../../owner}}context-enabled{{/if}}" data-item-id="{{item._id}}">
         <div class="item-name rollable">
-          <div class="item-image" style="background-image: url({{item.img}})">
+          <div class="item-image" style="background-image: url('{{item.img}}')">
             <i class="fa fa-dice-d20"></i>
           </div>
-          <h4 title="{{localize 'TIDY5E.ToggleInfo'}} ({{item.name}})">
+          <h4>
             {{item.name}}
           </h4>
 
@@ -120,12 +120,12 @@
 </div>
 
 <div class="powercasting-ability">
-  <h3 class="power-dc">{{localize 'SW5E.PowerDC'}} {{data.attributes.powerdc}}</h3>
+  <h3 class="power-dc">{{localize 'SW5E.PowerDC'}} {{data.attributes.techDC}}</h3>
   <div class="npc-power-stats">
     <div class="caster-level">
       <p>{{localize 'SW5E.PowercasterLevel'}}</p>
-      <input class="powercasting-level" type="text" name="data.details.powerLevel"
-      value="{{data.details.powerLevel}}" data-dtype="Number" placeholder="0"/>
+      <input class="powercasting-level" type="text" name="data.details.powerTechLevel"
+      value="{{data.details.powerTechLevel}}" data-dtype="Number" placeholder="0"/>
     </div>
     <div class="powercasting-attribute">
       <p>{{localize 'SW5E.PowerAbility'}}</p>

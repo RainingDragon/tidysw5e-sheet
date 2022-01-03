@@ -20,7 +20,7 @@
         {{/if}}
         {{/if}}
         <div class="item-name rollable" >
-          <div class="item-image" style="background-image: url({{item.img}})">
+          <div class="item-image" style="background-image: url('{{item.img}}')">
             <i class="fa fa-dice-d20"></i>
           </div>
         </div>
@@ -55,7 +55,7 @@
            {{/if}}
           <div class="info-card-amount">
             <!-- {{#if item.totalWeight}} {{/if}} -->
-            <span class="info-weight"><b>{{localize 'SW5E.Weight'}}:</b> {{ item.totalWeight }} {{localize "SW5E.AbbreviationLbs"}}</span>
+            <span class="info-weight"><b>{{localize 'SW5E.Weight'}}:</b> {{ item.totalWeight }} {{ @root.weightUnit }}</span>
             <!-- {{#if item.data.quantity}} {{/if}} -->
             <span class="info-quantity"><b>{{localize 'SW5E.Quantity'}}:</b> {{item.data.quantity}}</span>
           </div>

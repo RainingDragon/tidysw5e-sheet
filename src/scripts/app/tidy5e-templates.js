@@ -3,10 +3,12 @@
  * Pre-loaded templates are compiled and cached for fast access when rendering
  * @return {Promise}
  */
+ 
+export const preloadTidy5eHandlebarsTemplates = async function() {
 
-export const preloadTidy5eHandlebarsTemplates = async function () {
   // Define template paths to load
   const tidy5etemplatePaths = [
+
     // Actor Sheet Partials
     "modules/tidysw5e-sheet/templates/actors/parts/tidy5e-traits.html",
     "modules/tidysw5e-sheet/templates/actors/parts/tidy5e-inventory.html",

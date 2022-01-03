@@ -40,18 +40,12 @@
 
   <div class="power-dc power-mod">
     <h4>Tech</h4>
-    <span>DC {{data.attributes.powerTechDC}} / Mod {{positive-prefix data.abilities.int.mod}}
+    <span>DC {{data.attributes.powerTechDC}} / Mod {{numberFormat data.abilities.int.mod decimals=0 sign=true }}
   </div>
 
   {{#if isNPC}}
   <h3>{{localize 'SW5E.PowercasterLevel'}}</h3>
-  <input
-    class="powercasting-level"
-    type="text"
-    name="data.details.powerLevel"
-    value="{{data.details.powerLevel}}"
-    data-dtype="Number"
-    placeholder="0"
-  />
+  <input class="powercasting-level" type="text" name="data.details.powerLevel"
+  value="{{data.details.powerLevel}}" data-dtype="Number" placeholder="0"/>
   {{/if}}
 </div>

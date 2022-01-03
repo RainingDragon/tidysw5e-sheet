@@ -65,6 +65,14 @@
               {{else if section.isInnate}}{{localize 'SW5E.PowerPrepInnate'}}
               {{else}}{{localize 'SW5E.PowerLevel'}} {{lvl}}{{/if}}
               </h3>
+              {{#if section.isCantrip}}
+                {{else}}
+                <span class="power-detail power-slots">
+                  <input type="text" data-target="data.powers.power{{lvl}}.value" value="{{section.value}}" placeholder="0" data-dtype="Number"/>
+                  <span class="sep"> / </span>
+                  <input class="power-max" type="text" data-target="data.powers.power{{lvl}}.override" value="{{section.max}}" placeholder="0" data-dtype="Number"/>
+                </span>
+              {{/if}}
             </div>
             <div class="items-header-labels">
               <div class="items-header-comps">{{localize 'TIDY5E.Components'}}</div>

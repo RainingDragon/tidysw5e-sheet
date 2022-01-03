@@ -13,27 +13,26 @@
       {{#each section.effects as |effect|}}
       <li class="item effect {{#if ../../owner}}context-enabled{{/if}}" data-effect-id="{{effect.id}}">
         <div class="item-name effect-name">
-          <img class="item-image" src="{{effect.data.icon}}" />
+          <img class="item-image" src="{{effect.data.icon}}"/>
           <h4>{{effect.data.label}}</h4>
         </div>
         <div class="item-detail effect-source" title="{{effect.sourceName}}"><span>{{effect.sourceName}}</span></div>
         <div class="item-detail effect-duration">{{effect.duration.label}}</div>
-
+        
         {{#if ../../owner}}
         <div class="activate-context-menu">
           <i class="fas fa-ellipsis-v"></i>
         </div>
         <div class="item-controls effect-controls context-menu">
           <a class="effect-control" data-action="toggle" title="{{localize 'SW5E.EffectToggle'}}">
-            <i class="fas {{#if effect.data.disabled}}fa-check{{else}}fa-times{{/if}}"></i>
-            <span class="control-label">{{localize 'SW5E.EffectToggle'}}</span>
+              <i class="fas {{#if effect.data.disabled}}fa-check{{else}}fa-times{{/if}}"></i> <span class="control-label">{{localize 'SW5E.EffectToggle'}}</span>
           </a>
           <a class="effect-control effect-edit" data-action="edit" title=" {{localize 'SW5E.EffectEdit'}}">
-            <i class="fas fas fa-pencil-alt"></i> <span class="control-label">{{localize 'SW5E.EffectEdit'}}</span>
+              <i class="fas fas fa-pencil-alt"></i> <span class="control-label">{{localize 'SW5E.EffectEdit'}}</span>
           </a>
-          <hr class="context-divider" />
+          <hr class="context-divider">
           <a class="effect-control effect-delete warning" data-action="delete" title="{{localize 'SW5E.EffectDelete'}}">
-            <i class="fas fa-trash"></i> <span class="control-label">{{localize 'SW5E.EffectDelete'}}</span>
+              <i class="fas fa-trash"></i> <span class="control-label">{{localize 'SW5E.EffectDelete'}}</span>
           </a>
         </div>
         {{/if}}

@@ -16,7 +16,7 @@
           {{/each}}
         {{else}}
           {{#if ../isCharacter}}
-          <div class="items-header-weight" title="{{localize 'SW5E.Weight'}} ({{localize 'SW5E.AbbreviationLbs'}})"><i class="fas fa-weight-hanging"></i></div>
+          <div class="items-header-weight" title="{{localize 'SW5E.Weight'}} ({{ @root.weightUnit }})"><i class="fas fa-weight-hanging"></i></div>
           {{/if}}
           <div class="items-header-charge" title="{{localize 'SW5E.Charges'}}"><i class="fas fa-bolt"></i></div>
           <div class="items-header-usage">{{localize 'SW5E.Usage'}}</div>
@@ -33,10 +33,10 @@
             <input type="text" value="{{item.name}}">
           {{else}}
 
-            <div class="item-image" style="background-image: url({{item.img}})">
+            <div class="item-image" style="background-image: url('{{item.img}}')">
               <i class="fa fa-dice-d20"></i>
             </div>
-            <h4 title="{{localize 'TIDY5E.ToggleInfo'}} ({{item.name}})">
+            <h4>
               {{item.name}}
             </h4>
             {{#if item.data.properties.amm}}
@@ -73,7 +73,7 @@
           {{/each}}
         {{else}}
           {{#if ../../isCharacter}}
-          <div class="item-detail item-weight" title="{{localize 'SW5E.Weight'}}: {{ item.totalWeight }} {{localize 'SW5E.AbbreviationLbs'}}">
+          <div class="item-detail item-weight" title="{{localize 'SW5E.Weight'}}: {{ item.totalWeight }} {{ @root.weightUnit }}">
             {{#if item.totalWeight}}
             <div>
               {{ item.totalWeight }}
@@ -114,7 +114,7 @@
            {{/if}}
           <div class="info-card-amount">
             <!-- {{#if item.totalWeight}} {{/if}} -->
-            <span class="info-weight"><b>{{localize 'SW5E.Weight'}}:</b> {{ item.totalWeight }} {{localize "SW5E.AbbreviationLbs"}}</span>
+            <span class="info-weight"><b>{{localize 'SW5E.Weight'}}:</b> {{ item.totalWeight }} {{ @root.weightUnit }}</span>
             <!-- {{#if item.data.quantity}} {{/if}} -->
             <span class="info-quantity"><b>{{localize 'SW5E.Quantity'}}:</b> {{item.data.quantity}} &times; {{item.data.price}} {{localize 'TIDY5E.CurrencyAbbrGP'}}</span>
           </div>

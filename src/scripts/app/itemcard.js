@@ -1,45 +1,42 @@
 export const tidy5eItemCard = function (html, actor) {
-  // show/hide grid layout item info card on mouse enter/leave
+// show/hide grid layout item info card on mouse enter/leave
 
   let itemCardsForAllItems = game.settings.get("tidysw5e-sheet", "itemCardsForAllItems");
 
-  let containerTrigger = itemCardsForAllItems
-    ? html.find(".inventory-list:not(.character-actions-dnd5e)")
-    : html.find(".grid-layout .inventory-list");
-  let cardTrigger = itemCardsForAllItems
-    ? html.find(".inventory-list:not(.character-actions-dnd5e) .item-list .item")
-    : html.find(".grid-layout .item-list .item");
+  let containerTrigger =  itemCardsForAllItems ? html.find('.inventory-list:not(.character-actions-dnd5e)') : html.find('.grid-layout .inventory-list');
+  let cardTrigger = itemCardsForAllItems ? html.find('.inventory-list:not(.character-actions-dnd5e) .item-list .item') : html.find('.grid-layout .item-list .item');
 
-  let infoContainer = html.find("#item-info-container"),
-    infoContainerContent = html.find("#item-info-container-content");
+  let infoContainer = html.find('#item-info-container'),
+      infoContainerContent = html.find('#item-info-container-content');
 
   let timer;
-  let itemCardDelay = game.settings.get("tidysw5e-sheet", "itemCardsDelay");
-  if (!itemCardDelay || itemCardDelay == 0) itemCardDelay = false;
+  let itemCardDelay = game.settings.get('tidysw5e-sheet', 'itemCardsDelay');
+  if(!itemCardDelay || itemCardDelay == 0) itemCardDelay = false;
 
   let mouseOverItem = false;
   let itemCardIsFixed = false;
-  let itemCardFixKey = game.settings.get("tidysw5e-sheet", "itemCardsFixKey") || "x";
+  let itemCardFixKey =  game.settings.get('tidysw5e-sheet', 'itemCardsFixKey') || "x";
 
-  let itemCardsAreFloating = game.settings.get("tidysw5e-sheet", "itemCardsAreFloating");
+  let itemCardsAreFloating = game.settings.get('tidysw5e-sheet', 'itemCardsAreFloating');
 
   let sheet, sheetWidth, sheetHeight, sheetBorderRight, sheetBorderBottom;
 
-  if (itemCardsAreFloating) {
-    infoContainer.addClass("floating");
+  if(itemCardsAreFloating) {
+    infoContainer.addClass('floating');
 
-    setTimeout(function () {
+    setTimeout(function(){ 
       getBounds();
     }, 500);
-
-    containerTrigger.each(function (i, el) {
-      el.addEventListener("mousemove", setCardPosition);
+   
+    containerTrigger.each( function(i, el) {
+      el.addEventListener('mousemove', setCardPosition);
     });
   }
 
-  function getBounds() {
-    sheet = $(".tidy5e.sheet.actor");
-    if (sheet.length < 1) {
+
+  function getBounds(){
+    sheet = $('.tidy5e.sheet.actor');
+    if(sheet.length < 1) {
       // PoPOut "hack"
       sheet = $(html);
       sheetWidth = $(sheet[0]).width();
@@ -54,9 +51,10 @@ export const tidy5eItemCard = function (html, actor) {
     }
   }
 
+
   function setCardPosition(ev) {
-    if (!itemCardIsFixed && mouseOverItem) {
-      let card = html.find("#item-info-container.floating");
+    if(!itemCardIsFixed && mouseOverItem) {
+      let card = html.find('#item-info-container.floating');
       if (card.length == 0) return;
       let mousePos = { x: ev.clientX, y: ev.clientY };
       // card height = 460px -> 1/2 = 230px
@@ -65,144 +63,146 @@ export const tidy5eItemCard = function (html, actor) {
 
       // wenn maus weniger als 280px zum rechten sheet-rand card auf linker seite
       // wenn maus weniger als card/2 nach unten/oben card in gegenrichtung verschieben.
-      if (mousePos.x + 304 > sheetBorderRight) {
+      if(mousePos.x + 304 > sheetBorderRight) {
         leftPos = `${mousePos.x - 304}px`;
       }
 
-      if (mousePos.y + 230 > sheetBorderBottom) {
+      if(mousePos.y + 230 > sheetBorderBottom){
         let diff = sheetBorderBottom - (mousePos.y + 230);
         topPos = `${mousePos.y - 230 + diff}px`;
       }
 
       card.css({
-        top: topPos,
-        left: leftPos
+        'top' : topPos,
+        'left': leftPos
       });
     }
   }
 
-  $(document).on("keydown", function (e) {
+  $(document).on('keydown', function (e) {
     if (e.key === itemCardFixKey) {
       itemCardIsFixed = true;
     }
   });
 
-  $(document).on("keyup", function (e) {
+  $(document).on('keyup', function (e) {
     if (e.key === itemCardFixKey) {
       itemCardIsFixed = false;
-      if (!itemCardDelay) removeCard();
-      infoContainer.removeClass("open");
+      if(!itemCardDelay) removeCard();
+      infoContainer.removeClass('open');
     }
   });
 
   let itemCardDelayCard = (event) => {
     // console.log(`itemCardDelaying card: ${itemCardDelay} ms`);
-    timer = setTimeout(function () {
-      if (!itemCardIsFixed) {
+    timer = setTimeout(function(){ 
+      if(!itemCardIsFixed) {
         removeCard();
         showCard(event);
-        infoContainer.addClass("open");
+        infoContainer.addClass('open'); 
       }
     }, itemCardDelay);
   };
 
   let resetDelay = () => {
     clearTimeout(timer);
-    if (!itemCardIsFixed) infoContainer.removeClass("open");
+    if(!itemCardIsFixed) infoContainer.removeClass('open');
   };
 
-  cardTrigger.mouseenter(function (event) {
-    if (!itemCardIsFixed) {
-      if (!itemCardDelay) infoContainer.addClass("open");
+  cardTrigger.mouseenter( function(event){
+    if(!itemCardIsFixed){
+      if(!itemCardDelay) infoContainer.addClass('open');
     }
   });
 
-  cardTrigger.mouseleave(function (event) {
-    if (!itemCardIsFixed) {
-      if (!itemCardDelay) hideContainer();
+  cardTrigger.mouseleave( function (event) {
+    if(!itemCardIsFixed){
+      if(!itemCardDelay) hideContainer();
     }
   });
 
   cardTrigger.mouseenter(async (event) => {
     mouseOverItem = true;
-    if (!itemCardIsFixed) {
-      if (itemCardDelay) itemCardDelayCard(event);
+    if(!itemCardIsFixed){
+      if(itemCardDelay) itemCardDelayCard(event);
       else showCard(event);
     }
   });
 
-  cardTrigger.mouseleave(function (event) {
+  cardTrigger.mouseleave( function (event) {
     mouseOverItem = false;
-    if (!itemCardIsFixed) {
-      if (!itemCardDelay) removeCard();
+    if(!itemCardIsFixed){
+      if(!itemCardDelay) removeCard();
       else resetDelay();
     }
   });
-
-  let item = html.find(".item");
-  item.each(function () {
-    this.addEventListener("mousedown", function (event) {
+  
+  let item = html.find('.item');
+  item.each(function(){
+    this.addEventListener('mousedown', function(event) {
       // removeCard();
       switch (event.which) {
-        case 3:
-          // right click opens context menu
-          event.preventDefault();
+      case 3:
+        // right click opens context menu
+        event.preventDefault();
           mouseOverItem = false;
           hideContainer();
-          break;
+        break;
       }
     });
 
-    this.addEventListener("dragstart", function () {
-      // removeCard();
+    this.addEventListener('dragstart', function() {
+    // removeCard();
       mouseOverItem = false;
       hideContainer();
     });
   });
 
-  function showCard(event) {
+  function showCard(event){
     getBounds();
     event.preventDefault();
-    let li = $(event.currentTarget).closest(".item"),
-      item = actor.items.get(li.data("item-id")),
-      itemData = item.data,
-      chatData = item.getChatData({ secrets: actor.isOwner }),
-      itemDescription = chatData.description.value,
-      infoCard = li.find(".info-card");
-
+    let li = $(event.currentTarget).closest('.item'),
+        item = actor.items.get(li.data("item-id")),
+        itemData = item.data,
+        chatData = item.getChatData({secrets: actor.isOwner}),
+        itemDescription = chatData.description.value,
+        
+        infoCard = li.find('.info-card');
+        
     infoCard.clone().appendTo(infoContainerContent);
 
-    let infoBackground = infoContainer.find(".item-info-container-background"),
-      infoDescription = infoContainerContent.find(".info-card-description"),
-      props = $(`<div class="item-properties"></div>`);
+    let	infoBackground = infoContainer.find('.item-info-container-background'),
+        infoDescription = infoContainerContent.find('.info-card-description'),
+        props = $(`<div class="item-properties"></div>`);
 
     infoDescription.html(itemDescription);
 
-    chatData.properties.forEach((p) => props.append(`<span class="tag">${p}</span>`));
-    infoContainerContent.find(".info-card .description-wrap").after(props);
+    chatData.properties.forEach(p => props.append(`<span class="tag">${p}</span>`));
+    infoContainerContent.find('.info-card .description-wrap').after(props);
 
     infoBackground.hide();
 
     let innerScrollHeight = infoDescription[0].scrollHeight;
 
-    if (innerScrollHeight > infoDescription.height()) {
-      infoDescription.addClass("overflowing");
+    if(innerScrollHeight > infoDescription.height() ) {
+      infoDescription.addClass('overflowing');
     }
   }
 
-  function removeCard() {
-    html.find(".item-info-container-background").show();
-    infoContainerContent.find(".info-card").remove();
+  function removeCard(){
+    html.find('.item-info-container-background').show();
+    infoContainerContent.find('.info-card').remove();
+  }
+  
+  function hideContainer(){
+    infoContainer.removeClass('open');
   }
 
-  function hideContainer() {
-    infoContainer.removeClass("open");
-  }
-
-  $("#item-info-container").on("click", ".button", function (e) {
+  $('#item-info-container').on('click', '.button', function(e){
     e.preventDefault();
-    let itemId = $(this).closest(".info-card").attr("data-item-id");
-    let action = $(this).attr("data-action");
+    let itemId = $(this).closest('.info-card').attr('data-item-id');
+    let action = $(this).attr('data-action');
     $(`.tidy5e-sheet .item[data-item-id='${itemId}'] .item-buttons .button[data-action='${action}']`).trigger(e);
-  });
-};
+  })
+
+}
