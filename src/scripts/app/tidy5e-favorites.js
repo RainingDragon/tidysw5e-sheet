@@ -176,7 +176,7 @@ export const addFavorites = async function(app, html, data, position) {
             item.isMagic = true;
           }
 
-          let attr = item.type === "spell" ? "preparation.prepared" : "equipped";
+          let attr = item.type === "power" ? "preparation.prepared" : "equipped";
           let isActive = getProperty(item.data, attr);
           item.toggleClass = isActive ? "active" : "";
           if (item.type === "power") {

@@ -546,22 +546,43 @@ async function abbreviateCurrency(app,html,data) {
 }
 
 // Hide empty Powerbook
-async function hidePowerbook(app, html, data) {
-  let powerbook = html.find('.powerbook-footer');
+async function hideForcePowerbook(app, html, data) {
+  let powerbook = html.find('.force.powerbook-footer');
 
   if (powerbook.hasClass('powerbook-empty')){
-    html.find('.powerbook-title').addClass('toggle-powerbook');
+    html.find('.force.powerbook-title').addClass('toggle-powerbook').addClass('force');
     // html.find('.powerbook-title .fa-caret-down').show();
     // html.find('.powerbook-title .fa-caret-up').hide();
-    html.find('.powerbook-title + .list-layout').hide();
-    html.find('.powercasting-ability').hide();
+    html.find('.force.powerbook-title + .list-layout').hide();
+    html.find('.force.powercasting-ability').hide();
 
-    $('.toggle-powerbook').on('click', function(){
-      html.find('.powerbook-title').toggleClass('show');
+    $('.force.toggle-powerbook').on('click', function(){
+      html.find('.force.powerbook-title').toggleClass('show');
       // html.find('.powerbook-title .fa-caret-down').toggle();
       // html.find('.powerbook-title .fa-caret-up').toggle();
-      html.find('.powerbook-title + .list-layout').toggle();
-      html.find('.powercasting-ability').toggle();
+      html.find('.force.powerbook-title + .list-layout').toggle();
+      html.find('.force.powercasting-ability').toggle();
+    });
+  }
+}
+
+// Hide empty Powerbook
+async function hideTechPowerbook(app, html, data) {
+  let powerbook = html.find('.tech.powerbook-footer');
+
+  if (powerbook.hasClass('powerbook-empty')){
+    html.find('.tech.powerbook-title').addClass('toggle-powerbook').addClass('tech');
+    // html.find('.powerbook-title .fa-caret-down').show();
+    // html.find('.powerbook-title .fa-caret-up').hide();
+    html.find('.tech.powerbook-title + .list-layout').hide();
+    html.find('.tech.powercasting-ability').hide();
+
+    $('.tech.toggle-powerbook').on('click', function(){
+      html.find('.tech.powerbook-title').toggleClass('show');
+      // html.find('.powerbook-title .fa-caret-down').toggle();
+      // html.find('.powerbook-title .fa-caret-up').toggle();
+      html.find('.tech.powerbook-title + .list-layout').toggle();
+      html.find('.tech.powercasting-ability').toggle();
     });
   }
 }
@@ -672,7 +693,8 @@ Hooks.on("renderTidy5eNPC", (app, html, data) => {
   toggleItemMode(app, html, data);
   restoreScrollPosition(app, html, data);
 	abbreviateCurrency(app,html,data);
-  hidePowerbook(app, html, data);
+  hideForcePowerbook(app, html, data);
+  hideTechPowerbook(app, html, data);
   resetTempHp(app, html, data);
   editProtection(app, html, data);
   npcFavorites (app, html, data);
