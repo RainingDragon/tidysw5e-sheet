@@ -10,6 +10,7 @@ export const preloadTidy5eHandlebarsTemplates = async function() {
   const tidy5etemplatePaths = [
 
     // Actor Sheet Partials
+    "modules/tidysw5e-sheet/templates/actors/parts/actor-warnings.html",
     "modules/tidysw5e-sheet/templates/actors/parts/tidy5e-traits.html",
     "modules/tidysw5e-sheet/templates/actors/parts/tidy5e-inventory.html",
     "modules/tidysw5e-sheet/templates/actors/parts/tidy5e-inventory-grid.html",

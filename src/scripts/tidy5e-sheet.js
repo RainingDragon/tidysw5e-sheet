@@ -16,6 +16,7 @@ import { tidy5eAmmoSwitch } from "./app/ammo-switch.js";
 
 let position = 0;
 
+
 export class Tidy5eSheet extends ActorSheet5eCharacter {
 	
 	get template() {
@@ -44,8 +45,8 @@ export class Tidy5eSheet extends ActorSheet5eCharacter {
     const data = super.getData();
 
     Object.keys(data.data.abilities).forEach(id => {
-    	let Id = id.charAt(0).toUpperCase() + id.slice(1);
-      data.data.abilities[id].abbr = game.i18n.localize(`SW5E.Ability${Id}Abbr`);
+    	let Id = id.charAt(0).toLowerCase() + id.slice(1);
+      data.data.abilities[id].abbr = CONFIG.SW5E.abilityAbbreviations[Id];
 		});
 
 		data.appId = this.appId;
@@ -391,17 +392,19 @@ async function addClassList(app, html, data) {
 
 // Calculate Power Attack modifier
 async function powerAttackMod(app,html,data){
-	if(data.editable){
-		// let actor = game.actors.entities.find(a => a.data._id === data.actor._id),
-		let actor = app.actor,
-				prof = actor.data.data.attributes.prof,
-				powerAbility = html.find('.powercasting-attribute select option:selected').val(),
-				abilityMod = powerAbility != '' ? actor.data.data.abilities[powerAbility].mod : 0,
-				powerAttackMod = prof + abilityMod,
-				text = powerAttackMod > 0 ? '+'+powerAttackMod : powerAttackMod;
-		// console.log('Prof: '+prof+ '/ Power Ability: '+powerAbility+ '/ ability Mod: '+abilityMod+'/ Power Attack Mod:'+powerAttackMod);
-		html.find('.power-mod .power-attack-mod').html(text);
-	}
+// CYR: Commented out as it is not used
+// 	if(data.editable){
+// 		// let actor = game.actors.entities.find(a => a.data._id === data.actor._id),
+// 		let actor = app.actor,
+// 				prof = actor.data.data.attributes.prof,
+// 				powerAbility = html.find('.powercasting-attribute select option:selected').val(),
+// 				abilityMod = powerAbility != '' ? actor.data.data.abilities[powerAbility].mod : 0,
+// 				powerBonus = parseInt(actor.data.data.bonuses.rpak.attack || 0),
+// 				powerAttackMod = prof + abilityMod + powerBonus,
+// 				text = powerAttackMod > 0 ? '+'+powerAttackMod : powerAttackMod;
+// 		// console.log('Prof: '+prof+ '/ Power Ability: '+powerAbility+ '/ ability Mod: '+abilityMod+'/ Power Attack Mod:'+powerAttackMod);
+// 		html.find('.power-mod .power-attack-mod').html(text);
+// 	}
 }
 
 // Abbreviate Currency
@@ -417,7 +420,7 @@ async function abbreviateCurrency(app,html,data) {
 }
 
 // transform DAE formulas for maxPreparesPowers
-function tidyCustomEffect(actor, change) {
+async function tidyCustomEffect(actor, change) {
   if (change.key !== "data.details.maxPreparedPowers") return;
   if (change.value?.length > 0) {
     let oldValue =  getProperty(actor.data, change.key) || 0;
@@ -431,7 +434,9 @@ function tidyCustomEffect(actor, change) {
 		Object.keys(rollData.abilities).forEach(abl => {
 			rollData.abilities[abl].mod = Math.floor((rollData.abilities[abl].value - 10) /2);
 		});
-		const value = new Roll(changeText, rollData).roll().total;
+		// const value = new Roll(changeText, rollData).roll().total;
+		const roll_value = await new Roll(changeText, rollData).roll();
+		const value = roll_value.total;
     oldValue = Number.isNumeric(oldValue) ? parseInt(oldValue) : 0;
     switch (op) {
       case "+": return setProperty(actor.data, change.key, oldValue + value);

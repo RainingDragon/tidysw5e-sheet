@@ -16,6 +16,34 @@ Thank you very much!
 
 ## Version History ##
 
+### Version 0.5.26 ###
+
+- hungarian translation added
+- attack mod field updated
+
+### Version 0.5.25 ###
+
+- tried to fix !PopOut issues with context menu
+- warnings are now displayed (e. g. two equipped suits of armor)
+
+### Version 0.5.24 ###
+
+- rerelease because of some git hickups
+
+### Version 0.5.23 ###
+
+- fix for maxSpellPrepared calculation
+- ability and currency Abbreviation point to CONFIG.DND5E
+
+### Version 0.5.22 ###
+
+- version changed to simply "9"
+- rolls adapted to be asynchronous
+
+### Version 0.5.21 ###
+
+- manifest update for 0.9.9
+
 ### Version 0.5.20 ###
 
 - npc spell preparation fix

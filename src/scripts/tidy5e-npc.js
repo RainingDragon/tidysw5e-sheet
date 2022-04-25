@@ -177,8 +177,8 @@ export default class Tidy5eNPC extends ActorSheet5eNPC {
     const data = super.getData(options);
     
     Object.keys(data.data.abilities).forEach(id => {
-      let Id = id.charAt(0).toUpperCase() + id.slice(1);
-      data.data.abilities[id].abbr = game.i18n.localize(`SW5E.Ability${Id}Abbr`);
+      let Id = id.charAt(0).toLowerCase() + id.slice(1);
+      data.data.abilities[id].abbr = CONFIG.SW5E.abilityAbbreviations[Id];
     });
     
 		data.appId = this.appId;
@@ -331,11 +331,13 @@ export default class Tidy5eNPC extends ActorSheet5eNPC {
    * @param {Event} event     The original click event
    * @private
    */
-  _onRollHealthFormula(event) {
+  async _onRollHealthFormula(event) {
     event.preventDefault();
     const formula = this.actor.data.data.attributes.hp.formula;
     if ( !formula ) return;
-    const hp = new Roll(formula).roll().total;
+    // const hp = new Roll(formula).roll().total;  
+		const roll_hp = await new Roll(formula).roll();
+    const hp = roll_hp.total;
     AudioHelper.play({src: CONFIG.sounds.dice});
     this.actor.update({"data.attributes.hp.value": hp, "data.attributes.hp.max": hp});
   }
@@ -537,8 +539,8 @@ async function setSheetClasses(app, html, data) {
 async function abbreviateCurrency(app,html,data) {
 	html.find('.currency .currency-item label').each(function(){
 		let currency = $(this).data('denom').toUpperCase();
-		let abbr = game.i18n.localize(`SW5E.CurrencyAbbr${currency}`);
-		if(abbr == `SW5E.CurrencyAbbr${currency}`){
+		let abbr = game.i18n.localize(`TIDY5E.CurrencyAbbr${currency}`);
+		if(abbr == `TIDY5E.CurrencyAbbr${currency}`){
 			abbr = currency;
 		}
 		$(this).html(abbr);

@@ -2,10 +2,10 @@
 	"name": "tidysw5e-sheet",
 	"title": "TidySW5e Sheet",
 	"description": "Replaces the default SW5e character and NPC sheet with an alternate layout focused on a cleaner UI",
-	"version": "0.5.0",
+	"version": "0.5.21",
 	"author": "Cyr-",
 	"minimumCoreVersion": "0.8.3",
-	"compatibleCoreVersion": "0.8.9",
+	"compatibleCoreVersion": "9",
 	"system": "sw5e",
 	"esmodules": [
 		"./scripts/tidy5e-sheet.js",
@@ -14,6 +14,20 @@
 		"./scripts/tidy5e-item.js",
 		"./scripts/app/exhaustion.js"
 	],
+	"styles": [
+		"../fonts/modesto-condensed/modesto-condensed.css",
+		"./css/tidy-icons.css",
+		"./css/tidy5e.css",
+		"./css/tidy5e-dark.css"
+	],
+	"languages": [
+		{
+			"lang": "en",
+			"name": "English",
+			"path": "lang/en.json"
+		}
+	],
+
   "url": "https://github.com/Cyr-/tidysw5e-sheet",
   "manifest": "https://github.com/Cyr-/tidysw5e-sheet/releases/latest/download/module.json",
   "download": "https://github.com/Cyr-/tidysw5e-sheet/releases/latest/module.zip"
