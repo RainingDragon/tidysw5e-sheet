@@ -127,7 +127,9 @@ export const addFavorites = async function(app, html, data, position) {
               special : game.i18n.localize("SW5E.Special"),
               day : game.i18n.localize("SW5E.TimeDay"),
               hour : game.i18n.localize("SW5E.TimeHour"),
-              minute : game.i18n.localize("SW5E.TimeMinute")
+              minute : game.i18n.localize("SW5E.TimeMinute"),
+              reactiondamage : game.i18n.localize("midi-qol.reactionDamaged"),
+              reactionmanual : game.i18n.localize("midi-qol.reactionManual")
           }
 
           function translateLabels (key){
@@ -250,6 +252,7 @@ export const addFavorites = async function(app, html, data, position) {
       }
 
       // sorting favPowers alphabetically
+      /*
       const favPowersArray = Object.keys(favPowers);
       for (let key of favPowersArray){
         favPowers[key].powers.sort(function(a, b){
@@ -261,8 +264,10 @@ export const addFavorites = async function(app, html, data, position) {
          return 0; //default return value (no sorting)
         });
       }
+      */
 
       // sorting favPowersPrepMode alphabetically
+      /*
       const favPowersPrepModeArray = Object.keys(favPowersPrepMode);
       for (let key of favPowersPrepModeArray){
         favPowersPrepMode[key].powers.sort(function(a, b){
@@ -274,6 +279,7 @@ export const addFavorites = async function(app, html, data, position) {
          return 0; //default return value (no sorting)
         });
       }
+      */
 
       let attributesTab = html.find('.item[data-tab="attributes"]');
       let favContainer = html.find('.favorites-wrap');
@@ -329,7 +335,7 @@ export const addFavorites = async function(app, html, data, position) {
 
           // update item attunement
           favHtml.find('.item-control.item-attunement').click( async (ev) => {
-            event.preventDefault();
+            ev.preventDefault();
             let itemId = ev.currentTarget.closest(".item").dataset.itemId;
             let item = app.actor.items.get(itemId);
 
@@ -394,18 +400,20 @@ export const addFavorites = async function(app, html, data, position) {
           // custom sorting
           favHtml.find('.item').on('drop', ev => {
             ev.preventDefault();
-            ev.stopPropagation();
+            // ev.stopPropagation();
 
             let dropData = JSON.parse(ev.originalEvent.dataTransfer.getData('text/plain'));
 
-            if (dropData.actorId !== app.actor.id || dropData.data.type === 'power') {
-                  // only do sorting if the item is from the same actor (not droped from outside) and is not a power
+            if (dropData.actorId !== app.actor.id) {
+                  // only do sorting if the item is from the same actor (not dropped from outside)
                   return;
                 }
 
                 let list = null;
                 if (dropData.data.type === 'feat') {
                   list = favFeats;
+                } else if(dropData.data.type === 'power') {
+                  list = favPowers[dropData.data.data.level].powers;
                 } else {
                   list = favItems;
                 }
@@ -415,8 +423,11 @@ export const addFavorites = async function(app, html, data, position) {
                 let targetId = ev.target.closest('.item').dataset.itemId;
                 let dragTarget = siblings.find(s => s._id === targetId);
 
+                // console.log(`dragSource: ${dragSource} // siblings: ${siblings} // targetID: ${targetId} // dragTarget: ${dragTarget}`)
+
                 if (dragTarget === undefined) {
                   // catch trying to drag from one list to the other, which is not supported
+                  // console.log("folder not supported")
                   return;
                 }
 
@@ -428,7 +439,7 @@ export const addFavorites = async function(app, html, data, position) {
                 return update;
               });
 
-              app.actor.updateEmbeddedEntity("OwnedItem", updateData);
+              app.actor.updateEmbeddedDocuments("Item", updateData);
             });
         }
 

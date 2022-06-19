@@ -177,8 +177,10 @@ export default class Tidy5eNPC extends ActorSheet5eNPC {
     const data = super.getData(options);
     
     Object.keys(data.data.abilities).forEach(id => {
-      let Id = id.charAt(0).toLowerCase() + id.slice(1);
-      data.data.abilities[id].abbr = CONFIG.SW5E.abilityAbbreviations[Id];
+      // let Id = id.charAt(0).toLowerCase() + id.slice(1);
+      // data.data.abilities[id].abbr = CONFIG.SW5E.abilityAbbreviations[Id];
+      let Id = id.charAt(0).toUpperCase() + id.slice(1);
+			data.data.abilities[id].abbr = game.i18n.localize(`SW5E.Ability${Id}Abbr`);
     });
     
 		data.appId = this.appId;
@@ -428,24 +430,12 @@ async  function restoreScrollPosition(app, html, data){
 
 // handle skills list display
 async function toggleSkillList(app, html, data){
-  html.find('.skills-list:not(.always-visible):not(.expanded) .skill:not(.proficient)').addClass('skill-hidden').hide();
-  let visibleSkills = html.find('.skills-list .skill:not(.skill-hidden)');
-  for (let i = 0; i < visibleSkills.length; i++) {
-    if(i % 2 != 0){
-      visibleSkills[i].classList.add('even');
-    }
-  }
+  html.find('.skills-list:not(.always-visible):not(.expanded) .skill:not(.proficient)').remove();
 }
 
 // handle traits list display
 async function toggleTraitsList(app, html, data){
-  html.find('.traits:not(.always-visible):not(.expanded) .form-group.inactive').addClass('trait-hidden').hide();
-  let visibleTraits = html.find('.traits .form-group:not(.trait-hidden)');
-  for (let i = 0; i < visibleTraits.length; i++) {
-    if(i % 2 != 0){
-      visibleTraits[i].classList.add('even');
-    }
-  }
+  html.find('.traits:not(.always-visible):not(.expanded) .form-group.inactive').remove();
 }
 
 // toggle item icon
@@ -539,6 +529,10 @@ async function setSheetClasses(app, html, data) {
 async function abbreviateCurrency(app,html,data) {
 	html.find('.currency .currency-item label').each(function(){
 		let currency = $(this).data('denom').toUpperCase();
+		// let abbr = CONFIG.DND5E.currencies[currency].abbreviation;
+		// if(abbr == CONFIG.DND5E.currencies[currency].abbreviation){
+		// 	abbr = currency;
+		// }
 		let abbr = game.i18n.localize(`TIDY5E.CurrencyAbbr${currency}`);
 		if(abbr == `TIDY5E.CurrencyAbbr${currency}`){
 			abbr = currency;
@@ -700,4 +694,5 @@ Hooks.on("renderTidy5eNPC", (app, html, data) => {
   resetTempHp(app, html, data);
   editProtection(app, html, data);
   npcFavorites (app, html, data);
+	// console.log(data.actor);
 });

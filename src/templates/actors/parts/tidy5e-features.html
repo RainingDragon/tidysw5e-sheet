@@ -54,7 +54,9 @@
             <i class="fa fa-dice-d20"></i>
           </div>
           <h4>
-            {{item.name}}
+            {{#if (eq item.type "archetype")}}&rdsh;{{/if}}
+              {{item.name}}
+            {{#if item.data.isOriginalClass}} <i class="original-class fas fa-sun" title="{{localize 'SW5E.ClassOriginal'}}"></i>{{/if}}
           </h4>
           {{#if item.data.properties.amm}}
           <span class="ammo" data-id="{{item._id}}"></span>
@@ -105,13 +107,27 @@
         {{/if}}
         {{/unless}}
 
-        {{else if section.isClass}}
-        <div class="item-detail player-class" title="{{item.data.archetype}}">
+        {{else if (eq item.type "class")}}
+        <!-- <div class="item-detail player-class" title="{{item.data.archetype}}">
           <span>{{item.data.archetype}}</span>
         </div>
         <div class="item-detail item-level">
           {{item.data.levels}}
-        </div>
+        </div> -->
+
+
+        <div class="item-detail item-action">
+          <select class="level-selector">
+              {{#select 0}}
+              {{#each item.availableLevels}}
+                  <option value="{{this.delta}}" {{disabled this.disabled}}>
+                      {{localize "SW5E.LevelNumber" level=this.level}}
+                      {{#if this.delta}}({{numberFormat this.delta sign=true}}){{/if}}
+                  </option>
+              {{/each}}
+              {{/select}}
+          </select>
+      </div>
 
         {{else if section.columns}}
           {{#each section.columns}}

@@ -16,6 +16,42 @@ Thank you very much!
 
 ## Version History ##
 
+### Version 0.5.32 ###
+
+- fixed exaustion reduction on long rest while exhaustion automation is off
+- fixed missing midiqol action times in favorites tab
+- fixed classic controls width when gm ignores sheet lock
+- fixed line highlights for skills and traits
+
+### Version 0.5.31 ###
+
+- fixed favorites custom drag and drop sorting
+- dropping actor onto favorites area doesn't block polymorph
+- fixed item attunement (max values and error notification on overattunement should work again)
+
+### Version 0.5.30 ###
+
+- currency translation fix
+
+### Version 0.5.29 ###
+
+- fixed attunement error in item context menu
+- fixed build in exhaustion effects - now with icon on actor token
+- fixed missing component highlight for concentration/ritual (thanks @PizzaMarinara )
+
+### Version 0.5.28 ###
+
+- fixed subclass name in sheet header
+- fixed layout and dark mode colors for advancement tab for class/subclass item sheet
+
+### Version 0.5.27 ###
+
+- max attunement adapted to system variable
+- reverted translation strings for attributes and currency
+- NPC source field will get cut off with ellipsis if text is too long in order to keep the layout intact (full description is visible on hover)
+- fixed spell components
+- fixed level dropdown
+
 ### Version 0.5.26 ###
 
 - hungarian translation added

@@ -1574,7 +1574,7 @@
 .tidy5e.sheet.actor .origin-summary li span {
   position: relative;
   margin-left: 4px;
-  padding: 0 4px;
+  padding: 0 4px 0 8px;
 }
 
 .tidy5e.sheet.actor .origin-summary li span::after {
@@ -1586,7 +1586,7 @@
   background: var(--primary-color);
   position: absolute;
   top: 50%;
-  left: -4px;
+  left: 0px;
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
 }
@@ -2618,12 +2618,8 @@
   background: none;
 }
 
-.tidy5e.sheet.actor .traits .form-group.even {
+.tidy5e.sheet.actor .traits .form-group:nth-child(even) {
   background: var(--faint-color);
-}
-
-.tidy5e.sheet.actor .traits:not(.expanded):not(.always-visible) .form-group.trait-hidden {
-  display: none;
 }
 
 .tidy5e.sheet.actor .traits .form-group:last-child {
@@ -3753,11 +3749,11 @@
           flex: 0 0 69px;
 }
 
-.tidy5e.sheet.actor .list-layout .items-list.classic-controls.inventory-list.unlocked .items-header {
+.tidy5e.sheet.actor .list-layout .items-list.classic-controls.inventory-list.unlocked .items-header, .tidy5e.sheet.actor .list-layout .items-list.classic-controls.inventory-list.gmEdit .items-header {
   padding-right: 85px;
 }
 
-.tidy5e.sheet.actor .list-layout .items-list.classic-controls.inventory-list.unlocked .item-controls:not(.context-menu) {
+.tidy5e.sheet.actor .list-layout .items-list.classic-controls.inventory-list.unlocked .item-controls:not(.context-menu), .tidy5e.sheet.actor .list-layout .items-list.classic-controls.inventory-list.gmEdit .item-controls:not(.context-menu) {
   -webkit-box-flex: 0;
       -ms-flex: 0 0 85px;
           flex: 0 0 85px;
@@ -3773,11 +3769,11 @@
           flex: 0 0 53px;
 }
 
-.tidy5e.sheet.actor .list-layout .items-list.classic-controls.powerbook-list.unlocked .items-header {
+.tidy5e.sheet.actor .list-layout .items-list.classic-controls.powerbook-list.unlocked .items-header, .tidy5e.sheet.actor .list-layout .items-list.classic-controls.powerbook-list.gmEdit .items-header {
   padding-right: 69px;
 }
 
-.tidy5e.sheet.actor .list-layout .items-list.classic-controls.powerbook-list.unlocked .item-controls:not(.context-menu) {
+.tidy5e.sheet.actor .list-layout .items-list.classic-controls.powerbook-list.unlocked .item-controls:not(.context-menu), .tidy5e.sheet.actor .list-layout .items-list.classic-controls.powerbook-list.gmEdit .item-controls:not(.context-menu) {
   -webkit-box-flex: 0;
       -ms-flex: 0 0 69px;
           flex: 0 0 69px;
@@ -3793,11 +3789,11 @@
           flex: 0 0 37px;
 }
 
-.tidy5e.sheet.actor .list-layout .items-list.classic-controls.features-list.unlocked .items-header, .tidy5e.sheet.actor .list-layout .items-list.classic-controls.effects-list.unlocked .items-header {
+.tidy5e.sheet.actor .list-layout .items-list.classic-controls.features-list.unlocked .items-header, .tidy5e.sheet.actor .list-layout .items-list.classic-controls.features-list.gmEdit .items-header, .tidy5e.sheet.actor .list-layout .items-list.classic-controls.effects-list.unlocked .items-header, .tidy5e.sheet.actor .list-layout .items-list.classic-controls.effects-list.gmEdit .items-header {
   padding-right: 53px;
 }
 
-.tidy5e.sheet.actor .list-layout .items-list.classic-controls.features-list.unlocked .item-controls:not(.context-menu), .tidy5e.sheet.actor .list-layout .items-list.classic-controls.effects-list.unlocked .item-controls:not(.context-menu) {
+.tidy5e.sheet.actor .list-layout .items-list.classic-controls.features-list.unlocked .item-controls:not(.context-menu), .tidy5e.sheet.actor .list-layout .items-list.classic-controls.features-list.gmEdit .item-controls:not(.context-menu), .tidy5e.sheet.actor .list-layout .items-list.classic-controls.effects-list.unlocked .item-controls:not(.context-menu), .tidy5e.sheet.actor .list-layout .items-list.classic-controls.effects-list.gmEdit .item-controls:not(.context-menu) {
   -webkit-box-flex: 0;
       -ms-flex: 0 0 53px;
           flex: 0 0 53px;
@@ -4110,122 +4106,6 @@
       -ms-flex: 1;
           flex: 1;
   overflow: hidden;
-  /*
-	.item-info-container {
-		position: relative;
-    margin: 0 8px 10px 0;
-    width: 246px;
-    border: 1px solid var(--faint-color);
-    border-radius: 5px;
-    z-index: 1;
-
-		.item-info-container-background {
-			font-size: 150px;
-			color: var(--faintest-color);
-			position: absolute;
-			top: 50%;
-			left: 50%;
-			transform: translate(-50%,-50%);
-			z-index: -1;
-		}
-	}
-  
-  .item-info-container-content {
-		height: 100%;
-
-  	.info-card {
-			padding: 6px 8px 2px 8px;
-			border-radius: 5px;
-			overflow: hidden;
-			height: 100%;
-			display: flex;
-			flex-direction: column;
-
-			&.equipped,
-			&.prepared {
-				background: var(--prepared);
-			}
-
-			&.magic-item {
-				box-shadow: 0 0 6px 2px var(--magic-accent) inset;
-			}
-
-			.info-card-name {
-				font-family: var(--modesto);
-				font-size: 24px;
-				margin: 0 0 4px 0;
-				line-height: 1;
-			}
-
-			.info-card-image {
-				filter: grayscale(100%);
-				mix-blend-mode: screen;
-			}
-
-			.info-card-states,
-			.info-card-trade,
-			.info-card-amount,
-			.info-card-properties {
-				font-size: 12px;
-				display: flex;
-				justify-content: space-between;
-				border-top: 1px solid var(--faint-color);
-
-				span {
-					padding: 4px 0;
-				}
-
-				i {
-					width: 13px;
-					text-align: center;
-					margin-right: 4px;
-					vertical-align: middle;
-				}
-
-				.info-attuned,
-				.info-quantity {
-					margin-left: auto;
-				}
-
-			}
-
-			.info-card-hint {
-				font-size: 12px;
-		    border-top: 1px solid var(--faint-color);
-		    padding: 4px;
-		    margin-top: 2px;
-		    font-style: italic;
-			}
-
-			.info-card-description {
-				flex: 1;
-				overflow: hidden;
-		    border-top: 2px solid var(--light-color);
-		    border-bottom: 2px solid var(--light-color);
-
-		    &.overflowing {
-		    	-webkit-mask-image: linear-gradient(180deg, rgba(0, 0, 0, 1) 75%, rgba(0, 0, 0, 0) 100%);
-		    }
-			}
-
-			.truncated {
-				text-align: center;
-		    padding: 0 0 20px 0;
-		    font-size: 18px;
-		    height: 3px;
-		    line-height: 3px;
-			}
-
-			.item-properties {
-		    margin: 8px 0 0 0;
-
-				.tag {
-					white-space: pre-wrap;
-				}
-			}
-  	}
-  }
-	*/
 }
 
 .tidy5e.sheet.actor .grid-layout .items-list {
@@ -5003,6 +4883,12 @@
   display: inline-block;
 }
 
+.tidy5e.sheet.actor.npc .origin-summary .source-info {
+  max-width: 140px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .tidy5e.sheet.actor.npc .left-pane {
   -webkit-box-flex: 0;
       -ms-flex: 0 0 220px;
@@ -5100,14 +4986,6 @@
 
 .tidy5e.sheet.actor.npc .skills-list.always-visible {
   margin-bottom: 0;
-}
-
-.tidy5e.sheet.actor.npc .skills-list .skill:nth-child(even) {
-  background: none;
-}
-
-.tidy5e.sheet.actor.npc .skills-list .skill.even {
-  background: var(--faint-color);
 }
 
 .tidy5e.sheet.actor.npc .skills-list .toggle-proficient {
@@ -5834,11 +5712,11 @@
       align-content: flex-start;
 }
 
-.tidy5e.sheet.item .sheet-body .tab.item-betterRolls, .tidy5e.sheet.item .sheet-body .tab.details, .tidy5e.sheet.item .sheet-body .tab.dynamiceffects, .tidy5e.sheet.item .sheet-body .tab.magic-items {
+.tidy5e.sheet.item .sheet-body .tab.item-betterRolls, .tidy5e.sheet.item .sheet-body .tab.details, .tidy5e.sheet.item .sheet-body .tab.advancement, .tidy5e.sheet.item .sheet-body .tab.dynamiceffects, .tidy5e.sheet.item .sheet-body .tab.magic-items {
   padding-right: .75rem;
 }
 
-.tidy5e.sheet.item .sheet-body .tab.item-betterRolls .form-header, .tidy5e.sheet.item .sheet-body .tab.details .form-header, .tidy5e.sheet.item .sheet-body .tab.dynamiceffects .form-header, .tidy5e.sheet.item .sheet-body .tab.magic-items .form-header {
+.tidy5e.sheet.item .sheet-body .tab.item-betterRolls .form-header, .tidy5e.sheet.item .sheet-body .tab.details .form-header, .tidy5e.sheet.item .sheet-body .tab.advancement .form-header, .tidy5e.sheet.item .sheet-body .tab.dynamiceffects .form-header, .tidy5e.sheet.item .sheet-body .tab.magic-items .form-header {
   margin: 8px 6px 4px 6px;
   font-size: 18px;
   line-height: 16px;
@@ -5847,25 +5725,25 @@
   color: var(--primary-font);
 }
 
-.tidy5e.sheet.item .sheet-body .tab.item-betterRolls .form-header:first-child, .tidy5e.sheet.item .sheet-body .tab.details .form-header:first-child, .tidy5e.sheet.item .sheet-body .tab.dynamiceffects .form-header:first-child, .tidy5e.sheet.item .sheet-body .tab.magic-items .form-header:first-child {
+.tidy5e.sheet.item .sheet-body .tab.item-betterRolls .form-header:first-child, .tidy5e.sheet.item .sheet-body .tab.details .form-header:first-child, .tidy5e.sheet.item .sheet-body .tab.advancement .form-header:first-child, .tidy5e.sheet.item .sheet-body .tab.dynamiceffects .form-header:first-child, .tidy5e.sheet.item .sheet-body .tab.magic-items .form-header:first-child {
   margin-top: 0;
 }
 
-.tidy5e.sheet.item .sheet-body .tab.item-betterRolls .form-group, .tidy5e.sheet.item .sheet-body .tab.details .form-group, .tidy5e.sheet.item .sheet-body .tab.dynamiceffects .form-group, .tidy5e.sheet.item .sheet-body .tab.magic-items .form-group {
+.tidy5e.sheet.item .sheet-body .tab.item-betterRolls .form-group, .tidy5e.sheet.item .sheet-body .tab.details .form-group, .tidy5e.sheet.item .sheet-body .tab.advancement .form-group, .tidy5e.sheet.item .sheet-body .tab.dynamiceffects .form-group, .tidy5e.sheet.item .sheet-body .tab.magic-items .form-group {
   margin: 2px 0;
   padding: 3px;
   background: var(--faintest-color);
   border-radius: 5px;
 }
 
-.tidy5e.sheet.item .sheet-body .tab.item-betterRolls .form-group .form-fields, .tidy5e.sheet.item .sheet-body .tab.details .form-group .form-fields, .tidy5e.sheet.item .sheet-body .tab.dynamiceffects .form-group .form-fields, .tidy5e.sheet.item .sheet-body .tab.magic-items .form-group .form-fields {
+.tidy5e.sheet.item .sheet-body .tab.item-betterRolls .form-group .form-fields, .tidy5e.sheet.item .sheet-body .tab.details .form-group .form-fields, .tidy5e.sheet.item .sheet-body .tab.advancement .form-group .form-fields, .tidy5e.sheet.item .sheet-body .tab.dynamiceffects .form-group .form-fields, .tidy5e.sheet.item .sheet-body .tab.magic-items .form-group .form-fields {
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
   gap: 1px;
 }
 
-.tidy5e.sheet.item .sheet-body .tab.item-betterRolls .form-group.stacked, .tidy5e.sheet.item .sheet-body .tab.details .form-group.stacked, .tidy5e.sheet.item .sheet-body .tab.dynamiceffects .form-group.stacked, .tidy5e.sheet.item .sheet-body .tab.magic-items .form-group.stacked {
+.tidy5e.sheet.item .sheet-body .tab.item-betterRolls .form-group.stacked, .tidy5e.sheet.item .sheet-body .tab.details .form-group.stacked, .tidy5e.sheet.item .sheet-body .tab.advancement .form-group.stacked, .tidy5e.sheet.item .sheet-body .tab.dynamiceffects .form-group.stacked, .tidy5e.sheet.item .sheet-body .tab.magic-items .form-group.stacked {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -5874,11 +5752,11 @@
   gap: 1px;
 }
 
-.tidy5e.sheet.item .sheet-body .tab.item-betterRolls .form-group span, .tidy5e.sheet.item .sheet-body .tab.details .form-group span, .tidy5e.sheet.item .sheet-body .tab.dynamiceffects .form-group span, .tidy5e.sheet.item .sheet-body .tab.magic-items .form-group span {
+.tidy5e.sheet.item .sheet-body .tab.item-betterRolls .form-group span, .tidy5e.sheet.item .sheet-body .tab.details .form-group span, .tidy5e.sheet.item .sheet-body .tab.advancement .form-group span, .tidy5e.sheet.item .sheet-body .tab.dynamiceffects .form-group span, .tidy5e.sheet.item .sheet-body .tab.magic-items .form-group span {
   text-align: center;
 }
 
-.tidy5e.sheet.item .sheet-body .tab.item-betterRolls .form-group label, .tidy5e.sheet.item .sheet-body .tab.details .form-group label, .tidy5e.sheet.item .sheet-body .tab.dynamiceffects .form-group label, .tidy5e.sheet.item .sheet-body .tab.magic-items .form-group label {
+.tidy5e.sheet.item .sheet-body .tab.item-betterRolls .form-group label, .tidy5e.sheet.item .sheet-body .tab.details .form-group label, .tidy5e.sheet.item .sheet-body .tab.advancement .form-group label, .tidy5e.sheet.item .sheet-body .tab.dynamiceffects .form-group label, .tidy5e.sheet.item .sheet-body .tab.magic-items .form-group label {
   margin-left: 4px;
   line-height: 20px;
   font-size: 13px;
@@ -5887,7 +5765,7 @@
   white-space: nowrap;
 }
 
-.tidy5e.sheet.item .sheet-body .tab.item-betterRolls .form-group label.checkbox, .tidy5e.sheet.item .sheet-body .tab.details .form-group label.checkbox, .tidy5e.sheet.item .sheet-body .tab.dynamiceffects .form-group label.checkbox, .tidy5e.sheet.item .sheet-body .tab.magic-items .form-group label.checkbox {
+.tidy5e.sheet.item .sheet-body .tab.item-betterRolls .form-group label.checkbox, .tidy5e.sheet.item .sheet-body .tab.details .form-group label.checkbox, .tidy5e.sheet.item .sheet-body .tab.advancement .form-group label.checkbox, .tidy5e.sheet.item .sheet-body .tab.dynamiceffects .form-group label.checkbox, .tidy5e.sheet.item .sheet-body .tab.magic-items .form-group label.checkbox {
   position: relative;
   z-index: 1;
   margin: 0;
@@ -5910,11 +5788,11 @@
   font-weight: 400;
 }
 
-.tidy5e.sheet.item .sheet-body .tab.item-betterRolls .form-group label.checkbox:hover, .tidy5e.sheet.item .sheet-body .tab.details .form-group label.checkbox:hover, .tidy5e.sheet.item .sheet-body .tab.dynamiceffects .form-group label.checkbox:hover, .tidy5e.sheet.item .sheet-body .tab.magic-items .form-group label.checkbox:hover {
+.tidy5e.sheet.item .sheet-body .tab.item-betterRolls .form-group label.checkbox:hover, .tidy5e.sheet.item .sheet-body .tab.details .form-group label.checkbox:hover, .tidy5e.sheet.item .sheet-body .tab.advancement .form-group label.checkbox:hover, .tidy5e.sheet.item .sheet-body .tab.dynamiceffects .form-group label.checkbox:hover, .tidy5e.sheet.item .sheet-body .tab.magic-items .form-group label.checkbox:hover {
   background: var(--checkbox-checked);
 }
 
-.tidy5e.sheet.item .sheet-body .tab.item-betterRolls .form-group label.checkbox:hover input::after, .tidy5e.sheet.item .sheet-body .tab.details .form-group label.checkbox:hover input::after, .tidy5e.sheet.item .sheet-body .tab.dynamiceffects .form-group label.checkbox:hover input::after, .tidy5e.sheet.item .sheet-body .tab.magic-items .form-group label.checkbox:hover input::after {
+.tidy5e.sheet.item .sheet-body .tab.item-betterRolls .form-group label.checkbox:hover input::after, .tidy5e.sheet.item .sheet-body .tab.details .form-group label.checkbox:hover input::after, .tidy5e.sheet.item .sheet-body .tab.advancement .form-group label.checkbox:hover input::after, .tidy5e.sheet.item .sheet-body .tab.dynamiceffects .form-group label.checkbox:hover input::after, .tidy5e.sheet.item .sheet-body .tab.magic-items .form-group label.checkbox:hover input::after {
   background: var(--checkbox-checked);
 }
 
@@ -5922,7 +5800,9 @@
 .tidy5e.sheet.item .sheet-body .tab.item-betterRolls .form-group input[type="text"],
 .tidy5e.sheet.item .sheet-body .tab.item-betterRolls .form-group button, .tidy5e.sheet.item .sheet-body .tab.details .form-group select,
 .tidy5e.sheet.item .sheet-body .tab.details .form-group input[type="text"],
-.tidy5e.sheet.item .sheet-body .tab.details .form-group button, .tidy5e.sheet.item .sheet-body .tab.dynamiceffects .form-group select,
+.tidy5e.sheet.item .sheet-body .tab.details .form-group button, .tidy5e.sheet.item .sheet-body .tab.advancement .form-group select,
+.tidy5e.sheet.item .sheet-body .tab.advancement .form-group input[type="text"],
+.tidy5e.sheet.item .sheet-body .tab.advancement .form-group button, .tidy5e.sheet.item .sheet-body .tab.dynamiceffects .form-group select,
 .tidy5e.sheet.item .sheet-body .tab.dynamiceffects .form-group input[type="text"],
 .tidy5e.sheet.item .sheet-body .tab.dynamiceffects .form-group button, .tidy5e.sheet.item .sheet-body .tab.magic-items .form-group select,
 .tidy5e.sheet.item .sheet-body .tab.magic-items .form-group input[type="text"],
@@ -5936,7 +5816,9 @@
 .tidy5e.sheet.item .sheet-body .tab.item-betterRolls .form-group input[type="text"]:hover,
 .tidy5e.sheet.item .sheet-body .tab.item-betterRolls .form-group button:hover, .tidy5e.sheet.item .sheet-body .tab.details .form-group select:hover,
 .tidy5e.sheet.item .sheet-body .tab.details .form-group input[type="text"]:hover,
-.tidy5e.sheet.item .sheet-body .tab.details .form-group button:hover, .tidy5e.sheet.item .sheet-body .tab.dynamiceffects .form-group select:hover,
+.tidy5e.sheet.item .sheet-body .tab.details .form-group button:hover, .tidy5e.sheet.item .sheet-body .tab.advancement .form-group select:hover,
+.tidy5e.sheet.item .sheet-body .tab.advancement .form-group input[type="text"]:hover,
+.tidy5e.sheet.item .sheet-body .tab.advancement .form-group button:hover, .tidy5e.sheet.item .sheet-body .tab.dynamiceffects .form-group select:hover,
 .tidy5e.sheet.item .sheet-body .tab.dynamiceffects .form-group input[type="text"]:hover,
 .tidy5e.sheet.item .sheet-body .tab.dynamiceffects .form-group button:hover, .tidy5e.sheet.item .sheet-body .tab.magic-items .form-group select:hover,
 .tidy5e.sheet.item .sheet-body .tab.magic-items .form-group input[type="text"]:hover,
@@ -5944,21 +5826,21 @@
   background: rgba(255, 255, 255, 0.5);
 }
 
-.tidy5e.sheet.item .sheet-body .tab.item-betterRolls .form-group input:disabled, .tidy5e.sheet.item .sheet-body .tab.details .form-group input:disabled, .tidy5e.sheet.item .sheet-body .tab.dynamiceffects .form-group input:disabled, .tidy5e.sheet.item .sheet-body .tab.magic-items .form-group input:disabled {
+.tidy5e.sheet.item .sheet-body .tab.item-betterRolls .form-group input:disabled, .tidy5e.sheet.item .sheet-body .tab.details .form-group input:disabled, .tidy5e.sheet.item .sheet-body .tab.advancement .form-group input:disabled, .tidy5e.sheet.item .sheet-body .tab.dynamiceffects .form-group input:disabled, .tidy5e.sheet.item .sheet-body .tab.magic-items .form-group input:disabled {
   background: transparent;
   color: var(--secondary-color);
 }
 
-.tidy5e.sheet.item .sheet-body .tab.item-betterRolls .form-group input:disabled:hover, .tidy5e.sheet.item .sheet-body .tab.details .form-group input:disabled:hover, .tidy5e.sheet.item .sheet-body .tab.dynamiceffects .form-group input:disabled:hover, .tidy5e.sheet.item .sheet-body .tab.magic-items .form-group input:disabled:hover {
+.tidy5e.sheet.item .sheet-body .tab.item-betterRolls .form-group input:disabled:hover, .tidy5e.sheet.item .sheet-body .tab.details .form-group input:disabled:hover, .tidy5e.sheet.item .sheet-body .tab.advancement .form-group input:disabled:hover, .tidy5e.sheet.item .sheet-body .tab.dynamiceffects .form-group input:disabled:hover, .tidy5e.sheet.item .sheet-body .tab.magic-items .form-group input:disabled:hover {
   border: none !important;
 }
 
-.tidy5e.sheet.item .sheet-body .tab.item-betterRolls .form-group .checkbox input, .tidy5e.sheet.item .sheet-body .tab.details .form-group .checkbox input, .tidy5e.sheet.item .sheet-body .tab.dynamiceffects .form-group .checkbox input, .tidy5e.sheet.item .sheet-body .tab.magic-items .form-group .checkbox input {
+.tidy5e.sheet.item .sheet-body .tab.item-betterRolls .form-group .checkbox input, .tidy5e.sheet.item .sheet-body .tab.details .form-group .checkbox input, .tidy5e.sheet.item .sheet-body .tab.advancement .form-group .checkbox input, .tidy5e.sheet.item .sheet-body .tab.dynamiceffects .form-group .checkbox input, .tidy5e.sheet.item .sheet-body .tab.magic-items .form-group .checkbox input {
   position: static;
   margin: 0;
 }
 
-.tidy5e.sheet.item .sheet-body .tab.item-betterRolls .form-group .checkbox input::after, .tidy5e.sheet.item .sheet-body .tab.details .form-group .checkbox input::after, .tidy5e.sheet.item .sheet-body .tab.dynamiceffects .form-group .checkbox input::after, .tidy5e.sheet.item .sheet-body .tab.magic-items .form-group .checkbox input::after {
+.tidy5e.sheet.item .sheet-body .tab.item-betterRolls .form-group .checkbox input::after, .tidy5e.sheet.item .sheet-body .tab.details .form-group .checkbox input::after, .tidy5e.sheet.item .sheet-body .tab.advancement .form-group .checkbox input::after, .tidy5e.sheet.item .sheet-body .tab.dynamiceffects .form-group .checkbox input::after, .tidy5e.sheet.item .sheet-body .tab.magic-items .form-group .checkbox input::after {
   content: '';
   display: block;
   position: absolute;
@@ -5971,7 +5853,7 @@
   cursor: pointer;
 }
 
-.tidy5e.sheet.item .sheet-body .tab.item-betterRolls .form-group .checkbox input:checked::after, .tidy5e.sheet.item .sheet-body .tab.details .form-group .checkbox input:checked::after, .tidy5e.sheet.item .sheet-body .tab.dynamiceffects .form-group .checkbox input:checked::after, .tidy5e.sheet.item .sheet-body .tab.magic-items .form-group .checkbox input:checked::after {
+.tidy5e.sheet.item .sheet-body .tab.item-betterRolls .form-group .checkbox input:checked::after, .tidy5e.sheet.item .sheet-body .tab.details .form-group .checkbox input:checked::after, .tidy5e.sheet.item .sheet-body .tab.advancement .form-group .checkbox input:checked::after, .tidy5e.sheet.item .sheet-body .tab.dynamiceffects .form-group .checkbox input:checked::after, .tidy5e.sheet.item .sheet-body .tab.magic-items .form-group .checkbox input:checked::after {
   display: none;
 }
 
@@ -5985,7 +5867,12 @@
 .tidy5e.sheet.item .sheet-body .tab.details .form-group input[name="data.range.value"],
 .tidy5e.sheet.item .sheet-body .tab.details .form-group input[name="data.duration.value"],
 .tidy5e.sheet.item .sheet-body .tab.details .form-group input[name="data.uses.value"],
-.tidy5e.sheet.item .sheet-body .tab.details .form-group.damage-parts input, .tidy5e.sheet.item .sheet-body .tab.dynamiceffects .form-group input[name="data.activation.cost"],
+.tidy5e.sheet.item .sheet-body .tab.details .form-group.damage-parts input, .tidy5e.sheet.item .sheet-body .tab.advancement .form-group input[name="data.activation.cost"],
+.tidy5e.sheet.item .sheet-body .tab.advancement .form-group input[name="data.target.value"],
+.tidy5e.sheet.item .sheet-body .tab.advancement .form-group input[name="data.range.value"],
+.tidy5e.sheet.item .sheet-body .tab.advancement .form-group input[name="data.duration.value"],
+.tidy5e.sheet.item .sheet-body .tab.advancement .form-group input[name="data.uses.value"],
+.tidy5e.sheet.item .sheet-body .tab.advancement .form-group.damage-parts input, .tidy5e.sheet.item .sheet-body .tab.dynamiceffects .form-group input[name="data.activation.cost"],
 .tidy5e.sheet.item .sheet-body .tab.dynamiceffects .form-group input[name="data.target.value"],
 .tidy5e.sheet.item .sheet-body .tab.dynamiceffects .form-group input[name="data.range.value"],
 .tidy5e.sheet.item .sheet-body .tab.dynamiceffects .form-group input[name="data.duration.value"],
@@ -5999,7 +5886,7 @@
   text-align: right;
 }
 
-.tidy5e.sheet.item .sheet-body .tab.item-betterRolls .form-group input[name="data.save.dc"], .tidy5e.sheet.item .sheet-body .tab.details .form-group input[name="data.save.dc"], .tidy5e.sheet.item .sheet-body .tab.dynamiceffects .form-group input[name="data.save.dc"], .tidy5e.sheet.item .sheet-body .tab.magic-items .form-group input[name="data.save.dc"] {
+.tidy5e.sheet.item .sheet-body .tab.item-betterRolls .form-group input[name="data.save.dc"], .tidy5e.sheet.item .sheet-body .tab.details .form-group input[name="data.save.dc"], .tidy5e.sheet.item .sheet-body .tab.advancement .form-group input[name="data.save.dc"], .tidy5e.sheet.item .sheet-body .tab.dynamiceffects .form-group input[name="data.save.dc"], .tidy5e.sheet.item .sheet-body .tab.magic-items .form-group input[name="data.save.dc"] {
   text-align: center;
   -webkit-box-flex: 0;
       -ms-flex: 0 0 30px;
@@ -6012,7 +5899,10 @@
 .tidy5e.sheet.item .sheet-body .tab.item-betterRolls .form-group select:focus, .tidy5e.sheet.item .sheet-body .tab.details .form-group input[type="text"]:hover,
 .tidy5e.sheet.item .sheet-body .tab.details .form-group select:hover,
 .tidy5e.sheet.item .sheet-body .tab.details .form-group button:hover,
-.tidy5e.sheet.item .sheet-body .tab.details .form-group select:focus, .tidy5e.sheet.item .sheet-body .tab.dynamiceffects .form-group input[type="text"]:hover,
+.tidy5e.sheet.item .sheet-body .tab.details .form-group select:focus, .tidy5e.sheet.item .sheet-body .tab.advancement .form-group input[type="text"]:hover,
+.tidy5e.sheet.item .sheet-body .tab.advancement .form-group select:hover,
+.tidy5e.sheet.item .sheet-body .tab.advancement .form-group button:hover,
+.tidy5e.sheet.item .sheet-body .tab.advancement .form-group select:focus, .tidy5e.sheet.item .sheet-body .tab.dynamiceffects .form-group input[type="text"]:hover,
 .tidy5e.sheet.item .sheet-body .tab.dynamiceffects .form-group select:hover,
 .tidy5e.sheet.item .sheet-body .tab.dynamiceffects .form-group button:hover,
 .tidy5e.sheet.item .sheet-body .tab.dynamiceffects .form-group select:focus, .tidy5e.sheet.item .sheet-body .tab.magic-items .form-group input[type="text"]:hover,
@@ -6026,7 +5916,8 @@
 
 .tidy5e.sheet.item .sheet-body .tab.item-betterRolls .form-group label.prepared,
 .tidy5e.sheet.item .sheet-body .tab.item-betterRolls .form-group.recharge label, .tidy5e.sheet.item .sheet-body .tab.details .form-group label.prepared,
-.tidy5e.sheet.item .sheet-body .tab.details .form-group.recharge label, .tidy5e.sheet.item .sheet-body .tab.dynamiceffects .form-group label.prepared,
+.tidy5e.sheet.item .sheet-body .tab.details .form-group.recharge label, .tidy5e.sheet.item .sheet-body .tab.advancement .form-group label.prepared,
+.tidy5e.sheet.item .sheet-body .tab.advancement .form-group.recharge label, .tidy5e.sheet.item .sheet-body .tab.dynamiceffects .form-group label.prepared,
 .tidy5e.sheet.item .sheet-body .tab.dynamiceffects .form-group.recharge label, .tidy5e.sheet.item .sheet-body .tab.magic-items .form-group label.prepared,
 .tidy5e.sheet.item .sheet-body .tab.magic-items .form-group.recharge label {
   -webkit-box-flex: unset !important;
@@ -6042,7 +5933,8 @@
 
 .tidy5e.sheet.item .sheet-body .tab.item-betterRolls .form-group label.prepared input,
 .tidy5e.sheet.item .sheet-body .tab.item-betterRolls .form-group.recharge label input, .tidy5e.sheet.item .sheet-body .tab.details .form-group label.prepared input,
-.tidy5e.sheet.item .sheet-body .tab.details .form-group.recharge label input, .tidy5e.sheet.item .sheet-body .tab.dynamiceffects .form-group label.prepared input,
+.tidy5e.sheet.item .sheet-body .tab.details .form-group.recharge label input, .tidy5e.sheet.item .sheet-body .tab.advancement .form-group label.prepared input,
+.tidy5e.sheet.item .sheet-body .tab.advancement .form-group.recharge label input, .tidy5e.sheet.item .sheet-body .tab.dynamiceffects .form-group label.prepared input,
 .tidy5e.sheet.item .sheet-body .tab.dynamiceffects .form-group.recharge label input, .tidy5e.sheet.item .sheet-body .tab.magic-items .form-group label.prepared input,
 .tidy5e.sheet.item .sheet-body .tab.magic-items .form-group.recharge label input {
   width: 20px;
@@ -6051,7 +5943,7 @@
   margin: 0 4px 0 0;
 }
 
-.tidy5e.sheet.item .sheet-body .tab.item-betterRolls .form-group.recharge label, .tidy5e.sheet.item .sheet-body .tab.details .form-group.recharge label, .tidy5e.sheet.item .sheet-body .tab.dynamiceffects .form-group.recharge label, .tidy5e.sheet.item .sheet-body .tab.magic-items .form-group.recharge label {
+.tidy5e.sheet.item .sheet-body .tab.item-betterRolls .form-group.recharge label, .tidy5e.sheet.item .sheet-body .tab.details .form-group.recharge label, .tidy5e.sheet.item .sheet-body .tab.advancement .form-group.recharge label, .tidy5e.sheet.item .sheet-body .tab.dynamiceffects .form-group.recharge label, .tidy5e.sheet.item .sheet-body .tab.magic-items .form-group.recharge label {
   margin-right: 0;
 }
 
@@ -6061,7 +5953,7 @@
           flex: 0 0 calc(100% / 3 - 1px);
 }
 
-.tidy5e.sheet.item .sheet-body .tab.effects .items-list {
+.tidy5e.sheet.item .sheet-body .tab.effects .items-list, .tidy5e.sheet.item .sheet-body .tab.advancement .items-list {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
@@ -6071,12 +5963,12 @@
   overflow-y: scroll;
 }
 
-.tidy5e.sheet.item .sheet-body .tab.effects .items-list .item-list {
+.tidy5e.sheet.item .sheet-body .tab.effects .items-list .item-list, .tidy5e.sheet.item .sheet-body .tab.advancement .items-list .item-list {
   padding: 0 0 0 8px;
   margin: 0;
 }
 
-.tidy5e.sheet.item .sheet-body .tab.effects .items-list .items-header {
+.tidy5e.sheet.item .sheet-body .tab.effects .items-list .items-header, .tidy5e.sheet.item .sheet-body .tab.advancement .items-list .items-header {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -6090,11 +5982,11 @@
   border-radius: 5px;
 }
 
-.tidy5e.sheet.item .sheet-body .tab.effects .items-list .items-header:first-child {
+.tidy5e.sheet.item .sheet-body .tab.effects .items-list .items-header:first-child, .tidy5e.sheet.item .sheet-body .tab.advancement .items-list .items-header:first-child {
   margin-top: 0;
 }
 
-.tidy5e.sheet.item .sheet-body .tab.effects .items-list .items-header h3 {
+.tidy5e.sheet.item .sheet-body .tab.effects .items-list .items-header h3, .tidy5e.sheet.item .sheet-body .tab.advancement .items-list .items-header h3 {
   font-size: 12px;
   line-height: 12px;
   -webkit-box-flex: 1;
@@ -6105,12 +5997,13 @@
   font-weight: 600;
 }
 
-.tidy5e.sheet.item .sheet-body .tab.effects .items-list .items-header div:not(.item-name) {
+.tidy5e.sheet.item .sheet-body .tab.effects .items-list .items-header div:not(.item-name), .tidy5e.sheet.item .sheet-body .tab.advancement .items-list .items-header div:not(.item-name) {
   color: var(--tertiary-color);
 }
 
 .tidy5e.sheet.item .sheet-body .tab.effects .items-list .effect-source,
-.tidy5e.sheet.item .sheet-body .tab.effects .items-list .effect-duration {
+.tidy5e.sheet.item .sheet-body .tab.effects .items-list .effect-duration, .tidy5e.sheet.item .sheet-body .tab.advancement .items-list .effect-source,
+.tidy5e.sheet.item .sheet-body .tab.advancement .items-list .effect-duration {
   -webkit-box-flex: 0;
       -ms-flex: 0 0 120px;
           flex: 0 0 120px;
@@ -6120,7 +6013,7 @@
           justify-content: center;
 }
 
-.tidy5e.sheet.item .sheet-body .tab.effects .items-list .effect-controls {
+.tidy5e.sheet.item .sheet-body .tab.effects .items-list .effect-controls, .tidy5e.sheet.item .sheet-body .tab.advancement .items-list .effect-controls {
   -webkit-box-flex: 0;
       -ms-flex: 0 0 61px;
           flex: 0 0 61px;
@@ -6130,11 +6023,11 @@
           justify-content: center;
 }
 
-.tidy5e.sheet.item .sheet-body .tab.effects .items-list .items-header .effect-controls i {
+.tidy5e.sheet.item .sheet-body .tab.effects .items-list .items-header .effect-controls i, .tidy5e.sheet.item .sheet-body .tab.advancement .items-list .items-header .effect-controls i {
   margin-right: 4px;
 }
 
-.tidy5e.sheet.item .sheet-body .tab.effects .items-list .effect-control {
+.tidy5e.sheet.item .sheet-body .tab.effects .items-list .effect-control, .tidy5e.sheet.item .sheet-body .tab.advancement .items-list .effect-control {
   -webkit-box-flex: 0;
       -ms-flex: 0 0 20px;
           flex: 0 0 20px;
@@ -6150,19 +6043,19 @@
   color: var(--tertiary-color);
 }
 
-.tidy5e.sheet.item .sheet-body .tab.effects .items-list .effect-control .fas.fa-trash {
+.tidy5e.sheet.item .sheet-body .tab.effects .items-list .effect-control .fas.fa-trash, .tidy5e.sheet.item .sheet-body .tab.advancement .items-list .effect-control .fas.fa-trash {
   color: var(--unsafe-accent);
 }
 
-.tidy5e.sheet.item .sheet-body .tab.effects .items-list .effect-control:hover {
+.tidy5e.sheet.item .sheet-body .tab.effects .items-list .effect-control:hover, .tidy5e.sheet.item .sheet-body .tab.advancement .items-list .effect-control:hover {
   color: var(--secondary-color);
 }
 
-.tidy5e.sheet.item .sheet-body .tab.effects .items-list .effect-control:hover .fas.fa-trash {
+.tidy5e.sheet.item .sheet-body .tab.effects .items-list .effect-control:hover .fas.fa-trash, .tidy5e.sheet.item .sheet-body .tab.advancement .items-list .effect-control:hover .fas.fa-trash {
   color: var(--unlinked-accent);
 }
 
-.tidy5e.sheet.item .sheet-body .tab.effects .items-list .item {
+.tidy5e.sheet.item .sheet-body .tab.effects .items-list .item, .tidy5e.sheet.item .sheet-body .tab.advancement .items-list .item {
   background: var(--faintest-color);
   margin: 2px 0;
   border-radius: 5px;
@@ -6170,7 +6063,7 @@
   color: var(--primary-font);
 }
 
-.tidy5e.sheet.item .sheet-body .tab.effects .items-list .item div:not(.item-name) {
+.tidy5e.sheet.item .sheet-body .tab.effects .items-list .item div:not(.item-name), .tidy5e.sheet.item .sheet-body .tab.advancement .items-list .item div:not(.item-name) {
   border-left: 1px solid var(--faint-color);
   display: -webkit-box;
   display: -ms-flexbox;
@@ -6183,17 +6076,29 @@
           justify-content: center;
 }
 
-.tidy5e.sheet.item .sheet-body .tab.effects .items-list .item .item-name {
+.tidy5e.sheet.item .sheet-body .tab.effects .items-list .item div.item-summary, .tidy5e.sheet.item .sheet-body .tab.advancement .items-list .item div.item-summary {
+  -webkit-box-flex: 100%;
+      -ms-flex: 100%;
+          flex: 100%;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  gap: 0.5em;
+  padding: 0.5em 2em;
+  border: none;
+}
+
+.tidy5e.sheet.item .sheet-body .tab.effects .items-list .item .item-name, .tidy5e.sheet.item .sheet-body .tab.advancement .items-list .item .item-name {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
 }
 
-.tidy5e.sheet.item .sheet-body .tab.effects .items-list .item .item-name h4 {
+.tidy5e.sheet.item .sheet-body .tab.effects .items-list .item .item-name h4, .tidy5e.sheet.item .sheet-body .tab.advancement .items-list .item .item-name h4 {
   margin: 0;
 }
 
-.tidy5e.sheet.item .sheet-body .tab.effects .items-list .item .item-name .item-image {
+.tidy5e.sheet.item .sheet-body .tab.effects .items-list .item .item-name .item-image, .tidy5e.sheet.item .sheet-body .tab.advancement .items-list .item .item-name .item-image {
   -webkit-box-flex: 0;
       -ms-flex: 0 0 24px;
           flex: 0 0 24px;
@@ -6203,7 +6108,7 @@
   border: none;
 }
 
-.tidy5e.sheet.item .sheet-body .tab.effects .items-list .item .item-name .item-image i {
+.tidy5e.sheet.item .sheet-body .tab.effects .items-list .item .item-name .item-image i, .tidy5e.sheet.item .sheet-body .tab.advancement .items-list .item .item-name .item-image i {
   color: var(--tertiary-color);
   display: none;
   text-align: center;

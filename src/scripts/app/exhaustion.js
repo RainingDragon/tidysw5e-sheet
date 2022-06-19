@@ -133,7 +133,7 @@ async function updateExhaustion(actorEntity) {
           label: effectName,
           icon: icon,
           changes: exhaustionSet,
-          duration: {},
+          duration: {'seconds': 31536000},
           flags: {
             'tidysw5e-sheet': {
               'exhaustion': exhaustion
@@ -142,7 +142,7 @@ async function updateExhaustion(actorEntity) {
           origin: `Actor.${actorEntity.data._id}`
         };
         
-        await actorEntity.createEmbeddedEntity("ActiveEffect", effectChange);
+        await actorEntity.createEmbeddedDocuments("ActiveEffect", [effectChange]);
         await actorEntity.applyActiveEffects();  
       }
     }
@@ -190,13 +190,14 @@ Hooks.on('updateActor', function (actorEntity, _, __, userId) {
 
 // Rest reduces by 1
 Hooks.on(`restCompleted`, (actorEntity, data) => { 
-  // if(game.settings.get('tidysw5e-sheet', 'exhaustionEffectsEnabled') != 'default') {
-    let actor = game.actors.get(actorEntity.data._id);
-    if(data.longRest){
-      let exhaustion = actorEntity.data._source.data.attributes.exhaustion;
-      if (exhaustion > 0) actor.update({"data.attributes.exhaustion": exhaustion-1});
-    }
-  // }
+  if(game.settings.get('tidysw5e-sheet', 'exhaustionEffectsEnabled') == 'default') {
+    return
+  }
+  let actor = game.actors.get(actorEntity.data._id);
+  if(data.longRest){
+    let exhaustion = actorEntity.data._source.data.attributes.exhaustion;
+    if (exhaustion > 0) actor.update({"data.attributes.exhaustion": exhaustion-1});
+  }
 });
 
 // set exhaustion value to cub effect level

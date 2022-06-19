@@ -45,8 +45,11 @@ export class Tidy5eSheet extends ActorSheet5eCharacter {
     const data = super.getData();
 
     Object.keys(data.data.abilities).forEach(id => {
-    	let Id = id.charAt(0).toLowerCase() + id.slice(1);
-      data.data.abilities[id].abbr = CONFIG.SW5E.abilityAbbreviations[Id];
+    	// let Id = id.charAt(0).toLowerCase() + id.slice(1);
+    	let Id = id.charAt(0).toUpperCase() + id.slice(1);
+      //data.data.abilities[id].abbr = CONFIG.SW5E.abilityAbbreviations[Id];
+			data.data.abilities[id].abbr = game.i18n.localize(`SW5E.Ability${Id}Abbr`);
+
 		});
 
 		data.appId = this.appId;
@@ -159,22 +162,24 @@ export class Tidy5eSheet extends ActorSheet5eCharacter {
     });
 
 		// update item attunement
+		
 		html.find('.item-control.item-attunement').click( async (event) => {
 	    event.preventDefault();
  			let li = $(event.currentTarget).closest('.item'),
-					 item =actor.items.get(li.data("item-id")),
-					 count = actor.data.data.details.attunedItemsCount;
+					 item = actor.items.get(li.data("item-id")),
+					 count = actor.data.data.attributes.attunement.value;
 
  			if(item.data.data.attunement == 2) {
  				actor.items.get(li.data("item-id")).update({'data.attunement': 1});
  			} else {
- 				if(count >= actor.data.data.details.attunedItemsMax) {
+ 				if(count >= actor.data.data.attributes.attunement.max) {
 			  	ui.notifications.warn(`${game.i18n.format("TIDY5E.AttunementWarning", {number: count})}`);
 			  } else {
  					actor.items.get(li.data("item-id")).update({'data.attunement': 2});
 			  }
  			}
  		});
+		
 	}
 	
 	// add actions module
@@ -226,42 +231,17 @@ async function countInventoryItems(app, html, data){
 
 // count attuned items
 async function countAttunedItems(app, html, data){
-	let actor = app.actor;
-	// console.log(actor)
-	// let actor = game.actors.entities.find(a => a.data._id === data.actor._id),
-	if(data.editable && !actor.compendium){
-		let	count = actor.data.data.details.attunedItemsCount;
-		// if no items are counted set default value to 3
-		if (!actor.data.data.details.attunedItemsMax) {
-			await actor.update({"data.details.attunedItemsMax": 3});
-		}
-
-		if (!count) {
-			await actor.update({"data.details.attunedItemsCount": 0});
-		}
-
-		let items = actor.data.items;
-		let attunedItems = items.filter(item => item.data.data.attunement === 2).length;
-
-		await actor.update({"data.details.attunedItemsCount": attunedItems});
-
-		// html.find('.attuned-items-counter .attuned-items-current').text(attunedItems);
-		if(actor.data.data.details.attunedItemsCount > actor.data.data.details.attunedItemsMax) {
-			html.find('.attuned-items-counter').addClass('overattuned');
-			ui.notifications.warn(`${game.i18n.format("TIDY5E.AttunementWarning", {number: count})}`);
-		}
+	const actor = app.actor;
+	const	count = actor.data.data.attributes.attunement.value;
+	if(actor.data.data.attributes.attunement.value > actor.data.data.attributes.attunement.max) {
+		html.find('.attuned-items-counter').addClass('overattuned');
+		ui.notifications.warn(`${game.i18n.format("TIDY5E.AttunementWarning", {number: count})}`);
 	}
 }
 
 // handle traits list display
 async function toggleTraitsList(app, html, data){
-  html.find('.traits:not(.always-visible):not(.expanded) .form-group.inactive').addClass('trait-hidden').hide();
-  let visibleTraits = html.find('.traits .form-group:not(.trait-hidden)');
-  for (let i = 0; i < visibleTraits.length; i++) {
-    if(i % 2 != 0){
-      visibleTraits[i].classList.add('even');
-    }
-  }
+  html.find('.traits:not(.always-visible):not(.expanded) .form-group.inactive').remove();
 }
 
 // Check Death Save Status
@@ -290,7 +270,7 @@ async function checkDeathSaveStatus(app, html, data){
 async function editProtection(app, html, data) {
   let actor = app.actor;
   if(game.user.isGM && game.settings.get("tidysw5e-sheet", "editGmAlwaysEnabled")) {
-
+		html.find(".classic-controls").addClass('gmEdit');
   } else if(!actor.getFlag('tidysw5e-sheet', 'allow-edit')){
 		
 		if(game.settings.get("tidysw5e-sheet", "editTotalLockEnabled")){
@@ -378,8 +358,10 @@ async function addClassList(app, html, data) {
 			for (let item of items) {
 				if (item.type === "class") {
 					let levels = (item.data.levels) ? `<span class="levels-info">${item.data.levels}</span>` : ``;
-					let archetype = (item.data.archetype) ? `<span class="subclass-info">(${item.data.archetype})</span>` : ``;
-					classList.push(item.name + levels + archetype);
+					classList.push(item.name + levels);
+				} 
+				if (item.type === "archetype") {
+					classList.push(item.name);
 				}
 			}
 			classList = "<ul class='class-list'><li class='class-item'>" + classList.join("</li><li class='class-item'>") + "</li></ul>";
@@ -411,10 +393,16 @@ async function powerAttackMod(app,html,data){
 async function abbreviateCurrency(app,html,data) {
 	html.find('.currency .currency-item label').each(function(){
 		let currency = $(this).data('denom').toUpperCase();
+		// console.log('Currency Abbr: '+CONFIG.DND5E.currencies[currency].abbreviation);
+		// let abbr = CONFIG.DND5E.currencies[currency].abbreviation;
+		// if(abbr == CONFIG.DND5E.currencies[currency].abbreviation){
+		// 	abbr = currency;
+		// }
 		let abbr = game.i18n.localize(`TIDY5E.CurrencyAbbr${currency}`);
 		if(abbr == `TIDY5E.CurrencyAbbr${currency}`){
 			abbr = currency;
 		}
+
 		$(this).html(abbr);
 	});
 }
@@ -576,13 +564,4 @@ Hooks.on("renderTidy5eSheet", (app, html, data) => {
 
 Hooks.once("ready", (app, html, data) => {
 	// console.log("Tidy5e Sheet is ready!");
-	
-	// can be removed when 0.7.x is stable
-	// if (window.BetterRolls) {
-	// 	window.BetterRolls.hooks.addActorSheet("Tidy5eSheet");
-	// }
-	
-	// load settings
-	// tidy5eSettings();
-
 });
