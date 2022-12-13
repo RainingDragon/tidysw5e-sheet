@@ -9,6 +9,7 @@
         value="{{data.attributes.tech.points.value}}"
         data-dtype="Number"
         placeholder="0"
+        class="value-number"
       />
       <span>/</span>
       <input
@@ -17,6 +18,7 @@
         value="{{data.attributes.tech.points.max}}"
         data-dtype="Number"
         placeholder="0"
+        class="value-number"
       />
     </div>
 
@@ -45,7 +47,7 @@
 
   {{#if isNPC}}
   <h3>{{localize 'SW5E.PowercasterLevel'}}</h3>
-  <input class="powercasting-level" type="text" name="data.details.powerTechLevel"
-  value="{{data.details.powerTechLevel}}" data-dtype="Number" placeholder="0"/>
+  <input class="powercasting-level" type="text" name="system.details.powerTechLevel"
+  value="{{system.details.powerTechLevel}}" data-dtype="Number" placeholder="0"/>
   {{/if}}
 </div>

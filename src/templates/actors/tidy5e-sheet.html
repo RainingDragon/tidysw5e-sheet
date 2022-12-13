@@ -263,14 +263,10 @@
 		<nav class="tidy5e-navigation tabs" data-group="primary">
 			<a class="item active" data-tab="attributes">{{ localize "SW5E.Attributes" }}</a>
 			<a class="item" data-tab="inventory">{{ localize "SW5E.Inventory" }}</a>
-			{{#unless actor.flags.tidysw5e-sheet.view-force}}
-			<a class="item" data-tab="force-powerbook">{{ localize "SW5E.ForcePowerbook" }}</a>
-			{{/unless}}
-			{{#unless actor.flags.tidysw5e-sheet.view-tech}}
-			<a class="item" data-tab="tech-powerbook">{{ localize "SW5E.TechPowerbook" }}</a>
-			{{/unless}}
+			<a class="item" data-tab="powerbook">{{ localize "SW5E.PowerbookPl" }}</a>
 			<a class="item" data-tab="features">{{ localize "SW5E.Features" }}</a>
 			<a class="item" data-tab="effects">{{ localize "SW5E.Effects" }}</a>
+			<a class="item" data-tab="ssfeatures">{{ localize "SW5E.StarshipfeaturePl" }}</a>
 			<a class="item" data-tab="biography">{{ localize "SW5E.Biography" }}</a>
 			{{#if owner }}
 			<a class="item" data-tab="journal">{{ localize "TIDY5E.Journal" }}</a>
@@ -373,8 +369,16 @@
 				{{/if}}
 			</div>
 
+			{{!-- Force Powers, Tech Powers and Maneuvers Tab --}}
+			<section class="tab powerbook" data-group="primary" data-tab="powerbook">
+				<nav class="sheet-navigation powerbook-tabs tab-list" style="grid-template-columns: repeat(3, 1fr);"  data-subgroup-selection>
+					<button class="item active" data-subgroup="book-tab" data-target="force-powerbook">{{ localize "SW5E.ForcePowerbook" }}</button>
+					<button class="item" data-subgroup="book-tab" data-target="tech-powerbook">{{ localize "SW5E.TechPowerbook" }}</button>
+					<button class="item" data-subgroup="book-tab" data-target="superiority-powerbook">{{ localize "SW5E.SuperiorityPowerbook" }}</button>
+				</nav>
+
 			{{!-- Force Powerbook Tab --}}
-			<div class="tab powerbook {{#if actor.flags.tidysw5e-sheet.powerbook-grid}}grid{{/if}}" data-group="primary" data-tab="force-powerbook">
+			<div class="tab force-powerbook active {{#if actor.flags.tidysw5e-sheet.powerbook-grid}}grid{{/if}}" data-group="book-tab" data-tab="force-powerbook">
 				{{#if actor.flags.tidysw5e-sheet.powerbook-grid}} 
 					{{> "modules/tidysw5e-sheet/templates/actors/parts/tidy5e-force-powerbook-grid.html"}}
 				{{else}}
@@ -383,7 +387,7 @@
 			</div>
 
 			{{!-- Tech Powerbook Tab --}}
-			<div class="tab powerbook {{#if actor.flags.tidysw5e-sheet.powerbook-grid}}grid{{/if}}" data-group="primary" data-tab="tech-powerbook">
+			<div class="tab tech-powerbook {{#if actor.flags.tidysw5e-sheet.powerbook-grid}}grid{{/if}}" data-group="book-tab" data-tab="tech-powerbook">
 				{{#if actor.flags.tidysw5e-sheet.powerbook-grid}} 
 					{{> "modules/tidysw5e-sheet/templates/actors/parts/tidy5e-tech-powerbook-grid.html"}}
 				{{else}}
@@ -391,9 +395,25 @@
 				{{/if}}
 			</div>
 
+            {{!-- Maneuvers Tab --}}
+            <div class="tab superiority-powerbook {{#if actor.flags.tidysw5e-sheet.powerbook-grid}}grid{{/if}}" data-subgroup="book-tab" data-target="superiority-powerbook">
+				{{#if actor.flags.tidysw5e-sheet.powerbook-grid}} 
+					{{> "modules/tidysw5e-sheet/templates/actors/parts/tidy5e-superiority-powerbook-grid.html"}}
+				{{else}}
+					{{> "modules/tidysw5e-sheet/templates/actors/parts/tidy5e-superiority-powerbook.html"}}
+				{{/if}}
+			</div>
+		</section>
+			</div>
+
 			{{!-- Features Tab --}}
 			<div class="tab features" data-group="primary" data-tab="features">
 				{{> "modules/tidysw5e-sheet/templates/actors/parts/tidy5e-features.html" sections=features}}
+			</div>
+
+			{{!-- Starships Tab --}}
+			<div class="tab features" data-group="primary" data-tab="ssfeatures">
+				{{> "modules/tidysw5e-sheet/templates/actors/parts/tidy5e-starships.html" sections=ssfeatures}}
 			</div>
 
 			{{!-- Effects Tab --}}

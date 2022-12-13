@@ -25,6 +25,11 @@ export const preloadTidy5eHandlebarsTemplates = async function() {
     "modules/tidysw5e-sheet/templates/actors/parts/tidy5e-tech-powerbook-grid.html",
     "modules/tidysw5e-sheet/templates/actors/parts/tidy5e-tech-powerbook-header.html",
     "modules/tidysw5e-sheet/templates/actors/parts/tidy5e-tech-powerbook-footer.html",
+    "modules/tidysw5e-sheet/templates/actors/parts/tidy5e-superiority-powerbook.html",
+    "modules/tidysw5e-sheet/templates/actors/parts/tidy5e-superiority-powerbook-grid.html",
+    "modules/tidysw5e-sheet/templates/actors/parts/tidy5e-superiority-powerbook-header.html",
+    "modules/tidysw5e-sheet/templates/actors/parts/tidy5e-superiority-powerbook-footer.html",
+    "modules/tidysw5e-sheet/templates/actors/parts/tidy5e-starships.html",
     "modules/tidysw5e-sheet/templates/actors/parts/tidy5e-effects.html"
   ];
 

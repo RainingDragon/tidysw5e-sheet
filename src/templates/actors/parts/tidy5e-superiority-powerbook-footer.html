@@ -1,0 +1,41 @@
+<div class="powercasting-ability">
+    <div class="resource">
+      <h4>{{localize "SW5E.ConsumableManeuver"}}</h4>
+  
+      <div>
+        <input
+          name="system.attributes.super.dice.value"
+          type="text"
+          value="{{system.attributes.super.dice.value}}"
+          data-dtype="Number"
+          placeholder="0"
+          class="value-number"
+        />
+        <span>/</span>
+        <input
+          name="system.attributes.super.dice.max"
+          type="text"
+          value="{{system.attributes.super.dice.max}}"
+          data-dtype="Number"
+          placeholder="0"
+          class="value-number"
+        />
+      </div>
+  
+    <div class="physical-dc physical-mod">
+      <h4>Physical</h4>
+      <span>DC {{system.attributes.super.physicalDC}}
+    </div>
+  
+    <div class="mental-dc mental-mod">
+      <h4>Physical</h4>
+      <span>DC {{data.attributes.super.mentalDC}}
+    </div>
+  
+    {{#if isNPC}}
+    <h3>{{localize 'SW5E.ManeuversKnown'}}</h3>
+    <input class="naneuversknown" type="text" name="system.attributes.super.known.value"
+    value="{{system.attributes.super.known.max}}" data-dtype="Number" placeholder="0"/>
+    {{/if}}
+  </div>
+  

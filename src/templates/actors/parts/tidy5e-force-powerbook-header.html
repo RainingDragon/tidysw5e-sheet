@@ -1,11 +1,11 @@
 <div class="inventory-filters">
   <ul class="filter-list" data-filter="forcePowerbook">
-    <li class="filter-title" title="{{localize 'SW5E.Filter'}}"><i class="fas fa-filter"></i></li>
+    <li class="filter-title">{{localize "SW5E.Filter"}}</li>
     <li class="filter-search" title="{{localize 'TIDY5E.SearchHint'}}"><input type="text" id="power-search" placeholder="{{localize 'TIDY5E.SearchPower'}}" value="{{actor.flags.tidysw5e-sheet.power-search}}"><span class="clear-search hidden" title="{{localize 'TIDY5E.SearchClear'}}"><i class="fas fa-times-circle"></i></span></li>
-    <li class="filter-item" data-filter="action">{{localize 'SW5E.Action'}}</li>
-    <li class="filter-item" data-filter="bonus">{{localize 'SW5E.BonusAction'}}</li>
-    <li class="filter-item" data-filter="reaction">{{localize 'SW5E.Reaction'}}</li>
-    <li class="filter-item" data-filter="concentration">{{localize 'SW5E.AbbreviationConc'}}</li>
+    <li class="filter-item" data-filter="action">{{localize "SW5E.Action"}}</li>
+    <li class="filter-item" data-filter="bonus">{{localize "SW5E.BonusAction"}}</li>
+    <li class="filter-item" data-filter="reaction">{{localize "SW5E.Reaction"}}</li>
+    <li class="filter-item" data-filter="concentration">{{localize "SW5E.AbbreviationConc"}}</li>
     {{#if owner}}
     <li class="toggle-layout inventory-layout powerbook-layout"><i class="fas fa-th-large toggle-grid" title="{{localize 'TIDY5E.GridLayout'}}"></i><i class="fas fa-th-list toggle-list" title="{{localize 'TIDY5E.ListLayout'}}"></i></li>
     {{/if}}
