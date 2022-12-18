@@ -4,17 +4,17 @@
 
     <div>
       <input
-        name="system.attributes.force.points.value"
+        name="data.attributes.force.points.value"
         type="text"
-        value="{{system.attributes.force.points.value}}"
+        value="{{data.attributes.force.points.value}}"
         data-dtype="Number"
         placeholder="0"
       />
       <span>/</span>
       <input
-        name="system.attributes.force.points.max"
+        name="data.attributes.force.points.max"
         type="text"
-        value="{{system.attributes.force.points.max}}"
+        value="{{data.attributes.force.points.max}}"
         data-dtype="Number"
         placeholder="0"
       />
@@ -22,17 +22,17 @@
 
     <footer>
       <input
-        name="system.attributes.force.points.temp"
+        name="data.attributes.force.points.temp"
         type="text"
         placeholder="+Temp"
-        value="{{system.attributes.force.points.temp}}"
+        value="{{data.attributes.force.points.temp}}"
         data-dtype="Number"
       />
       <input
-        name="system.attributes.force.points.tempmax"
+        name="data.attributes.force.points.tempmax"
         type="text"
         placeholder="+Max"
-        value="{{system.attributes.force.points.tempmax}}"
+        value="{{data.attributes.force.points.tempmax}}"
         data-dtype="Number"
       />
     </footer>
@@ -40,17 +40,17 @@
 
   <div class="power-dc power-mod">
     <h4>Universal</h4>
-    <span>DC {{data.attributes.powerForceUnivDC}} / Mod {{numberFormat (max data.abilities.wis.mod data.abilities.cha.mod) decimals=0 sign=true }}</span>
+    <span>DC {{data.attributes.powerForceUnivDC}}</span>
   </div>
 
   <div class="power-dc power-mod">
     <h4>Light</h4>
-    <span>DC {{data.attributes.powerForceLightDC}} / Mod {{numberFormat data.abilities.wis.mod decimals=0 sign=true }}</span>
+    <span>DC {{data.attributes.powerForceLightDC}}</span>
   </div>
 
   <div class="power-dc power-mod">
     <h4>Dark</h4>
-    <span>DC {{data.attributes.powerForceDarkDC}} / Mod {{numberFormat data.abilities.cha.mod decimals=0 sign=true }}</span>
+    <span>DC {{data.attributes.powerForceDarkDC}}</span>
   </div>
 
   {{#if isNPC}}

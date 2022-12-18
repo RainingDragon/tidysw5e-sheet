@@ -260,10 +260,10 @@
 		</header>
 		
 		{{!-- PC Sheet Navigation --}}
-		<nav class="tidy5e-navigation tabs" data-group="primary">
+		<nav class="tidy5e-navigation tabs" style="grid-template-columns: repeat(8, 1fr);" data-group="primary">
 			<a class="item active" data-tab="attributes">{{ localize "SW5E.Attributes" }}</a>
 			<a class="item" data-tab="inventory">{{ localize "SW5E.Inventory" }}</a>
-			<a class="item" data-tab="powerbook">{{ localize "SW5E.PowerbookPl" }}</a>
+			<a class="item" data-tab="powerbooks">{{ localize "SW5E.PowerbookPl" }}</a>
 			<a class="item" data-tab="features">{{ localize "SW5E.Features" }}</a>
 			<a class="item" data-tab="effects">{{ localize "SW5E.Effects" }}</a>
 			<a class="item" data-tab="ssfeatures">{{ localize "SW5E.StarshipfeaturePl" }}</a>
@@ -284,8 +284,8 @@
 
 					{{!-- Skills --}}
 					<ul class="skills-list">
-            {{#each config.skills as |label s|}}
-            {{#with (lookup ../data.skills s) as |skill|}}
+            	{{#each config.skills as |label s|}}
+            	{{#with (lookup ../data.skills s) as |skill|}}
 						<li class="skill {{#if skill.value}}proficient{{/if}}" data-skill="{{s}}">
 							<a class="config-button" data-action="skill" title="{{localize 'SW5E.SkillConfigure'}}"><i class="fas fa-cog"></i></a>
 							<input type="hidden" name="data.skills.{{s}}.value" value="{{skill.value}}" data-dtype="Number">
@@ -370,40 +370,39 @@
 			</div>
 
 			{{!-- Force Powers, Tech Powers and Maneuvers Tab --}}
-			<section class="tab powerbook" data-group="primary" data-tab="powerbook">
-				<nav class="sheet-navigation powerbook-tabs tab-list" style="grid-template-columns: repeat(3, 1fr);"  data-subgroup-selection>
+			<div class="tab powerbooks" data-group="primary" data-tab="powerbooks">
+				<nav class="tidy5e-navigation powerbook-tabs tab-list" style="grid-template-columns: repeat(3, 1fr);"  data-subgroup-selection>
 					<button class="item active" data-subgroup="book-tab" data-target="force-powerbook">{{ localize "SW5E.ForcePowerbook" }}</button>
 					<button class="item" data-subgroup="book-tab" data-target="tech-powerbook">{{ localize "SW5E.TechPowerbook" }}</button>
 					<button class="item" data-subgroup="book-tab" data-target="superiority-powerbook">{{ localize "SW5E.SuperiorityPowerbook" }}</button>
 				</nav>
+				
+				{{!-- Force Powerbook Tab --}}
+				<section class="tab force-powerbook active {{#if actor.flags.tidysw5e-sheet.powerbook-grid}}grid{{/if}} hidden" data-subgroup="book-tab" data-target="force-powerbook" id="force-powerbook">
+					{{#if actor.flags.tidysw5e-sheet.powerbook-grid}} 
+						{{> "modules/tidysw5e-sheet/templates/actors/parts/tidy5e-force-powerbook-grid.html"}}
+					{{else}}
+						{{> "modules/tidysw5e-sheet/templates/actors/parts/tidy5e-force-powerbook.html"}}
+					{{/if}}
+					</section>
 
-			{{!-- Force Powerbook Tab --}}
-			<div class="tab force-powerbook active {{#if actor.flags.tidysw5e-sheet.powerbook-grid}}grid{{/if}}" data-group="book-tab" data-tab="force-powerbook">
-				{{#if actor.flags.tidysw5e-sheet.powerbook-grid}} 
-					{{> "modules/tidysw5e-sheet/templates/actors/parts/tidy5e-force-powerbook-grid.html"}}
-				{{else}}
-					{{> "modules/tidysw5e-sheet/templates/actors/parts/tidy5e-force-powerbook.html"}}
-				{{/if}}
-			</div>
+				{{!-- Tech Powerbook Tab --}}
+				<section class="tab tech-powerbook hidden" data-subgroup="book-tab" data-target="tech-powerbook" id="tech-powerbook">
+					{{#if actor.flags.tidysw5e-sheet.powerbook-grid}} 
+						{{> "modules/tidysw5e-sheet/templates/actors/parts/tidy5e-tech-powerbook-grid.html"}}
+					{{else}}
+						{{> "modules/tidysw5e-sheet/templates/actors/parts/tidy5e-tech-powerbook.html"}}
+					{{/if}}
+					</section>
 
-			{{!-- Tech Powerbook Tab --}}
-			<div class="tab tech-powerbook {{#if actor.flags.tidysw5e-sheet.powerbook-grid}}grid{{/if}}" data-group="book-tab" data-tab="tech-powerbook">
-				{{#if actor.flags.tidysw5e-sheet.powerbook-grid}} 
-					{{> "modules/tidysw5e-sheet/templates/actors/parts/tidy5e-tech-powerbook-grid.html"}}
-				{{else}}
-					{{> "modules/tidysw5e-sheet/templates/actors/parts/tidy5e-tech-powerbook.html"}}
-				{{/if}}
-			</div>
-
-            {{!-- Maneuvers Tab --}}
-            <div class="tab superiority-powerbook {{#if actor.flags.tidysw5e-sheet.powerbook-grid}}grid{{/if}}" data-subgroup="book-tab" data-target="superiority-powerbook">
-				{{#if actor.flags.tidysw5e-sheet.powerbook-grid}} 
-					{{> "modules/tidysw5e-sheet/templates/actors/parts/tidy5e-superiority-powerbook-grid.html"}}
-				{{else}}
-					{{> "modules/tidysw5e-sheet/templates/actors/parts/tidy5e-superiority-powerbook.html"}}
-				{{/if}}
-			</div>
-		</section>
+				{{!-- Maneuvers Tab --}}
+				<section class="tab superiority-powerbook hidden" data-subgroup="book-tab" data-target="superiority-powerbook" id="superiority-powerbook">
+					{{#if actor.flags.tidysw5e-sheet.powerbook-grid}} 
+						{{> "modules/tidysw5e-sheet/templates/actors/parts/tidy5e-superiority-powerbook-grid.html"}}
+					{{else}}
+						{{> "modules/tidysw5e-sheet/templates/actors/parts/tidy5e-superiority-powerbook.html"}}
+					{{/if}}
+					</section>
 			</div>
 
 			{{!-- Features Tab --}}

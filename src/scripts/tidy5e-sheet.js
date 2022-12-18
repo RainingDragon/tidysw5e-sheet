@@ -545,6 +545,24 @@ Actors.registerSheet("sw5e", Tidy5eSheet, {
 	types: ["character"],
 	makeDefault: true
 });
+const buttons = document.querySelectorAll('.item');
+
+buttons.forEach(button => {
+  button.addEventListener('click', event => {
+    // Get the target section id
+    const targetId = event.target.dataset.target;
+    // Select the target section element
+    const targetSection = document.getElementById(targetId);
+    // Hidden class removed from target section
+    targetSection.classList.remove('hidden');
+    // Select all the other section elements
+    const otherSections = document.querySelectorAll('section:not(#' + targetId + ')');
+    // Hidden class added to other sections
+    otherSections.forEach(section => {
+      section.classList.add('hidden');
+    });
+  });
+});
 
 Hooks.on("renderTidy5eSheet", (app, html, data) => {
 	setSheetClasses(app, html, data);
