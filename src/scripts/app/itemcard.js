@@ -158,13 +158,12 @@ export const tidy5eItemCard = function (html, actor) {
     });
   });
 
-  function showCard(event){
+  async function showCard(event){
     getBounds();
     event.preventDefault();
     let li = $(event.currentTarget).closest('.item'),
         item = actor.items.get(li.data("item-id")),
-        itemData = item.data,
-        chatData = item.getChatData({secrets: actor.isOwner}),
+        chatData = await item.getChatData({secrets: actor.isOwner}),
         itemDescription = chatData.description.value,
         
         infoCard = li.find('.info-card');
