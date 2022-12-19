@@ -93,12 +93,12 @@ export const tidy5eItemCard = function (html, actor) {
     }
   });
 
-  let itemCardDelayCard = (event) => {
+  let itemCardDelayCard = async (event) => {
     // console.log(`itemCardDelaying card: ${itemCardDelay} ms`);
-    timer = setTimeout(function(){ 
+    timer = setTimeout(async function(){ 
       if(!itemCardIsFixed) {
         removeCard();
-        showCard(event);
+        await showCard(event);
         infoContainer.addClass('open'); 
       }
     }, itemCardDelay);

@@ -371,10 +371,10 @@
 
 			{{!-- Force Powers, Tech Powers and Maneuvers Tab --}}
 			<div class="tab powerbooks" data-group="primary" data-tab="powerbooks">
-				<nav class="tidy5e-navigation powerbook-tabs tab-list" style="grid-template-columns: repeat(3, 1fr);"  data-subgroup-selection>
-					<button class="item active" data-subgroup="book-tab" data-target="force-powerbook">{{ localize "SW5E.ForcePowerbook" }}</button>
-					<button class="item" data-subgroup="book-tab" data-target="tech-powerbook">{{ localize "SW5E.TechPowerbook" }}</button>
-					<button class="item" data-subgroup="book-tab" data-target="superiority-powerbook">{{ localize "SW5E.SuperiorityPowerbook" }}</button>
+				<nav class="tidy5e-navigation powerbook-tabs tab-list" style="display: grid; grid-template-columns: repeat(3, 1fr); grid-gap: 10px;"  data-subgroup-selection>
+					<button class="item active" style="display: flex; align-items: center; justify-content: center;" data-subgroup="book-tab" data-target="force-powerbook">{{ localize "SW5E.ForcePowerbook" }}</button>
+					<button class="item" style="display: flex; align-items: center; justify-content: center;" data-subgroup="book-tab" data-target="tech-powerbook">{{ localize "SW5E.TechPowerbook" }}</button>
+					<button class="item" style="display: flex; align-items: center; justify-content: center;" data-subgroup="book-tab" data-target="superiority-powerbook">{{ localize "SW5E.SuperiorityPowerbook" }}</button>
 				</nav>
 				
 				{{!-- Force Powerbook Tab --}}
