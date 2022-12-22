@@ -301,7 +301,7 @@ export const addFavorites = async function(app, html, data, position) {
       // Activating favorite-list events
 
       // showing item summary
-      favHtml.find('.item-name h4').click(event => app._onItemSummary(event));
+      favHtml.find('.item-name h4').click((event) => app._onItemSummary(event));
 
       tidy5eContextMenu(favHtml);
 

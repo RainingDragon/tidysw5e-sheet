@@ -182,6 +182,27 @@ export class Tidy5eSheet extends ActorSheet5eCharacter {
 		
 	}
 	
+   async _onItemSummary(event) {
+	   event.preventDefault();
+	   const li = $(event.currentTarget).parents(".item");
+	   const item = this.actor.items.get(li.data("item-id"));
+	   const chatData = await item.getChatData({secrets: this.actor.isOwner});
+
+	   // Toggle summary
+	   if (li.hasClass("expanded")) {
+		   let summary = li.children(".item-summary");
+		   summary.slideUp(200, () => summary.remove());
+	   } else {
+		   let div = $(`<div class="item-summary">${chatData.description.value}</div>`);
+		   let props = $('<div class="item-properties"></div>');
+		   chatData.properties.forEach((p) => props.append(`<span class="tag">${p}</span>`));
+		   div.append(props);
+		   li.append(div.hide());
+		   div.slideDown(200);
+	   }
+	   li.toggleClass("expanded");
+   }
+
 	// add actions module
 	async _renderInner(...args) {
 		const html = await super._renderInner(...args);
