@@ -31,9 +31,9 @@
 
         </div>          
 
-        {{#if item.data.uses.per }}
+        {{#if item.system.uses.per }}
         <div class="item-detail item-charges">
-          <input data-path="data.uses.value" type="text" value="{{item.data.uses.value}}">/ <input  class="uses-max" data-path="data.uses.max" type="text" value="{{item.data.uses.max}}">
+          <input data-path="system.uses.value" type="text" value="{{item.system.uses.value}}">/ <input  class="uses-max" data-path="system.uses.max" type="text" value="{{item.system.uses.max}}">
         </div>
         {{/if}}
         <div class="item-detail power-comps">
@@ -58,7 +58,7 @@
           </div>
           <div class="info-card-amount">
             {{#if item.hasUses }}
-            <span><i class="fas fa-bolt"></i><b>{{localize 'SW5E.Charges'}}:</b> {{item.data.uses.value}}/{{item.data.uses.max}}</span>
+            <span><i class="fas fa-bolt"></i><b>{{localize 'SW5E.Charges'}}:</b> {{item.system.uses.value}}/{{item.system.uses.max}}</span>
             {{/if}}
           </div>
           <div class="description-wrap">
@@ -125,29 +125,29 @@
 
     <div>
       <input
-        name="data.attributes.tech.points.value"
+        name="system.attributes.tech.points.value"
         type="text"
-        value="{{data.attributes.tech.points.value}}"
+        value="{{system.attributes.tech.points.value}}"
         data-dtype="Number"
         placeholder="0"
       />
       <span>/</span>
       <input
-        name="data.attributes.tech.points.max"
+        name="system.attributes.tech.points.max"
         type="text"
-        value="{{data.attributes.tech.points.max}}"
+        value="{{system.attributes.tech.points.max}}"
         data-dtype="Number"
         placeholder="0"
       />
     </div>
   </div>
 
-  <h4 class="power-dc">Tech DC {{data.attributes.powerTechDC}}</h4>
+  <h4 class="power-dc">Tech DC {{system.attributes.powerTechDC}}</h4>
   <div class="npc-power-stats">
     <div class="caster-level">
       <p>{{localize 'SW5E.PowercasterLevel'}}</p>
-      <input class="powercasting-level" type="text" name="data.details.powerTechLevel"
-      value="{{data.details.powerTechLevel}}" data-dtype="Number" placeholder="0"/>
+      <input class="powercasting-level" type="text" name="system.details.powerTechLevel"
+      value="{{system.details.powerTechLevel}}" data-dtype="Number" placeholder="0"/>
     </div>
   </div>
 </div>

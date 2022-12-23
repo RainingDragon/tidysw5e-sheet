@@ -4,17 +4,17 @@
 
     <div>
       <input
-        name="data.attributes.force.points.value"
+        name="system.attributes.force.points.value"
         type="text"
-        value="{{data.attributes.force.points.value}}"
+        value="{{system.attributes.force.points.value}}"
         data-dtype="Number"
         placeholder="0"
       />
       <span>/</span>
       <input
-        name="data.attributes.force.points.max"
+        name="system.attributes.force.points.max"
         type="text"
-        value="{{data.attributes.force.points.max}}"
+        value="{{system.attributes.force.points.max}}"
         data-dtype="Number"
         placeholder="0"
       />
@@ -22,17 +22,17 @@
 
     <footer>
       <input
-        name="data.attributes.force.points.temp"
+        name="system.attributes.force.points.temp"
         type="text"
         placeholder="+Temp"
-        value="{{data.attributes.force.points.temp}}"
+        value="{{system.attributes.force.points.temp}}"
         data-dtype="Number"
       />
       <input
-        name="data.attributes.force.points.tempmax"
+        name="system.attributes.force.points.tempmax"
         type="text"
         placeholder="+Max"
-        value="{{data.attributes.force.points.tempmax}}"
+        value="{{system.attributes.force.points.tempmax}}"
         data-dtype="Number"
       />
     </footer>
@@ -40,22 +40,22 @@
 
   <div class="power-dc power-mod">
     <h4>Universal</h4>
-    <span>DC {{data.attributes.powerForceUnivDC}}</span>
+    <span>DC {{system.attributes.powerForceUnivDC}}</span>
   </div>
 
   <div class="power-dc power-mod">
     <h4>Light</h4>
-    <span>DC {{data.attributes.powerForceLightDC}}</span>
+    <span>DC {{system.attributes.powerForceLightDC}}</span>
   </div>
 
   <div class="power-dc power-mod">
     <h4>Dark</h4>
-    <span>DC {{data.attributes.powerForceDarkDC}}</span>
+    <span>DC {{system.attributes.powerForceDarkDC}}</span>
   </div>
 
   {{#if isNPC}}
   <h3>{{localize 'SW5E.PowercasterLevel'}}</h3>
-  <input class="powercasting-level" type="text" name="data.details.powerForceLevel"
-  value="{{data.details.powerForceLevel}}" data-dtype="Number" placeholder="0"/>
+  <input class="powercasting-level" type="text" name="system.details.powerForceLevel"
+  value="{{system.details.powerForceLevel}}" data-dtype="Number" placeholder="0"/>
   {{/if}}
 </div>

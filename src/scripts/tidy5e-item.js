@@ -1,6 +1,6 @@
-import ItemSheet5e from "../../../systems/sw5e/module/item/sheet.js";
+import ItemSheet5e from "../../../systems/sw5e/module/applications/item/item-sheet.mjs";
 
-export class Tidy5eItemSheet extends ItemSheet5e {
+export class Tidy5eItemSheet extends sw5e.applications.item.ItemSheet5e {
   static get defaultOptions() {
     return mergeObject(super.defaultOptions, {
       classes: ["tidy5e", "dnd5ebak", "sheet", "item"],

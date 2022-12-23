@@ -4,18 +4,18 @@
   
       <div>
         <input
-          name="data.attributes.super.dice.value"
+          name="system.attributes.super.dice.value"
           type="text"
-          value="{{data.attributes.super.dice.value}}"
+          value="{{system.attributes.super.dice.value}}"
           data-dtype="Number"
           placeholder="0"
           class="value-number"
         />
         <span>/</span>
         <input
-          name="data.attributes.super.dice.max"
+          name="system.attributes.super.dice.max"
           type="text"
-          value="{{data.attributes.super.dice.max}}"
+          value="{{system.attributes.super.dice.max}}"
           data-dtype="Number"
           placeholder="0"
           class="value-number"
@@ -24,23 +24,23 @@
 
       <div class="general-dc general-mod">
         <h4>General</h4>
-        <span>DC {{data.attributes.super.generalDC}}</span>
+        <span>DC {{system.attributes.super.generalDC}}</span>
       </div>
 
     <div class="physical-dc physical-mod">
       <h4>Physical</h4>
-      <span>DC {{data.attributes.super.physicalDC}}</span>
+      <span>DC {{system.attributes.super.physicalDC}}</span>
     </div>
   
     <div class="mental-dc mental-mod">
       <h4>Mental</h4>
-      <span>DC {{data.attributes.super.mentalDC}}</span>
+      <span>DC {{system.attributes.super.mentalDC}}</span>
     </div>
   
     {{#if isNPC}}
     <h3>{{localize 'SW5E.ManeuversKnown'}}</h3>
-    <input class="naneuversknown" type="text" name="data.attributes.super.known.value"
-    value="{{data.attributes.super.known.max}}" data-dtype="Number" placeholder="0"/>
+    <input class="naneuversknown" type="text" name="system.attributes.super.known.value"
+    value="{{system.attributes.super.known.max}}" data-dtype="Number" placeholder="0"/>
     {{/if}}
   </div>
   </div>

@@ -37,12 +37,12 @@ export class Tidy5eVehicle extends ActorSheet5eVehicle {
 	/**
    * Add some extra data when rendering the sheet to reduce the amount of logic required within the template.
    */
-  getData() {
-    const data = super.getData();
+  async getData() {
+    const context = await super.getData();
 
-    Object.keys(data.data.abilities).forEach(id => {
+    Object.keys(context.system.abilities).forEach(id => {
     	let Id = id.charAt(0).toUpperCase() + id.slice(1);
-      data.data.abilities[id].abbr = game.i18n.localize(`SW5E.Ability${Id}Abbr`);
+      context.system.abilities[id].abbr = game.i18n.localize(`SW5E.Ability${Id}Abbr`);
     });
 
     return data;
