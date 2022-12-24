@@ -44,9 +44,8 @@
           <div class="items-header-feat-source">{{localize 'SW5E.Source'}}</div>
           <div class="items-header-requirements">{{localize 'SW5E.Requirements'}}</div>
           {{/if}}
-        {{else if section.isClass}}
-          <div class="items-header-subclass">{{localize 'TIDY5E.Archetype'}}</div>
-          <div class="items-header-level">{{localize 'SW5E.Level'}}</div>
+        {{else if section.isDeployment}}
+          <div class="items-header-level">{{localize 'SW5E.Rank'}}</div>
         {{else}}
         {{#if ../isCharacter}}
         {{#unless section.columns}}

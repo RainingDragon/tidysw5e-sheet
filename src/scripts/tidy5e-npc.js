@@ -36,7 +36,7 @@ Handlebars.registerHelper("debug", function (value) {
   return;
 });
 
-export default class Tidy5eNPC extends ActorSheet5eNPC {
+export default class Tidy5eNPC extends sw5e.applications.actor.ActorSheet5eNPC {
   /**
    * Define default rendering options for the NPC sheet
    * @return {Object}
@@ -180,7 +180,7 @@ export default class Tidy5eNPC extends ActorSheet5eNPC {
       // let Id = id.charAt(0).toLowerCase() + id.slice(1);
       // data.data.abilities[id].abbr = CONFIG.SW5E.abilityAbbreviations[Id];
       let Id = id.charAt(0).toUpperCase() + id.slice(1);
-			context.system.abilities[id].abbr = game.i18n.localize(`SW5E.Ability${Id}Abbr`);
+			context.system.abilities[id].abbr = CONFIG.SW5E.abilityAbbreviations[Id];
     });
     
 		context.appId = this.appId;

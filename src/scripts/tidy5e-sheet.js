@@ -48,7 +48,7 @@ export class Tidy5eSheet extends sw5e.applications.actor.ActorSheet5eCharacter {
     	// let Id = id.charAt(0).toLowerCase() + id.slice(1);
     	let Id = id.charAt(0).toUpperCase() + id.slice(1);
       //data.data.abilities[id].abbr = CONFIG.SW5E.abilityAbbreviations[Id];
-	  	context.system.abilities[id].abbr = game.i18n.localize(`SW5E.Ability${Id}Abbr`);
+	  	context.system.abilities[id].abbr = CONFIG.SW5E.abilityAbbreviations[id];
 
 		});
 
