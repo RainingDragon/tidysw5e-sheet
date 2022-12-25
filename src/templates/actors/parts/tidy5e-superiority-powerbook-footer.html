@@ -21,15 +21,20 @@
           class="value-number"
         />
       </div>
-  
+
+      <div class="general-dc general-mod">
+        <h4>General</h4>
+        <span>DC {{system.attributes.super.generalDC}}</span>
+      </div>
+
     <div class="physical-dc physical-mod">
       <h4>Physical</h4>
-      <span>DC {{system.attributes.super.physicalDC}}
+      <span>DC {{system.attributes.super.physicalDC}}</span>
     </div>
   
     <div class="mental-dc mental-mod">
-      <h4>Physical</h4>
-      <span>DC {{data.attributes.super.mentalDC}}
+      <h4>Mental</h4>
+      <span>DC {{system.attributes.super.mentalDC}}</span>
     </div>
   
     {{#if isNPC}}
@@ -38,4 +43,4 @@
     value="{{system.attributes.super.known.max}}" data-dtype="Number" placeholder="0"/>
     {{/if}}
   </div>
-  
+  </div>

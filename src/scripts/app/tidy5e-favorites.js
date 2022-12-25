@@ -34,40 +34,40 @@ export const addFavorites = async function(app, html, data, position) {
       powers: []
     }, 1: {
       powers: [],
-      value: data.actor.data.powers.power1.value,
-      max: data.actor.data.powers.power1.max
+      value: data.actor.system.powers.power1.value,
+      max: data.actor.system.powers.power1.max
     }, 2: {
       powers: [],
-      value: data.actor.data.powers.power2.value,
-      max: data.actor.data.powers.power2.max
+      value: data.actor.system.powers.power2.value,
+      max: data.actor.system.powers.power2.max
     }, 3: {
       powers: [],
-      value: data.actor.data.powers.power3.value,
-      max: data.actor.data.powers.power3.max
+      value: data.actor.system.powers.power3.value,
+      max: data.actor.system.powers.power3.max
     }, 4: {
       powers: [],
-      value: data.actor.data.powers.power4.value,
-      max: data.actor.data.powers.power4.max
+      value: data.actor.system.powers.power4.value,
+      max: data.actor.system.powers.power4.max
     }, 5: {
       powers: [],
-      value: data.actor.data.powers.power5.value,
-      max: data.actor.data.powers.power5.max
+      value: data.actor.system.powers.power5.value,
+      max: data.actor.system.powers.power5.max
     }, 6: {
       powers: [],
-      value: data.actor.data.powers.power6.value,
-      max: data.actor.data.powers.power6.max
+      value: data.actor.system.powers.power6.value,
+      max: data.actor.system.powers.power6.max
     }, 7: {
       powers: [],
-      value: data.actor.data.powers.power7.value,
-      max: data.actor.data.powers.power7.max
+      value: data.actor.system.powers.power7.value,
+      max: data.actor.system.powers.power7.max
     }, 8: {
       powers: [],
-      value: data.actor.data.powers.power8.value,
-      max: data.actor.data.powers.power8.max
+      value: data.actor.system.powers.power8.value,
+      max: data.actor.system.powers.power8.max
     }, 9: {
       powers: [],
-      value: data.actor.data.powers.power9.value,
-      max: data.actor.data.powers.power9.max
+      value: data.actor.system.powers.power9.value,
+      max: data.actor.system.powers.power9.max
     }
   }
   
@@ -136,53 +136,53 @@ export const addFavorites = async function(app, html, data, position) {
             let string = String(key);
             return translation[string];
           }
-          if (item.data.activation && item.data.activation.type) {
-            let key = item.data.activation.type;
+          if (item.system.activation && item.system.activation.type) {
+            let key = item.system.activation.type;
             // item.data.activation.type.capitalize()
-            labels.activation = `${item.data.activation.cost ? item.data.activation.cost+' ':''}${translateLabels(key)}`;
+            labels.activation = `${item.system.activation.cost ? item.system.activation.cost+' ':''}${translateLabels(key)}`;
           }
 
           // adding info that damage and attacks are possible
-          if (['mwak', 'rwak', 'mpak', 'rpak'].indexOf(item.data.actionType) !== -1) {
+          if (['mwak', 'rwak', 'mpak', 'rpak'].indexOf(item.system.actionType) !== -1) {
             item.hasAttack = true;
           }
-          if (item.data.damage && item.data.damage.parts.length > 0) {
+          if (item.system.damage && item.system.damage.parts.length > 0) {
             item.hasDamage = true;
           }
 
           // is item chargeable and on Cooldown
           item.isOnCooldown = false;
-          if( item.data.recharge && item.data.recharge.value && item.data.recharge.charged === false){
+          if( item.system.recharge && item.system.recharge.value && item.system.recharge.charged === false){
             item.isOnCooldown = true;
-            item.labels = {recharge : game.i18n.localize("SW5E.FeatureRechargeOn")+" ["+item.data.recharge.value+"+]", rechargeValue : "["+item.data.recharge.value+"+]"};
+            item.labels = {recharge : game.i18n.localize("SW5E.FeatureRechargeOn")+" ["+item.system.recharge.value+"+]", rechargeValue : "["+item.system.recharge.value+"+]"};
           }
 
           // adding info if item has quantity more than one
           item.isStack = false;
-          if (item.data.quantity && item.data.quantity > 1) {
+          if (item.system.quantity && item.system.quantity > 1) {
             item.isStack = true;
           }
 
           // adding attunement info
           item.canAttune = false;
 
-          if (item.data.attunement) {
-            if( item.data.attunement == 1 || item.data.attunement == 2) {
+          if (item.system.attunement) {
+            if( item.system.attunement == 1 || item.system.attunement == 2) {
               item.canAttune = true;
             }
           }
 
           // check magic item
           item.isMagic = false;
-          if (item.flags.magicitems && item.flags.magicitems.enabled || item.data.properties  && item.data.properties.mgc){
+          if (item.flags.magicitems && item.flags.magicitems.enabled || item.system.properties  && item.system.properties.mgc){
             item.isMagic = true;
           }
 
           let attr = item.type === "power" ? "preparation.prepared" : "equipped";
-          let isActive = getProperty(item.data, attr);
+          let isActive = getProperty(item.system, attr);
           item.toggleClass = isActive ? "active" : "";
           if (item.type === "power") {
-            if(item.data.preparation.mode == 'always'){
+            if(item.system.preparation.mode == 'always'){
               item.toggleTitle = game.i18n.localize("SW5E.PowerPrepAlways");
             } else {
               item.toggleTitle = game.i18n.localize(isActive ? "SW5E.PowerPrepared" : "SW5E.PowerUnprepared");
@@ -195,8 +195,8 @@ export const addFavorites = async function(app, html, data, position) {
 
 
           item.powerComps = "";
-          if (item.type === "power" && item.data.components) {
-            let comps = item.data.components;
+          if (item.type === "power" && item.system.components) {
+            let comps = item.system.components;
 
             let c = (comps.concentration) ? true : false;
 
@@ -217,24 +217,24 @@ export const addFavorites = async function(app, html, data, position) {
             favFeats.push(item);
             break;
             case 'power':
-            if (item.data.preparation.mode && item.data.preparation.mode !== 'prepared') {
+            if (item.system.preparation.mode && item.system.preparation.mode !== 'prepared') {
 
-              if(item.data.preparation.mode == 'always') {
+              if(item.system.preparation.mode == 'always') {
                 // favPowersPrepMode['always'].powers.push(item);
                 item.canPrep = true;
                 item.alwaysPrep = true;
               } else 
-              if(item.data.preparation.mode == 'atwill') {
+              if(item.system.preparation.mode == 'atwill') {
                 favPowersPrepMode['atwill'].powers.push(item);
-              } else if(item.data.preparation.mode == 'innate') {
+              } else if(item.system.preparation.mode == 'innate') {
                 favPowersPrepMode['innate'].powers.push(item);
               }
               powerPrepModeCount++;
             } else {
               item.canPrep = true;
             }
-            if (item.canPrep && item.data.level) {
-              favPowers[item.data.level].powers.push(item);
+            if (item.canPrep && item.system.level) {
+              favPowers[item.system.level].powers.push(item);
             } else if (item.canPrep) {
               favPowers[0].powers.push(item);
             }
@@ -301,14 +301,14 @@ export const addFavorites = async function(app, html, data, position) {
       // Activating favorite-list events
 
       // showing item summary
-      favHtml.find('.item-name h4').click(event => app._onItemSummary(event));
+      favHtml.find('.item-name h4').click((event) => app._onItemSummary(event));
 
       tidy5eContextMenu(favHtml);
 
       // the rest is only needed if the sheet is editable
       if (app.options.editable) {
           // rolling the item
-          favHtml.find('.item-image').click(ev => app._onItemRoll(ev));
+          favHtml.find('.item-image').click(ev => app._onItemUse(ev));
 
           // Item Dragging
           let handler = async ev => app._onDragStart(ev);
@@ -329,8 +329,8 @@ export const addFavorites = async function(app, html, data, position) {
             ev.preventDefault();
             let itemId = ev.currentTarget.closest(".item").dataset.itemId;
             let item = app.actor.items.get(itemId);
-            let attr = item.data.type === "power" ? "data.preparation.prepared" : "data.equipped";
-            return item.update({ [attr]: !getProperty(item.data, attr) });
+            let attr = item.system.type === "power" ? "system.preparation.prepared" : "system.equipped";
+            return item.update({ [attr]: !getProperty(item.system, attr) });
           });
 
           // update item attunement
@@ -339,15 +339,15 @@ export const addFavorites = async function(app, html, data, position) {
             let itemId = ev.currentTarget.closest(".item").dataset.itemId;
             let item = app.actor.items.get(itemId);
 
-            if(item.data.data.attunement == 2) {
-              app.actor.items.get(itemId).update({'data.attunement': 1});
+            if(item.system.attunement == 2) {
+              app.actor.items.get(itemId).update({'system.attunement': 1});
             } else {
 
-              if(app.actor.data.data.details.attunedItemsCount >= app.actor.data.data.details.attunedItemsMax) {
-                let count = actor.data.data.details.attunedItemsCount;
+              if(app.actor.system.details.attunedItemsCount >= app.actor.system.details.attunedItemsMax) {
+                let count = actor.system.details.attunedItemsCount;
                 ui.notifications.warn(`${game.i18n.format("TIDY5E.AttunementWarning", {number: count})}`);
               } else {
-                app.actor.items.get(itemId).update({'data.attunement': 2});
+                app.actor.items.get(itemId).update({'system.attunement': 2});
               }
             }
           });
@@ -355,7 +355,7 @@ export const addFavorites = async function(app, html, data, position) {
           // removing item from favorite list
           favHtml.find('.item-fav').click(ev => {
             let itemId = $(ev.target).parents('.item')[0].dataset.itemId;
-            let val = !app.actor.items.get(itemId).data.flags.favtab.isFavorite
+            let val = !app.actor.items.get(itemId).flags.favtab.isFavorite
             app.actor.items.get(itemId).update({ "flags.favtab.isFavorite": val });
           });
 
@@ -381,10 +381,10 @@ export const addFavorites = async function(app, html, data, position) {
             let itemId = $(ev.target).parents('.item')[0].dataset.itemId;
             let item = app.actor.items.get(itemId);
 
-            item.data.uses = { value: 1, max: 1 };
+            item.system.uses = { value: 1, max: 1 };
             let data = {};
-            data['data.uses.value'] = 1;
-            data['data.uses.max'] = 1;
+            data['system.uses.value'] = 1;
+            data['system.uses.max'] = 1;
 
             app.actor.items.get(itemId).update(data);
           });
@@ -413,13 +413,13 @@ export const addFavorites = async function(app, html, data, position) {
                 if (dropData.data.type === 'feat') {
                   list = favFeats;
                 } else if(dropData.data.type === 'power') {
-                  list = favPowers[dropData.data.data.level].powers;
+                  list = favPowers[dropData.system.level].powers;
                 } else {
                   list = favItems;
                 }
 
-                let dragSource = list.find(i => i._id === dropData.data._id);
-                let siblings = list.filter(i=> i._id !== dropData.data._id);
+                let dragSource = list.find(i => i._id === dropData._id);
+                let siblings = list.filter(i=> i._id !== dropData._id);
                 let targetId = ev.target.closest('.item').dataset.itemId;
                 let dragTarget = siblings.find(s => s._id === targetId);
 

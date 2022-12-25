@@ -24,11 +24,11 @@
           </div>
         </div>
 
-        {{#if item.data.uses.per }}
+        {{#if item.system.uses.per }}
         <div class="item-stats">
-          <div class="item-detail item-charges" title="{{localize 'SW5E.Charges'}}: {{item.data.uses.value}}/{{item.data.uses.max}} ">
+          <div class="item-detail item-charges" title="{{localize 'SW5E.Charges'}}: {{item.system.uses.value}}/{{item.system.uses.max}} ">
             {{#if item.hasUses }}
-            <i class="fas fa-bolt"></i><input type="text" data-path="data.uses.value" value="{{item.data.uses.value}}" placeholder="0" maxlength="2" >
+            <i class="fas fa-bolt"></i><input type="text" data-path="system.uses.value" value="{{item.system.uses.value}}" placeholder="0" maxlength="2" >
             {{/if}}
           </div>
         </div>
@@ -41,7 +41,7 @@
           </div>
           <div class="info-card-amount">
             {{#if item.hasUses }}
-            <span><i class="fas fa-bolt"></i><b>{{localize 'SW5E.Charges'}}:</b> {{item.data.uses.value}}/{{item.data.uses.max}}</span>
+            <span><i class="fas fa-bolt"></i><b>{{localize 'SW5E.Charges'}}:</b> {{item.system.uses.value}}/{{item.system.uses.max}}</span>
             {{/if}}
           </div>
           <div class="description-wrap">
@@ -89,7 +89,7 @@
       <li class="notice">{{localize 'SW5E.NoPowerLevels'}}</li>
       <li class="items-footer">
         <a class="item-create" title="{{localize 'SW5E.PowerCreate'}}" data-type="power"
-        data-level="{{lvl}}"><i class="fas fa-plus-circle"></i></a>
+        data-level="{{lvl}}" data-school="uni"><i class="fas fa-plus-circle"></i>{{localize 'SW5E.PowerAdd'}}</a>
       </li>
     </ul>
     {{/if}}

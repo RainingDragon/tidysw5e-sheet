@@ -3,7 +3,7 @@
 
 <div class="grid-layout">
   <ul class="inventory-list powerbook-list items-list">
-    {{#each techPowerbook as |section|}}
+    {{#each superiorityPowerbook as |section|}}
     <li class="items-header powerbook-header">
       <div class="power-level-slots">
         <h3>{{section.label}}</h3>
@@ -11,7 +11,7 @@
     </li>
 
     <ul class="item-list">
-      {{#each section.powers as |item i|}}
+      {{#each section.maneuvers as |item i|}}
       <li class="item {{#if ../../owner}}context-enabled{{/if}}" data-item-id="{{item._id}}">
         {{~#if item.flags.favtab}} 
         {{~#if item.flags.favtab.isFavorite}} 
@@ -24,11 +24,11 @@
           </div>
         </div>
 
-        {{#if item.data.uses.per }}
+        {{#if item.system.uses.per }}
         <div class="item-stats">
-          <div class="item-detail item-charges" title="{{localize 'SW5E.Charges'}}: {{item.data.uses.value}}/{{item.data.uses.max}} ">
+          <div class="item-detail item-charges" title="{{localize 'SW5E.Charges'}}: {{item.system.uses.value}}/{{item.system.uses.max}} ">
             {{#if item.hasUses }}
-            <i class="fas fa-bolt"></i><input type="text" data-path="data.uses.value" value="{{item.data.uses.value}}" placeholder="0" maxlength="2" >
+            <i class="fas fa-bolt"></i><input type="text" data-path="system.uses.value" value="{{item.system.uses.value}}" placeholder="0" maxlength="2" >
             {{/if}}
           </div>
         </div>
@@ -41,7 +41,7 @@
           </div>
           <div class="info-card-amount">
             {{#if item.hasUses }}
-            <span><i class="fas fa-bolt"></i><b>{{localize 'SW5E.Charges'}}:</b> {{item.data.uses.value}}/{{item.data.uses.max}}</span>
+            <span><i class="fas fa-bolt"></i><b>{{localize 'SW5E.Charges'}}:</b> {{item.system.uses.value}}/{{item.system.uses.max}}</span>
             {{/if}}
           </div>
           <div class="description-wrap">
@@ -82,14 +82,14 @@
     {{else}}
     {{#if owner}}
     {{#if filters.powerbook.size}}
-    <li class="notice">{{localize 'SW5E.FilterNoPowers'}}</li>
+    <li class="notice">{{localize 'SW5E.FilterNoManeuvers'}}</li>
     {{else}}
 
     <ul class="item-list">
-      <li class="notice">{{localize 'SW5E.NoPowerLevels'}}</li>
+      <li class="notice">{{localize 'SW5E.NoSuperiorityLevels'}}</li>
       <li class="items-footer">
-        <a class="item-create" title="{{localize 'SW5E.ManeuverCreate'}}" data-type="power"
-        data-level="{{lvl}}"><i class="fas fa-plus-circle"></i></a>
+        <a class="item-create" title="{{localize 'SW5E.ManeuverCreate'}}" data-type="maneuver" data-type="general"
+        data-level="{{lvl}}"><i class="fas fa-plus-circle"></i>{{localize 'SW5E.ManeuverAdd'}}</a>
       </li>
     </ul>
     {{/if}}

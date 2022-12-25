@@ -36,7 +36,7 @@ Handlebars.registerHelper("debug", function (value) {
   return;
 });
 
-export default class Tidy5eNPC extends ActorSheet5eNPC {
+export default class Tidy5eNPC extends sw5e.applications.actor.ActorSheet5eNPC {
   /**
    * Define default rendering options for the NPC sheet
    * @return {Object}
@@ -84,18 +84,18 @@ export default class Tidy5eNPC extends ActorSheet5eNPC {
     // Start by classifying items into groups for rendering
     let [forcepowers, techpowers, other] = data.items.reduce((arr, item) => {
       item.img = item.img || CONST.DEFAULT_TOKEN;
-      item.isStack = item.data.quantity ? item.data.quantity > 1 : false;
-      item.hasUses = item.data.uses && (item.data.uses.max > 0);
-      item.isOnCooldown = item.data.recharge && !!item.data.recharge.value && (item.data.recharge.charged === false);
-      item.isDepleted = item.isOnCooldown && (item.data.uses.per && (item.data.uses.value > 0));
-      item.hasTarget = !!item.data.target && !(["none",""].includes(item.data.target.type));
+      item.isStack = item.system.quantity ? item.system.quantity > 1 : false;
+      item.hasUses = item.system.uses && (item.system.uses.max > 0);
+      item.isOnCooldown = item.system.recharge && !!item.system.recharge.value && (item.system.recharge.charged === false);
+      item.isDepleted = item.isOnCooldown && (item.system.uses.per && (item.system.uses.value > 0));
+      item.hasTarget = !!item.system.target && !(["none",""].includes(item.system.target.type));
 
       // Item toggle state
       this._prepareItemToggleState(item);
       
 
-      if ( item.type === "power" && ["lgt", "drk", "uni"].includes(item.data.school) ) arr[0].push(item);
-      else if ( item.type === "power" && ["tec"].includes(item.data.school) ) arr[1].push(item);
+      if ( item.type === "power" && ["lgt", "drk", "uni"].includes(item.system.school) ) arr[0].push(item);
+      else if ( item.type === "power" && ["tec"].includes(item.system.school) ) arr[1].push(item);
       else arr[2].push(item);
       return arr;
     }, [[], [], []]);
@@ -113,7 +113,7 @@ export default class Tidy5eNPC extends ActorSheet5eNPC {
     for ( let item of other ) {
       if ( item.type === "weapon" ) features.weapons.items.push(item);
       else if ( item.type === "feat" ) {
-        if ( item.data.activation.type ) features.actions.items.push(item);
+        if ( item.system.activation.type ) features.actions.items.push(item);
         else features.passive.items.push(item);
       }
       else features.equipment.items.push(item);
@@ -153,8 +153,8 @@ export default class Tidy5eNPC extends ActorSheet5eNPC {
    */
   _prepareItemToggleState(item) {
     if (item.type === "power") {
-      const isAlways = getProperty(item.data, "preparation.mode") === "always";
-      const isPrepared =  getProperty(item.data, "preparation.prepared");
+      const isAlways = getProperty(item.system, "preparation.mode") === "always";
+      const isPrepared =  getProperty(item.system, "preparation.prepared");
       item.toggleClass = isPrepared ? "active" : "";
       if ( isAlways ) item.toggleClass = "fixed";
       if ( isAlways ) item.toggleTitle = CONFIG.SW5E.powerPreparationModes.always;
@@ -162,7 +162,7 @@ export default class Tidy5eNPC extends ActorSheet5eNPC {
       else item.toggleTitle = game.i18n.localize("SW5E.PowerUnprepared");
     }
     else {
-      const isActive = getProperty(item.data, "equipped");
+      const isActive = getProperty(item.system, "equipped");
       item.toggleClass = isActive ? "active" : "";
       item.toggleTitle = game.i18n.localize(isActive ? "SW5E.Equipped" : "SW5E.Unequipped");
     }
@@ -173,19 +173,19 @@ export default class Tidy5eNPC extends ActorSheet5eNPC {
   /**
    * Add some extra data when rendering the sheet to reduce the amount of logic required within the template.
    */
-  getData(options) {
-    const data = super.getData(options);
+  async getData(options) {
+    const context = await super.getData(options);
     
-    Object.keys(data.data.abilities).forEach(id => {
+    Object.keys(context.system.abilities).forEach(id => {
       // let Id = id.charAt(0).toLowerCase() + id.slice(1);
       // data.data.abilities[id].abbr = CONFIG.SW5E.abilityAbbreviations[Id];
       let Id = id.charAt(0).toUpperCase() + id.slice(1);
-			data.data.abilities[id].abbr = game.i18n.localize(`SW5E.Ability${Id}Abbr`);
+			context.system.abilities[id].abbr = CONFIG.SW5E.abilityAbbreviations[Id];
     });
     
-		data.appId = this.appId;
+		context.appId = this.appId;
 
-    return data;
+    return context;
   }
 
   /* -------------------------------------------- */
@@ -213,7 +213,7 @@ export default class Tidy5eNPC extends ActorSheet5eNPC {
     html.find(".portrait-hp-formula span.rollable").mousedown( async (event) => {
       switch (event.which) {
       case 3:
-        let formula = actor.data.data.attributes.hp.formula;
+        let formula = actor.system.attributes.hp.formula;
         // console.log(formula);
         let r = new Roll(formula);
         let term = r.terms;
@@ -243,8 +243,8 @@ export default class Tidy5eNPC extends ActorSheet5eNPC {
 
         // console.log(average);
         let data = {};
-        data['data.attributes.hp.value'] = average;
-        data['data.attributes.hp.max'] = average;
+        data['system.attributes.hp.value'] = average;
+        data['system.attributes.hp.max'] = average;
         actor.update(data);
 
       break;
@@ -307,14 +307,14 @@ export default class Tidy5eNPC extends ActorSheet5eNPC {
     });
 
     // creating charges for the item
-    html.find('.inventory-list .item .addCharges').click(event => {
+    html.find('.inventory-list .item .addCharges').click((event) => {
       let itemId = $(event.target).parents('.item')[0].dataset.itemId;
       let item =actor.items.get(itemId);
 
-      item.data.uses = { value: 1, max: 1 };
+      item.system.uses = { value: 1, max: 1 };
       let data = {};
-      data['data.uses.value'] = 1;
-      data['data.uses.max'] = 1;
+      data['system.uses.value'] = 1;
+      data['system.uses.max'] = 1;
 
      actor.items.get(itemId).update(data);
     });
@@ -335,13 +335,13 @@ export default class Tidy5eNPC extends ActorSheet5eNPC {
    */
   async _onRollHealthFormula(event) {
     event.preventDefault();
-    const formula = this.actor.data.data.attributes.hp.formula;
+    const formula = this.actor.system.attributes.hp.formula;
     if ( !formula ) return;
     // const hp = new Roll(formula).roll().total;  
 		const roll_hp = await new Roll(formula).roll();
     const hp = roll_hp.total;
     AudioHelper.play({src: CONFIG.sounds.dice});
-    this.actor.update({"data.attributes.hp.value": hp, "data.attributes.hp.max": hp});
+    this.actor.update({"system.attributes.hp.value": hp, "system.attributes.hp.max": hp});
   }
 
     /* -------------------------------------------- */
@@ -444,8 +444,8 @@ async function toggleItemMode(app, html, data){
     ev.preventDefault();
     let itemId = ev.currentTarget.closest(".item").dataset.itemId;
     let item = app.actor.items.get(itemId);
-    let attr = item.data.type === "power" ? "data.preparation.prepared" : "data.equipped";
-    return item.update({ [attr]: !getProperty(item.data, attr) });
+    let attr = item.type === "power" ? "system.preparation.prepared" : "system.equipped";
+    return item.update({ [attr]: !getProperty(item, attr) });
   });
 }
 
@@ -453,14 +453,14 @@ async function toggleItemMode(app, html, data){
 async  function resetTempHp(app, html, data){
   let actor = app.actor;
 	if(data.editable && !actor.compendium){
-    let temp = actor.data.data.attributes.hp.temp,
-        tempmax = actor.data.data.attributes.hp.tempmax;
+    let temp = actor.system.attributes.hp.temp,
+        tempmax = actor.system.attributes.hp.tempmax;
 
     if(temp == 0){
-      actor.update({ 'data.attributes.hp.temp': null });
+      actor.update({ 'system.attributes.hp.temp': null });
     }
     if(tempmax == 0){
-      actor.update({ 'data.attributes.hp.tempmax': null });
+      actor.update({ 'system.attributes.hp.tempmax': null });
     }
   }
 }
@@ -513,10 +513,10 @@ async function setSheetClasses(app, html, data) {
   if (game.settings.get("tidysw5e-sheet", "skillsAlwaysShownNpc")) {
     html.find('.tidy5e-sheet.tidy5e-npc .skills-list').addClass('always-visible');
   }
-  if (token && token.data.actorLink && game.settings.get("tidysw5e-sheet", "linkMarkerNpc") == 'both') {
+  if (token && token.actorLink && game.settings.get("tidysw5e-sheet", "linkMarkerNpc") == 'both') {
     html.find('.tidy5e-sheet.tidy5e-npc').addClass('linked');
   }
-  if (token && !token.data.actorLink && ( game.settings.get("tidysw5e-sheet", "linkMarkerNpc") == "unlinked" || game.settings.get("tidysw5e-sheet", "linkMarkerNpc") == "both")) {
+  if (token && !token.actorLink && ( game.settings.get("tidysw5e-sheet", "linkMarkerNpc") == "unlinked" || game.settings.get("tidysw5e-sheet", "linkMarkerNpc") == "both")) {
     html.find('.tidy5e-sheet.tidy5e-npc').addClass('unlinked');
   }
   if (!token && (game.settings.get("tidysw5e-sheet", "linkMarkerNpc") == "unlinked" || game.settings.get("tidysw5e-sheet", "linkMarkerNpc") == "both")) {
@@ -619,9 +619,9 @@ async function editProtection(app, html, data) {
 		html.find('.inventory-list .item-control.item-delete').remove();
 
     let actor = app.actor,
-        legAct = actor.data.data.resources.legact.max,
-        legRes = actor.data.data.resources.legres.max,
-        lair = actor.data.data.resources.lair.value;
+        legAct = actor.system.resources.legact.max,
+        legRes = actor.system.resources.legres.max,
+        lair = actor.system.resources.lair.value;
 
     if(!lair && legAct < 1 && legRes < 1) {
       html.find('.counters').addClass('hidden').hide();

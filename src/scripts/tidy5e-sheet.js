@@ -1,6 +1,6 @@
 import { SW5E } from "../../../systems/sw5e/module/config.js";
 import ActorSheet5e from "../../../systems/sw5e/module/actor/sheets/newSheet/base.js";
-import ActorSheet5eCharacter from "../../../systems/sw5e/module/actor/sheets/newSheet/character.js";
+import ActorSheet5eCharacter from "../../../systems/sw5e/module/applications/actor/character-sheet.mjs";
 // import { tidy5eSettings } from "./app/settings.js";
 import { Tidy5eUserSettings } from './app/settings.js';
 
@@ -17,7 +17,7 @@ import { tidy5eAmmoSwitch } from "./app/ammo-switch.js";
 let position = 0;
 
 
-export class Tidy5eSheet extends ActorSheet5eCharacter {
+export class Tidy5eSheet extends sw5e.applications.actor.ActorSheet5eCharacter {
 	
 	get template() {
 		if ( !game.user.isGM && this.actor.limited && !game.settings.get("tidysw5e-sheet", "expandedSheetEnabled") ) return "modules/tidysw5e-sheet/templates/actors/tidy5e-sheet-ltd.html";
@@ -41,20 +41,20 @@ export class Tidy5eSheet extends ActorSheet5eCharacter {
 	/**
    * Add some extra data when rendering the sheet to reduce the amount of logic required within the template.
    */
-  getData() {
-    const data = super.getData();
+	async getData() {
+		const context = await super.getData();
 
-    Object.keys(data.data.abilities).forEach(id => {
+    Object.keys(context.system.abilities).forEach(id => {
     	// let Id = id.charAt(0).toLowerCase() + id.slice(1);
     	let Id = id.charAt(0).toUpperCase() + id.slice(1);
       //data.data.abilities[id].abbr = CONFIG.SW5E.abilityAbbreviations[Id];
-			data.data.abilities[id].abbr = game.i18n.localize(`SW5E.Ability${Id}Abbr`);
+	  	context.system.abilities[id].abbr = CONFIG.SW5E.abilityAbbreviations[id];
 
 		});
 
-		data.appId = this.appId;
+		context.appId = this.appId;
 
-    return data;
+    return context;
   }
 	
 	_createEditor(target, editorOptions, initialContent) {
@@ -125,8 +125,7 @@ export class Tidy5eSheet extends ActorSheet5eCharacter {
 			event.preventDefault();
 			let target = event.currentTarget;
 			let value = Number(target.dataset.elvl);
-			let data = actor.data.data;
-			await actor.update({"data.attributes.exhaustion": value});
+			await actor.update({"system.attributes.exhaustion": value});
  		});
 
  		// changing item qty and charges values (removing if both value and max are 0)
@@ -144,10 +143,10 @@ export class Tidy5eSheet extends ActorSheet5eCharacter {
       let itemId = $(event.target).parents('.item')[0].dataset.itemId;
       let item = actor.items.get(itemId);
 
-      item.data.uses = { value: 1, max: 1 };
+      item.system.uses = { value: 1, max: 1 };
       let data = {};
-      data['data.uses.value'] = 1;
-      data['data.uses.max'] = 1;
+      data['system.uses.value'] = 1;
+      data['system.uses.max'] = 1;
 
       actor.items.get(itemId).update(data);
     });
@@ -167,21 +166,42 @@ export class Tidy5eSheet extends ActorSheet5eCharacter {
 	    event.preventDefault();
  			let li = $(event.currentTarget).closest('.item'),
 					 item = actor.items.get(li.data("item-id")),
-					 count = actor.data.data.attributes.attunement.value;
+					 count = actor.system.attributes.attunement.value;
 
- 			if(item.data.data.attunement == 2) {
- 				actor.items.get(li.data("item-id")).update({'data.attunement': 1});
+ 			if(item.system.attunement == 2) {
+ 				actor.items.get(li.data("item-id")).update({'system.attunement': 1});
  			} else {
- 				if(count >= actor.data.data.attributes.attunement.max) {
+ 				if(count >= actor.system.attributes.attunement.max) {
 			  	ui.notifications.warn(`${game.i18n.format("TIDY5E.AttunementWarning", {number: count})}`);
 			  } else {
- 					actor.items.get(li.data("item-id")).update({'data.attunement': 2});
+ 					actor.items.get(li.data("item-id")).update({'system.attunement': 2});
 			  }
  			}
  		});
 		
 	}
 	
+   async _onItemSummary(event) {
+	   event.preventDefault();
+	   const li = $(event.currentTarget).parents(".item");
+	   const item = this.actor.items.get(li.data("item-id"));
+	   const chatData = await item.getChatData({secrets: this.actor.isOwner});
+
+	   // Toggle summary
+	   if (li.hasClass("expanded")) {
+		   let summary = li.children(".item-summary");
+		   summary.slideUp(200, () => summary.remove());
+	   } else {
+		   let div = $(`<div class="item-summary">${chatData.description.value}</div>`);
+		   let props = $('<div class="item-properties"></div>');
+		   chatData.properties.forEach((p) => props.append(`<span class="tag">${p}</span>`));
+		   div.append(props);
+		   li.append(div.hide());
+		   div.slideDown(200);
+	   }
+	   li.toggleClass("expanded");
+   }
+
 	// add actions module
 	async _renderInner(...args) {
 		const html = await super._renderInner(...args);
@@ -232,8 +252,8 @@ async function countInventoryItems(app, html, data){
 // count attuned items
 async function countAttunedItems(app, html, data){
 	const actor = app.actor;
-	const	count = actor.data.data.attributes.attunement.value;
-	if(actor.data.data.attributes.attunement.value > actor.data.data.attributes.attunement.max) {
+	const	count = actor.system.attributes.attunement.value;
+	if(actor.system.attributes.attunement.value > actor.system.attributes.attunement.max) {
 		html.find('.attuned-items-counter').addClass('overattuned');
 		ui.notifications.warn(`${game.i18n.format("TIDY5E.AttunementWarning", {number: count})}`);
 	}
@@ -249,10 +269,9 @@ async function checkDeathSaveStatus(app, html, data){
 	if(data.editable){
 		// var actor = game.actors.entities.find(a => a.data._id === data.actor._id);
 		let actor = app.actor;
-		var data = actor.data.data;
-		var currentHealth = data.attributes.hp.value;
-		var deathSaveSuccess = data.attributes.death.success;
-		var deathSaveFailure = data.attributes.death.failure;
+		var currentHealth = actor.system.attributes.hp.value;
+		var deathSaveSuccess = actor.system.attributes.death.success;
+		var deathSaveFailure = actor.system.attributes.death.failure;
 		
   	// console.log(`current HP: ${currentHealth}, success: ${deathSaveSuccess}, failure: ${deathSaveFailure}`);
 		if (currentHealth <=0){
@@ -260,8 +279,8 @@ async function checkDeathSaveStatus(app, html, data){
 		}
 
 		if(currentHealth > 0 && deathSaveSuccess != 0 || currentHealth > 0 && deathSaveFailure != 0){
-				await actor.update({"data.attributes.death.success": 0});
-				await actor.update({"data.attributes.death.failure": 0});
+				await actor.update({"system.attributes.death.success": 0});
+				await actor.update({"system.attributes.death.failure": 0});
 		}
 	}
 }
@@ -357,7 +376,7 @@ async function addClassList(app, html, data) {
 			let items = data.actor.items;
 			for (let item of items) {
 				if (item.type === "class") {
-					let levels = (item.data.levels) ? `<span class="levels-info">${item.data.levels}</span>` : ``;
+					let levels = (item.system.levels) ? `<span class="levels-info">${item.system.levels}</span>` : ``;
 					classList.push(item.name + levels);
 				} 
 				if (item.type === "archetype") {
@@ -365,7 +384,7 @@ async function addClassList(app, html, data) {
 				}
 			}
 			classList = "<ul class='class-list'><li class='class-item'>" + classList.join("</li><li class='class-item'>") + "</li></ul>";
-			mergeObject(actor, {"data.flags.tidysw5e-sheet.classlist": classList});
+			mergeObject(actor, {"flags.tidysw5e-sheet.classlist": classList});
 			let classListTarget = html.find('.bonus-information');
 			classListTarget.append(classList);
 		}
@@ -409,7 +428,7 @@ async function abbreviateCurrency(app,html,data) {
 
 // transform DAE formulas for maxPreparesPowers
 async function tidyCustomEffect(actor, change) {
-  if (change.key !== "data.details.maxPreparedPowers") return;
+  if (change.key !== "system.details.maxPreparedPowers") return;
   if (change.value?.length > 0) {
     let oldValue =  getProperty(actor.data, change.key) || 0;
     let changeText = change.value.trim();
@@ -427,12 +446,12 @@ async function tidyCustomEffect(actor, change) {
 		const value = roll_value.total;
     oldValue = Number.isNumeric(oldValue) ? parseInt(oldValue) : 0;
     switch (op) {
-      case "+": return setProperty(actor.data, change.key, oldValue + value);
-      case "-": return setProperty(actor.data, change.key, oldValue - value);
-      case "*": return setProperty(actor.data, change.key, oldValue * value);
-      case "/": return setProperty(actor.data, change.key, oldValue / value);
-      case "=": return setProperty(actor.data, change.key, value);
-      default:  return setProperty(actor.data, change.key, value);
+      case "+": return setProperty(actor.system, change.key, oldValue + value);
+      case "-": return setProperty(actor.system, change.key, oldValue - value);
+      case "*": return setProperty(actor.system, change.key, oldValue * value);
+      case "/": return setProperty(actor.system, change.key, oldValue / value);
+      case "=": return setProperty(actor.system, change.key, value);
+      default:  return setProperty(actor.system, change.key, value);
     }
   }
 }
@@ -441,7 +460,7 @@ async function tidyCustomEffect(actor, change) {
 function markActiveEffects(app, html, data){
 	if (game.settings.get("tidysw5e-sheet", "activeEffectsMarker")) {
 		let actor = app.actor;
-		let items = data.actor.items;
+		let items = system.actor.items;
 		let marker = `<span class="ae-marker" title="Item has active effects">Æ</span>`;
 		for (let item of items) {
 			// console.log(item);
@@ -544,6 +563,24 @@ Hooks.once("init", () => {
 Actors.registerSheet("sw5e", Tidy5eSheet, {
 	types: ["character"],
 	makeDefault: true
+});
+const buttons = document.querySelectorAll('.item');
+
+buttons.forEach(button => {
+  button.addEventListener('click', event => {
+    // Get the target section id
+    const targetId = event.target.dataset.target;
+    // Select the target section element
+    const targetSection = document.getElementById(targetId);
+    // Hidden class removed from target section
+    targetSection.classList.remove('hidden');
+    // Select all the other section elements
+    const otherSections = document.querySelectorAll('section:not(#' + targetId + ')');
+    // Hidden class added to other sections
+    otherSections.forEach(section => {
+      section.classList.add('hidden');
+    });
+  });
 });
 
 Hooks.on("renderTidy5eSheet", (app, html, data) => {

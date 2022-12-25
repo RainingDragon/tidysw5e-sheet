@@ -40,22 +40,22 @@
 
   <div class="power-dc power-mod">
     <h4>Universal</h4>
-    <span>DC {{data.attributes.powerForceUnivDC}} / Mod {{numberFormat (max data.abilities.wis.mod data.abilities.cha.mod) decimals=0 sign=true }}</span>
+    <span>DC {{system.attributes.powerForceUnivDC}}</span>
   </div>
 
   <div class="power-dc power-mod">
     <h4>Light</h4>
-    <span>DC {{data.attributes.powerForceLightDC}} / Mod {{numberFormat data.abilities.wis.mod decimals=0 sign=true }}</span>
+    <span>DC {{system.attributes.powerForceLightDC}}</span>
   </div>
 
   <div class="power-dc power-mod">
     <h4>Dark</h4>
-    <span>DC {{data.attributes.powerForceDarkDC}} / Mod {{numberFormat data.abilities.cha.mod decimals=0 sign=true }}</span>
+    <span>DC {{system.attributes.powerForceDarkDC}}</span>
   </div>
 
   {{#if isNPC}}
   <h3>{{localize 'SW5E.PowercasterLevel'}}</h3>
-  <input class="powercasting-level" type="text" name="data.details.powerForceLevel"
-  value="{{data.details.powerForceLevel}}" data-dtype="Number" placeholder="0"/>
+  <input class="powercasting-level" type="text" name="system.details.powerForceLevel"
+  value="{{system.details.powerForceLevel}}" data-dtype="Number" placeholder="0"/>
   {{/if}}
 </div>
