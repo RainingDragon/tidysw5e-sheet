@@ -307,11 +307,11 @@ export default class Tidy5eNPC extends sw5e.applications.actor.ActorSheet5eNPC {
     });
 
     // creating charges for the item
-    html.find('.inventory-list .item .addCharges').click(event => {
+    html.find('.inventory-list .item .addCharges').click((event) => {
       let itemId = $(event.target).parents('.item')[0].dataset.itemId;
       let item =actor.items.get(itemId);
 
-      item.data.uses = { value: 1, max: 1 };
+      item.system.uses = { value: 1, max: 1 };
       let data = {};
       data['system.uses.value'] = 1;
       data['system.uses.max'] = 1;
